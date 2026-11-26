@@ -1,6 +1,7 @@
 node_modules/
 web/dist/
 web/.wrangler/
+web/.cloudflare/
 *.tsbuildinfo
 __pycache__/
 *.pyc
