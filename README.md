@@ -12,6 +12,8 @@
   ·
   <a href="#how-it-works">How It Works</a>
   ·
+  <a href="ROADMAP.md">Roadmap</a>
+  ·
   <a href="CONTRIBUTING.md">Submit a Theme</a>
 </p>
 
