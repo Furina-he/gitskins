@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="36" viewBox="0 0 846 36" role="img" aria-label="SECTION II. Contribution Chronicle">
+  <line x1="0" y1="4.5" x2="846" y2="4.5" stroke="#4A453D" stroke-width="1.4"/>
+  <line x1="0" y1="8" x2="846" y2="8" stroke="#2A2722" stroke-width="0.8"/>
+  <text x="0" y="28" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" font-weight="700" letter-spacing="1.2" fill="#E45847">SECTION II.</text>
+  <text x="86" y="28" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="16" font-weight="700" fill="#F0EBE1">Contribution Chronicle</text>
+  <text x="846" y="28" text-anchor="end" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="12" font-style="italic" fill="#8A8377">Updated Daily</text>
+</svg>

@@ -1,0 +1,605 @@
+[
+  {
+    "id": "swiss-bauhaus-pixel",
+    "order": 1,
+    "name": "Swiss-Bauhaus Pixel Poster",
+    "nameZh": "瑞士包豪斯像素海报",
+    "category": "Graphic Poster",
+    "categoryZh": "平面海报",
+    "tagline": "0px architectural grid, monumental 9-row pixel display typography, orthogonal pixel weaves, and a blinking 28x28 avatar portrait.",
+    "taglineZh": "0px 锐利瑞士网格、9 行粗体像素大字、四种正交编织纹理与 28×28 眨眼像素头像框。",
+    "bestFor": [
+      "Indie Developers",
+      "Toolmakers",
+      "Design Engineers"
+    ],
+    "bestForZh": [
+      "独立开发者",
+      "效率工具作者",
+      "设计工程师"
+    ],
+    "author": "Furina-he",
+    "inspiredBy": "evepupil/evepupil",
+    "accent": "#00A3CC",
+    "palette": {
+      "light": [
+        "#FAF9F5",
+        "#0A0A0A",
+        "#7CC4FA",
+        "#2370E8",
+        "#F3ACF0",
+        "#2BA676",
+        "#F5B700"
+      ],
+      "dark": [
+        "#101115",
+        "#F4F4F6",
+        "#14243A",
+        "#1D4ED8",
+        "#D88AD4",
+        "#1E825C",
+        "#D99B00"
+      ]
+    },
+    "features": [
+      "22 XML-validated Light & Dark SVGs",
+      "9-row geometric pixel wordmark",
+      "Custom 28x28 blinking avatar pixel portrait",
+      "4 orthogonal pixel weaves & 16x16 project emblems"
+    ],
+    "featuresZh": [
+      "全套 22 张严格 XML 校验深/浅双主题 SVG",
+      "9 行粗体几何像素大字与四栏像素指标",
+      "按用户头像定制的 28×28 柔和眨眼像素肖像",
+      "四种正交编织纹 + 4 枚 16×16 专属像素徽标"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "(pet) openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "(release) CloudLink v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "(github) @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      },
+      {
+        "id": "carview",
+        "title": "CarView",
+        "url": "https://github.com/Furina-he/carview"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Live product sites",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          }
+        ]
+      },
+      {
+        "group": "Companion & more repos",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          },
+          {
+            "label": "bless",
+            "url": "https://github.com/Furina-he/bless"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Swiss-Bauhaus Pixel Poster** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Check `gh auth status` / `gh api user` (or `git config`) to get my GitHub username, display name, bio, avatar image, public repositories, stars, releases, and live websites. Only ask me if no GitHub account is detected locally.\n2. **Select real content**: Pick my top 4 flagship repositories (or fewer if I have fewer) and verify any live site URLs before linking them. Never invent fake metrics, websites, or claims.\n3. **Adapt the theme to me**:\n   - Follow `SPEC.md` and adapt `generator.py` to produce a complete Light & Dark SVG suite (`assets/`): split Hero poster (`846x294`) with my handle in 9-row pixel display glyphs, a custom `28x28` blinking pixel portrait drawn from my real GitHub avatar, 4 factual pixel metrics, sharp `0px` action buttons, section dividers, and flush `2x2` weave-topped project cards with bespoke `16x16` pixel emblems.\n   - Tune the Hero right-field weave accent to harmonize with my avatar/brand palette while preserving the Swiss-Bauhaus `0px` crisp geometry.\n   - Include a daily GitHub contribution snake workflow (`.github/workflows/snake.yml`) unless I already have a preferred telemetry widget.\n4. **Validate & Visually Inspect**: Parse every SVG as strict XML, render both Light and Dark previews at `846px` width to fix any text overflow, cursor misalignment, or pill padding issues, then commit and push to my `<username>/<username>` profile repository.",
+        "zh": "请使用 GitSkins 的 **「瑞士包豪斯像素海报（Swiss-Bauhaus Pixel Poster）」** 主题，帮我设计并更新我的 GitHub 个人主页介绍（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：先通过本地 `gh auth status` / `gh api user`（或 `git config`）自动获取我的 GitHub 用户名、昵称、简介、头像以及公开仓库（含描述、语言、Star、Release、官网链接）；仅当本地无法获取账号时再询问我。\n2. **基于真实项目选材**：从我的真实仓库中挑选最具代表性的 4 个旗舰项目（并检查官网链接可访问性），所有数字、技术栈与描述必须真实可验证，不编造虚假数据。\n3. **按我的风格定制整套双主题 SVG**：\n   - 严格参考 `SPEC.md` 并改写 `generator.py`，生成完整的 Light / Dark 双主题 SVG 套件（`assets/`）：`846×294` 分栏海报 Hero（9 行粗体像素大字用户名、按我真实头像绘制的 28×28 柔和眨眼像素肖像、底部 4 栏像素指标）、`0px` 直角快捷按钮、分区标头、以及 2×2 正交编织纹项目海报卡（每张配 16×16 专属像素徽标）。\n   - 主强调色可根据我的头像或代表项目色调微调，同时保持瑞士包豪斯 `0px` 直角与 `1px` 实线网格语言。\n   - 如合适可一并配置 `.github/workflows/snake.yml` 每日自动更新深/浅色贡献图贪吃蛇。\n4. **严格校验后上线**：确保所有 SVG 通过严格 XML 解析，并在 `846px` 宽度下分别预览检查 Light / Dark 渲染效果（无文字溢出、光标位置准确、标签边距均衡），确认无误后推送到我的同名主页仓库。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins 'Swiss-Bauhaus Pixel Poster' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/generator.py). Auto-detect my GitHub username, avatar, and real repositories via gh/git config, adapt the SVGs faithfully, validate XML & renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「瑞士包豪斯像素海报」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、头像与真实公开仓库，定制深/浅双主题 SVG 并校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# Swiss-Bauhaus Pixel Poster — Visual Specification\n\n## Visual Grammar\n- **Geometry**: Strict `0px` corners and crisp `1px` architectural rules (`#0A0A0A` in Light, `#2E313D` in Dark). Zero rounded pills, zero blurry drop shadows, zero decorative emoji clutter.\n- **Surfaces**:\n  - Light: Warm gallery paper (`#FAF9F5`) with `#FFFFFF` card panels and pitch ink (`#0A0A0A`).\n  - Dark: Deep slate ink (`#101115`) with `#16181F` terminal surfaces and `#F4F4F6` foreground text.\n- **Typography**:\n  - Monumental 9-row geometric pixel display wordmark (`<path shape-rendering=\"crispEdges\">`) for the developer handle and 4 bottom metric counters.\n  - Display sans (`Inter Tight` / system sans fallback) for headlines & 2-line project copy.\n  - Monospace (`JetBrains Mono` / Consolas fallback) for parenthetical tags `(projects)`, spec strips, and `$` terminal lines.\n- **Orthogonal Pixel Weaves (`6x6` grid)**:\n  - Hero right field: `plus` weave tinted to the developer's primary accent color (e.g. Hydro Blue `#7CC4FA` / `#4CA4EC` light, `#14243A` / `#1F3C63` dark).\n  - 2x2 Project Cards (`417x194`, `width=\"49%\"` in README): `cross` (Cobalt), `plus` (Sodium Orchid), `tartan` (Emerald x Cobalt), `basket` (Signal Amber).\n- **Signature Portrait**:\n  - Framed `28x28` graphic pixel portrait of the user's actual GitHub avatar inside a `142x142` frame with a `4px` hard-edge Bauhaus shadow.\n  - Subtle `5.2s` step blink animation + `1.4s` terminal block cursor, both disabled under `@media (prefers-reduced-motion: reduce)`.\n- **Project Cards**:\n  - Top weave band (`54px` height) carrying a sharp black index badge `(01) Category` on the left and a custom `16x16` pixel emblem inside a `44x44` black square on the right.\n  - Title (`20px` bold) + right-aligned link, crisp 2-line summary, bottom hairline divider, and mono spec strip (`Language · Stack · Stars · License`).\n\n## Verification Requirements\n1. Every generated `.svg` must pass strict XML parsing (`xml.etree.ElementTree.fromstring`).\n2. Render both Light and Dark previews at `846px` width and verify zero text clipping, balanced pill padding, and cursor alignment right after the terminal text.\n3. Verify all external links return HTTP `200` before publishing.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/swiss-bauhaus-pixel/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/swiss-bauhaus-pixel/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/swiss-bauhaus-pixel/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/swiss-bauhaus-pixel"
+    }
+  },
+  {
+    "id": "blueprint-cad",
+    "order": 2,
+    "name": "Architectural Blueprint CAD",
+    "nameZh": "工程蓝图 CAD 制图",
+    "category": "Technical Schematic",
+    "categoryZh": "工程制图",
+    "tagline": "Prussian-blue drafting grid and vellum tracing sheet with millimeter coordinates, isometric schematics, and CAD title blocks.",
+    "taglineZh": "普鲁士蓝工程网格与硫酸纸描图双主题，配毫米坐标、等轴测原理图、倒角标签与标准 CAD 图签栏。",
+    "bestFor": [
+      "Systems Engineers",
+      "Infra & Rust/Go",
+      "Hardware & Full-Stack"
+    ],
+    "bestForZh": [
+      "系统工程师",
+      "Rust / Go / 后端",
+      "硬件与全栈架构师"
+    ],
+    "author": "Furina-he",
+    "accent": "#38BDF8",
+    "palette": {
+      "light": [
+        "#F4F7FB",
+        "#0E2A4D",
+        "#1D5BB8",
+        "#0284C7",
+        "#D4E1F0",
+        "#0F766E"
+      ],
+      "dark": [
+        "#0A1E38",
+        "#E8F3FF",
+        "#38BDF8",
+        "#60A5FA",
+        "#16355E",
+        "#2DD4BF"
+      ]
+    },
+    "features": [
+      "Prussian Blueprint (Dark) & Vellum Tracing Paper (Light)",
+      "Millimeter coordinate grid & 4-corner registration crosshairs",
+      "Isometric reticle diagram with calm orbital sweep",
+      "Chamfered CAD tags & custom project wireframe schematics"
+    ],
+    "featuresZh": [
+      "深色普鲁士蓝图 + 浅色建筑硫酸纸双视觉体系",
+      "双精度坐标网格、分区标尺与四角十字定位准星",
+      "右侧方位角等轴测核心图与低频扫描弧动效",
+      "45° 工程倒角按钮 + 四张专属项目原理线框图"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "[01] cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "[02] openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "[03] CloudLink v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "[04] @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      },
+      {
+        "id": "carview",
+        "title": "CarView",
+        "url": "https://github.com/Furina-he/carview"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Live deployments",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          }
+        ]
+      },
+      {
+        "group": "Additional modules",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          },
+          {
+            "label": "bless",
+            "url": "https://github.com/Furina-he/bless"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Architectural Blueprint CAD** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Use `gh auth status` / `gh api user` (or `git config`) to inspect my username, display name, bio, public repositories, stars, releases, and live URLs. Only ask me if no GitHub account is detected locally.\n2. **Use factual data only**: Select my top 4 flagship projects, verify live links return HTTP 200, and compute real repository metrics for the CAD title block.\n3. **Generate the Blueprint SVG suite**:\n   - Follow `SPEC.md` and adapt `generator.py` to output paired Light (vellum tracing sheet) and Dark (Prussian navy blueprint) SVGs into `assets/`: `846x300` Hero drafting sheet with millimeter grid, dimension lines, calibrated isometric reticle, and 4-column CAD title block; 45°-chamfered action tags; datum section headers; and `2x2` project blueprint sheets (`417x198`) each featuring a custom wireframe schematic tailored to that project's architecture.\n   - Add `.github/workflows/snake.yml` if appropriate for daily contribution tracking.\n4. **Validate & Visually Inspect**: Run strict XML parsing on all SVGs, render Light & Dark previews at `846px` width to confirm zero overlap between copy and schematic boxes, then commit and push to `<username>/<username>`.",
+        "zh": "请使用 GitSkins 的 **「工程蓝图 CAD 制图（Architectural Blueprint CAD）」** 主题，帮我设计并更新我的 GitHub 个人主页介绍（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：优先通过本地 `gh auth status` / `gh api user`（或 `git config`）获取我的用户名、昵称、简介及公开仓库信息（描述、语言、Star、Release、官网）；仅当本地无法识别时再询问我。\n2. **真实数据驱动**：筛选我最具代表性的 4 个项目，校验官网链接可访问性，所有 CAD 图签栏指标与技术栈信息均使用真实数据。\n3. **定制深浅双主题蓝图 SVG**：\n   - 参考 `SPEC.md` 与 `generator.py`，生成完整的 Light（建筑硫酸纸描图风）与 Dark（经典普鲁士蓝图风）SVG 套件：含双精度坐标网格与四角准星的 `846×300` 工程主图、等轴测核心方位环、4 栏 CAD 图签栏、45° 倒角快捷标签、基准线分区标头，以及 2×2 项目原理图纸卡（每张右侧配有贴合该项目架构的线框示意图）。\n   - 如合适可一并配置 `.github/workflows/snake.yml` 每日自动更新贡献图。\n4. **校验后发布上线**：确保全部 SVG 通过严格 XML 校验，并在 `846px` 宽度下检查 Light / Dark 渲染无重叠和截断后，推送至我的同名主页仓库。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins 'Architectural Blueprint CAD' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/generator.py). Auto-detect my GitHub username, avatar, and real repositories via gh/git config, adapt the SVGs faithfully, validate XML & renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「工程蓝图 CAD 制图」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、头像与真实公开仓库，定制深/浅双主题 SVG 并校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# Architectural Blueprint CAD — Visual Specification\n\n## Visual Grammar\n- **Material & Atmosphere**: Authentic engineering blueprint drafting sheet.\n  - **Dark**: Classic Prussian Blueprint Navy (`#0A1E38`) with crisp coordinate grid (`#112D52` minor / `#1B4070` major), drafting-white ink (`#EAF4FF`), and cyan dimension accents (`#38BDF8`).\n  - **Light**: Architectural Vellum Tracing Paper (`#F4F7FB`) with soft drafting-blue grid (`#E3ECF6` minor / `#C9DAEE` major), deep blueprint ink (`#0E2A4D`), and engineering cobalt accents (`#1D5BB8`).\n- **Drafting Structural Conventions**:\n  - Outer sheet border + `8px` inset inner border with corner registration crosshairs (`⊕`) and engineering zone labels (`A / B / C / D`).\n  - Chamfered 45° corner tags (`polygon`) for buttons and project drawing numbers (`DWG-01` .. `DWG-04`).\n  - Dimension arrows (`|<--- ... --->|`) and dashed construction lines (`stroke-dasharray=\"3 3\"`).\n- **Hero Drafting Sheet (`846x300`)**:\n  - Top revision strip: `DWG NO.`, `REV`, `SCALE 1:1`, `STATUS`.\n  - Left elevation: uppercase display handle with crisp offset shadow & dimension line, role/stack specs, and chamfered `NOTE 01` callout box.\n  - Right target reticle (`x=584..826`): calibrated azimuth rings (`0°/90°/180°/270°`), centered isometric cube schematic, and a calm `16s` orbital sweep arc (`prefers-reduced-motion` safe).\n  - Bottom 4-cell CAD Title Block (`DRAWN BY`, `FLAGSHIPS`, `PUBLIC REPOS`, `ECOSYSTEM`).\n- **2x2 Project Blueprint Sheets (`417x198`)**:\n  - Each card includes a top-left chamfered drawing tag (`DWG-01`), title, concise 2-line engineering summary (strictly kept left of `x=312`), a framed `76x64` custom wireframe schematic diagram on the right, and a bottom BOM spec line.\n\n## Verification Requirements\n1. Strict XML validation on every generated SVG.\n2. Verify Light (vellum) and Dark (blueprint) contrast >= 4.5:1 on all labels and verify zero overlap between 2-line card copy and the right-hand schematic box.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/blueprint-cad/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/blueprint-cad/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/blueprint-cad/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/blueprint-cad"
+    }
+  },
+  {
+    "id": "editorial-zine",
+    "order": 3,
+    "name": "Editorial Broadsheet Zine",
+    "nameZh": "瑞士报刊杂志排版",
+    "category": "Print Editorial",
+    "categoryZh": "报刊出版",
+    "tagline": "Archival paper and obsidian press monograph with double-rule mastheads, high-contrast serif headlines, vermilion folios, and colophon ledgers.",
+    "taglineZh": "典藏宣纸与黑曜石印刷双主题，双细线报刊刊头、高对比衬线大字、朱红罗马序号与出版索引栏。",
+    "bestFor": [
+      "Technical Writers",
+      "Software Architects",
+      "OSS Maintainers"
+    ],
+    "bestForZh": [
+      "技术作者",
+      "软件架构师",
+      "开源维护者"
+    ],
+    "author": "Furina-he",
+    "accent": "#C93B2B",
+    "palette": {
+      "light": [
+        "#F7F3EA",
+        "#141311",
+        "#C93B2B",
+        "#1F4E79",
+        "#2D6A4F",
+        "#B07D2B"
+      ],
+      "dark": [
+        "#131210",
+        "#F0EBE1",
+        "#E45847",
+        "#6EA8E5",
+        "#52B788",
+        "#E3B25B"
+      ]
+    },
+    "features": [
+      "Archival warm paper (Light) & Obsidian press (Dark)",
+      "Double-rule broadsheet masthead & colophon ledger",
+      "Roman-numeral folio tabs (I – IV)",
+      "Magazine feature plates with editorial accent bars"
+    ],
+    "featuresZh": [
+      "浅色典藏新闻纸 + 深色黑曜石印刷质感双主题",
+      "双发丝线报刊刊头与右侧结构化出版索引栏",
+      "罗马数字书目索引按钮（I – IV）",
+      "杂志专题图版（PLATE I – IV）与极简线稿徽记"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "I. cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "II. openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "III. CloudLink v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "IV. @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      },
+      {
+        "id": "carview",
+        "title": "CarView",
+        "url": "https://github.com/Furina-he/carview"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Dispatches",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          }
+        ]
+      },
+      {
+        "group": "Archive & appendices",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          },
+          {
+            "label": "bless",
+            "url": "https://github.com/Furina-he/bless"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Editorial Broadsheet Zine** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Check `gh auth status` / `gh api user` (or `git config`) for my username, display name, bio, public repositories, stars, releases, and live websites. Only ask me if no local account is found.\n2. **Curate factual content**: Pick my top 4 flagship projects, verify live URLs return HTTP 200, and keep every colophon metric accurate to my real GitHub profile.\n3. **Generate the Editorial Broadsheet SVG suite**:\n   - Follow `SPEC.md` and adapt `generator.py` to generate paired Light (archival paper) and Dark (obsidian press) SVGs into `assets/`: double-rule broadsheet Hero (`846x302`) with serif nameplate, italic deck, and 6-row colophon ledger; Roman-numeral folio buttons (`I`–`IV`); double-rule section headers; and `2x2` editorial feature plates (`PLATE I`–`PLATE IV`).\n   - Add `.github/workflows/snake.yml` if appropriate for daily contribution tracking.\n4. **Validate & Visually Inspect**: Verify strict XML parsing on every SVG, inspect rendered Light and Dark previews at `846px` width for clean typography and spacing, then push to `<username>/<username>`.",
+        "zh": "请使用 GitSkins 的 **「瑞士报刊杂志排版（Editorial Broadsheet Zine）」** 主题，帮我设计并更新我的 GitHub 个人主页介绍（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：优先通过本地 `gh auth status` / `gh api user`（或 `git config`）读取我的用户名、昵称、简介及公开仓库（描述、语言、Star、Release、官网）；仅在无法自动检测时再向我确认。\n2. **内容真实克制**：精选我最具代表性的 4 个旗舰项目，校验全部官网链接可访问，出版索引栏数据严格基于我的真实仓库统计。\n3. **定制深浅双主题报刊 SVG**：\n   - 参考 `SPEC.md` 并改写 `generator.py`，生成完整的 Light（典藏新闻纸）与 Dark（黑曜石印刷）双主题 SVG 套件：`846×302` 双细线刊头 Hero（衬线大字署名 + 斜体导语 + 右侧 6 行出版索引栏）、罗马数字书目快捷按钮（`I`–`IV`）、报刊分节线，以及 2×2 杂志图版卡片（`PLATE I`–`PLATE IV`）。\n   - 可按需配套 `.github/workflows/snake.yml` 每日更新贡献图。\n4. **校验后发布上线**：全部 SVG 通过严格 XML 解析，并在 `846px` 宽度下核验 Light / Dark 排版无溢出与错位，推送至我的同名主页仓库。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins 'Editorial Broadsheet Zine' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/generator.py). Auto-detect my GitHub username, avatar, and real repositories via gh/git config, adapt the SVGs faithfully, validate XML & renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「瑞士报刊杂志排版」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、头像与真实公开仓库，定制深/浅双主题 SVG 并校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# Editorial Broadsheet Zine — Visual Specification\n\n## Visual Grammar\n- **Material & Tone**: Timeless independent print monograph & Swiss broadsheet typography. Zero neon glows, zero clutter, maximum typographic poise.\n  - **Light**: Archival warm paper (`#F7F3EA`), editorial ink (`#141311`), muted sepia stone (`#6E685E`), vermilion stamp accent (`#C93B2B`).\n  - **Dark**: Warm obsidian press (`#131210`), bone ivory (`#F0EBE1`), warm charcoal rules (`#33302B`), luminous vermilion (`#E45847`).\n- **Typographic Voice**:\n  - Monumental serif display (`Georgia, \"Times New Roman\", serif`) for the nameplate, italic deck, section titles, and plate headings.\n  - Tracked uppercase monospace (`JetBrains Mono`) for volume/issue metadata, plate labels (`PLATE I`..`PLATE IV`), and technical colophon footnotes.\n- **Broadsheet Hero (`846x302`)**:\n  - Classic double-rule newspaper header (`2px` heavy bar + `3px` gap + `0.8px` hairline) framing `VOL. IV · NO. 12`, `OPEN-SOURCE MONOGRAPH`, and `EDITION 2026`.\n  - Left editorial column (`x=28..530`): large serif nameplate with vermilion square full stop, italic deck description, and subtle horizontal pull-quote divider.\n  - Right colophon ledger (`x=564..818`): structured 6-row editorial metadata table separated by crisp hairlines.\n- **2x2 Magazine Feature Plates (`417x196`)**:\n  - Top `3px` editorial ink rule (vermilion / cobalt / forest / ochre), Roman plate label, subtle line-art colophon mark, bold serif title, generous two-line prose, and hairline technical colophon strip.\n\n## Verification Requirements\n1. Strict XML validation on all SVGs.\n2. Check Light & Dark contrast, serif legibility, and balanced ledger row alignment at `846px` width.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/editorial-zine/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/editorial-zine/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/editorial-zine/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/editorial-zine"
+    }
+  },
+  {
+    "id": "crt-terminal",
+    "order": 4,
+    "name": "Retro CRT Terminal TUI",
+    "nameZh": "复古终端 TUI 仪表盘",
+    "category": "Terminal & CLI",
+    "categoryZh": "终端极客",
+    "tagline": "Authentic tmux split-pane workstation with neofetch system telemetry, ANSI color bars, CLI command tabs, and subtle CRT scanlines.",
+    "taglineZh": "原汁原味 tmux 分屏终端工作台：neofetch 系统档案、ANSI 8 色标条、命令行快捷标签与克制扫描线。",
+    "bestFor": [
+      "CLI Authors",
+      "Linux & Neovim Users",
+      "DevOps & Backend"
+    ],
+    "bestForZh": [
+      "CLI 工具作者",
+      "Linux / Neovim 玩家",
+      "运维与后端极客"
+    ],
+    "author": "Furina-he",
+    "accent": "#34D399",
+    "palette": {
+      "light": [
+        "#F7F5EE",
+        "#182026",
+        "#0E7C5B",
+        "#1D5FD6",
+        "#B45309",
+        "#A21CAF"
+      ],
+      "dark": [
+        "#0A0F12",
+        "#E6F1F5",
+        "#34D399",
+        "#38BDF8",
+        "#FBBF24",
+        "#F472B6"
+      ]
+    },
+    "features": [
+      "Phosphor Terminal (Dark) & Solarized Paper Terminal (Light)",
+      "Two-pane tmux Hero with pixel monogram & neofetch readout",
+      "Classic 8-block ANSI color palette & live tmux status bar",
+      "CLI command action tabs & 2x2 numbered tmux project panes"
+    ],
+    "featuresZh": [
+      "深色荧光绿终端 + 浅色 Solarized 纸感终端双主题",
+      "tmux 双栏分屏 Hero：像素徽记 + neofetch 个人档案",
+      "经典 8 色 ANSI 色标条与底部 tmux 状态栏",
+      "命令行样式按钮 + 2×2 编号 tmux 项目子面板"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "$ open cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "$ open openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "$ gh release v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "$ gh browse @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      },
+      {
+        "id": "carview",
+        "title": "CarView",
+        "url": "https://github.com/Furina-he/carview"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Live hosts",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          }
+        ]
+      },
+      {
+        "group": "Additional repos",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          },
+          {
+            "label": "bless",
+            "url": "https://github.com/Furina-he/bless"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Retro CRT Terminal TUI** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Check `gh auth status` / `gh api user` (or `git config`) for my username, display name, bio, public repositories, stars, releases, and live websites. Only ask me if no GitHub account is detected locally.\n2. **Use real profile telemetry**: Pick my top 4 flagship projects, verify live links return HTTP 200, and fill the `neofetch` readout with factual repo stats and tech stack.\n3. **Generate the Terminal TUI SVG suite**:\n   - Follow `SPEC.md` and adapt `generator.py` to emit paired Light (Solarized Paper Terminal) and Dark (Phosphor CRT Terminal) SVGs in `assets/`: `846x306` split `tmux` Hero with a custom pixel monogram for my initials, `$ whoami` blinking cursor, `neofetch` key-value panel, 8-swatch ANSI palette bar, and `tmux` status bar; CLI command buttons; shell-prompt section dividers; and `2x2` numbered `tmux` project panes (`[1]`–`[4]`).\n   - Add `.github/workflows/snake.yml` if appropriate for daily contribution tracking.\n4. **Validate & Visually Inspect**: Parse all SVGs as strict XML, visually verify Light & Dark renders at `846px` width for clean monospace alignment, then commit and push to `<username>/<username>`.",
+        "zh": "请使用 GitSkins 的 **「复古终端 TUI 仪表盘（Retro CRT Terminal TUI）」** 主题，帮我设计并更新我的 GitHub 个人主页介绍（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：优先通过本地 `gh auth status` / `gh api user`（或 `git config`）获取我的用户名、昵称、简介及公开仓库信息（描述、语言、Star、Release、官网）；仅当无法自动获取时再询问我。\n2. **数据完全真实**：精选我的 4 个代表仓库，校验官网链接可访问性，`neofetch` 信息栏与技术栈均基于真实数据填写。\n3. **定制深浅双主题终端 SVG**：\n   - 参考 `SPEC.md` 并改写 `generator.py`，生成完整的 Light（Solarized 纸感终端）与 Dark（荧光绿 CRT 终端）SVG 套件：`846×306` tmux 双栏分屏 Hero（按我用户名首字母定制的像素徽记、`$ whoami` 慢闪光标、`neofetch` 系统面板、ANSI 8 色标条与底部 tmux 状态栏）、命令行快捷按钮、Shell 分节头，以及 2×2 编号 tmux 项目子面板（`[1]`–`[4]`）。\n   - 如合适可配套 `.github/workflows/snake.yml` 每日更新贡献图。\n4. **校验后发布上线**：全部 SVG 通过严格 XML 解析，并在 `846px` 宽度下检查 Light / Dark 渲染无对齐偏差与溢出后，推送至我的同名主页仓库。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins 'Retro CRT Terminal TUI' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/generator.py). Auto-detect my GitHub username, avatar, and real repositories via gh/git config, adapt the SVGs faithfully, validate XML & renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「复古终端 TUI 仪表盘」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、头像与真实公开仓库，定制深/浅双主题 SVG 并校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# Retro CRT Terminal TUI — Visual Specification\n\n## Visual Grammar\n- **Surfaces & Palette**:\n  - **Dark**: Deep Phosphor Terminal (`#0A0F12`), chrome bar (`#11181D`), crisp borders (`#22303A`), subtle `4px` horizontal scanline overlay (`opacity=0.04`, zero flashing), Emerald (`#34D399`), Cyan (`#38BDF8`), Amber (`#FBBF24`), Magenta (`#F472B6`).\n  - **Light**: Crisp Solarized Paper Terminal (`#F7F5EE`), chrome bar (`#EAE6DA`), borders (`#C8C2B2`), Pine Emerald (`#0E7C5B`), Cobalt (`#1D5FD6`), Rust Amber (`#B45309`), Plum (`#A21CAF`).\n- **Hero (`846x306`)**:\n  - Top TTY window header bar (`h=28`) with 3 traffic lights, shell path (`<user>@github: ~/profile — zsh`), and `tmux 3.4` tag.\n  - Left pane (`x=14..286`): pixel-crisp vector monogram sigil (avoids cross-OS monospace ASCII glyph drift) + `$ whoami` readout with calm `1.4s` blinking block cursor (`prefers-reduced-motion` safe).\n  - Right pane (`x=304..832`): structured `neofetch` key-value profile table (`role`, `focus`, `stack`, `flagship`, `repos`, `web`) + classic 8-swatch ANSI terminal palette bar.\n  - Bottom `tmux` status bar (`h=24`): `[NORMAL]` pill, numbered window tabs (`0:profile*`, `1..4`), and right-side encoding/status.\n- **Action Buttons (`height=\"30\"`)**: CLI command pills (`$ open ...`, `$ gh ...`).\n- **2x2 tmux Project Panes (`417x194`)**: Numbered pane tabs (`[1] project.ext`), live status indicator, `> url` line, crisp 2-line terminal description, and bottom language/license spec strip.\n\n## Verification Requirements\n1. Strict XML parsing on every generated SVG.\n2. Render Light & Dark previews at `846px` width and verify clean monospace column alignment, cursor placement, and zero text overlap across panes.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/crt-terminal/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/crt-terminal/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/crt-terminal"
+    }
+  }
+]

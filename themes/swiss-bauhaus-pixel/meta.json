@@ -1,0 +1,55 @@
+{
+  "id": "swiss-bauhaus-pixel",
+  "order": 1,
+  "name": "Swiss-Bauhaus Pixel Poster",
+  "nameZh": "瑞士包豪斯像素海报",
+  "category": "Graphic Poster",
+  "categoryZh": "平面海报",
+  "tagline": "0px architectural grid, monumental 9-row pixel display typography, orthogonal pixel weaves, and a blinking 28x28 avatar portrait.",
+  "taglineZh": "0px 锐利瑞士网格、9 行粗体像素大字、四种正交编织纹理与 28×28 眨眼像素头像框。",
+  "bestFor": ["Indie Developers", "Toolmakers", "Design Engineers"],
+  "bestForZh": ["独立开发者", "效率工具作者", "设计工程师"],
+  "author": "Furina-he",
+  "inspiredBy": "evepupil/evepupil",
+  "accent": "#00A3CC",
+  "palette": {
+    "light": ["#FAF9F5", "#0A0A0A", "#7CC4FA", "#2370E8", "#F3ACF0", "#2BA676", "#F5B700"],
+    "dark": ["#101115", "#F4F4F6", "#14243A", "#1D4ED8", "#D88AD4", "#1E825C", "#D99B00"]
+  },
+  "features": [
+    "22 XML-validated Light & Dark SVGs",
+    "9-row geometric pixel wordmark",
+    "Custom 28x28 blinking avatar pixel portrait",
+    "4 orthogonal pixel weaves & 16x16 project emblems"
+  ],
+  "featuresZh": [
+    "全套 22 张严格 XML 校验深/浅双主题 SVG",
+    "9 行粗体几何像素大字与四栏像素指标",
+    "按用户头像定制的 28×28 柔和眨眼像素肖像",
+    "四种正交编织纹 + 4 枚 16×16 专属像素徽标"
+  ],
+  "buttons": [
+    { "id": "cloudlink", "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+    { "id": "openpet", "label": "(pet) openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+    { "id": "release", "label": "(release) CloudLink v0.6.0", "url": "https://github.com/Furina-he/cloudlink/releases/latest" },
+    { "id": "github", "label": "(github) @Furina-he", "url": "https://github.com/Furina-he?tab=repositories" }
+  ],
+  "cards": [
+    { "id": "cloudlink", "title": "CloudLink", "url": "https://github.com/Furina-he/cloudlink" },
+    { "id": "openpet", "title": "OpenPet", "url": "https://github.com/Furina-he/OpenPet" },
+    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" },
+    { "id": "carview", "title": "CarView", "url": "https://github.com/Furina-he/carview" }
+  ],
+  "sections": ["work", "activity"],
+  "subLinks": [
+    { "group": "Live product sites", "items": [
+      { "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+      { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" }
+    ]},
+    { "group": "Companion & more repos", "items": [
+      { "label": "openpet-market", "url": "https://github.com/Furina-he/openpet-market" },
+      { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" },
+      { "label": "bless", "url": "https://github.com/Furina-he/bless" }
+    ]}
+  ]
+}

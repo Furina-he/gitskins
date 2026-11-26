@@ -1,0 +1,54 @@
+{
+  "id": "blueprint-cad",
+  "order": 2,
+  "name": "Architectural Blueprint CAD",
+  "nameZh": "工程蓝图 CAD 制图",
+  "category": "Technical Schematic",
+  "categoryZh": "工程制图",
+  "tagline": "Prussian-blue drafting grid and vellum tracing sheet with millimeter coordinates, isometric schematics, and CAD title blocks.",
+  "taglineZh": "普鲁士蓝工程网格与硫酸纸描图双主题，配毫米坐标、等轴测原理图、倒角标签与标准 CAD 图签栏。",
+  "bestFor": ["Systems Engineers", "Infra & Rust/Go", "Hardware & Full-Stack"],
+  "bestForZh": ["系统工程师", "Rust / Go / 后端", "硬件与全栈架构师"],
+  "author": "Furina-he",
+  "accent": "#38BDF8",
+  "palette": {
+    "light": ["#F4F7FB", "#0E2A4D", "#1D5BB8", "#0284C7", "#D4E1F0", "#0F766E"],
+    "dark": ["#0A1E38", "#E8F3FF", "#38BDF8", "#60A5FA", "#16355E", "#2DD4BF"]
+  },
+  "features": [
+    "Prussian Blueprint (Dark) & Vellum Tracing Paper (Light)",
+    "Millimeter coordinate grid & 4-corner registration crosshairs",
+    "Isometric reticle diagram with calm orbital sweep",
+    "Chamfered CAD tags & custom project wireframe schematics"
+  ],
+  "featuresZh": [
+    "深色普鲁士蓝图 + 浅色建筑硫酸纸双视觉体系",
+    "双精度坐标网格、分区标尺与四角十字定位准星",
+    "右侧方位角等轴测核心图与低频扫描弧动效",
+    "45° 工程倒角按钮 + 四张专属项目原理线框图"
+  ],
+  "buttons": [
+    { "id": "cloudlink", "label": "[01] cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+    { "id": "openpet", "label": "[02] openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+    { "id": "release", "label": "[03] CloudLink v0.6.0", "url": "https://github.com/Furina-he/cloudlink/releases/latest" },
+    { "id": "github", "label": "[04] @Furina-he", "url": "https://github.com/Furina-he?tab=repositories" }
+  ],
+  "cards": [
+    { "id": "cloudlink", "title": "CloudLink", "url": "https://github.com/Furina-he/cloudlink" },
+    { "id": "openpet", "title": "OpenPet", "url": "https://github.com/Furina-he/OpenPet" },
+    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" },
+    { "id": "carview", "title": "CarView", "url": "https://github.com/Furina-he/carview" }
+  ],
+  "sections": ["work", "activity"],
+  "subLinks": [
+    { "group": "Live deployments", "items": [
+      { "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+      { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" }
+    ]},
+    { "group": "Additional modules", "items": [
+      { "label": "openpet-market", "url": "https://github.com/Furina-he/openpet-market" },
+      { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" },
+      { "label": "bless", "url": "https://github.com/Furina-he/bless" }
+    ]}
+  ]
+}

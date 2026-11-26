@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="34" viewBox="0 0 846 34" role="img" aria-label="ls -la --flagship">
+  <line x1="0" y1="6.5" x2="846" y2="6.5" stroke="#22313D" stroke-width="1"/>
+  <text x="0" y="25" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="12" font-weight="700" fill="#38BDF8">~/furina-he <tspan fill="#34D399">$</tspan> <tspan fill="#E6F1F5">ls -la --flagship</tspan></text>
+  <text x="846" y="25" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" fill="#647B8A">[4 units · exit 0]</text>
+</svg>

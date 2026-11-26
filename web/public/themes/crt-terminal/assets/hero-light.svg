@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="306" viewBox="0 0 846 306" role="img" aria-label="Furina-he — Retro CRT Terminal TUI Profile">
+  <title>furina-he@github: ~/profile</title>
+  <defs>
+    <pattern id="scan-light" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="1" fill="#000000" fill-opacity="0.02"/>
+    </pattern>
+  </defs>
+  <style>
+    @keyframes ttyBlink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0.12; }
+    }
+    .tty-cursor { animation: ttyBlink 1.3s steps(1, end) infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .tty-cursor { animation: none !important; }
+    }
+  </style>
+
+  <!-- Terminal Window Frame -->
+  <rect x="0.5" y="0.5" width="845" height="305" fill="#F7F5EE" stroke="#C5BFAF" stroke-width="1"/>
+  <rect x="1" y="29" width="844" height="252" fill="url(#scan-light)"/>
+
+  <!-- Top TTY Title Bar -->
+  <rect x="1" y="1" width="844" height="28" fill="#EAE5D8"/>
+  <line x1="0.5" y1="29.5" x2="845.5" y2="29.5" stroke="#C5BFAF" stroke-width="1"/>
+  <rect x="14" y="11" width="8" height="8" fill="#DC2626" shape-rendering="crispEdges"/>
+  <rect x="28" y="11" width="8" height="8" fill="#B45309" shape-rendering="crispEdges"/>
+  <rect x="42" y="11" width="8" height="8" fill="#0E7C5B" shape-rendering="crispEdges"/>
+  <text x="423" y="19" text-anchor="middle" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11" font-weight="600" fill="#44515C">furina-he@github: ~/profile — zsh</text>
+  <text x="832" y="19" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" fill="#6E7B85">tmux 3.4</text>
+
+  <!-- Split tmux Vertical Divider -->
+  <line x1="296.5" y1="29.5" x2="296.5" y2="281.5" stroke="#C5BFAF" stroke-width="1"/>
+
+  <!-- Left Pane: Pixel Terminal Sigil + $ whoami -->
+  <text x="18" y="52" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" fill="#6E7B85">[pane 0: identity]</text>
+  <g shape-rendering="crispEdges"><path fill="#0274A6" d="M32.0 68.0h231.0v10.5h-231.0zM32.0 78.5h10.5v10.5h-10.5zM252.5 78.5h10.5v10.5h-10.5zM32.0 89.0h10.5v10.5h-10.5zM53.0 89.0h63.0v10.5h-63.0zM158.0 89.0h21.0v10.5h-21.0zM221.0 89.0h21.0v10.5h-21.0zM252.5 89.0h10.5v10.5h-10.5zM32.0 99.5h10.5v10.5h-10.5zM53.0 99.5h63.0v10.5h-63.0zM158.0 99.5h21.0v10.5h-21.0zM221.0 99.5h21.0v10.5h-21.0zM252.5 99.5h10.5v10.5h-10.5zM42.5 110.0h21.0v10.5h-21.0zM158.0 110.0h21.0v10.5h-21.0zM221.0 110.0h21.0v10.5h-21.0zM42.5 120.5h52.5v10.5h-52.5zM116.0 120.5h21.0v10.5h-21.0zM158.0 120.5h84.0v10.5h-84.0zM42.5 131.0h52.5v10.5h-52.5zM116.0 131.0h21.0v10.5h-21.0zM158.0 131.0h84.0v10.5h-84.0zM42.5 141.5h21.0v10.5h-21.0zM158.0 141.5h21.0v10.5h-21.0zM221.0 141.5h21.0v10.5h-21.0zM42.5 152.0h21.0v10.5h-21.0zM158.0 152.0h21.0v10.5h-21.0zM221.0 152.0h21.0v10.5h-21.0zM32.0 162.5h31.5v10.5h-31.5zM158.0 162.5h21.0v10.5h-21.0zM221.0 162.5h21.0v10.5h-21.0zM32.0 173.0h10.5v10.5h-10.5zM252.5 173.0h10.5v10.5h-10.5zM32.0 183.5h10.5v10.5h-10.5zM63.5 183.5h42.0v10.5h-42.0zM252.5 183.5h10.5v10.5h-10.5zM32.0 194.0h10.5v10.5h-10.5zM252.5 194.0h10.5v10.5h-10.5zM32.0 204.5h231.0v10.5h-231.0z"/><path fill="#0E7C5B" d="M126.5 183.5h42.0v10.5h-42.0z"/><path fill="#B45309" d="M189.5 183.5h42.0v10.5h-42.0z"/></g>
+
+  <text x="20" y="236" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#0E7C5B">$ <tspan fill="#44515C">whoami</tspan></text>
+  <text x="20" y="256" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="12" font-weight="700" fill="#182026">Furina-he <tspan font-weight="400" fill="#6E7B85">(NeverGiveUp)</tspan></text>
+  <rect class="tty-cursor" x="179" y="245" width="7" height="13" fill="#0E7C5B" shape-rendering="crispEdges"/>
+
+  <!-- Right Pane: neofetch Profile Readout -->
+  <text x="316" y="52" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" fill="#6E7B85">[pane 1: neofetch --github]</text>
+  <text x="316" y="75" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="14" font-weight="700" fill="#0E7C5B">furina-he<tspan fill="#6E7B85">@</tspan><tspan fill="#0274A6">github.com</tspan></text>
+  <line x1="316" y1="84.5" x2="826" y2="84.5" stroke="#C5BFAF" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="316" y="104" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" font-weight="700" fill="#0274A6">role     </text><text x="394" y="104" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#6E7B85">:</text><text x="408" y="104" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#182026">Indie Developer · Local-First Builder</text>
+  <text x="316" y="126" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" font-weight="700" fill="#0274A6">focus    </text><text x="394" y="126" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#6E7B85">:</text><text x="408" y="126" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#182026">AI Agent Guardrails · AI Pets · 3D Labs</text>
+  <text x="316" y="148" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" font-weight="700" fill="#0274A6">stack    </text><text x="394" y="148" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#6E7B85">:</text><text x="408" y="148" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#182026">Rust · TypeScript · Tauri · Electron · Java</text>
+  <text x="316" y="170" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" font-weight="700" fill="#0274A6">flagship </text><text x="394" y="170" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#6E7B85">:</text><text x="408" y="170" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#182026">04 systems (CloudLink, OpenPet, Virtual, CarView)</text>
+  <text x="316" y="192" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" font-weight="700" fill="#0274A6">repos    </text><text x="394" y="192" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#6E7B85">:</text><text x="408" y="192" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#182026">12 public repos · 20+ synced agents via CloudLink</text>
+  <text x="316" y="214" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" font-weight="700" fill="#0274A6">sites    </text><text x="394" y="214" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#6E7B85">:</text><text x="408" y="214" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11.5" fill="#182026">cloudlink.blessc.com · openpet.myfurina.top</text>
+  <rect x="316" y="242" width="20" height="11" fill="#182026" shape-rendering="crispEdges"/><rect x="340" y="242" width="20" height="11" fill="#DC2626" shape-rendering="crispEdges"/><rect x="364" y="242" width="20" height="11" fill="#0E7C5B" shape-rendering="crispEdges"/><rect x="388" y="242" width="20" height="11" fill="#B45309" shape-rendering="crispEdges"/><rect x="412" y="242" width="20" height="11" fill="#1D5FD6" shape-rendering="crispEdges"/><rect x="436" y="242" width="20" height="11" fill="#A21CAF" shape-rendering="crispEdges"/><rect x="460" y="242" width="20" height="11" fill="#0274A6" shape-rendering="crispEdges"/><rect x="484" y="242" width="20" height="11" fill="#6E7B85" shape-rendering="crispEdges"/>
+  <text x="826" y="251" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" fill="#6E7B85">shell: zsh · os: win11/wsl2</text>
+
+  <!-- Bottom tmux Status Bar -->
+  <rect x="1" y="281" width="844" height="24" fill="#E3DED0"/>
+  <line x1="0.5" y1="281.5" x2="845.5" y2="281.5" stroke="#C5BFAF" stroke-width="1"/>
+  <rect x="1" y="281" width="74" height="24" fill="#0E7C5B"/>
+  <text x="38" y="297" text-anchor="middle" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" font-weight="700" fill="#FFFFFF">NORMAL</text>
+  <text x="88" y="297" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" fill="#182026"><tspan fill="#0E7C5B" font-weight="700">0:profile*</tspan>  <tspan fill="#44515C">1:cloudlink  2:openpet  3:virtual  4:carview</tspan></text>
+  <text x="832" y="297" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" fill="#6E7B85">UTF-8 │ MIT │ 100%</text>
+</svg>

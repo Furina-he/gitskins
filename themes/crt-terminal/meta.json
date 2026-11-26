@@ -1,0 +1,54 @@
+{
+  "id": "crt-terminal",
+  "order": 4,
+  "name": "Retro CRT Terminal TUI",
+  "nameZh": "复古终端 TUI 仪表盘",
+  "category": "Terminal & CLI",
+  "categoryZh": "终端极客",
+  "tagline": "Authentic tmux split-pane workstation with neofetch system telemetry, ANSI color bars, CLI command tabs, and subtle CRT scanlines.",
+  "taglineZh": "原汁原味 tmux 分屏终端工作台：neofetch 系统档案、ANSI 8 色标条、命令行快捷标签与克制扫描线。",
+  "bestFor": ["CLI Authors", "Linux & Neovim Users", "DevOps & Backend"],
+  "bestForZh": ["CLI 工具作者", "Linux / Neovim 玩家", "运维与后端极客"],
+  "author": "Furina-he",
+  "accent": "#34D399",
+  "palette": {
+    "light": ["#F7F5EE", "#182026", "#0E7C5B", "#1D5FD6", "#B45309", "#A21CAF"],
+    "dark": ["#0A0F12", "#E6F1F5", "#34D399", "#38BDF8", "#FBBF24", "#F472B6"]
+  },
+  "features": [
+    "Phosphor Terminal (Dark) & Solarized Paper Terminal (Light)",
+    "Two-pane tmux Hero with pixel monogram & neofetch readout",
+    "Classic 8-block ANSI color palette & live tmux status bar",
+    "CLI command action tabs & 2x2 numbered tmux project panes"
+  ],
+  "featuresZh": [
+    "深色荧光绿终端 + 浅色 Solarized 纸感终端双主题",
+    "tmux 双栏分屏 Hero：像素徽记 + neofetch 个人档案",
+    "经典 8 色 ANSI 色标条与底部 tmux 状态栏",
+    "命令行样式按钮 + 2×2 编号 tmux 项目子面板"
+  ],
+  "buttons": [
+    { "id": "cloudlink", "label": "$ open cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+    { "id": "openpet", "label": "$ open openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+    { "id": "release", "label": "$ gh release v0.6.0", "url": "https://github.com/Furina-he/cloudlink/releases/latest" },
+    { "id": "github", "label": "$ gh browse @Furina-he", "url": "https://github.com/Furina-he?tab=repositories" }
+  ],
+  "cards": [
+    { "id": "cloudlink", "title": "CloudLink", "url": "https://github.com/Furina-he/cloudlink" },
+    { "id": "openpet", "title": "OpenPet", "url": "https://github.com/Furina-he/OpenPet" },
+    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" },
+    { "id": "carview", "title": "CarView", "url": "https://github.com/Furina-he/carview" }
+  ],
+  "sections": ["work", "activity"],
+  "subLinks": [
+    { "group": "Live hosts", "items": [
+      { "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+      { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" }
+    ]},
+    { "group": "Additional repos", "items": [
+      { "label": "openpet-market", "url": "https://github.com/Furina-he/openpet-market" },
+      { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" },
+      { "label": "bless", "url": "https://github.com/Furina-he/bless" }
+    ]}
+  ]
+}

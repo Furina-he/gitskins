@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="34" viewBox="0 0 846 34" role="img" aria-label="git log --graph --daily">
+  <line x1="0" y1="6.5" x2="846" y2="6.5" stroke="#C5BFAF" stroke-width="1"/>
+  <text x="0" y="25" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="12" font-weight="700" fill="#0274A6">~/furina-he <tspan fill="#0E7C5B">$</tspan> <tspan fill="#182026">git log --graph --daily</tspan></text>
+  <text x="846" y="25" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" fill="#6E7B85">[cron 00:00 UTC]</text>
+</svg>

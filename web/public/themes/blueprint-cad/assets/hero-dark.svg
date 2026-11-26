@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="300" viewBox="0 0 846 300" role="img" aria-label="Furina-he — Architectural Blueprint CAD Profile">
+  <title>Furina-he — Architectural Blueprint CAD Profile</title>
+  <defs>
+    <pattern id="gmin-hero-dark" width="12" height="12" patternUnits="userSpaceOnUse">
+      <path d="M 12 0 L 0 0 0 12" fill="none" stroke="#112D52" stroke-width="0.6"/>
+    </pattern>
+    <pattern id="gmaj-hero-dark" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect width="48" height="48" fill="url(#gmin-hero-dark)"/>
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#1B4272" stroke-width="0.9"/>
+    </pattern>
+  </defs>
+  <style>
+    @keyframes cadSweep {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .cad-orbit {
+      transform-origin: 706px 136px;
+      animation: cadSweep 24s linear infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .cad-orbit { animation: none !important; }
+    }
+  </style>
+
+  <!-- Drafting Sheet Surface + Coordinate Grid -->
+  <rect x="0.5" y="0.5" width="845" height="299" fill="#0A1E38"/>
+  <rect x="1" y="1" width="844" height="298" fill="url(#gmaj-hero-dark)"/>
+
+  <!-- Outer & Inner Architectural Margin Borders -->
+  <rect x="0.5" y="0.5" width="845" height="299" fill="none" stroke="#5EA8F0" stroke-width="1.2"/>
+  <rect x="10.5" y="10.5" width="825" height="279" fill="none" stroke="#28558A" stroke-width="0.9"/>
+
+  <!-- Top Revision & Datum Bar -->
+  <line x1="10.5" y1="36.5" x2="835.5" y2="36.5" stroke="#5EA8F0" stroke-width="1"/>
+  <text x="36" y="27" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" font-weight="700" fill="#38BDF8">DWG NO. GH-FURINA-01</text>
+  <text x="204" y="27" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" fill="#72A2D4">REV 2026.11  ·  SCALE 1:1  ·  PROJ: ORTHO</text>
+  <rect x="670" y="19.5" width="6" height="6" fill="#2DD4BF"/>
+  <text x="682" y="26.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" font-weight="600" fill="#ECF5FF">cloudlink.blessc.com</text>
+
+  <!-- Zone Ruler Ticks Along Top Margin -->
+  <text x="150" y="9" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="7.5" fill="#72A2D4">A</text>
+  <text x="360" y="9" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="7.5" fill="#72A2D4">B</text>
+  <text x="570" y="9" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="7.5" fill="#72A2D4">C</text>
+  <text x="740" y="9" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="7.5" fill="#72A2D4">D</text>
+
+  <!-- Main Vertical Split & Title Block Rule -->
+  <line x1="576.5" y1="36.5" x2="576.5" y2="232.5" stroke="#28558A" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="10.5" y1="232.5" x2="835.5" y2="232.5" stroke="#5EA8F0" stroke-width="1"/>
+
+  <!-- Left Elevation: Dimensioned Developer Nameplate -->
+  <text x="28" y="61" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" font-weight="600" letter-spacing="1.2" fill="#38BDF8">SPECIFICATION // DEVELOPER IDENTITY</text>
+
+  <!-- Dimension Extension Line Above Name -->
+  <g stroke="#28558A" stroke-width="0.8">
+    <line x1="28" y1="73" x2="28" y2="85"/>
+    <line x1="428" y1="73" x2="428" y2="85"/>
+    <line x1="28" y1="78" x2="188" y2="78"/>
+    <line x1="268" y1="78" x2="428" y2="78"/>
+    <polygon points="28,78 34,75.5 34,80.5" fill="#28558A"/>
+    <polygon points="428,78 422,75.5 422,80.5" fill="#28558A"/>
+  </g>
+  <text x="228" y="81.5" text-anchor="middle" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" fill="#72A2D4">400.0 mm</text>
+
+  <!-- Blueprint Offset Shadow + Monumental Stencil Display Title -->
+  <text x="30" y="136" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="52" font-weight="800" letter-spacing="3.5" fill="none" stroke="#28558A" stroke-width="0.9">FURINA-HE</text>
+  <text x="27" y="133" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="52" font-weight="800" letter-spacing="3.5" fill="#ECF5FF">FURINA-HE</text>
+
+  <text x="28" y="158" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="13.5" font-weight="600" fill="#B3D4F7">AI Agent Guardrails · Desktop Companions · 3D Circuit Simulation</text>
+  <text x="28" y="177" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11" fill="#72A2D4">Rust · TypeScript · Tauri v2 · Electron · Java · Local-First Architecture</text>
+
+  <!-- Chamfered Engineering Note Box -->
+  <polygon points="28,191 542,191 552,201 552,220 28,220" fill="#0D2442" stroke="#5EA8F0" stroke-width="1"/>
+  <text x="39" y="209.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11" fill="#ECF5FF"><tspan fill="#38BDF8" font-weight="700">NOTE 01:</tspan> building safe agent infra, resident AI pets &amp; 3D labs</text>
+
+  <!-- Right Panel: Calibrated Reticle & Isometric Core Diagram -->
+  <g transform="translate(0, 0)">
+    <circle cx="706" cy="136" r="74" fill="none" stroke="#28558A" stroke-width="0.9"/>
+    <circle cx="706" cy="136" r="56" fill="none" stroke="#28558A" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <circle cx="706" cy="136" r="34" fill="none" stroke="#38BDF8" stroke-width="0.9" stroke-opacity="0.7"/>
+    <line x1="620" y1="136" x2="792" y2="136" stroke="#28558A" stroke-width="0.7" stroke-dasharray="4 3"/>
+    <line x1="706" y1="52" x2="706" y2="220" stroke="#28558A" stroke-width="0.7" stroke-dasharray="4 3"/>
+
+    <!-- Rotating Subtle Orbital Arc -->
+    <g class="cad-orbit">
+      <path d="M 706 62 A 74 74 0 0 1 766 92" fill="none" stroke="#38BDF8" stroke-width="2"/>
+      <circle cx="766" cy="92" r="2.8" fill="#38BDF8"/>
+    </g>
+
+    <!-- Azimuth Degree Labels -->
+    <text x="706" y="49" text-anchor="middle" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="8.5" fill="#72A2D4">000°</text>
+    <text x="807" y="139" text-anchor="middle" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="8.5" fill="#72A2D4">090°</text>
+    <text x="706" y="227" text-anchor="middle" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="8.5" fill="#72A2D4">180°</text>
+    <text x="604" y="139" text-anchor="middle" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="8.5" fill="#72A2D4">270°</text>
+
+    <!-- Isometric Wireframe Cube + Cyan Core -->
+    <g stroke="#ECF5FF" stroke-width="1.3" fill="none" stroke-linejoin="round">
+      <polygon points="706,96 742,116 742,156 706,176 670,156 670,116"/>
+      <polyline points="670,116 706,136 742,116"/>
+      <line x1="706" y1="136" x2="706" y2="176"/>
+    </g>
+    <g stroke="#38BDF8" stroke-width="1.1" fill="#38BDF8" fill-opacity="0.16">
+      <polygon points="706,114 724,124 724,146 706,156 688,146 688,124"/>
+    </g>
+    <circle cx="706" cy="136" r="3.5" fill="#38BDF8"/>
+    <text x="588" y="54" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" fill="#72A2D4">FIG 1.0 · ISO CORE</text>
+  </g>
+
+  <!-- Corner Registration Marks -->
+  <g stroke="#28558A" stroke-width="0.9" fill="none"><circle cx="22" cy="22" r="3"/><line x1="16" y1="22" x2="28" y2="22"/><line x1="22" y1="16" x2="22" y2="28"/></g>
+  <g stroke="#28558A" stroke-width="0.9" fill="none"><circle cx="824" cy="22" r="3"/><line x1="818" y1="22" x2="830" y2="22"/><line x1="824" y1="16" x2="824" y2="28"/></g>
+  <g stroke="#28558A" stroke-width="0.9" fill="none"><circle cx="824" cy="220" r="3"/><line x1="818" y1="220" x2="830" y2="220"/><line x1="824" y1="214" x2="824" y2="226"/></g>
+
+  <!-- Bottom 4-Column CAD Title Block -->
+  <text x="26" y="251" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" fill="#72A2D4">AUTHOR // HANDLE</text>
+  <text x="26" y="274" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="16" font-weight="800" fill="#ECF5FF">NeverGiveUp</text>
+
+  <line x1="224.5" y1="232.5" x2="224.5" y2="289.5" stroke="#28558A" stroke-width="1"/>
+  <text x="240" y="251" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" fill="#72A2D4">FLAGSHIP SYSTEMS</text>
+  <text x="240" y="274" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="16" font-weight="700" fill="#38BDF8">04 <tspan font-size="11.5" font-weight="600" fill="#B3D4F7">VERIFIED</tspan></text>
+
+  <line x1="432.5" y1="232.5" x2="432.5" y2="289.5" stroke="#28558A" stroke-width="1"/>
+  <text x="448" y="251" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" fill="#72A2D4">PUBLIC REPOSITORIES</text>
+  <text x="448" y="274" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="16" font-weight="700" fill="#ECF5FF">12 <tspan font-size="11.5" font-weight="600" fill="#B3D4F7">OSS REPOS</tspan></text>
+
+  <line x1="636.5" y1="232.5" x2="636.5" y2="289.5" stroke="#28558A" stroke-width="1"/>
+  <text x="652" y="251" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" fill="#72A2D4">SYNCED AI AGENTS</text>
+  <text x="652" y="274" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="16" font-weight="700" fill="#2DD4BF">20+ <tspan font-size="11.5" font-weight="600" fill="#B3D4F7">MCP · SKILL</tspan></text>
+</svg>

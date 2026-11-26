@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="156" height="30" viewBox="0 0 156 30" role="img" aria-label="gh release v0.6.0">
+  <rect x="0.5" y="0.5" width="155" height="29" fill="#0E151A" stroke="#22313D" stroke-width="1"/>
+  <text x="11" y="19" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11" font-weight="700" fill="#34D399">$ <tspan font-weight="500" fill="#647B8A">gh </tspan><tspan font-weight="700" fill="#E6F1F5">release v0.6.0</tspan></text>
+  <text x="146" y="19" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11" fill="#34D399">&#8599;</text>
+</svg>
