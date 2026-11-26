@@ -1,6 +1,6 @@
 ---
 name: gitskins
-description: Design, scaffold, and validate Light & Dark static SVG skins for GitHub Profile READMEs, Open-Source Repository READMEs (Repo Skins), 4-column 846px Bento DIY widgets, and zero-503 GitHub Actions live widgets. Use when the user asks to beautify, re-skin, or modernize a GitHub Profile README, an open-source repo README, or add theme-matched GitHub Stats / Coding Rhythm / RSS / Weather SVG widgets.
+description: Design, scaffold, and validate Light & Dark static SVG skins for GitHub Profile READMEs, Open-Source Repository READMEs (Repo Skins), 4-column 846px Bento DIY widgets, and zero-503 GitHub Actions live widgets. Use when the user asks to beautify, re-skin, or modernize a GitHub Profile README, an open-source repo README, or add theme-matched GitHub Stats / Coding Rhythm / RSS / Weather / WakaTime / Spotify SVG widgets.
 ---
 
 # GitSkins Agent Skill
@@ -12,29 +12,31 @@ GitSkins turns GitHub Profile READMEs and Open-Source Repository READMEs into de
 
 ## 1. Curated Aesthetic Systems (`--theme <id>`)
 
-| Theme ID | Aesthetic | Visual Signature |
-| :--- | :--- | :--- |
-| `swiss-bauhaus-pixel` | Swiss-Bauhaus Pixel Poster | Sharp `0px` Swiss grids, Bauhaus weave textures, bold sans headlines, crisp pixel accents |
-| `blueprint-cad` | Architectural Blueprint CAD | `12px/48px` drafting grid, corner registration crosshairs, chamfered plates, CAD title blocks |
-| `editorial-zine` | Editorial Broadsheet Zine | Double hairline masthead rules, classic serif titles, italic lead-ins, right-hand specs ledger |
-| `crt-terminal` | Retro CRT Terminal TUI | Scanline overlay, tmux panes, phosphor monospace tables, ANSI color swatches & status bars |
-| `pixel-rpg-hud` | 16-bit Pixel RPG HUD | Stepped pixel bevel frames, HP/MP/XP stat meters, quest-log cards & 12x12 pixel relics |
-| `seal-ink-scroll` | Seal Ink Monograph | Warm Xuan paper & inkstone dark, carved cinnabar red seal stamp, corner fretwork & mountain mist |
+| Theme ID | Aesthetic | Portrait / Emblem Style | Visual Signature |
+| :--- | :--- | :--- | :--- |
+| `swiss-bauhaus-pixel` | Swiss-Bauhaus Pixel Poster | **Real Pixel Avatar** (`24×24`/`28×28`) | Sharp `0px` Swiss grids, Bauhaus weave textures, bold sans headlines, crisp pixel accents |
+| `blueprint-cad` | Architectural Blueprint CAD | Pure CAD Isometric Reticle | `12px/48px` drafting grid, corner registration crosshairs, chamfered plates, CAD title blocks |
+| `editorial-zine` | Editorial Broadsheet Zine | Pure Typographic Monograph | Double hairline masthead rules, classic serif titles, italic lead-ins, right-hand specs ledger |
+| `crt-terminal` | Retro CRT Terminal TUI | **Real Pixel Avatar** or Initials Monogram | Scanline overlay, tmux panes, phosphor monospace tables, ANSI color swatches & status bars |
+| `pixel-rpg-hud` | 16-bit Pixel RPG HUD | **Real Pixel Avatar** (`24×24` HUD slot) | Stepped pixel bevel frames, HP/MP/XP stat meters, quest-log cards & `12×12` pixel relics |
+| `seal-ink-scroll` | Seal Ink Monograph | **Personalized Cinnabar Seal Stamp** | Warm Xuan paper & inkstone dark, carved cinnabar red seal stamp, corner fretwork & mountain mist |
 
-Every theme defines semantic tokens (`bg`, `surface`, `patternBg`, `patternFg`, `border`, `borderSoft`, `ink`, `sub`, `muted`, `accent`, `accentFg`, `secondary`, `tertiary`, `highlight`) in `themes/<id>/meta.json`.
+Every theme defines 14 semantic tokens (`bg`, `surface`, `patternBg`, `patternFg`, `border`, `borderSoft`, `ink`, `sub`, `muted`, `accent`, `accentFg`, `secondary`, `tertiary`, `highlight`) in `themes/<id>/meta.json`.
 
 ---
 
 ## 2. Hard Engineering Invariants (Never Violate)
 
-1. **Zero Fabricated Facts**: Always inspect local context first (`gh api user`, `git config`, `git remote`, `package.json`, `Cargo.toml`, `pyproject.toml`, directory tree) before rendering metrics, URLs, or project descriptions.
-2. **True Light & Dark Parity**: Every SVG asset must be emitted in paired `*-light.svg` and `*-dark.svg` files and wired with GitHub's native `<picture><source media="(prefers-color-scheme: dark)" srcset="..."><img src="..."></picture>`.
-3. **Strict GitHub SVG Safety**:
+1. **Zero Fabricated Facts**: Always inspect local context first (`gh api user`, `git config`, `git remote`, `package.json`, `Cargo.toml`, `pyproject.toml`, directory tree) before rendering metrics, URLs, or project descriptions. Adapt gracefully if the user has fewer than 4 repos or no personal site.
+2. **Zero Demo-Data Leakage**: Reference `generator.py` scripts contain sample author data (`Furina-he`, `NeverGiveUp`, `cloudlink`, `openpet`, `myfurina`, `blessc.com`). Before finishing, ALWAYS scan every generated `assets/*.svg` and `README.md` to confirm **zero leftover demo strings** remain (except `gitskins.blessc.com` if the user opted into the `Styled with GitSkins` footer badge).
+3. **Real Avatar Pixelization (for Portrait Themes)**: For `swiss-bauhaus-pixel`, `pixel-rpg-hud`, and optionally `crt-terminal`, download the user's real GitHub `avatar_url` (`?s=96`) and programmatically downsample + color-quantize it (e.g., via Python `Pillow` or stdlib) into crisp vector `<path shape-rendering="crispEdges">` paths. Never leave the demo portrait matrix or embed an external `<image href="https://...">`.
+4. **True Light & Dark Parity**: Every SVG asset must be emitted in paired `*-light.svg` and `*-dark.svg` files and wired with GitHub's native `<picture><source media="(prefers-color-scheme: dark)" srcset="..."><img src="..."></picture>`.
+5. **Strict GitHub SVG Safety**:
    - **Zero `<script>` tags** and **zero `on*=` attributes**.
    - **Zero external `<image href="http...">` links** and **zero `@import` external web fonts** (use cross-platform system stacks only).
    - **Strict XML well-formedness** (escape `&`, `<`, `>`, `"`, `'` in text and attributes).
    - Whenever `@keyframes` CSS animation is included, always include `@media (prefers-reduced-motion: reduce) { ... { animation: none !important; } }`.
-4. **846px Grid Discipline**:
+6. **846px Grid Discipline**:
    - Profile & Repo full-width banners: `width="846"` (`width="100%"` in Markdown).
    - 2-column project/feature cards: `width="417"` (`width="49%"` paired with `&nbsp;`).
    - 4-column Bento DIY widgets: `1 col = 204px`, `2 cols = 418px`, `3 cols = 632px`, `4 cols = 846px` (uniform `160px` height; never render grid fraction labels like `1/2` or `1/4` inside exported SVGs).
@@ -45,14 +47,15 @@ Every theme defines semantic tokens (`bg`, `surface`, `patternBg`, `patternFg`, 
 
 1. **Detect Identity**:
    ```bash
-   gh api user --jq '{login,name,bio,blog,location,public_repos,followers}'
+   gh api user --jq '{login,name,bio,avatar_url,blog,location,public_repos,followers}'
    gh repo list --limit 12 --json name,description,stargazerCount,forkCount,primaryLanguage,url,homepageUrl
    ```
-   (Fallback to `git config user.name` / `git remote get-url origin` if `gh` is unavailable.)
+   (Fallback to `git config user.name` / `git remote get-url origin` if `gh` is unavailable; only ask the user if nothing is detected locally.)
 2. **Fetch Theme Spec & Generator**:
    - Spec: `https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/<theme>/SPEC.md`
+   - Prompt: `https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/<theme>/PROMPT.md`
    - Generator: `https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/<theme>/generator.py`
-3. **Customize & Run**: Update the profile data & real repositories inside `generator.py`, run it to generate `assets/*-{light,dark}.svg`, and wire `README.md`.
+3. **Customize & Run**: Rewrite the profile data, avatar pixel portrait (or personalized seal), and real repositories inside `generator.py`, run it to generate `assets/*-{light,dark}.svg`, and wire `README.md`.
 4. **Optional Zero-503 Live Widgets (`L01`–`L06`)**:
    - Download `https://raw.githubusercontent.com/Furina-he/gitskins/main/live-widgets/generate_live_widgets.py` to `scripts/generate_live_widgets.py` (zero `pip` dependencies).
    - Add `.github/workflows/gitskins-widgets.yml` (template: `https://raw.githubusercontent.com/Furina-he/gitskins/main/live-widgets/gitskins-widgets.yml`) targeting any of: `github-stats`, `coding-rhythm`, `rss-feed`, `live-weather`, `wakatime-weekly` (uses optional `WAKATIME_API_KEY`), `spotify-recent` (uses optional Spotify refresh token secrets).
@@ -63,7 +66,7 @@ Every theme defines semantic tokens (`bg`, `surface`, `patternBg`, `patternFg`, 
 ## 4. Workflow B — Re-skin an Open-Source Repo README (`Repo Skins`)
 
 1. **Inspect Local Repository**: Read `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`, `LICENSE`, `git remote -v`, and top-level directories to gather accurate repo title, tagline, install command, key features, and real architecture stages.
-2. **Generate via Zero-Dependency CLI** (or write matching SVGs directly):
+2. **Generate via Zero-Dependency CLI** (never run unscoped `npx gitskins`, which belongs to an unrelated npm package):
    ```bash
    node cli/gitskins.mjs init \
      --mode repo \
@@ -81,14 +84,16 @@ Every theme defines semantic tokens (`bg`, `surface`, `patternBg`, `patternFg`, 
 
 ## 5. Mandatory Verification Before Finishing
 
-Validate every generated SVG for strict XML, security, and reduced-motion compliance:
+Validate every generated SVG for strict XML, security, reduced-motion compliance, AND zero demo-data leakage:
 
 ```bash
-# Option 1: GitSkins CLI validator
+# 1. Validate XML, zero-<script>, zero external <image>, prefers-reduced-motion
 node cli/gitskins.mjs validate ./assets
-
-# Option 2: Python stdlib XML validator
+# Or Python stdlib fallback:
 python -c "import glob, xml.etree.ElementTree as ET; files=sorted(glob.glob('assets/*.svg')); assert files; [ET.parse(f) for f in files]; print(f'OK: {len(files)} strict XML SVGs')"
+
+# 2. Verify zero leftover demo template strings in README.md and assets/*.svg
+python -c "import pathlib, re; bad=['Furina-he','NeverGiveUp','cloudlink','openpet','myfurina']; hits=[(str(p),b) for p in [pathlib.Path('README.md'),*sorted(pathlib.Path('assets').glob('*.svg'))] if p.exists() for b in bad if re.search(b,p.read_text(encoding='utf-8'),re.I)]; assert not hits, f'Demo leakage: {hits}'; print('OK: zero demo leakage')"
 ```
 
-Never finish a task if any SVG fails XML parsing or has mismatched Light/Dark pairs.
+Never finish a task if any SVG fails XML parsing, has mismatched Light/Dark pairs, or retains demo author strings.

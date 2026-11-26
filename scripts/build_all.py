@@ -91,10 +91,37 @@ def validate_meta(meta: dict, folder_name: str) -> None:
 def parse_bilingual_prompt(text: str) -> dict[str, str]:
     en_match = re.search(r"<!--\s*LANG:EN\s*-->(.*?)(?=<!--\s*LANG:ZH\s*-->|$)", text, re.S)
     zh_match = re.search(r"<!--\s*LANG:ZH\s*-->(.*)$", text, re.S)
+    if not en_match or not zh_match:
+        raise SystemExit("PROMPT.md must contain both <!-- LANG:EN --> and <!-- LANG:ZH --> blocks")
     return {
-        "en": en_match.group(1).strip() if en_match else text.strip(),
-        "zh": zh_match.group(1).strip() if zh_match else text.strip(),
+        "en": en_match.group(1).strip(),
+        "zh": zh_match.group(1).strip(),
     }
+
+
+def validate_prompt(prompts: dict[str, str], tid: str) -> None:
+    en = prompts["en"]
+    zh = prompts["zh"]
+    if len(en) < 120 or len(zh) < 100:
+        raise SystemExit(f"Theme {tid}/PROMPT.md EN or ZH block is unexpectedly short")
+    if "demo" not in en.lower() and "furina-he" not in en.lower():
+        raise SystemExit(f"Theme {tid}/PROMPT.md EN block must include a zero demo-data leakage check")
+    if "残留" not in zh and "演示" not in zh:
+        raise SystemExit(f"Theme {tid}/PROMPT.md ZH block must include a 零演示数据残留检查")
+    if "xml" not in en.lower() or "xml" not in zh.lower():
+        raise SystemExit(f"Theme {tid}/PROMPT.md must require strict XML validation in both EN and ZH")
+
+
+def validate_brand_icon_parity() -> None:
+    logo = ROOT / "assets" / "logo.svg"
+    favicon = ROOT / "web" / "public" / "favicon.svg"
+    if logo.exists() and favicon.exists():
+        logo_txt = logo.read_text(encoding="utf-8")
+        fav_txt = favicon.read_text(encoding="utf-8")
+        ET.fromstring(logo_txt)
+        ET.fromstring(fav_txt)
+        if logo_txt.strip() != fav_txt.strip():
+            raise SystemExit("Brand icon drift: assets/logo.svg and web/public/favicon.svg must match byte-for-byte")
 
 
 def main() -> None:
@@ -129,19 +156,25 @@ def main() -> None:
             shutil.copy2(svg, dest_assets / svg.name)
 
         prompts = parse_bilingual_prompt((tdir / "PROMPT.md").read_text(encoding="utf-8"))
+        validate_prompt(prompts, tid)
         spec_text = (tdir / "SPEC.md").read_text(encoding="utf-8").strip()
+        if not spec_text:
+            raise SystemExit(f"Theme {tid}/SPEC.md is empty")
 
         quick_prompt_en = (
             f"Redesign my GitHub Profile README using the GitSkins '{meta['name']}' theme. "
             f"Follow the instructions at {REPO_RAW_BASE}/themes/{tid}/PROMPT.md "
             f"(spec: {REPO_RAW_BASE}/themes/{tid}/SPEC.md, generator: {REPO_RAW_BASE}/themes/{tid}/generator.py). "
-            f"Auto-detect my GitHub username, avatar, and real repositories via gh/git config, adapt the SVGs faithfully, validate XML & renders, and push to my profile repo."
+            f"Auto-detect my GitHub username, avatar_url, and real repositories via gh/git config, "
+            f"pixelize my real avatar when the theme includes a portrait slot, ensure zero leftover demo strings, "
+            f"validate strict XML & 846px Light/Dark renders, and push to my profile repo."
         )
         quick_prompt_zh = (
             f"请使用 GitSkins 的「{meta['nameZh']}」主题改造我的 GitHub 个人主页。"
             f"请直接读取执行规范 {REPO_RAW_BASE}/themes/{tid}/PROMPT.md "
             f"（视觉规范：{REPO_RAW_BASE}/themes/{tid}/SPEC.md ，参考生成器：{REPO_RAW_BASE}/themes/{tid}/generator.py ）。"
-            f"请自动通过本地 gh / git config 识别我的 GitHub 账号、头像与真实公开仓库，定制深/浅双主题 SVG 并校验后推送到我的同名主页仓库。"
+            f"请自动通过本地 gh / git config 识别我的 GitHub 账号、真实头像（含头像框的主题须下载我的 avatar_url 像素化）与真实公开仓库，"
+            f"确保生成的 SVG 与 README 零模板演示残留，通过严格 XML 与 846px 深浅渲染校验后推送到我的同名主页仓库。"
         )
 
         entry = {
@@ -176,6 +209,9 @@ def main() -> None:
         if wf_tpl.exists():
             shutil.copy2(wf_tpl, WEB_LIVE_WIDGETS_DIR / "gitskins-widgets.yml")
         print(f"Synced live-widgets generator into {WEB_LIVE_WIDGETS_DIR}")
+
+    # Verify canonical brand icon parity (assets/logo.svg == web/public/favicon.svg)
+    validate_brand_icon_parity()
 
     # Sync standard Agent Skill (SKILL.md) into web/public/skill/
     if SKILL_FILE.exists():

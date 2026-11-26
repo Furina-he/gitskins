@@ -7,11 +7,14 @@ Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Ed
 
 ### Execution Steps
 1. **Auto-detect my GitHub identity**: Check `gh auth status` / `gh api user` (or `git config`) for my username, display name, bio, public repositories, stars, releases, and live websites. Only ask me if no local account is found.
-2. **Curate factual content**: Pick my top 4 flagship projects, verify live URLs return HTTP 200, and keep every colophon metric accurate to my real GitHub profile.
+2. **Curate factual content (never reuse demo entries)**: Pick up to 4 of my flagship projects (adapt cleanly if I have fewer), verify live URLs return HTTP 200, and keep every colophon metric accurate to my real GitHub profile. Omit website links if I do not have one.
 3. **Generate the Editorial Broadsheet SVG suite**:
-   - Follow `SPEC.md` and adapt `generator.py` to generate paired Light (archival paper) and Dark (obsidian press) SVGs into `assets/`: double-rule broadsheet Hero (`846x302`) with serif nameplate, italic deck, and 6-row colophon ledger; Roman-numeral folio buttons (`I`–`IV`); double-rule section headers; and `2x2` editorial feature plates (`PLATE I`–`PLATE IV`).
-   - Add `.github/workflows/snake.yml` if appropriate for daily contribution tracking.
-4. **Validate & Visually Inspect**: Verify strict XML parsing on every SVG, inspect rendered Light and Dark previews at `846px` width for clean typography and spacing, then push to `<username>/<username>`.
+   - Follow `SPEC.md` and rewrite `generator.py` with my real data to generate paired Light (archival paper) and Dark (obsidian press) SVGs into `assets/`: double-rule broadsheet Hero (`846x302`, pure typographic print masthead — no photo portrait by design) with serif nameplate, italic deck, and 6-row colophon ledger; Roman-numeral folio buttons (`I`–`IV`); double-rule section headers; and `2x2` editorial feature plates (`PLATE I`–`PLATE IV`).
+   - Add `.github/workflows/snake.yml` or GitSkins Zero-503 Live Widgets if appropriate.
+4. **Validate, Verify Zero Demo Leakage & Ship**:
+   - Verify strict XML parsing on every SVG (zero `<script>`, zero external `<image href="http...">`, `prefers-reduced-motion` guarded if animated).
+   - **Zero Demo-Data Leakage Check**: Scan all generated `assets/*.svg` and `README.md` to confirm zero leftover template strings (`Furina-he`, `NeverGiveUp`, `cloudlink`, `openpet`, `myfurina`, `blessc.com` — except `gitskins.blessc.com` if I opt into the optional `Styled with GitSkins` footer badge).
+   - Inspect rendered Light and Dark previews at `846px` width for clean typography and spacing, then push to `<username>/<username>`.
 
 <!-- LANG:ZH -->
 请使用 GitSkins 的 **「瑞士报刊杂志排版（Editorial Broadsheet Zine）」** 主题，帮我设计并更新我的 GitHub 个人主页介绍（`<我的用户名>/<我的用户名>` 仓库）。
@@ -22,8 +25,11 @@ Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Ed
 
 ### 执行要求
 1. **自动识别我的 GitHub 账号**：优先通过本地 `gh auth status` / `gh api user`（或 `git config`）读取我的用户名、昵称、简介及公开仓库（描述、语言、Star、Release、官网）；仅在无法自动检测时再向我确认。
-2. **内容真实克制**：精选我最具代表性的 4 个旗舰项目，校验全部官网链接可访问，出版索引栏数据严格基于我的真实仓库统计。
+2. **内容真实克制（禁止照搬演示项）**：精选我最具代表性的 4 个旗舰项目（不足 4 个按真实数量排版），校验全部官网链接可访问，出版索引栏数据严格基于我的真实仓库统计；无官网时移除多余外链。
 3. **定制深浅双主题报刊 SVG**：
-   - 参考 `SPEC.md` 并改写 `generator.py`，生成完整的 Light（典藏新闻纸）与 Dark（黑曜石印刷）双主题 SVG 套件：`846×302` 双细线刊头 Hero（衬线大字署名 + 斜体导语 + 右侧 6 行出版索引栏）、罗马数字书目快捷按钮（`I`–`IV`）、报刊分节线，以及 2×2 杂志图版卡片（`PLATE I`–`PLATE IV`）。
-   - 可按需配套 `.github/workflows/snake.yml` 每日更新贡献图。
-4. **校验后发布上线**：全部 SVG 通过严格 XML 解析，并在 `846px` 宽度下核验 Light / Dark 排版无溢出与错位，推送至我的同名主页仓库。
+   - 参考 `SPEC.md` 并基于我的真实信息改写 `generator.py`，生成完整的 Light（典藏新闻纸）与 Dark（黑曜石印刷）双主题 SVG 套件：`846×302` 双细线刊头 Hero（本套主题为纯报刊平面排版，无需照片头像；含衬线大字署名 + 斜体导语 + 右侧 6 行出版索引栏）、罗马数字书目快捷按钮（`I`–`IV`）、报刊分节线，以及 2×2 杂志图版卡片（`PLATE I`–`PLATE IV`）。
+   - 可按需配套 `.github/workflows/snake.yml` 或 GitSkins 零 503 活挂件。
+4. **校验、零演示残留检查后发布上线**：
+   - 全部 SVG 通过严格 XML 解析（零 `<script>`、零外链 `<image>`）。
+   - **零演示数据残留门禁**：交付前全局检查生成的全部 `assets/*.svg` 与 `README.md`，确认绝对不包含任何模板演示残留字符串（`Furina-he`、`NeverGiveUp`、`cloudlink`、`openpet`、`myfurina`、`blessc.com`；仅可选的 `Styled with GitSkins` 尾标允许指向 `gitskins.blessc.com`）。
+   - 在 `846px` 宽度下核验 Light / Dark 排版无溢出与错位，推送至我的同名主页仓库。

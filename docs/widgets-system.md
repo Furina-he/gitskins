@@ -9,7 +9,7 @@
 1. **Multi-Instance First（多实例自由添加）**：每种挂件类型均可添加多个独立实例（各自拥有独立 `uid`、参数、配色、占宽与插槽），支持一排放 4 个不同场景的小方砖，或在 Hero 多角落贴不同挂坠。
 2. **4-Column `846px` Bento Grid（严丝合缝消除留白）**：`846px` 按 `10px` 间距拆分为 4 等宽列，任意凑满 4 格的异形组合上下齐平、零多余空白。
 3. **Composite Bento Row SVG（GitHub 零换行错位）**：同一行的多块挂件导出时原生合成为单张 `846×160` SVG（顶部提升 `<defs>` 与 `<style>` 并隔离命名空间），在 GitHub README 中只需一行 `<picture width="100%">`，杜绝小数像素导致的意外换行。
-4. **Theme-Aware Parity（一键换肤）**：全部挂件与合成行严格继承 [architecture.md](architecture.md) 中的 `ThemeTokens` 与 4 套主题视觉语法。
+4. **Theme-Aware Parity（一键换肤）**：全部挂件与合成行严格继承 [architecture.md](architecture.md) 中的 14 项 `ThemeTokens` 与全部精选主题视觉语法。
 
 ---
 
