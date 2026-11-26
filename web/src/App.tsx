@@ -25,7 +25,7 @@ function BrandMark() {
 export default function App() {
   const [themes, setThemes] = useState<SkinTheme[]>([]);
   const [activeId, setActiveId] = useState<string>("swiss-bauhaus-pixel");
-  const [previewMode, setPreviewMode] = useState<PreviewMode>("dark");
+  const [previewMode, setPreviewMode] = useState<PreviewMode>("light");
   const [lang, setLang] = useState<Lang>(detectInitialLang);
   const [promptKind, setPromptKind] = useState<PromptKind>("quick");
   const [copiedPrompt, setCopiedPrompt] = useState(false);
