@@ -22,13 +22,17 @@ import {
 } from "./svgPrimitives";
 import type {
   BentoColSpan,
+  CodingRhythmConfig,
   DevBadgeConfig,
+  GitHubStatsConfig,
   HeroStickerConfig,
+  LiveWeatherConfig,
   MiniTileConfig,
   NowPlayingConfig,
   PixelCompanionConfig,
   PixelRunwayConfig,
   QuoteBannerConfig,
+  RssFeedConfig,
   SkillDockConfig,
   WidgetConfigMap,
   WidgetId,
@@ -1164,6 +1168,363 @@ function renderMiniTile(cfg: MiniTileConfig, opts: WidgetRenderOptions): string 
 </svg>`;
 }
 
+// ---------------------------------------------------------------------------
+// L01–L04: GitHub Actions Live Auto-Updating Widgets (160px Bento height)
+// Browser preview renderers matching live-widgets/generate_live_widgets.py
+// ---------------------------------------------------------------------------
+function fmtCompact(n: number): string {
+  if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
+  return String(Math.max(0, Math.round(n)));
+}
+
+function renderGitHubStats(cfg: GitHubStatsConfig, opts: WidgetRenderOptions): string {
+  const t = resolveTokens(opts.tokens, opts.accentOverride);
+  const w = colSpanToPx(opts.colSpan);
+  const h = opts.targetHeight ?? BENTO_ROW_HEIGHT;
+  const uid = makeUid("lstats", opts);
+  const handle = (cfg.username || "Furina-he").replace(/^@+/, "");
+
+  const frame = renderThemeFrame({
+    uid,
+    themeId: opts.themeId,
+    mode: opts.mode,
+    tokens: t,
+    width: w,
+    height: h,
+    tag: "GITHUB STATS",
+    rightMeta: `@${fitText(handle, 110, 9.5, true)}`,
+  });
+
+  const pad = frame.padX;
+  const innerW = w - pad * 2;
+  const kpis: [string, string, string][] = [
+    ["STARS", fmtCompact(cfg.stars), t.accent],
+    ["REPOS", fmtCompact(cfg.repos), t.secondary],
+    ["FOLLOWERS", fmtCompact(cfg.followers), t.tertiary],
+    ["PULL REQS", fmtCompact(cfg.prs), t.highlight],
+  ];
+  const gap = 8;
+  const cellW = (innerW - gap * 3) / 4;
+  const kpiY = frame.contentTop + 6;
+  const headFont = themeHeadingFont(opts.themeId);
+
+  const kpiSvg = kpis
+    .map(([lbl, val, col], idx) => {
+      const x = pad + idx * (cellW + gap);
+      return `<rect x="${x.toFixed(1)}" y="${kpiY}" width="${cellW.toFixed(1)}" height="46" fill="${t.surface}" stroke="${t.borderSoft}" stroke-width="1"/>
+  <rect x="${(x + 8).toFixed(1)}" y="${kpiY + 9}" width="5" height="5" fill="${col}" shape-rendering="crispEdges"/>
+  <text x="${(x + 17).toFixed(1)}" y="${kpiY + 14.5}" font-family='${FONT_MONO}' font-size="8.2" font-weight="700" fill="${t.muted}">${lbl}</text>
+  <text x="${(x + 8).toFixed(1)}" y="${kpiY + 36}" font-family='${headFont}' font-size="16.5" font-weight="800" fill="${t.ink}">${escapeXml(val)}</text>`;
+    })
+    .join("\n  ");
+
+  const parsedLangs = (cfg.languages || "Rust:42, TypeScript:31, Python:19, Shell:8")
+    .split(/[,，\n]+/)
+    .map((part) => {
+      const [rawName, rawPct] = part.split(":");
+      const name = (rawName || "").trim();
+      const pct = Math.max(1, parseInt((rawPct || "20").trim(), 10) || 20);
+      return name ? ([name, pct] as [string, number]) : null;
+    })
+    .filter((x): x is [string, number] => x !== null)
+    .slice(0, 4);
+  const langs = parsedLangs.length ? parsedLangs : ([["TypeScript", 60], ["Python", 40]] as [string, number][]);
+
+  const totalPct = langs.reduce((s, [, p]) => s + p, 0) || 100;
+  const barY = kpiY + 62;
+  const barColors = [t.accent, t.secondary, t.tertiary, t.highlight];
+  let bx = pad;
+  let lx = pad;
+  const barParts: string[] = [];
+  const legParts: string[] = [];
+
+  langs.forEach(([lname, pct], idx) => {
+    let segW = Math.max(8, innerW * (pct / totalPct));
+    if (idx === langs.length - 1) segW = Math.max(4, pad + innerW - bx);
+    const col = barColors[idx % barColors.length];
+    barParts.push(
+      `<rect x="${bx.toFixed(1)}" y="${barY}" width="${segW.toFixed(1)}" height="8" fill="${col}" shape-rendering="crispEdges"/>`
+    );
+    bx += segW;
+    const tagTxt = `${lname} ${Math.round((pct * 100) / totalPct)}%`;
+    const est = estimateTextPx(tagTxt, 9.5, true) + 18;
+    if (lx + est <= w - pad + 4) {
+      legParts.push(
+        `<rect x="${lx.toFixed(1)}" y="${barY + 18}" width="6" height="6" fill="${col}" shape-rendering="crispEdges"/>` +
+          `<text x="${(lx + 10).toFixed(1)}" y="${barY + 24.5}" font-family='${FONT_MONO}' font-size="9.5" fill="${t.sub}">${escapeXml(tagTxt)}</text>`
+      );
+      lx += est;
+    }
+  });
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="GitHub Stats for @${escapeXml(handle)}">
+  <title>GitHub Stats — @${escapeXml(handle)}</title>${frame.defs ? `\n  <defs>${frame.defs}\n  </defs>` : ""}
+  ${frame.chrome}
+  ${kpiSvg}
+  <rect x="${pad}" y="${barY}" width="${innerW}" height="8" fill="${t.borderSoft}"/>
+  ${barParts.join("\n  ")}
+  ${legParts.join("\n  ")}
+</svg>`;
+}
+
+function renderCodingRhythm(cfg: CodingRhythmConfig, opts: WidgetRenderOptions): string {
+  const t = resolveTokens(opts.tokens, opts.accentOverride);
+  const w = colSpanToPx(opts.colSpan);
+  const h = opts.targetHeight ?? BENTO_ROW_HEIGHT;
+  const uid = makeUid("lrhythm", opts);
+
+  const presets: Record<
+    CodingRhythmConfig["persona"],
+    { label: string; peak: string; hours: number[]; periods: [string, number][] }
+  > = {
+    early: {
+      label: "EARLY BIRD",
+      peak: "09:00",
+      hours: [1, 0, 0, 0, 2, 6, 12, 18, 22, 24, 19, 15, 11, 10, 9, 8, 6, 5, 4, 3, 2, 1, 1, 1],
+      periods: [["06-12", 58], ["12-18", 25], ["18-24", 11], ["00-06", 6]],
+    },
+    day: {
+      label: "DAY BUILDER",
+      peak: "15:00",
+      hours: [1, 0, 0, 0, 0, 1, 3, 6, 11, 14, 16, 15, 14, 19, 22, 24, 20, 16, 11, 8, 5, 3, 2, 1],
+      periods: [["06-12", 31], ["12-18", 50], ["18-24", 16], ["00-06", 3]],
+    },
+    evening: {
+      label: "EVENING CODER",
+      peak: "21:00",
+      hours: [4, 2, 1, 0, 0, 1, 2, 4, 7, 10, 12, 10, 9, 12, 14, 12, 10, 9, 14, 18, 22, 24, 18, 11],
+      periods: [["06-12", 20], ["12-18", 29], ["18-24", 44], ["00-06", 7]],
+    },
+    night: {
+      label: "NIGHT OWL",
+      peak: "01:00",
+      hours: [21, 24, 18, 12, 6, 2, 1, 1, 3, 6, 9, 10, 9, 11, 13, 11, 9, 8, 12, 15, 18, 20, 22, 23],
+      periods: [["06-12", 11], ["12-18", 22], ["18-24", 39], ["00-06", 28]],
+    },
+  };
+  const p = presets[cfg.persona] ?? presets.evening;
+  const tzStr = `UTC${cfg.tzOffset >= 0 ? "+" : ""}${cfg.tzOffset}`;
+
+  const frame = renderThemeFrame({
+    uid,
+    themeId: opts.themeId,
+    mode: opts.mode,
+    tokens: t,
+    width: w,
+    height: h,
+    tag: "CODING RHYTHM",
+    rightMeta: `${tzStr} · PEAK ${p.peak}`,
+  });
+
+  const pad = frame.padX;
+  const innerW = w - pad * 2;
+  const maxV = Math.max(...p.hours, 1);
+  const pillW = Math.round(estimateTextPx(p.label, 9, true) + 18);
+  const chartTop = frame.contentTop + 26;
+  const chartH = 54;
+  const baseY = chartTop + chartH;
+  const slotW = innerW / 24;
+  const barW = Math.max(4, slotW - 3);
+  const headFont = themeHeadingFont(opts.themeId);
+
+  const bars = p.hours
+    .map((val, hr) => {
+      const bh = Math.max(4, (val / maxV) * (chartH - 4));
+      const bx = pad + hr * slotW + (slotW - barW) / 2;
+      const fill = val === maxV ? t.accent : val > maxV * 0.55 ? t.secondary : t.borderSoft;
+      return `<rect x="${bx.toFixed(1)}" y="${(baseY - bh).toFixed(1)}" width="${barW.toFixed(1)}" height="${bh.toFixed(1)}" fill="${fill}" shape-rendering="crispEdges"/>`;
+    })
+    .join("\n  ");
+
+  const pY = baseY + 18;
+  const pStep = innerW / 4;
+  const periodsSvg = p.periods
+    .map(([rng, pct], idx) => {
+      const px = pad + idx * pStep;
+      return `<text x="${px.toFixed(1)}" y="${pY}" font-family='${FONT_MONO}' font-size="9.2" fill="${t.muted}">${rng} <tspan font-weight="700" fill="${t.ink}">${pct}%</tspan></text>`;
+    })
+    .join("\n  ");
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Coding Rhythm — ${p.label}">
+  <title>Coding Rhythm — ${p.label}</title>${frame.defs ? `\n  <defs>${frame.defs}\n  </defs>` : ""}
+  ${frame.chrome}
+  <text x="${pad}" y="${frame.contentTop + 16}" font-family='${headFont}' font-size="14.5" font-weight="800" fill="${t.ink}">Commit Cadence</text>
+  <rect x="${w - pad - pillW}" y="${frame.contentTop + 3}" width="${pillW}" height="18" fill="${t.accent}"/>
+  <text x="${w - pad - pillW / 2}" y="${frame.contentTop + 15}" text-anchor="middle" font-family='${FONT_MONO}' font-size="9" font-weight="700" fill="${t.accentFg}">${p.label}</text>
+  <line x1="${pad}" y1="${baseY + 1.5}" x2="${w - pad}" y2="${baseY + 1.5}" stroke="${t.border}" stroke-width="1"/>
+  ${bars}
+  ${periodsSvg}
+</svg>`;
+}
+
+function renderRssFeed(cfg: RssFeedConfig, opts: WidgetRenderOptions): string {
+  const t = resolveTokens(opts.tokens, opts.accentOverride);
+  const w = colSpanToPx(opts.colSpan);
+  const h = opts.targetHeight ?? BENTO_ROW_HEIGHT;
+  const uid = makeUid("lrss", opts);
+  const src = fitText(cfg.source || "blog.example.com", Math.max(110, w - 190), 9.5, true);
+
+  const frame = renderThemeFrame({
+    uid,
+    themeId: opts.themeId,
+    mode: opts.mode,
+    tokens: t,
+    width: w,
+    height: h,
+    tag: "LATEST POSTS",
+    rightMeta: src,
+  });
+
+  const pad = frame.padX;
+  const headFont = themeHeadingFont(opts.themeId);
+  const titleMaxW = w - pad * 2 - 96;
+  const items: [string, string][] = [
+    [cfg.post1 || "Designing Deterministic SVG Themes for AI Agents", "11-26"],
+    [cfg.post2 || "Zero-503 GitHub Profile Widgets via GitHub Actions", "11-22"],
+    [cfg.post3 || "4-Column 846px Bento Grids Without Wrap Glitches", "11-18"],
+  ];
+
+  const rowsSvg = items
+    .map(([title, dt], idx) => {
+      const y = frame.contentTop + 20 + idx * 33;
+      const rule =
+        idx > 0
+          ? `<line x1="${pad}" y1="${y - 18}" x2="${w - pad}" y2="${y - 18}" stroke="${t.borderSoft}" stroke-width="0.9"/>`
+          : "";
+      const col = [t.accent, t.secondary, t.tertiary][idx % 3];
+      const safeT = escapeXml(fitText(title, titleMaxW, 12, opts.themeId === "crt-terminal"));
+      return `${rule}
+  <rect x="${pad}" y="${y - 10}" width="22" height="15" fill="${col}"/>
+  <text x="${pad + 11}" y="${y + 1}" text-anchor="middle" font-family='${FONT_MONO}' font-size="8.5" font-weight="700" fill="${t.accentFg}">0${idx + 1}</text>
+  <text x="${pad + 30}" y="${y + 1}" font-family='${headFont}' font-size="12" font-weight="700" fill="${t.ink}">${safeT}</text>
+  <text x="${w - pad}" y="${y + 1}" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${dt}</text>`;
+    })
+    .join("\n  ");
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Latest RSS posts from ${escapeXml(src)}">
+  <title>Latest Posts — ${escapeXml(src)}</title>${frame.defs ? `\n  <defs>${frame.defs}\n  </defs>` : ""}
+  ${frame.chrome}
+  ${rowsSvg}
+</svg>`;
+}
+
+function renderLiveWeather(cfg: LiveWeatherConfig, opts: WidgetRenderOptions): string {
+  const t = resolveTokens(opts.tokens, opts.accentOverride);
+  const w = colSpanToPx(opts.colSpan);
+  const h = opts.targetHeight ?? BENTO_ROW_HEIGHT;
+  const uid = makeUid("lwx", opts);
+  const tempVal = Math.round(cfg.temp ?? 19);
+  const tempStr = `${tempVal}°${cfg.unit === "F" ? "F" : "C"}`;
+  const condLabels: Record<LiveWeatherConfig["condition"], string> = {
+    sunny: "CLEAR SKY",
+    cloudy: "CLOUDY",
+    rain: "LIGHT RAIN",
+    snow: "SNOWFALL",
+  };
+  const label = condLabels[cfg.condition] ?? "CLEAR SKY";
+  const humStr = `${Math.max(0, Math.min(100, Math.round(cfg.humidity ?? 72)))}%`;
+
+  const frame = renderThemeFrame({
+    uid,
+    themeId: opts.themeId,
+    mode: opts.mode,
+    tokens: t,
+    width: w,
+    height: h,
+    tag: "WEATHER",
+    rightMeta: tempStr,
+  });
+
+  const pad = frame.padX;
+  const wide = opts.colSpan >= 2;
+  const boxX = pad;
+  const boxY = frame.contentTop + 4;
+  const boxW = wide ? 136 : w - pad * 2;
+  const boxH = wide ? 98 : h - boxY - 40;
+  const cx = boxX + boxW / 2;
+  const midY = boxY + boxH / 2;
+  const clipId = `lwclip-${uid}`;
+  const headFont = themeHeadingFont(opts.themeId);
+
+  let sky = "";
+  let animCss = "";
+  if (cfg.condition === "sunny") {
+    const rays = Array.from({ length: 8 }, (_, i) => {
+      const a = (i * Math.PI) / 4;
+      return `<line x1="${(cx + Math.cos(a) * 16).toFixed(1)}" y1="${(midY + Math.sin(a) * 16).toFixed(1)}" x2="${(cx + Math.cos(a) * 23).toFixed(1)}" y2="${(midY + Math.sin(a) * 23).toFixed(1)}" stroke="${t.highlight}" stroke-width="2.2"/>`;
+    }).join("");
+    sky = `<g class="wsun-${uid}" style="transform-origin:${cx.toFixed(1)}px ${midY.toFixed(1)}px">${rays}</g><circle cx="${cx.toFixed(1)}" cy="${midY.toFixed(1)}" r="11.5" fill="${t.highlight}"/>`;
+    animCss = `@keyframes wsun_${uid} { from { transform: rotate(0deg); } to { transform: rotate(360deg); } } .wsun-${uid} { animation: wsun_${uid} 20s linear infinite; }`;
+  } else if (cfg.condition === "snow") {
+    const cols = [-42, -22, -4, 14, 34];
+    const flakes = cols
+      .map(
+        (dx, i) =>
+          `<rect class="wflk-${uid}-${i}" x="${(cx + dx).toFixed(1)}" y="${boxY + 22 + (i % 2) * 8}" width="4" height="4" fill="${i % 2 === 0 ? t.ink : t.accent}" shape-rendering="crispEdges"/>`
+      )
+      .join("");
+    sky = `<rect x="${(cx - 38).toFixed(1)}" y="${boxY + 12}" width="76" height="13" fill="${t.borderSoft}"/>${flakes}`;
+    animCss =
+      `@keyframes wflk_${uid} { 0% { transform: translateY(-4px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(34px); opacity: 0; } } ` +
+      cols
+        .map(
+          (_, i) =>
+            `.wflk-${uid}-${i} { animation: wflk_${uid} ${(2.4 + (i % 3) * 0.4).toFixed(1)}s linear ${(i * 0.3).toFixed(2)}s infinite; }`
+        )
+        .join(" ");
+  } else if (cfg.condition === "cloudy") {
+    sky =
+      `<circle cx="${(cx + 16).toFixed(1)}" cy="${boxY + 26}" r="10" fill="${t.highlight}"/>` +
+      `<rect class="wcld-${uid}" x="${(cx - 36).toFixed(1)}" y="${boxY + 26}" width="72" height="16" fill="${t.border}"/>` +
+      `<rect class="wcld-${uid}" x="${(cx - 22).toFixed(1)}" y="${boxY + 18}" width="44" height="12" fill="${t.border}"/>`;
+    animCss = `@keyframes wcld_${uid} { 0%, 100% { transform: translateX(-4px); } 50% { transform: translateX(4px); } } .wcld-${uid} { animation: wcld_${uid} 5s ease-in-out infinite; }`;
+  } else {
+    const cols = [-38, -20, -2, 16, 34];
+    const drops = cols
+      .map(
+        (dx, i) =>
+          `<line class="wdrp-${uid}-${i}" x1="${(cx + dx).toFixed(1)}" y1="${boxY + 28}" x2="${(cx + dx - 4).toFixed(1)}" y2="${boxY + 38}" stroke="${i % 2 === 0 ? t.accent : t.secondary}" stroke-width="1.9"/>`
+      )
+      .join("");
+    sky = `<rect x="${(cx - 40).toFixed(1)}" y="${boxY + 14}" width="80" height="13" fill="${t.border}"/><rect x="${(cx - 26).toFixed(1)}" y="${boxY + 8}" width="48" height="9" fill="${t.border}"/>${drops}`;
+    animCss =
+      `@keyframes wdrp_${uid} { 0% { transform: translate(0, -4px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translate(-7px, 28px); opacity: 0; } } ` +
+      cols
+        .map(
+          (_, i) =>
+            `.wdrp-${uid}-${i} { animation: wdrp_${uid} 1.45s linear ${(i * 0.24).toFixed(2)}s infinite; }`
+        )
+        .join(" ");
+  }
+
+  const styleBlock =
+    opts.animated && animCss
+      ? `\n  <style>${animCss} @media (prefers-reduced-motion: reduce) { .wsun-${uid}, .wcld-${uid}, [class^="wflk-${uid}"], [class^="wdrp-${uid}"] { animation: none !important; } }</style>`
+      : "";
+
+  const safeCity = escapeXml(fitText(cfg.city || "Shanghai", wide ? w - boxX - boxW - pad - 18 : w - 24, 13));
+  const info = wide
+    ? `
+  <text x="${boxX + boxW + 18}" y="${boxY + 26}" font-family='${headFont}' font-size="26" font-weight="800" fill="${t.ink}">${escapeXml(tempStr)}</text>
+  <text x="${w - pad}" y="${boxY + 20}" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accent}">${label}</text>
+  <text x="${boxX + boxW + 18}" y="${boxY + 48}" font-family='${FONT_SANS}' font-size="13" font-weight="700" fill="${t.sub}">${safeCity}</text>
+  <line x1="${boxX + boxW + 18}" y1="${boxY + 60}" x2="${w - pad}" y2="${boxY + 60}" stroke="${t.borderSoft}" stroke-width="0.9"/>
+  <text x="${boxX + boxW + 18}" y="${boxY + 80}" font-family='${FONT_MONO}' font-size="10" fill="${t.muted}">HUMIDITY <tspan fill="${t.ink}" font-weight="700">${humStr}</tspan></text>
+  <text x="${w - pad}" y="${boxY + 80}" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">OPEN-METEO</text>`
+    : `
+  <text x="${w / 2}" y="${h - 23}" text-anchor="middle" font-family='${headFont}' font-size="13" font-weight="700" fill="${t.ink}">${safeCity}</text>
+  <text x="${w / 2}" y="${h - 10}" text-anchor="middle" font-family='${FONT_MONO}' font-size="8.8" fill="${t.muted}">${label} · ${humStr}</text>`;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Live Weather in ${safeCity}: ${escapeXml(tempStr)}">
+  <title>${safeCity} — ${escapeXml(tempStr)}</title>
+  <defs>${frame.defs}<clipPath id="${clipId}"><rect x="${boxX + 1}" y="${boxY + 1}" width="${boxW - 2}" height="${boxH - 2}"/></clipPath></defs>${styleBlock}
+  ${frame.chrome}
+  <rect x="${boxX}" y="${boxY}" width="${boxW}" height="${boxH}" fill="${t.patternBg}" stroke="${t.border}" stroke-width="1"/>
+  <g clip-path="url(#${clipId})">${sky}</g>
+  ${info}
+</svg>`;
+}
+
 export function renderWidgetSvg<K extends WidgetId>(
   widgetId: K,
   config: WidgetConfigMap[K],
@@ -1186,5 +1547,13 @@ export function renderWidgetSvg<K extends WidgetId>(
       return renderPixelRunway(config as PixelRunwayConfig, opts);
     case "mini-tile":
       return renderMiniTile(config as MiniTileConfig, opts);
+    case "github-stats":
+      return renderGitHubStats(config as GitHubStatsConfig, opts);
+    case "coding-rhythm":
+      return renderCodingRhythm(config as CodingRhythmConfig, opts);
+    case "rss-feed":
+      return renderRssFeed(config as RssFeedConfig, opts);
+    case "live-weather":
+      return renderLiveWeather(config as LiveWeatherConfig, opts);
   }
 }

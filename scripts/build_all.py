@@ -13,7 +13,9 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent.parent
 THEMES_DIR = ROOT / "themes"
+LIVE_WIDGETS_DIR = ROOT / "live-widgets"
 WEB_THEMES_DIR = ROOT / "web" / "public" / "themes"
+WEB_LIVE_WIDGETS_DIR = ROOT / "web" / "public" / "live-widgets"
 REPO_RAW_BASE = "https://raw.githubusercontent.com/Furina-he/gitskins/main"
 REPO_WEB_BASE = "https://github.com/Furina-he/gitskins/blob/main"
 HEX_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
@@ -161,6 +163,17 @@ def main() -> None:
     out_file = WEB_THEMES_DIR / "manifest.json"
     out_file.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Synced {len(manifest)} themes into {WEB_THEMES_DIR} (manifest written)")
+
+    # Validate and sync live-widgets Python generator & workflow template
+    live_gen = LIVE_WIDGETS_DIR / "generate_live_widgets.py"
+    if live_gen.exists():
+        subprocess.run([sys.executable, str(live_gen), "--check-all"], check=True)
+        WEB_LIVE_WIDGETS_DIR.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(live_gen, WEB_LIVE_WIDGETS_DIR / "generate_live_widgets.py")
+        wf_tpl = LIVE_WIDGETS_DIR / "gitskins-widgets.yml"
+        if wf_tpl.exists():
+            shutil.copy2(wf_tpl, WEB_LIVE_WIDGETS_DIR / "gitskins-widgets.yml")
+        print(f"Synced live-widgets generator into {WEB_LIVE_WIDGETS_DIR}")
 
 
 if __name__ == "__main__":

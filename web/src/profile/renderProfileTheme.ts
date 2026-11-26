@@ -2,6 +2,7 @@ import type { Lang, PreviewMode, SkinTheme, ThemeTokens } from "../types";
 import { packBentoRows, renderCompositeBentoRowSvg } from "../widgets/bento";
 import { mergeStickerIntoHeroSvg } from "../widgets/catalog";
 import { renderWidgetSvg } from "../widgets/renderers";
+import { buildLiveWorkflowYaml, isLiveWidgetId } from "../widgets/workflow";
 import {
   FONT_MONO,
   FONT_SANS,
@@ -697,6 +698,64 @@ function buildBentoSlotAssets(params: {
   const markdownLines: string[] = [];
 
   rows.forEach((row, rIdx) => {
+    const rowHasLive = row.items.some((w) => isLiveWidgetId(w.widgetId));
+
+    if (rowHasLive) {
+      // Emit individual SVGs so .github/workflows/gitskins-widgets.yml can refresh
+      // assets/live-<widgetId>-{light,dark}.svg in-place without regenerating static composites.
+      const tags: string[] = [];
+      row.items.forEach((w, iIdx) => {
+        const isLive = isLiveWidgetId(w.widgetId);
+        const fileBase = isLive
+          ? `live-${w.widgetId}`
+          : `widget-${w.widgetId}-${slot}-r${rIdx + 1}-${iIdx + 1}`;
+        const lightPath = `assets/${fileBase}-light.svg`;
+        const darkPath = `assets/${fileBase}-dark.svg`;
+
+        if (!entries.some((e) => e.path === lightPath)) {
+          const lightSvg = renderWidgetSvg(w.widgetId, w.config, {
+            themeId: theme.id,
+            mode: "light",
+            tokens: theme.tokens.light,
+            colSpan: w.colSpan,
+            targetHeight: row.items.length > 1 || w.widgetId !== "skill-dock" ? row.rowHeight : undefined,
+            inBentoRow: true,
+            accentOverride: w.accentOverride || overrides.accentOverride,
+            animated: w.animated && overrides.animated,
+            instanceId: `zip-${slot}-r${rIdx}-${iIdx}-l`,
+          });
+          const darkSvg = renderWidgetSvg(w.widgetId, w.config, {
+            themeId: theme.id,
+            mode: "dark",
+            tokens: theme.tokens.dark,
+            colSpan: w.colSpan,
+            targetHeight: row.items.length > 1 || w.widgetId !== "skill-dock" ? row.rowHeight : undefined,
+            inBentoRow: true,
+            accentOverride: w.accentOverride || overrides.accentOverride,
+            animated: w.animated && overrides.animated,
+            instanceId: `zip-${slot}-r${rIdx}-${iIdx}-d`,
+          });
+          entries.push({ path: lightPath, content: lightSvg });
+          entries.push({ path: darkPath, content: darkSvg });
+        }
+
+        const widthPct =
+          row.items.length === 1 && w.colSpan === 4
+            ? "100%"
+            : w.colSpan === 3
+              ? "74%"
+              : w.colSpan === 2
+                ? "49%"
+                : "24%";
+        const alt = `GitSkins ${isLive ? "Live" : "DIY"} Widget (${w.widgetId})`;
+        tags.push(
+          `<picture><source media="(prefers-color-scheme: dark)" srcset="./${darkPath}"><img src="./${lightPath}" alt="${alt}" width="${widthPct}"></picture>`
+        );
+      });
+      markdownLines.push(`<p>`, `  ${tags.join("&nbsp;")}`, `</p>`);
+      return;
+    }
+
     const fileBase = `bento-${slot}-r${rIdx + 1}`;
     const lightSvg = renderCompositeBentoRowSvg(row, {
       themeId: theme.id,
@@ -745,8 +804,9 @@ export function buildProfileZipEntries(params: {
   overrides: ProfileOverrides;
   mountedWidgets: WidgetInstance[];
   lang: Lang;
+  liveGeneratorPy?: string;
 }): ZipFileEntry[] {
-  const { profile, theme, overrides, mountedWidgets } = params;
+  const { profile, theme, overrides, mountedWidgets, liveGeneratorPy } = params;
   const lightSuite = renderProfileSuite(profile, theme, "light", overrides);
   const darkSuite = renderProfileSuite(profile, theme, "dark", overrides);
 
@@ -849,8 +909,32 @@ export function buildProfileZipEntries(params: {
     cardRows.push(`<p>\n  ${rowHtml}\n</p>`);
   }
 
+  const liveWidgets = mountedWidgets.filter((w) => isLiveWidgetId(w.widgetId));
+  if (liveWidgets.length > 0) {
+    entries.push({
+      path: ".github/workflows/gitskins-widgets.yml",
+      content: buildLiveWorkflowYaml({
+        themeId: theme.id,
+        liveWidgets,
+        accentOverride: overrides.accentOverride,
+        animated: overrides.animated,
+      }),
+    });
+    if (liveGeneratorPy) {
+      entries.push({
+        path: "scripts/generate_live_widgets.py",
+        content: liveGeneratorPy,
+      });
+    }
+  }
+
   const readmeLines: string[] = [
     `<!-- Generated with GitSkins (https://gitskins.blessc.com) · Theme: ${theme.id} -->`,
+    ...(liveWidgets.length > 0
+      ? [
+          `<!-- Auto-updating live widgets enabled via .github/workflows/gitskins-widgets.yml -->`,
+        ]
+      : []),
     "",
     ...topSlot.markdownLines,
     "",

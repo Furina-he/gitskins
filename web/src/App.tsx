@@ -36,6 +36,7 @@ import {
   placementLabel,
 } from "./widgets/catalog";
 import { renderWidgetSvg } from "./widgets/renderers";
+import { isLiveWidgetId } from "./widgets/workflow";
 import type {
   BentoColSpan,
   BentoRow,
@@ -193,6 +194,7 @@ export default function App() {
   const [exportedZipCount, setExportedZipCount] = useState<number | null>(null);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const quickFillRef = useRef<HTMLDivElement | null>(null);
+  const livePyRef = useRef<string | null>(null);
 
   // Live GitHub Preview & Parametric Overrides
   const [ghInput, setGhInput] = useState("");
@@ -350,14 +352,28 @@ export default function App() {
     setCopiedPrompt(false);
   }
 
-  function handleExportZip() {
+  async function handleExportZip() {
     if (!activeTheme) return;
+    const hasLive = mountedWidgets.some((w) => isLiveWidgetId(w.widgetId));
+    let liveGeneratorPy = livePyRef.current ?? undefined;
+    if (hasLive && !liveGeneratorPy) {
+      try {
+        const res = await fetch("/live-widgets/generate_live_widgets.py");
+        if (res.ok) {
+          liveGeneratorPy = await res.text();
+          livePyRef.current = liveGeneratorPy;
+        }
+      } catch {
+        /* fallback: workflow YAML auto-downloads script if absent */
+      }
+    }
     const entries = buildProfileZipEntries({
       profile: effectiveProfile,
       theme: activeTheme,
       overrides,
       mountedWidgets,
       lang,
+      liveGeneratorPy,
     });
     const safeUser = effectiveProfile.username.toLowerCase().replace(/[^a-z0-9-]/g, "");
     downloadZipArchive(`gitskins-${safeUser}-${activeTheme.id}.zip`, entries);
@@ -1289,22 +1305,30 @@ export default function App() {
                         </label>
                       </div>
                       <div className="bento-presets-grid">
-                        {BENTO_PRESETS.map((preset) => (
-                          <button
-                            key={preset.id}
-                            type="button"
-                            className="bento-preset-card"
-                            onClick={() => handleApplyBentoPreset(preset.id)}
-                          >
-                            <div className="bento-preset-top">
-                              <strong>{lang === "zh" ? preset.nameZh : preset.name}</strong>
-                              <span className="bento-layout-tag">{preset.layoutTag}</span>
-                            </div>
-                            <span className="bento-preset-desc">
-                              {lang === "zh" ? preset.descZh : preset.desc}
-                            </span>
-                          </button>
-                        ))}
+                        {BENTO_PRESETS.map((preset) => {
+                          const isLivePreset = preset.id.startsWith("live-");
+                          return (
+                            <button
+                              key={preset.id}
+                              type="button"
+                              className={`bento-preset-card ${isLivePreset ? "is-live" : ""}`}
+                              onClick={() => handleApplyBentoPreset(preset.id)}
+                            >
+                              <div className="bento-preset-top">
+                                <strong>{lang === "zh" ? preset.nameZh : preset.name}</strong>
+                                <span className="bento-preset-tags">
+                                  {isLivePreset && (
+                                    <span className="live-pill">{t.widgetLiveBadge}</span>
+                                  )}
+                                  <span className="bento-layout-tag">{preset.layoutTag}</span>
+                                </span>
+                              </div>
+                              <span className="bento-preset-desc">
+                                {lang === "zh" ? preset.descZh : preset.desc}
+                              </span>
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
 
@@ -1393,6 +1417,11 @@ export default function App() {
                                 <div className="bento-row-head">
                                   <span className="bento-row-title">
                                     {placementLabel(slot, lang)} · Row {rIdx + 1}
+                                    {row.items.some((w) => isLiveWidgetId(w.widgetId)) && (
+                                      <span className="live-pill" style={{ marginLeft: 6 }}>
+                                        {t.widgetLiveBadge} · ACTIONS
+                                      </span>
+                                    )}
                                   </span>
                                   <div className="bento-row-head-right">
                                     <span
@@ -1430,6 +1459,9 @@ export default function App() {
                                     return (
                                       <div key={w.uid} className="loadout-chip">
                                         <span className="loadout-chip-code">{meta.code}</span>
+                                        {meta.isLive && (
+                                          <span className="live-pill">{t.widgetLiveBadge}</span>
+                                        )}
                                         <span className="loadout-chip-name">
                                           {lang === "zh" ? meta.nameZh : meta.name}
                                         </span>
@@ -1576,6 +1608,13 @@ export default function App() {
                             ? `+${mountedWidgets.length} ${t.loadoutMergedBadge}`
                             : t.paramMergedBadge}
                         </span>
+                      </div>
+                    )}
+
+                    {mountedWidgets.some((w) => isLiveWidgetId(w.widgetId)) && (
+                      <div className="loadout-merged-note live-note">
+                        <span className="live-dot" />
+                        <span>{t.liveZipIncluded}</span>
                       </div>
                     )}
 

@@ -14,12 +14,17 @@ import {
   validateSvgXml,
 } from "../widgets/catalog";
 import { colSpanToPx, renderWidgetSvg } from "../widgets/renderers";
+import { buildLiveWorkflowYaml, isLiveWidgetId } from "../widgets/workflow";
 import type {
   BentoColSpan,
+  CodingRhythmConfig,
   DevBadgeConfig,
   DevStatus,
+  GitHubStatsConfig,
   HeroAnchor,
   HeroStickerConfig,
+  LiveWeatherCondition,
+  LiveWeatherConfig,
   MediaKind,
   MiniTileConfig,
   MiniTileScene,
@@ -29,6 +34,8 @@ import type {
   PixelCompanionConfig,
   PixelRunwayConfig,
   QuoteBannerConfig,
+  RhythmPersona,
+  RssFeedConfig,
   RunwayMode,
   RunwaySpeed,
   SkillDockConfig,
@@ -41,6 +48,7 @@ import type {
 
 type StageScheme = PreviewMode | "both";
 type MarkdownMode = "standard" | "float-right";
+type CatalogFilter = "all" | "static" | "live";
 
 interface WidgetsStudioProps {
   themes: SkinTheme[];
@@ -81,6 +89,18 @@ async function copyText(text: string): Promise<void> {
   }
 }
 
+function downloadTextFile(filename: string, content: string, mime = "text/plain;charset=utf-8"): void {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 export default function WidgetsStudio({
   themes,
   activeTheme,
@@ -105,8 +125,10 @@ export default function WidgetsStudio({
   const t = COPY[lang];
   const [stageScheme, setStageScheme] = useState<StageScheme>("both");
   const [mdMode, setMdMode] = useState<MarkdownMode>("standard");
+  const [catalogFilter, setCatalogFilter] = useState<CatalogFilter>("all");
   const [stickerPreviewOnHero, setStickerPreviewOnHero] = useState(true);
   const [copiedMd, setCopiedMd] = useState(false);
+  const [copiedYaml, setCopiedYaml] = useState(false);
   const [copiedPrompt, setCopiedPrompt] = useState(false);
   const [justAdded, setJustAdded] = useState(false);
   const [heroRaw, setHeroRaw] = useState<{ light: string; dark: string }>({
@@ -125,8 +147,19 @@ export default function WidgetsStudio({
   const current = editingInstance ?? drafts[activeWidgetId];
 
   const isHeroSticker = activeWidgetId === "hero-sticker";
+  const isLiveWidget = isLiveWidgetId(activeWidgetId);
+  const svgFileBase = isLiveWidget ? `live-${activeWidgetId}` : `widget-${activeWidgetId}`;
   const showOverlayPreview = isHeroSticker && stickerPreviewOnHero && current.placement === "hero-overlay";
   const supportsFloatRight = current.colSpan === 1;
+
+  const filteredCatalog = useMemo(() => {
+    if (catalogFilter === "live") return WIDGET_CATALOG.filter((item) => item.isLive);
+    if (catalogFilter === "static") return WIDGET_CATALOG.filter((item) => !item.isLive);
+    return WIDGET_CATALOG;
+  }, [catalogFilter]);
+
+  const staticCount = useMemo(() => WIDGET_CATALOG.filter((item) => !item.isLive).length, []);
+  const liveCount = useMemo(() => WIDGET_CATALOG.filter((item) => item.isLive).length, []);
 
   useEffect(() => {
     if (!isHeroSticker) return;
@@ -222,7 +255,7 @@ export default function WidgetsStudio({
       ].join("\n");
     }
     return buildWidgetMarkdown(
-      `widget-${activeWidgetId}`,
+      svgFileBase,
       altText,
       current.colSpan,
       effectiveMdMode,
@@ -231,13 +264,23 @@ export default function WidgetsStudio({
   }, [
     showOverlayPreview,
     activeTheme.name,
-    activeWidgetId,
+    svgFileBase,
     altText,
     current.colSpan,
     current.placement,
     effectiveMdMode,
     isHeroSticker,
   ]);
+
+  const liveWorkflowYaml = useMemo(() => {
+    if (!isLiveWidget) return "";
+    return buildLiveWorkflowYaml({
+      themeId: activeTheme.id,
+      liveWidgets: [current],
+      accentOverride: current.accentOverride,
+      animated: current.animated,
+    });
+  }, [isLiveWidget, activeTheme.id, current]);
 
   const singlePrompt = useMemo(
     () => buildSingleWidgetPrompt(current, activeTheme, lang),
@@ -287,6 +330,24 @@ export default function WidgetsStudio({
     window.setTimeout(() => setCopiedMd(false), 2000);
   }
 
+  async function handleCopyYaml() {
+    if (!liveWorkflowYaml) return;
+    await copyText(liveWorkflowYaml);
+    setCopiedYaml(true);
+    window.setTimeout(() => setCopiedYaml(false), 2000);
+  }
+
+  async function handleDownloadPythonScript() {
+    try {
+      const res = await fetch("/live-widgets/generate_live_widgets.py");
+      if (!res.ok) return;
+      const py = await res.text();
+      downloadTextFile("generate_live_widgets.py", py, "text/x-python;charset=utf-8");
+    } catch {
+      /* ignore offline fetch error */
+    }
+  }
+
   async function handleCopyWidgetPrompt() {
     await copyText(singlePrompt);
     setCopiedPrompt(true);
@@ -299,9 +360,9 @@ export default function WidgetsStudio({
       window.setTimeout(() => downloadSvgFile("hero-dark.svg", mergedHeroDark), 180);
       return;
     }
-    downloadSvgFile(`widget-${activeWidgetId}-light.svg`, lightSvg);
+    downloadSvgFile(`${svgFileBase}-light.svg`, lightSvg);
     window.setTimeout(() => {
-      downloadSvgFile(`widget-${activeWidgetId}-dark.svg`, darkSvg);
+      downloadSvgFile(`${svgFileBase}-dark.svg`, darkSvg);
     }, 180);
   }
 
@@ -325,23 +386,59 @@ export default function WidgetsStudio({
         </div>
       </section>
 
-      {/* 8-Widget Catalog Grid (4x2 on desktop) */}
+      {/* Catalog Category Filter + 12-Widget Grid (8 Static DIY + 4 Live Actions) */}
+      <div className="widget-filter-bar" role="tablist" aria-label="Widget category filter">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={catalogFilter === "all"}
+          className={`widget-filter-btn ${catalogFilter === "all" ? "active" : ""}`}
+          onClick={() => setCatalogFilter("all")}
+        >
+          {t.widgetFilterAll} ({WIDGET_CATALOG.length})
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={catalogFilter === "static"}
+          className={`widget-filter-btn ${catalogFilter === "static" ? "active" : ""}`}
+          onClick={() => setCatalogFilter("static")}
+        >
+          {t.widgetFilterStatic} ({staticCount})
+        </button>
+        <button
+          type="button"
+          role="tab"
+          aria-selected={catalogFilter === "live"}
+          className={`widget-filter-btn live ${catalogFilter === "live" ? "active" : ""}`}
+          onClick={() => setCatalogFilter("live")}
+        >
+          <span className="live-dot" />
+          <span>
+            {t.widgetFilterLive} ({liveCount})
+          </span>
+        </button>
+      </div>
+
       <nav className="widget-rail" aria-label="DIY Widgets catalog">
-        {WIDGET_CATALOG.map((item) => {
+        {filteredCatalog.map((item) => {
           const active = item.id === activeWidgetId;
           const count = mountedWidgets.filter((w) => w.widgetId === item.id).length;
           return (
             <button
               key={item.id}
               type="button"
-              className={`skin-tab widget-tab ${active ? "active" : ""}`}
+              className={`skin-tab widget-tab ${active ? "active" : ""} ${item.isLive ? "is-live" : ""}`}
               onClick={() => {
                 if (editingUid) onExitEditInstance();
                 onSelectWidgetId(item.id);
               }}
             >
               <div className="skin-tab-top">
-                <span className="skin-index">{item.code}</span>
+                <span className="skin-index-group">
+                  <span className="skin-index">{item.code}</span>
+                  {item.isLive && <span className="live-pill">{t.widgetLiveBadge}</span>}
+                </span>
                 {count > 0 ? (
                   <span className="mounted-pill">
                     {t.widgetMountedBadge} ×{count}
@@ -438,7 +535,7 @@ export default function WidgetsStudio({
                     <span>
                       {showOverlayPreview
                         ? "assets/hero-light.svg (merged with sticker)"
-                        : `assets/widget-${activeWidgetId}-light.svg · ${colSpanLabel(current.colSpan, lang, meta.isStrip, meta.isSticker && current.placement === "hero-overlay")}`}
+                        : `assets/${svgFileBase}-light.svg · ${colSpanLabel(current.colSpan, lang, meta.isStrip, meta.isSticker && current.placement === "hero-overlay")}`}
                     </span>
                     <span>prefers-color-scheme: light</span>
                   </div>
@@ -463,7 +560,7 @@ export default function WidgetsStudio({
                     <span>
                       {showOverlayPreview
                         ? "assets/hero-dark.svg (merged with sticker)"
-                        : `assets/widget-${activeWidgetId}-dark.svg · ${colSpanLabel(current.colSpan, lang, meta.isStrip, meta.isSticker && current.placement === "hero-overlay")}`}
+                        : `assets/${svgFileBase}-dark.svg · ${colSpanLabel(current.colSpan, lang, meta.isStrip, meta.isSticker && current.placement === "hero-overlay")}`}
                     </span>
                     <span>prefers-color-scheme: dark</span>
                   </div>
@@ -525,7 +622,7 @@ export default function WidgetsStudio({
                 className="export-btn"
                 onClick={() =>
                   downloadSvgFile(
-                    showOverlayPreview ? "hero-light.svg" : `widget-${activeWidgetId}-light.svg`,
+                    showOverlayPreview ? "hero-light.svg" : `${svgFileBase}-light.svg`,
                     previewLightSvg
                   )
                 }
@@ -537,7 +634,7 @@ export default function WidgetsStudio({
                 className="export-btn"
                 onClick={() =>
                   downloadSvgFile(
-                    showOverlayPreview ? "hero-dark.svg" : `widget-${activeWidgetId}-dark.svg`,
+                    showOverlayPreview ? "hero-dark.svg" : `${svgFileBase}-dark.svg`,
                     previewDarkSvg
                   )
                 }
@@ -554,6 +651,48 @@ export default function WidgetsStudio({
             </div>
 
             <pre className="prompt-box compact">{markdownSnippet}</pre>
+
+            {isLiveWidget && (
+              <div className="live-workflow-box">
+                <div className="widget-export-head">
+                  <span className="section-micro-label" style={{ margin: 0 }}>
+                    {t.widgetLiveWorkflowHeading}
+                  </span>
+                  <span className="live-pill">{t.widgetLiveBadge} · ACTIONS</span>
+                </div>
+                <p className="live-workflow-hint">{t.widgetLiveWorkflowHint}</p>
+                <div className="export-actions-row">
+                  <button
+                    type="button"
+                    className={`export-btn primary ${copiedYaml ? "copied" : ""}`}
+                    onClick={handleCopyYaml}
+                  >
+                    {copiedYaml ? `✓ ${t.widgetCopiedYaml}` : t.widgetCopyYaml}
+                  </button>
+                  <button
+                    type="button"
+                    className="export-btn"
+                    onClick={() =>
+                      downloadTextFile(
+                        "gitskins-widgets.yml",
+                        liveWorkflowYaml,
+                        "text/yaml;charset=utf-8"
+                      )
+                    }
+                  >
+                    ↓ {t.widgetDownloadYaml}
+                  </button>
+                  <button
+                    type="button"
+                    className="export-btn"
+                    onClick={handleDownloadPythonScript}
+                  >
+                    ↓ {t.widgetDownloadPy}
+                  </button>
+                </div>
+                <pre className="prompt-box compact">{liveWorkflowYaml}</pre>
+              </div>
+            )}
           </div>
         </div>
 
@@ -1284,6 +1423,298 @@ export default function WidgetsStudio({
                       onChange={(e) => patchConfig<"mini-tile">({ subtitle: e.target.value })}
                     />
                   </div>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "github-stats" && (() => {
+              const cfg = current.config as GitHubStatsConfig;
+              return (
+                <div className="diy-form">
+                  <div className="diy-field">
+                    <label>{t.fieldGhUsername}</label>
+                    <input
+                      type="text"
+                      maxLength={39}
+                      value={cfg.username}
+                      onChange={(e) => patchConfig<"github-stats">({ username: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>{t.fieldGhStars}</label>
+                      <input
+                        type="number"
+                        min={0}
+                        max={999999}
+                        value={cfg.stars}
+                        onChange={(e) =>
+                          patchConfig<"github-stats">({ stars: Math.max(0, Number(e.target.value) || 0) })
+                        }
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>{t.fieldGhRepos}</label>
+                      <input
+                        type="number"
+                        min={0}
+                        max={9999}
+                        value={cfg.repos}
+                        onChange={(e) =>
+                          patchConfig<"github-stats">({ repos: Math.max(0, Number(e.target.value) || 0) })
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>{t.fieldGhFollowers}</label>
+                      <input
+                        type="number"
+                        min={0}
+                        max={999999}
+                        value={cfg.followers}
+                        onChange={(e) =>
+                          patchConfig<"github-stats">({
+                            followers: Math.max(0, Number(e.target.value) || 0),
+                          })
+                        }
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>{t.fieldGhPrs}</label>
+                      <input
+                        type="number"
+                        min={0}
+                        max={99999}
+                        value={cfg.prs}
+                        onChange={(e) =>
+                          patchConfig<"github-stats">({ prs: Math.max(0, Number(e.target.value) || 0) })
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldGhLanguages}</label>
+                    <input
+                      type="text"
+                      maxLength={100}
+                      value={cfg.languages}
+                      onChange={(e) => patchConfig<"github-stats">({ languages: e.target.value })}
+                    />
+                  </div>
+                  <p className="diy-hint-note">{t.fieldLivePreviewNote}</p>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "coding-rhythm" && (() => {
+              const cfg = current.config as CodingRhythmConfig;
+              const personas: { id: RhythmPersona; en: string; zh: string }[] = [
+                { id: "early", en: "Early", zh: "早鸟" },
+                { id: "day", en: "Day", zh: "日间" },
+                { id: "evening", en: "Evening", zh: "晚间" },
+                { id: "night", en: "Night", zh: "夜猫" },
+              ];
+              return (
+                <div className="diy-form">
+                  <div className="diy-field">
+                    <label>
+                      {t.fieldTzOffset}:{" "}
+                      <strong>
+                        UTC{cfg.tzOffset >= 0 ? `+${cfg.tzOffset}` : cfg.tzOffset}
+                      </strong>
+                    </label>
+                    <input
+                      type="range"
+                      min={-12}
+                      max={14}
+                      value={cfg.tzOffset}
+                      onChange={(e) =>
+                        patchConfig<"coding-rhythm">({ tzOffset: Number(e.target.value) })
+                      }
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldPersona}</label>
+                    <div className="seg-group cols-4">
+                      {personas.map((p) => (
+                        <button
+                          key={p.id}
+                          type="button"
+                          className={`seg-btn ${cfg.persona === p.id ? "active" : ""}`}
+                          onClick={() => patchConfig<"coding-rhythm">({ persona: p.id })}
+                        >
+                          {lang === "zh" ? p.zh : p.en}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldCronSchedule}</label>
+                    <div className="seg-group">
+                      <button
+                        type="button"
+                        className={`seg-btn ${cfg.schedule === "6h" ? "active" : ""}`}
+                        onClick={() => patchConfig<"coding-rhythm">({ schedule: "6h" })}
+                      >
+                        {lang === "zh" ? "每 6 小时" : "Every 6 hours"}
+                      </button>
+                      <button
+                        type="button"
+                        className={`seg-btn ${cfg.schedule === "daily" ? "active" : ""}`}
+                        onClick={() => patchConfig<"coding-rhythm">({ schedule: "daily" })}
+                      >
+                        {lang === "zh" ? "每日 0 点" : "Daily UTC"}
+                      </button>
+                    </div>
+                  </div>
+                  <p className="diy-hint-note">{t.fieldLivePreviewNote}</p>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "rss-feed" && (() => {
+              const cfg = current.config as RssFeedConfig;
+              return (
+                <div className="diy-form">
+                  <div className="diy-field">
+                    <label>{t.fieldRssUrl}</label>
+                    <input
+                      type="url"
+                      maxLength={180}
+                      value={cfg.feedUrl}
+                      placeholder="https://yourblog.dev/rss.xml"
+                      onChange={(e) => patchConfig<"rss-feed">({ feedUrl: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldRssSource}</label>
+                    <input
+                      type="text"
+                      maxLength={40}
+                      value={cfg.source}
+                      onChange={(e) => patchConfig<"rss-feed">({ source: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldRssPost1}</label>
+                    <input
+                      type="text"
+                      maxLength={80}
+                      value={cfg.post1}
+                      onChange={(e) => patchConfig<"rss-feed">({ post1: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldRssPost2}</label>
+                    <input
+                      type="text"
+                      maxLength={80}
+                      value={cfg.post2}
+                      onChange={(e) => patchConfig<"rss-feed">({ post2: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldRssPost3}</label>
+                    <input
+                      type="text"
+                      maxLength={80}
+                      value={cfg.post3}
+                      onChange={(e) => patchConfig<"rss-feed">({ post3: e.target.value })}
+                    />
+                  </div>
+                  <p className="diy-hint-note">{t.fieldLivePreviewNote}</p>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "live-weather" && (() => {
+              const cfg = current.config as LiveWeatherConfig;
+              const conds: { id: LiveWeatherCondition; en: string; zh: string }[] = [
+                { id: "sunny", en: "Sun", zh: "晴" },
+                { id: "cloudy", en: "Cloud", zh: "多云" },
+                { id: "rain", en: "Rain", zh: "雨" },
+                { id: "snow", en: "Snow", zh: "雪" },
+              ];
+              return (
+                <div className="diy-form">
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>{t.fieldCity}</label>
+                      <input
+                        type="text"
+                        maxLength={32}
+                        value={cfg.city}
+                        onChange={(e) => patchConfig<"live-weather">({ city: e.target.value })}
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>{t.fieldTempUnit}</label>
+                      <div className="seg-group">
+                        <button
+                          type="button"
+                          className={`seg-btn ${cfg.unit === "C" ? "active" : ""}`}
+                          onClick={() => patchConfig<"live-weather">({ unit: "C" })}
+                        >
+                          °C
+                        </button>
+                        <button
+                          type="button"
+                          className={`seg-btn ${cfg.unit === "F" ? "active" : ""}`}
+                          onClick={() => patchConfig<"live-weather">({ unit: "F" })}
+                        >
+                          °F
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldWeatherCond}</label>
+                    <div className="seg-group cols-4">
+                      {conds.map((c) => (
+                        <button
+                          key={c.id}
+                          type="button"
+                          className={`seg-btn ${cfg.condition === c.id ? "active" : ""}`}
+                          onClick={() => patchConfig<"live-weather">({ condition: c.id })}
+                        >
+                          {lang === "zh" ? c.zh : c.en}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>
+                        {t.fieldTempPreview}: <strong>{cfg.temp}°{cfg.unit}</strong>
+                      </label>
+                      <input
+                        type="range"
+                        min={cfg.unit === "F" ? -10 : -25}
+                        max={cfg.unit === "F" ? 115 : 45}
+                        value={cfg.temp}
+                        onChange={(e) =>
+                          patchConfig<"live-weather">({ temp: Number(e.target.value) })
+                        }
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>
+                        {t.fieldHumidity}: <strong>{cfg.humidity}%</strong>
+                      </label>
+                      <input
+                        type="range"
+                        min={10}
+                        max={100}
+                        value={cfg.humidity}
+                        onChange={(e) =>
+                          patchConfig<"live-weather">({ humidity: Number(e.target.value) })
+                        }
+                      />
+                    </div>
+                  </div>
+                  <p className="diy-hint-note">{t.fieldLivePreviewNote}</p>
                 </div>
               );
             })()}

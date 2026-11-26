@@ -8,7 +8,11 @@ export type WidgetId =
   | "quote-banner"
   | "hero-sticker"
   | "pixel-runway"
-  | "mini-tile";
+  | "mini-tile"
+  | "github-stats"
+  | "coding-rhythm"
+  | "rss-feed"
+  | "live-weather";
 
 /** 4-column 846px Bento grid: 1=204px, 2=418px, 3=632px, 4=846px (10px gaps) */
 export type BentoColSpan = 1 | 2 | 3 | 4;
@@ -31,6 +35,8 @@ export type RunwayMode = "patrol" | "ticker" | "wave";
 export type RunwaySpeed = "calm" | "normal" | "brisk";
 export type MiniTileScene = "coffee" | "weather" | "hourglass" | "pulse";
 export type WeatherKind = "rain" | "snow" | "sunny";
+export type LiveWeatherCondition = "sunny" | "cloudy" | "rain" | "snow";
+export type RhythmPersona = "early" | "day" | "evening" | "night";
 
 export interface PixelCompanionConfig {
   pet: PetKind;
@@ -92,6 +98,37 @@ export interface MiniTileConfig {
   subtitle: string;
 }
 
+export interface GitHubStatsConfig {
+  username: string;
+  stars: number;
+  repos: number;
+  followers: number;
+  prs: number;
+  languages: string; // e.g. "Rust:42, TypeScript:31, Python:19, Shell:8"
+}
+
+export interface CodingRhythmConfig {
+  tzOffset: number;
+  persona: RhythmPersona;
+  schedule: "6h" | "daily";
+}
+
+export interface RssFeedConfig {
+  feedUrl: string;
+  source: string;
+  post1: string;
+  post2: string;
+  post3: string;
+}
+
+export interface LiveWeatherConfig {
+  city: string;
+  unit: "C" | "F";
+  condition: LiveWeatherCondition;
+  temp: number;
+  humidity: number;
+}
+
 export type WidgetConfigMap = {
   "pixel-companion": PixelCompanionConfig;
   "now-playing": NowPlayingConfig;
@@ -101,6 +138,10 @@ export type WidgetConfigMap = {
   "hero-sticker": HeroStickerConfig;
   "pixel-runway": PixelRunwayConfig;
   "mini-tile": MiniTileConfig;
+  "github-stats": GitHubStatsConfig;
+  "coding-rhythm": CodingRhythmConfig;
+  "rss-feed": RssFeedConfig;
+  "live-weather": LiveWeatherConfig;
 };
 
 export type AnyWidgetConfig = WidgetConfigMap[WidgetId];
@@ -138,6 +179,7 @@ export interface WidgetCatalogEntry<K extends WidgetId = WidgetId> {
   supportedColSpans: BentoColSpan[];
   isStrip?: boolean;
   isSticker?: boolean;
+  isLive?: boolean;
   defaultPlacement: WidgetPlacement;
   supportedPlacements: WidgetPlacement[];
   defaultConfig: WidgetConfigMap[K];

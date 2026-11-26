@@ -1665,6 +1665,109 @@ button {
 }
 
 /* DIY Widgets Studio */
+.widget-filter-bar {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.widget-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--studio-border-strong);
+  background: var(--studio-surface);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--studio-sub);
+  transition: background-color 0.14s ease, color 0.14s ease, border-color 0.14s ease;
+}
+
+.widget-filter-btn:hover {
+  border-color: var(--studio-ink);
+  color: var(--studio-ink);
+}
+
+.widget-filter-btn.active {
+  background: var(--studio-ink);
+  border-color: var(--studio-ink);
+  color: var(--studio-surface);
+}
+
+.widget-filter-btn.live.active {
+  background: #0e7c5b;
+  border-color: #0e7c5b;
+  color: #ffffff;
+}
+
+.skin-index-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 1px 5px;
+  border: 1px solid #0e7c5b;
+  background: rgba(14, 124, 91, 0.1);
+  color: #0e7c5b;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.skin-tab.active .live-pill {
+  background: rgba(52, 211, 153, 0.18);
+  border-color: #34d399;
+  color: #34d399;
+}
+
+.bento-preset-tags {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.loadout-merged-note.live-note {
+  margin-top: 6px;
+  border-color: #0e7c5b;
+  background: rgba(14, 124, 91, 0.06);
+  color: #0e7c5b;
+}
+
+.live-workflow-box {
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--studio-border-strong);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.live-workflow-hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--studio-sub);
+  line-height: 1.5;
+}
+
+.diy-hint-note {
+  margin: 2px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--studio-muted);
+  line-height: 1.45;
+}
+
 .widget-rail {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1990,6 +2093,8 @@ button {
 }
 
 .diy-field input[type="text"],
+.diy-field input[type="number"],
+.diy-field input[type="url"],
 .diy-field textarea {
   width: 100%;
   padding: 7px 9px;
@@ -2003,6 +2108,8 @@ button {
 }
 
 .diy-field input[type="text"]:focus,
+.diy-field input[type="number"]:focus,
+.diy-field input[type="url"]:focus,
 .diy-field textarea:focus {
   outline: none;
   border-color: var(--studio-ink);

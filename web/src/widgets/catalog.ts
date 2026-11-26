@@ -1,6 +1,7 @@
 import type { Lang, SkinTheme } from "../types";
 import { packBentoRows } from "./bento";
 import { colSpanToPx } from "./renderers";
+import { RAW_LIVE_GENERATOR_URL, isLiveWidgetId } from "./workflow";
 import type {
   BentoColSpan,
   HeroAnchor,
@@ -176,6 +177,85 @@ export const WIDGET_CATALOG: WidgetCatalogEntry[] = [
       subtitle: "SHANGHAI · 19°C",
     },
   },
+  {
+    id: "github-stats",
+    code: "L01",
+    name: "Live GitHub Stats",
+    nameZh: "同皮肤 GitHub 统计仪表盘",
+    desc: "Zero-503 GitHub Actions baked metrics (Stars, Repos, Followers, PRs) + language bar.",
+    descZh: "GitHub Actions 定时刷新（永不 503）：Stars/Repos/PRs 与同皮肤语言占比条。",
+    defaultColSpan: 2,
+    supportedColSpans: [2, 3, 4],
+    isLive: true,
+    defaultPlacement: "under-cards",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      username: "Furina-he",
+      stars: 148,
+      repos: 16,
+      followers: 52,
+      prs: 38,
+      languages: "Rust:42, TypeScript:31, Python:19, Shell:8",
+    },
+  },
+  {
+    id: "coding-rhythm",
+    code: "L02",
+    name: "Coding Rhythm Histogram",
+    nameZh: "编码作息分布图",
+    desc: "Auto-updated 24h commit histogram & circadian badge (Early Bird vs Night Owl).",
+    descZh: "按个人时区定时统计 24 小时提交热力柱与早鸟/夜猫子作息标签。",
+    defaultColSpan: 2,
+    supportedColSpans: [2, 3, 4],
+    isLive: true,
+    defaultPlacement: "under-cards",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      tzOffset: 8,
+      persona: "evening",
+      schedule: "6h",
+    },
+  },
+  {
+    id: "rss-feed",
+    code: "L03",
+    name: "Latest Blog / RSS Feed",
+    nameZh: "最近博客 / RSS 动态列表",
+    desc: "Auto-syncs latest 3 articles from any RSS 2.0 or Atom blog feed into a themed card.",
+    descZh: "零依赖 XML 自动拉取任意 RSS / Atom 订阅源最新 3 篇文章并按皮肤渲染。",
+    defaultColSpan: 3,
+    supportedColSpans: [2, 3, 4],
+    isLive: true,
+    defaultPlacement: "bottom",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      feedUrl: "https://example.com/rss.xml",
+      source: "gitskins.blessc.com",
+      post1: "Designing Deterministic SVG Themes for AI Agents",
+      post2: "Zero-503 GitHub Profile Widgets via GitHub Actions",
+      post3: "4-Column 846px Bento Grids Without Wrap Glitches",
+    },
+  },
+  {
+    id: "live-weather",
+    code: "L04",
+    name: "Live City Weather Window",
+    nameZh: "城市实时像素天气窗",
+    desc: "Open-Meteo real-time temperature & animated pixel sky (sun / cloud / rain / snow).",
+    descZh: "免费免 Key 接入 Open-Meteo 实时气温，自动切换晴/多云/雨/雪像素动画。",
+    defaultColSpan: 1,
+    supportedColSpans: [1, 2],
+    isLive: true,
+    defaultPlacement: "under-hero",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      city: "Shanghai",
+      unit: "C",
+      condition: "rain",
+      temp: 19,
+      humidity: 74,
+    },
+  },
 ];
 
 export const ACCENT_PRESETS = [
@@ -347,6 +427,23 @@ export function buildSingleWidgetPrompt(
   }
 
   const sizeText = colSpanLabel(instance.colSpan, lang, meta.isStrip, meta.isSticker);
+  if (isLiveWidgetId(instance.widgetId)) {
+    if (lang === "zh") {
+      return [
+        `请为我的 GitHub 个人主页配置 GitSkins 定时自更新活挂件「${meta.nameZh}（${instance.widgetId}）」（零 503 GitHub Actions 方案）。`,
+        `- 皮肤与尺寸：${theme.nameZh}（${theme.id}），占宽 ${sizeText}，位置：${slotText}，强调色：${instance.accentOverride || "跟随主题默认"}`,
+        `- 挂件配置：${cfgJson}`,
+        `- 自动化脚本：下载零依赖脚本 ${RAW_LIVE_GENERATOR_URL} 到 scripts/generate_live_widgets.py，并添加 .github/workflows/gitskins-widgets.yml 定时生成 assets/live-${instance.widgetId}-{light,dark}.svg 并自动提交，随后用 <picture> 挂载到 README.md。`,
+      ].join("\n");
+    }
+    return [
+      `Set up the GitSkins auto-updating live widget "${meta.name}" (${instance.widgetId}) via GitHub Actions in my GitHub Profile repo.`,
+      `- Theme & width: ${theme.name} (${theme.id}), ${sizeText} at "${slotText}", accent: ${instance.accentOverride || "theme default"}`,
+      `- Config: ${cfgJson}`,
+      `- Automation: fetch ${RAW_LIVE_GENERATOR_URL} into scripts/generate_live_widgets.py, configure .github/workflows/gitskins-widgets.yml to refresh assets/live-${instance.widgetId}-{light,dark}.svg on schedule, and mount via <picture> in README.md.`,
+    ].join("\n");
+  }
+
   if (lang === "zh") {
     return [
       `请为我的 GitHub 个人主页新增一个 GitSkins DIY 小挂件「${meta.nameZh}（${instance.widgetId}）」。`,
@@ -410,9 +507,17 @@ export function buildCombinedProfilePrompt(
     sections.push(`- [${slotName}]:\n${rowLines.join("\n")}`);
   }
 
+  const hasLive = loadout.some((w) => isLiveWidgetId(w.widgetId));
+  const liveAddonZh = hasLive
+    ? `\n- 检测到包含定时活挂件（github-stats / coding-rhythm / rss-feed / live-weather）：请一并拉取零依赖脚本 ${RAW_LIVE_GENERATOR_URL} 到 scripts/generate_live_widgets.py，并配置 .github/workflows/gitskins-widgets.yml 定时刷新对应 SVG。`
+    : "";
+  const liveAddonEn = hasLive
+    ? `\n- Live auto-updating widgets detected: also fetch ${RAW_LIVE_GENERATOR_URL} to scripts/generate_live_widgets.py and add .github/workflows/gitskins-widgets.yml to refresh those SVGs on schedule.`
+    : "";
+
   if (lang === "zh") {
-    return `${basePrompt}\n\n### 附加 DIY Bento 挂件拼装方案（4 列 846px 栅格，160px 等高对齐）\n所有挂件继承「${theme.nameZh}」Light/Dark 语义令牌；同一行含多个挂件时直接合成为单张 846×160 的整行 SVG（width="100%"）避免 GitHub 换行错位：\n${sections.join("\n")}`;
+    return `${basePrompt}\n\n### 附加 DIY Bento 挂件拼装方案（4 列 846px 栅格，160px 等高对齐）\n所有挂件继承「${theme.nameZh}」Light/Dark 语义令牌；同一行含多个挂件时直接合成为单张 846×160 的整行 SVG（width="100%"）避免 GitHub 换行错位：\n${sections.join("\n")}${liveAddonZh}`;
   }
 
-  return `${basePrompt}\n\n### Mounted DIY Bento Widgets (4-column 846px grid, 160px uniform row height)\nStyle all widgets with "${theme.name}" Light/Dark semantic tokens; compose any multi-widget row into a single 846x160 row SVG (width="100%") to avoid GitHub line-wrap drift:\n${sections.join("\n")}`;
+  return `${basePrompt}\n\n### Mounted DIY Bento Widgets (4-column 846px grid, 160px uniform row height)\nStyle all widgets with "${theme.name}" Light/Dark semantic tokens; compose any multi-widget row into a single 846x160 row SVG (width="100%") to avoid GitHub line-wrap drift:\n${sections.join("\n")}${liveAddonEn}`;
 }

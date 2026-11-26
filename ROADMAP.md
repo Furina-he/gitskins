@@ -71,15 +71,16 @@ GitSkins 正在从「4 套精选 GitHub 主页主题库」演进为 **「面向 
 
 ## v0.4 — GitHub Actions 定时「活挂件」（零 503 动态数据套件）
 
+> 规范文档：[docs/live-widgets.md](docs/live-widgets.md)  
 > 替代容易限流、503 且风格不统一的第三方在线统计卡片：由用户仓库内的 GitHub Actions 定时运行同款 Python 脚本生成并提交 SVG，零服务器维护成本、稳定可用且 100% 匹配 GitSkins 皮肤风格。
 
-- [ ] 标准化活挂件生成器与 `.github/workflows/gitskins-widgets.yml` 模板
-- [ ] 首批主题联动活挂件：
-  - [ ] **同皮肤 GitHub 统计仪表盘**（Stars / Commits / PRs / 语言分布条）
-  - [ ] **编码作息分布图**（早鸟 vs 夜猫子提交时段图）
-  - [ ] **最近博客 / RSS 动态列表**（自动拉取个人博客或订阅源最新文章）
-  - [ ] **城市像素天气窗**（按目标城市每日天气自动切换晴 / 雨 / 雪动画）
-  - [ ] **WakaTime / Spotify 最近动态卡片**
+- [x] 标准化零依赖 Python 活挂件生成器（`live-widgets/generate_live_widgets.py`）与 `.github/workflows/gitskins-widgets.yml` 模板，自动接入 `build_all.py` 32 张严格 XML 校验与一键 ZIP 打包
+- [x] 首批 4 款主题联动活挂件（`L01`–`L04`，支持 4 列 Bento 栅格与网页工坊 Workflow YAML 导出）：
+  - [x] **同皮肤 GitHub 统计仪表盘（`L01`）**（Stars / Repos / Followers / Merged PRs / 语言分布条）
+  - [x] **编码作息分布图（`L02`）**（24 小时提交热力柱 + 早鸟 / 夜猫子作息标签）
+  - [x] **最近博客 / RSS 动态列表（`L03`）**（零依赖 XML 解析 RSS 2.0 / Atom 订阅源最新 3 篇）
+  - [x] **城市像素天气窗（`L04`）**（免费免 Key 接入 Open-Meteo 实时气温，自动切换晴 / 多云 / 雨 / 雪像素动画）
+- [ ] 第二批扩展活挂件：**WakaTime / Spotify 最近动态卡片**（需可选个人 API Token / Secret）
 
 ---
 

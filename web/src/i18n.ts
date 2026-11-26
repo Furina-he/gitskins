@@ -157,6 +157,38 @@ export const COPY: Record<
     bentoColSpanLabel: string;
     bentoQuickFillTitle: string;
     bentoClose: string;
+    // v0.4 Live Auto-Updating Widgets (GitHub Actions)
+    widgetFilterAll: string;
+    widgetFilterStatic: string;
+    widgetFilterLive: string;
+    widgetLiveBadge: string;
+    widgetLiveWorkflowHeading: string;
+    widgetLiveWorkflowHint: string;
+    widgetCopyYaml: string;
+    widgetCopiedYaml: string;
+    widgetDownloadYaml: string;
+    widgetDownloadPy: string;
+    liveZipIncluded: string;
+    fieldGhUsername: string;
+    fieldGhStars: string;
+    fieldGhRepos: string;
+    fieldGhFollowers: string;
+    fieldGhPrs: string;
+    fieldGhLanguages: string;
+    fieldLivePreviewNote: string;
+    fieldTzOffset: string;
+    fieldPersona: string;
+    fieldCronSchedule: string;
+    fieldRssUrl: string;
+    fieldRssSource: string;
+    fieldRssPost1: string;
+    fieldRssPost2: string;
+    fieldRssPost3: string;
+    fieldCity: string;
+    fieldTempUnit: string;
+    fieldWeatherCond: string;
+    fieldTempPreview: string;
+    fieldHumidity: string;
   }
 > = {
   en: {
@@ -224,7 +256,7 @@ export const COPY: Record<
     widgetsHeroTitleA: "Craft custom widgets.",
     widgetsHeroTitleB: "Place them anywhere on your profile.",
     widgetsHeroLead:
-      "8 skin-adaptive form factors: Hero corner stickers, 846x48 animated patrol runways, 204x204 mini tiles, and classic cards. Export standalone or merged Hero SVGs directly, or mount into your Loadout prompt.",
+      "12 skin-adaptive widgets: 8 Static DIY blocks (Hero stickers, patrol runways, mini tiles, cards) + 4 Zero-503 GitHub Actions Live Widgets (Stats, Coding Rhythm, RSS Blog, City Weather).",
     widgetMountedBadge: "MOUNTED",
     widgetMountBtn: "Mount to Profile Loadout",
     widgetMountedBtn: "Mounted in Loadout (Remove)",
@@ -327,6 +359,38 @@ export const COPY: Record<
     bentoColSpanLabel: "Bento Width (4-Col 846px Grid)",
     bentoQuickFillTitle: "Pick a widget to fill remaining",
     bentoClose: "Close",
+    widgetFilterAll: "All Widgets",
+    widgetFilterStatic: "Static DIY",
+    widgetFilterLive: "Live Actions",
+    widgetLiveBadge: "LIVE",
+    widgetLiveWorkflowHeading: "GitHub Actions Auto-Update (Zero-503)",
+    widgetLiveWorkflowHint:
+      "Commit .github/workflows/gitskins-widgets.yml to your profile repo. Actions runs a zero-dependency Python stdlib script on schedule and refreshes assets/live-*.svg.",
+    widgetCopyYaml: "Copy Workflow YAML",
+    widgetCopiedYaml: "YAML Copied",
+    widgetDownloadYaml: "Download .yml",
+    widgetDownloadPy: "Download Python Script",
+    liveZipIncluded: "ZIP bundles .github/workflows/gitskins-widgets.yml + Python generator",
+    fieldGhUsername: "GitHub Username",
+    fieldGhStars: "Preview Stars",
+    fieldGhRepos: "Preview Repos",
+    fieldGhFollowers: "Preview Followers",
+    fieldGhPrs: "Preview Merged PRs",
+    fieldGhLanguages: "Preview Languages (Name:Pct, ...)",
+    fieldLivePreviewNote: "Preview values only — GitHub Actions fetches real API data automatically on schedule.",
+    fieldTzOffset: "UTC Timezone Offset",
+    fieldPersona: "Preview Circadian Pattern",
+    fieldCronSchedule: "Actions Refresh Schedule",
+    fieldRssUrl: "RSS 2.0 / Atom Feed URL",
+    fieldRssSource: "Blog / Feed Label",
+    fieldRssPost1: "Preview Entry #1",
+    fieldRssPost2: "Preview Entry #2",
+    fieldRssPost3: "Preview Entry #3",
+    fieldCity: "Target City (Open-Meteo)",
+    fieldTempUnit: "Temperature Unit",
+    fieldWeatherCond: "Preview Sky Condition",
+    fieldTempPreview: "Preview Temp",
+    fieldHumidity: "Preview Humidity",
   },
   zh: {
     subtitle: "面向 AI 编程 Agent 的 GitHub 主页主题与挂件工坊",
@@ -393,7 +457,7 @@ export const COPY: Record<
     widgetsHeroTitleA: "自由 DIY 小挂件，",
     widgetsHeroTitleB: "任意位置、多种形态自动换肤。",
     widgetsHeroLead:
-      "8 款主题联动挂件：覆盖 Hero 角落贴纸、846×48 动态巡逻跑道、204² 迷你小方砖与经典卡片。免 AI 即可下载独立或合成版 Hero SVG，也可一键拼进主页套装提示词。",
+      "12 款主题联动挂件：8 款纯前端 DIY 积木（Hero 角落贴纸、巡逻跑道、迷你方砖与卡片）+ 4 款零 503 GitHub Actions 定时活挂件（同皮肤 GitHub 统计、编码作息、RSS 博客、实时城市天气窗）。",
     widgetMountedBadge: "已挂载",
     widgetMountBtn: "挂载到主页套装",
     widgetMountedBtn: "已挂载到套装（点击移出）",
@@ -496,5 +560,37 @@ export const COPY: Record<
     bentoColSpanLabel: "4 列 Bento 占宽（846px 栅格）",
     bentoQuickFillTitle: "挑选挂件填满当前行剩余",
     bentoClose: "收起",
+    widgetFilterAll: "全部挂件",
+    widgetFilterStatic: "纯前端 DIY",
+    widgetFilterLive: "Actions 活挂件",
+    widgetLiveBadge: "定时活",
+    widgetLiveWorkflowHeading: "GitHub Actions 定时自更新（零 503）",
+    widgetLiveWorkflowHint:
+      "将 .github/workflows/gitskins-widgets.yml 提交到你的主页仓库，Actions 会按计划运行零依赖 Python 脚本自动更新 assets/live-*.svg。",
+    widgetCopyYaml: "复制 Workflow YAML",
+    widgetCopiedYaml: "已复制 YAML",
+    widgetDownloadYaml: "下载 .yml",
+    widgetDownloadPy: "下载 Python 脚本",
+    liveZipIncluded: "导出 ZIP 将自动打包 Actions 工作流与 Python 生成脚本",
+    fieldGhUsername: "GitHub 用户名",
+    fieldGhStars: "预览 Stars",
+    fieldGhRepos: "预览公开仓库数",
+    fieldGhFollowers: "预览粉丝数",
+    fieldGhPrs: "预览合并 PR",
+    fieldGhLanguages: "语言占比预览（语言:百分比）",
+    fieldLivePreviewNote: "上方数值仅用于网页预览，启用 GitHub Actions 后会自动拉取你的真实 API 数据。",
+    fieldTzOffset: "所在时区偏移（UTC）",
+    fieldPersona: "预览作息曲线",
+    fieldCronSchedule: "Actions 定时刷新频率",
+    fieldRssUrl: "RSS 2.0 / Atom 订阅源 URL",
+    fieldRssSource: "博客 / 站点名称",
+    fieldRssPost1: "预览文章 #1",
+    fieldRssPost2: "预览文章 #2",
+    fieldRssPost3: "预览文章 #3",
+    fieldCity: "目标城市（Open-Meteo 实时天气）",
+    fieldTempUnit: "温度单位",
+    fieldWeatherCond: "预览天气动画",
+    fieldTempPreview: "预览气温",
+    fieldHumidity: "预览湿度",
   },
 };
