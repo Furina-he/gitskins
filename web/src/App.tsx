@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import RepoSkinsStudio from "./components/RepoSkinsStudio";
 import WidgetsStudio, { svgToDataUri } from "./components/WidgetsStudio";
 import { COPY } from "./i18n";
+import { renderGitSkinsBadgeSvg } from "./repo/renderRepoSkin";
 import {
   GitHubProfileError,
   createDemoProfileData,
@@ -48,7 +50,7 @@ import type {
   WidgetPlacement,
 } from "./widgets/types";
 
-type ActiveTab = "skins" | "widgets";
+type ActiveTab = "skins" | "repo" | "widgets";
 type RowSlot = Exclude<WidgetPlacement, "hero-overlay">;
 
 interface GhostFillTarget {
@@ -183,9 +185,12 @@ function BrandMark() {
 export default function App() {
   const [themes, setThemes] = useState<SkinTheme[]>([]);
   const [activeId, setActiveId] = useState<string>("swiss-bauhaus-pixel");
-  const [activeTab, setActiveTab] = useState<ActiveTab>(() =>
-    typeof window !== "undefined" && window.location.hash === "#widgets" ? "widgets" : "skins"
-  );
+  const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
+    if (typeof window === "undefined") return "skins";
+    if (window.location.hash === "#widgets") return "widgets";
+    if (window.location.hash === "#repo") return "repo";
+    return "skins";
+  });
   const [previewMode, setPreviewMode] = useState<PreviewMode>("light");
   const [lang, setLang] = useState<Lang>(detectInitialLang);
   const [promptKind, setPromptKind] = useState<PromptKind>("quick");
@@ -233,6 +238,9 @@ export default function App() {
         const hash = window.location.hash.replace("#", "").trim();
         if (hash === "widgets") {
           setActiveTab("widgets");
+          if (data.length > 0) setActiveId(data[0].id);
+        } else if (hash === "repo") {
+          setActiveTab("repo");
           if (data.length > 0) setActiveId(data[0].id);
         } else if (hash && data.some((t) => t.id === hash)) {
           setActiveId(hash);
@@ -315,7 +323,11 @@ export default function App() {
     window.history.replaceState(
       null,
       "",
-      next === "widgets" ? "#widgets" : `#${activeTheme?.id ?? "swiss-bauhaus-pixel"}`
+      next === "widgets"
+        ? "#widgets"
+        : next === "repo"
+          ? "#repo"
+          : `#${activeTheme?.id ?? "swiss-bauhaus-pixel"}`
     );
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -761,6 +773,15 @@ export default function App() {
               <button
                 type="button"
                 role="tab"
+                aria-selected={activeTab === "repo"}
+                className={`studio-nav-btn ${activeTab === "repo" ? "active" : ""}`}
+                onClick={() => switchTab("repo")}
+              >
+                {t.navRepo}
+              </button>
+              <button
+                type="button"
+                role="tab"
                 aria-selected={activeTab === "widgets"}
                 className={`studio-nav-btn ${activeTab === "widgets" ? "active" : ""}`}
                 onClick={() => switchTab("widgets")}
@@ -801,7 +822,16 @@ export default function App() {
       </header>
 
       <main className="shell" id="top">
-        {activeTab === "widgets" && activeTheme ? (
+        {activeTab === "repo" && activeTheme ? (
+          <RepoSkinsStudio
+            themes={themes}
+            activeTheme={activeTheme}
+            onSelectTheme={(id) => selectTheme(id, false)}
+            previewMode={previewMode}
+            onChangePreviewMode={setPreviewMode}
+            lang={lang}
+          />
+        ) : activeTab === "widgets" && activeTheme ? (
           <WidgetsStudio
             themes={themes}
             activeTheme={activeTheme}
@@ -1146,6 +1176,25 @@ export default function App() {
 
                       {/* Slot 4: Bottom Footer */}
                       {renderSlotBento("bottom")}
+
+                      {overrides.showBadge && (
+                        <div className="gh-badge-footer">
+                          <a href="https://gitskins.blessc.com" target="_blank" rel="noreferrer">
+                            <img
+                              src={svgToDataUri(
+                                renderGitSkinsBadgeSvg(
+                                  activeTheme.id,
+                                  previewMode,
+                                  activeTheme.tokens[previewMode],
+                                  overrides.accentOverride
+                                )
+                              )}
+                              alt="Styled with GitSkins"
+                              height={32}
+                            />
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
 
@@ -1779,6 +1828,30 @@ export default function App() {
                           ))}
                         </div>
                       </div>
+
+                      <div className="diy-field">
+                        <label>{t.gitskinsBadgeLabel}</label>
+                        <div className="seg-group">
+                          <button
+                            type="button"
+                            className={`seg-btn ${!overrides.showBadge ? "active" : ""}`}
+                            onClick={() =>
+                              setOverrides((prev) => ({ ...prev, showBadge: false }))
+                            }
+                          >
+                            {lang === "zh" ? "隐藏" : "Off"}
+                          </button>
+                          <button
+                            type="button"
+                            className={`seg-btn ${overrides.showBadge ? "active" : ""}`}
+                            onClick={() =>
+                              setOverrides((prev) => ({ ...prev, showBadge: true }))
+                            }
+                          >
+                            {lang === "zh" ? "显示尾标" : "Show Badge"}
+                          </button>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -1939,6 +2012,16 @@ export default function App() {
         <footer className="footer">
           <span>{t.footerNote}</span>
           <div className="footer-links">
+            <a href="/skill/SKILL.md" target="_blank" rel="noreferrer">
+              SKILL.md ↗
+            </a>
+            <a
+              href="https://github.com/Furina-he/gitskins/tree/main/cli"
+              target="_blank"
+              rel="noreferrer"
+            >
+              CLI ↗
+            </a>
             <a
               href="https://github.com/Furina-he/gitskins/blob/main/ROADMAP.md"
               target="_blank"

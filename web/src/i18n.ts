@@ -5,6 +5,7 @@ export const COPY: Record<
   {
     subtitle: string;
     navSkins: string;
+    navRepo: string;
     navWidgets: string;
     heroTitleA: string;
     heroTitleB: string;
@@ -189,11 +190,39 @@ export const COPY: Record<
     fieldWeatherCond: string;
     fieldTempPreview: string;
     fieldHumidity: string;
+    // v0.5 Repo Skins, Badge & Agent Skill / CLI
+    repoHeroTitleA: string;
+    repoHeroTitleB: string;
+    repoHeroLead: string;
+    repoTryPlaceholder: string;
+    repoTryBtn: string;
+    repoLivePrefix: string;
+    repoErrInvalid: string;
+    repoErrNotFound: string;
+    repoInspectorSub: string;
+    repoCopyPrompt: string;
+    repoExportZipBtn: string;
+    repoCliHeading: string;
+    repoCliCopy: string;
+    repoCliCopied: string;
+    repoOpenSkill: string;
+    repoOpenCliSource: string;
+    repoFeatureCount: string;
+    repoArchToggle: string;
+    gitskinsBadgeLabel: string;
+    repoFieldsHeading: string;
+    repoFieldName: string;
+    repoFieldVersion: string;
+    repoFieldTagline: string;
+    repoFieldInstall: string;
+    repoFieldArch: string;
+    repoFieldFeatures: string;
   }
 > = {
   en: {
     subtitle: "Agent-ready GitHub profile themes & DIY widgets",
-    navSkins: "Theme Skins",
+    navSkins: "Profile Skins",
+    navRepo: "Repo Skins",
     navWidgets: "DIY Widgets",
     heroTitleA: "Copy one prompt.",
     heroTitleB: "Re-skin your GitHub profile.",
@@ -391,10 +420,39 @@ export const COPY: Record<
     fieldWeatherCond: "Preview Sky Condition",
     fieldTempPreview: "Preview Temp",
     fieldHumidity: "Preview Humidity",
+    repoHeroTitleA: "Same sharp aesthetics.",
+    repoHeroTitleB: "Now for your open-source repo README.",
+    repoHeroLead:
+      "Turn any GitHub repository into a cohesive 846px Light & Dark visual spec: Project Hero Banner, Quick Install strip, Feature Cards, Architecture Pipeline, and an optional GitSkins badge.",
+    repoTryPlaceholder: "Try any public repo (e.g. Furina-he/gitskins, vitejs/vite)...",
+    repoTryBtn: "Load Repo",
+    repoLivePrefix: "Live Repo",
+    repoErrInvalid: "Enter a valid owner/repo slug or GitHub repository URL.",
+    repoErrNotFound: "Public repository not found. Check owner/repo spelling.",
+    repoInspectorSub:
+      "Generate Light & Dark SVGs for your project repository via Agent Prompt, zero-dependency CLI, or one-click ZIP.",
+    repoCopyPrompt: "Copy Repo Agent Prompt",
+    repoExportZipBtn: "Export Repo ZIP (SVGs + README)",
+    repoCliHeading: "Agent-Native CLI & Standard SKILL.md",
+    repoCliCopy: "Copy CLI Command",
+    repoCliCopied: "CLI Copied",
+    repoOpenSkill: "Agent SKILL.md",
+    repoOpenCliSource: "CLI Source",
+    repoFeatureCount: "Feature Cards",
+    repoArchToggle: "Arch Diagram",
+    gitskinsBadgeLabel: "GitSkins Badge",
+    repoFieldsHeading: "Repository Modules",
+    repoFieldName: "Repository Name",
+    repoFieldVersion: "Version / Ref",
+    repoFieldTagline: "One-Line Tagline",
+    repoFieldInstall: "Quick Install Command",
+    repoFieldArch: "Architecture Flow (Title | Sub -> ...)",
+    repoFieldFeatures: "Feature Cards (Tag + Title)",
   },
   zh: {
     subtitle: "面向 AI 编程 Agent 的 GitHub 主页主题与挂件工坊",
-    navSkins: "主题皮肤",
+    navSkins: "主页皮肤",
+    navRepo: "仓库皮肤",
     navWidgets: "DIY 挂件工坊",
     heroTitleA: "复制一条提示词，",
     heroTitleB: "给你的 GitHub 主页换皮肤。",
@@ -592,5 +650,33 @@ export const COPY: Record<
     fieldWeatherCond: "预览天气动画",
     fieldTempPreview: "预览气温",
     fieldHumidity: "预览湿度",
+    repoHeroTitleA: "同款高辨识度美学，",
+    repoHeroTitleB: "现在延伸到你的开源仓库 README。",
+    repoHeroLead:
+      "一键将 4 大视觉体系套用到项目仓库：846px 项目海报 Banner、快速安装命令条、特性卡片矩阵、架构流程图与可选 Styled with GitSkins 尾标，支持真仓库拉取、CLI 脚手架与 ZIP 打包。",
+    repoTryPlaceholder: "输入公开仓库 owner/repo（如 Furina-he/gitskins、vitejs/vite）...",
+    repoTryBtn: "拉取仓库",
+    repoLivePrefix: "实时仓库",
+    repoErrInvalid: "请输入合法的 owner/repo 或 GitHub 仓库链接。",
+    repoErrNotFound: "未找到该公开仓库，请检查拼写后重试。",
+    repoInspectorSub:
+      "支持复制 Agent 提示词让 AI 读取本地仓库自动生成，也可直接打包 ZIP 或使用零依赖 CLI 一键初始化。",
+    repoCopyPrompt: "一键复制仓库 Agent 提示词",
+    repoExportZipBtn: "一键打包仓库 ZIP（SVG + README）",
+    repoCliHeading: "Agent 原生 CLI 与标准 SKILL.md",
+    repoCliCopy: "复制 CLI 命令",
+    repoCliCopied: "已复制 CLI",
+    repoOpenSkill: "查看 SKILL.md",
+    repoOpenCliSource: "CLI 源码",
+    repoFeatureCount: "特性卡片数",
+    repoArchToggle: "架构流程图",
+    gitskinsBadgeLabel: "GitSkins 尾标",
+    repoFieldsHeading: "仓库内容定制",
+    repoFieldName: "项目名称",
+    repoFieldVersion: "版本 / 分支",
+    repoFieldTagline: "项目一句话简介",
+    repoFieldInstall: "快速安装命令",
+    repoFieldArch: "架构流程（阶段 | 说明 -> 下一阶段）",
+    repoFieldFeatures: "特性卡片（角标 + 标题）",
   },
 };

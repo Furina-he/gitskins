@@ -1768,6 +1768,36 @@ button {
   line-height: 1.45;
 }
 
+.gh-badge-footer {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.gh-badge-footer img {
+  display: block;
+  height: 32px;
+  width: auto;
+}
+
+.repo-feat-editor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.repo-feat-editor-row {
+  display: grid;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 6px;
+}
+
+.repo-feat-tag-input {
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  text-transform: uppercase;
+}
+
 .widget-rail {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -2181,7 +2211,7 @@ button {
   .studio-nav {
     flex: 1 1 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .hero-band {
     grid-template-columns: 1fr;

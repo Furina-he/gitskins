@@ -1,4 +1,5 @@
 import type { Lang, PreviewMode, SkinTheme, ThemeTokens } from "../types";
+import { renderGitSkinsBadgeSvg } from "../repo/renderRepoSkin";
 import { packBentoRows, renderCompositeBentoRowSvg } from "../widgets/bento";
 import { mergeStickerIntoHeroSvg } from "../widgets/catalog";
 import { renderWidgetSvg } from "../widgets/renderers";
@@ -35,6 +36,7 @@ export interface ProfileOverrides {
   cardCount: 2 | 4 | 6;
   animated: boolean;
   copyLang: CopyLangPref;
+  showBadge: boolean;
 }
 
 export const DEFAULT_OVERRIDES: ProfileOverrides = {
@@ -42,6 +44,7 @@ export const DEFAULT_OVERRIDES: ProfileOverrides = {
   cardCount: 4,
   animated: true,
   copyLang: "auto",
+  showBadge: false,
 };
 
 export function hasActiveOverrides(o: ProfileOverrides): boolean {
@@ -49,7 +52,8 @@ export function hasActiveOverrides(o: ProfileOverrides): boolean {
     Boolean(o.accentOverride) ||
     o.cardCount !== 4 ||
     !o.animated ||
-    o.copyLang !== "auto"
+    o.copyLang !== "auto" ||
+    o.showBadge
   );
 }
 
@@ -928,6 +932,29 @@ export function buildProfileZipEntries(params: {
     }
   }
 
+  if (overrides.showBadge) {
+    entries.push(
+      {
+        path: "assets/gitskins-badge-light.svg",
+        content: renderGitSkinsBadgeSvg(
+          theme.id,
+          "light",
+          theme.tokens.light,
+          overrides.accentOverride
+        ),
+      },
+      {
+        path: "assets/gitskins-badge-dark.svg",
+        content: renderGitSkinsBadgeSvg(
+          theme.id,
+          "dark",
+          theme.tokens.dark,
+          overrides.accentOverride
+        ),
+      }
+    );
+  }
+
   const readmeLines: string[] = [
     `<!-- Generated with GitSkins (https://gitskins.blessc.com) · Theme: ${theme.id} -->`,
     ...(liveWidgets.length > 0
@@ -976,6 +1003,19 @@ export function buildProfileZipEntries(params: {
     "",
     ...bottomSlot.markdownLines,
     "",
+    ...(overrides.showBadge
+      ? [
+          `<p align="right">`,
+          `  <a href="https://gitskins.blessc.com">`,
+          `    <picture>`,
+          `      <source media="(prefers-color-scheme: dark)" srcset="./assets/gitskins-badge-dark.svg">`,
+          `      <img src="./assets/gitskins-badge-light.svg" alt="Styled with GitSkins" height="32">`,
+          `    </picture>`,
+          `  </a>`,
+          `</p>`,
+          "",
+        ]
+      : []),
   ];
 
   entries.unshift({
@@ -1032,6 +1072,13 @@ export function appendParametricOverridesToPrompt(
       lang === "zh"
         ? `- 主页文案语言：${labelMap[overrides.copyLang].zh}`
         : `- README Copy Language: ${labelMap[overrides.copyLang].en}`
+    );
+  }
+  if (overrides.showBadge) {
+    notes.push(
+      lang === "zh"
+        ? `- 极简尾标：在 README 底部右侧挂载同皮肤 Styled with GitSkins 尾标（216×32，assets/gitskins-badge-{light,dark}.svg）`
+        : `- Footer Badge: include the theme-matched 216x32 "Styled with GitSkins" footer badge (assets/gitskins-badge-{light,dark}.svg)`
     );
   }
 

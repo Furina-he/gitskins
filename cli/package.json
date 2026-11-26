@@ -1,0 +1,27 @@
+{
+  "name": "gitskins",
+  "version": "0.5.0",
+  "description": "Zero-dependency CLI for GitSkins — scaffold Light & Dark GitHub Profile Skins, Repo Skins, live Actions widgets, and validate SVGs.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "gitskins": "./gitskins.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "github-profile",
+    "readme",
+    "svg",
+    "themes",
+    "ai-agents",
+    "gitskins"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Furina-he/gitskins.git",
+    "directory": "cli"
+  },
+  "homepage": "https://gitskins.blessc.com"
+}

@@ -86,13 +86,17 @@ GitSkins 正在从「4 套精选 GitHub 主页主题库」演进为 **「面向 
 
 ## v0.5 — 生态扩展：仓库 README 皮肤 & Agent Skill / CLI
 
-- [ ] **Repo Skins（开源项目仓库 README 皮肤）**：
-  - 将同一套 4 大视觉体系延伸到项目仓库：Project Hero Banner、特性卡片、安装命令条与极简架构示意卡
-- [ ] **Agent-Native 分发升级**：
-  - 提供标准 Agent Skill（`SKILL.md`）与轻量 CLI（如 `npx gitskins init --theme <id> --widgets <list>`），让 Claude Code / Codex / Cursor / Antigravity 直接拉取规范、生成并校验 SVG
-- [ ] **持续扩充主题与社区共创**：
+> 规范文档：[docs/repo-skins.md](docs/repo-skins.md)
+
+- [x] **Repo Skins（开源项目仓库 README 皮肤）**：
+  - 将同一套 4 大视觉体系延伸到项目仓库：Project Hero Banner（`846×248`）、快速安装命令条（`846×72`）、特性卡片矩阵（`417×152`）与架构流程图（`846×168`）
+  - 支持公开 GitHub 仓库（`owner/repo`）零后端实时拉取、一键复制仓库 Agent 提示词与一键打包仓库 ZIP
+- [x] **Agent-Native 分发升级**：
+  - 提供标准 Agent Skill（[skill/gitskins/SKILL.md](skill/gitskins/SKILL.md)，同步上线 `/skill/SKILL.md`）
+  - 提供零依赖 Node 18+ CLI（[cli/gitskins.mjs](cli/gitskins.mjs)：`list` / `init --mode repo|profile` / `validate`），让 Claude Code / Codex / Cursor / Antigravity 直接拉取规范、脚手架生成并严格校验 SVG
+- [x] 提供可选的极简 `Styled with GitSkins` 尾标挂件（`216×32` 双主题同皮肤适配，支持主页与仓库 README 自由开关）
+- [ ] **持续扩充主题与社区共创（v0.6+）**：
   - 新增更多高辨识度皮肤（如 16-bit Pixel RPG、Bento Grid、印章水墨等）
-  - 提供可选的极简 `Styled with GitSkins` 尾标挂件
 
 ---
 

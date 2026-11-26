@@ -14,8 +14,10 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parent.parent
 THEMES_DIR = ROOT / "themes"
 LIVE_WIDGETS_DIR = ROOT / "live-widgets"
+SKILL_FILE = ROOT / "skill" / "gitskins" / "SKILL.md"
 WEB_THEMES_DIR = ROOT / "web" / "public" / "themes"
 WEB_LIVE_WIDGETS_DIR = ROOT / "web" / "public" / "live-widgets"
+WEB_SKILL_DIR = ROOT / "web" / "public" / "skill"
 REPO_RAW_BASE = "https://raw.githubusercontent.com/Furina-he/gitskins/main"
 REPO_WEB_BASE = "https://github.com/Furina-he/gitskins/blob/main"
 HEX_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
@@ -174,6 +176,12 @@ def main() -> None:
         if wf_tpl.exists():
             shutil.copy2(wf_tpl, WEB_LIVE_WIDGETS_DIR / "gitskins-widgets.yml")
         print(f"Synced live-widgets generator into {WEB_LIVE_WIDGETS_DIR}")
+
+    # Sync standard Agent Skill (SKILL.md) into web/public/skill/
+    if SKILL_FILE.exists():
+        WEB_SKILL_DIR.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(SKILL_FILE, WEB_SKILL_DIR / "SKILL.md")
+        print(f"Synced Agent SKILL.md into {WEB_SKILL_DIR}")
 
 
 if __name__ == "__main__":
