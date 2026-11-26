@@ -1,0 +1,233 @@
+import type { PetKind } from "./types";
+
+export interface SpriteSet {
+  open: string[];
+  closed: string[];
+  palette: (accent: string, secondary: string, highlight: string) => Record<string, string>;
+}
+
+// 14x12 crisp pixel-art sprites (every row strictly 14 chars)
+export const PET_SPRITES: Record<PetKind, SpriteSet> = {
+  cat: {
+    open: [
+      "..OO......OO..",
+      ".OOOO....OOOO.",
+      ".OOBOOOOOOBOO.",
+      ".OOOOOOOOOOOO.",
+      ".OOKKOOOOOKKO.",
+      ".OOKWOOOOOKWO.",
+      ".OOOOOPPPPOOO.",
+      "..OOWWWWWWO...",
+      "...AAAAAAAA...",
+      "..OOOOOOOOOO..",
+      "..OO..OO..OO..",
+      "..............",
+    ],
+    closed: [
+      "..............",
+      "..OO......OO..",
+      ".OOOO....OOOO.",
+      ".OOBOOOOOOBOO.",
+      ".OOOOOOOOOOOO.",
+      ".OOKKOOOOOKKO.",
+      ".OOOOOPPPPOOO.",
+      "..OOWWWWWWO...",
+      "...AAAAAAAA...",
+      "..OOOOOOOOOO..",
+      "..OO..OO..OO..",
+      "..............",
+    ],
+    palette: (accent, _sec, highlight) => ({
+      O: "#F59E0B",
+      B: "#FDE68A",
+      K: "#111214",
+      W: "#FFFFFF",
+      P: "#FB7185",
+      A: accent,
+      H: highlight,
+    }),
+  },
+  bot: {
+    open: [
+      "......AA......",
+      "......SS......",
+      "..MMMMMMMMMM..",
+      ".MDDDDDDDDDDM.",
+      ".MDAAADAAADDM.",
+      ".MDAWADAWADDM.",
+      ".MDDDDDDDDDDM.",
+      ".MD..HHHH..DM.",
+      "..MMMMMMMMMM..",
+      "...MM.AA.MM...",
+      "..MMM....MMM..",
+      "..............",
+    ],
+    closed: [
+      "......HH......",
+      "......SS......",
+      "..MMMMMMMMMM..",
+      ".MDDDDDDDDDDM.",
+      ".MDDDDDDDDDDM.",
+      ".MDAAADAAADDM.",
+      ".MDDDDDDDDDDM.",
+      ".MD..HHHH..DM.",
+      "..MMMMMMMMMM..",
+      "...MM.AA.MM...",
+      "..MMM....MMM..",
+      "..............",
+    ],
+    palette: (accent, secondary, highlight) => ({
+      M: "#64748B",
+      S: secondary,
+      D: "#0F172A",
+      A: accent,
+      W: "#FFFFFF",
+      H: highlight,
+    }),
+  },
+  slime: {
+    open: [
+      "..............",
+      "....AAAAAA....",
+      "..AAAWWAAAAA..",
+      ".AAAWWWAAAAAA.",
+      ".AAAAAAAAAAAA.",
+      ".AAKKAAAAKKAA.",
+      ".AAKWAAAAKWAA.",
+      ".AAAAAPPPAAAA.",
+      ".AAAAAAAAAAAA.",
+      "..DDDDDDDDDD..",
+      "..............",
+      "..............",
+    ],
+    closed: [
+      "..............",
+      "..............",
+      "...AAAAAAAA...",
+      ".AAAWWAAAAAAA.",
+      ".AAAWWAAAAAAA.",
+      ".AAAAAAAAAAAA.",
+      ".AAKKAAAAKKAA.",
+      ".AAAAAPPPAAAA.",
+      ".AAAAAAAAAAAA.",
+      ".DDDDDDDDDDDD.",
+      "..............",
+      "..............",
+    ],
+    palette: (accent, secondary) => ({
+      A: accent,
+      W: "#FFFFFF",
+      K: "#0F172A",
+      P: "#FDA4AF",
+      D: secondary,
+    }),
+  },
+  ghost: {
+    open: [
+      "....AAAAAA....",
+      "..AAAAAAAAAA..",
+      ".AAAAAAAAAAAA.",
+      ".AAWWAAAAWWAA.",
+      ".AAWKAAAAWKAA.",
+      ".AAWWAAAAWWAA.",
+      ".AAAAAAAAAAAA.",
+      ".AAAAAAAAAAAA.",
+      ".AAAAAAAAAAAA.",
+      ".AA.AAAA.AAAA.",
+      ".A...AA....AA.",
+      "..............",
+    ],
+    closed: [
+      "....AAAAAA....",
+      "..AAAAAAAAAA..",
+      ".AAAAAAAAAAAA.",
+      ".AAWWAAAAWWAA.",
+      ".AAKWAAAAKWAA.",
+      ".AAWWAAAAWWAA.",
+      ".AAAAAAAAAAAA.",
+      ".AAAAAAAAAAAA.",
+      ".AAAAAAAAAAAA.",
+      "..AAAA.AAAA.A.",
+      "...AA...AA..A.",
+      "..............",
+    ],
+    palette: (accent) => ({
+      A: accent,
+      W: "#FFFFFF",
+      K: "#0F172A",
+    }),
+  },
+};
+
+// 14x9 Peeker cat gripping a ledge (used in Hero Sticker)
+export const PEEKER_CAT_OPEN = [
+  "..OO......OO..",
+  ".OOBO....OBOO.",
+  ".OOOOOOOOOOOO.",
+  ".OOKKOOOOOKKO.",
+  ".OOKWOOOOOKWO.",
+  ".OOOOOPPPPOOO.",
+  "..OOWWWWWWO...",
+  ".WW........WW.",
+  ".WW........WW.",
+];
+
+export const PEEKER_CAT_BLINK = [
+  "..OO......OO..",
+  ".OOBO....OBOO.",
+  ".OOOOOOOOOOOO.",
+  ".OOOOOOOOOOOO.",
+  ".OOKKOOOOOKKO.",
+  ".OOOOOPPPPOOO.",
+  "..OOWWWWWWO...",
+  ".WW........WW.",
+  "..WW......WW..",
+];
+
+// 12x10 Pixel coffee mug (used in Sticker & Mini Tile)
+export const PIXEL_MUG = [
+  "............",
+  ".CCCCCCCC...",
+  ".CBBBBBBC...",
+  ".CWWWWWWCCC.",
+  ".CWWAAWWC.C.",
+  ".CWWAAWWC.C.",
+  ".CWWWWWWCCC.",
+  ".CWWWWWWC...",
+  "..CCCCCC....",
+  "............",
+];
+
+// 10x8 Compact runners for 846x48 horizontal patrol runway
+export const RUNNER_SPRITES: Record<"cat" | "bot" | "slime", string[]> = {
+  cat: [
+    ".O....O...",
+    "OOOOOOOO..",
+    "OOKOOOKO.O",
+    "OOOOOPOO.O",
+    ".OOOOOOO..",
+    ".AAAAAA...",
+    ".OO..OO...",
+    "O.....O...",
+  ],
+  bot: [
+    "....AA....",
+    "..MMMMMM..",
+    ".MDDDDDDM.",
+    ".MDADDADM.",
+    ".MDDDDDDM.",
+    "..MMMMMM..",
+    "..MM..MM..",
+    ".MM....MM.",
+  ],
+  slime: [
+    "..........",
+    "...AAAA...",
+    ".AAWWAAAA.",
+    "AAAAAAAAAA",
+    "AAKAAAAKAA",
+    "AAAAPPAAAA",
+    "AAAAAAAAAA",
+    ".DDDDDDDD.",
+  ],
+};
