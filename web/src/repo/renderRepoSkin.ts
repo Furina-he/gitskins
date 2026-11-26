@@ -123,11 +123,14 @@ export function renderGitSkinsBadgeSvg(
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Styled with GitSkins">
   <title>Styled with GitSkins</title>
   <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.surface}" stroke="${t.border}" stroke-width="1"/>
-  <rect x="8" y="8" width="16" height="16" fill="${t.ink}"/>
-  <rect x="10" y="10" width="6" height="6" fill="${t.accent}" shape-rendering="crispEdges"/>
-  <rect x="16" y="16" width="6" height="6" fill="${t.secondary}" shape-rendering="crispEdges"/>
-  <text x="32" y="19.5" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">STYLED WITH</text>
-  <text x="114" y="20" font-family='${FONT_SANS}' font-size="12" font-weight="800" fill="${t.ink}">GitSkins</text>
+  <rect x="8" y="7" width="18" height="18" fill="#111214" shape-rendering="crispEdges"/>
+  <rect x="10.5" y="9.5" width="13" height="13" fill="none" stroke="#F4F3EE" stroke-width="1"/>
+  <rect x="12" y="11" width="5" height="4" fill="#00A3CC" shape-rendering="crispEdges"/>
+  <rect x="18" y="11" width="4" height="4" fill="#F4F3EE" shape-rendering="crispEdges"/>
+  <rect x="12" y="16" width="4" height="5" fill="#F4F3EE" shape-rendering="crispEdges"/>
+  <rect x="17" y="16" width="5" height="5" fill="#E45847" shape-rendering="crispEdges"/>
+  <text x="34" y="19.5" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">STYLED WITH</text>
+  <text x="116" y="20" font-family='${FONT_SANS}' font-size="12" font-weight="800" fill="${t.ink}">GitSkins</text>
   <text x="${w - 10}" y="19.5" text-anchor="end" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.accent}">↗</text>
 </svg>`;
 }
@@ -486,7 +489,7 @@ export function renderRepoInstallSvg(
   const uid = `ri-${themeId}-${mode}`;
   const label = escapeXml(fitText(repo.installLabel || "INSTALL", 130, 10, true));
   const hint = escapeXml(fitText(repo.installHint || "READY", 170, 9.5, true));
-  const cmdStr = `$ ${fitText(repo.installCommand, 520, 13, true)}`;
+  const cmdStr = `$ ${fitText(repo.installCommand, 470, 13, true)}`;
   const safeCmd = escapeXml(cmdStr);
   const style = animated
     ? `<style>
@@ -916,7 +919,7 @@ export function renderRepoArchSvg(
   <line x1="0.5" y1="33.5" x2="${w - 0.5}" y2="33.5" stroke="${t.border}" stroke-width="1"/>
   <rect x="14" y="13" width="6" height="6" fill="${t.accent}" shape-rendering="crispEdges"/>
   <text x="28" y="20.5" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.ink}">${escapeXml(headerLabel)}</text>
-  <text x="${w - 16}" y="20.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${n} STAGES · STATIC SVG</text>
+  <text x="${w - 16}" y="20.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="${themeId === "swiss-bauhaus-pixel" && mode === "light" ? "600" : "400"}" fill="${themeId === "swiss-bauhaus-pixel" && mode === "light" ? t.ink : t.muted}">${n} STAGES · STATIC SVG</text>
   ${nodesSvg}
 </svg>`;
 }

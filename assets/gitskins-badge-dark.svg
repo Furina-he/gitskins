@@ -1,10 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="216" height="32" viewBox="0 0 216 32" role="img" aria-label="Styled with GitSkins">
   <title>Styled with GitSkins</title>
   <rect x="0.5" y="0.5" width="215" height="31" fill="#16181F" stroke="#2E313D" stroke-width="1"/>
-  <rect x="8" y="8" width="16" height="16" fill="#F4F4F6"/>
-  <rect x="10" y="10" width="6" height="6" fill="#38BDF8" shape-rendering="crispEdges"/>
-  <rect x="16" y="16" width="6" height="6" fill="#60A5FA" shape-rendering="crispEdges"/>
-  <text x="32" y="19.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" fill="#7C8091">STYLED WITH</text>
-  <text x="114" y="20" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="12" font-weight="800" fill="#F4F4F6">GitSkins</text>
+  <rect x="8" y="7" width="18" height="18" fill="#111214" stroke="#3E4354" stroke-width="0.7" shape-rendering="crispEdges"/>
+  <rect x="10.5" y="9.5" width="13" height="13" fill="none" stroke="#F4F3EE" stroke-width="1"/>
+  <rect x="12" y="11" width="5" height="4" fill="#00A3CC" shape-rendering="crispEdges"/>
+  <rect x="18" y="11" width="4" height="4" fill="#F4F3EE" shape-rendering="crispEdges"/>
+  <rect x="12" y="16" width="4" height="5" fill="#F4F3EE" shape-rendering="crispEdges"/>
+  <rect x="17" y="16" width="5" height="5" fill="#E45847" shape-rendering="crispEdges"/>
+  <text x="34" y="19.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" fill="#7C8091">STYLED WITH</text>
+  <text x="116" y="20" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="12" font-weight="800" fill="#F4F4F6">GitSkins</text>
   <text x="206" y="19.5" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" font-weight="700" fill="#38BDF8">↗</text>
 </svg>

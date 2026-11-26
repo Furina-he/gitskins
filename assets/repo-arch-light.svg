@@ -10,7 +10,7 @@
   <line x1="0.5" y1="33.5" x2="845.5" y2="33.5" stroke="#0A0A0A" stroke-width="1"/>
   <rect x="14" y="13" width="6" height="6" fill="#00A3CC" shape-rendering="crispEdges"/>
   <text x="28" y="20.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" font-weight="700" fill="#0A0A0A">(architecture) · PIPELINE FLOW</text>
-  <text x="830" y="20.5" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" fill="#71717A">4 STAGES · STATIC SVG</text>
+  <text x="830" y="20.5" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" font-weight="600" fill="#0A0A0A">4 STAGES · STATIC SVG</text>
   <rect x="27" y="57" width="172" height="86" fill="#0A0A0A" fill-opacity="0.16"/>
   <rect x="24" y="54" width="172" height="86" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="1.1"/>
   <rect x="24" y="54" width="24" height="20" fill="#0A0A0A"/>

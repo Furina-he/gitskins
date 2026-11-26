@@ -61,10 +61,10 @@ export default function RepoSkinsStudio({
 
   const effectiveRepo = useMemo(() => {
     if (!repo.isDemo) return repo;
-    if (/^npx gitskins init --mode repo --theme [a-z0-9-]+$/.test(repo.installCommand.trim())) {
+    if (/^node cli\/gitskins\.mjs init --mode repo --theme [a-z0-9-]+$/.test(repo.installCommand.trim())) {
       return {
         ...repo,
-        installCommand: `npx gitskins init --mode repo --theme ${activeTheme.id}`,
+        installCommand: `node cli/gitskins.mjs init --mode repo --theme ${activeTheme.id}`,
       };
     }
     return repo;
@@ -92,7 +92,7 @@ export default function RepoSkinsStudio({
 
   const cliCommand = useMemo(() => {
     const parts = [
-      `npx gitskins init --mode repo --theme ${activeTheme.id}`,
+      `node cli/gitskins.mjs init --mode repo --theme ${activeTheme.id}`,
       `--repo "${repo.owner}/${repo.name}"`,
     ];
     if (options.accentOverride) parts.push(`--accent "${options.accentOverride}"`);

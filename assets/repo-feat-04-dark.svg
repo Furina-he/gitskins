@@ -5,7 +5,7 @@
   <rect x="12" y="8" width="22" height="17" fill="#F4F4F6"/>
   <text x="23" y="20" text-anchor="middle" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" font-weight="700" fill="#101115">04</text>
   <rect x="42" y="13" width="6" height="6" fill="#F5B700" shape-rendering="crispEdges"/>
-  <text x="54" y="20" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" font-weight="700" fill="#F4F4F6">AGENT</text>
+  <text x="54" y="20" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" font-weight="700" fill="#F4F4F6">AGENT &amp; CLI</text>
   <text x="16" y="68" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="17.5" font-weight="800" fill="#F4F4F6">Standard SKILL.md &amp; CLI</text>
   <text x="16" y="96" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="12.2" fill="#B4B6C2">Works out of the box with Claude Code, Codex, Cursor,</text>
   <text x="16" y="116" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="12.2" fill="#B4B6C2">Antigravity &amp; zero-dependency local validation.</text>

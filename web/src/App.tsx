@@ -173,11 +173,11 @@ function BrandMark() {
   return (
     <svg className="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
       <rect width="64" height="64" fill="#111214" />
-      <rect x="7" y="7" width="50" height="50" fill="none" stroke="#F3F2EC" strokeWidth="2.5" />
-      <rect x="13" y="13" width="23" height="16" fill="#00A3CC" />
-      <rect x="40" y="13" width="11" height="16" fill="#F3F2EC" />
-      <rect x="13" y="33" width="16" height="18" fill="#F3F2EC" />
-      <rect x="33" y="33" width="18" height="18" fill="#E45847" />
+      <rect x="8" y="8" width="48" height="48" fill="none" stroke="#F4F3EE" strokeWidth="2.5" />
+      <rect x="14" y="14" width="22" height="16" fill="#00A3CC" shapeRendering="crispEdges" />
+      <rect x="40" y="14" width="10" height="16" fill="#F4F3EE" shapeRendering="crispEdges" />
+      <rect x="14" y="34" width="16" height="16" fill="#F4F3EE" shapeRendering="crispEdges" />
+      <rect x="34" y="34" width="16" height="16" fill="#E45847" shapeRendering="crispEdges" />
     </svg>
   );
 }

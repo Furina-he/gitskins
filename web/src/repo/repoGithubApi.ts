@@ -38,9 +38,9 @@ export function createDefaultRepoData(): RepoSkinData {
   return {
     owner: "Furina-he",
     name: "gitskins",
-    version: "v0.5.0",
+    version: "v0.6.0",
     tagline:
-      "Agent-ready Light & Dark SVG theme systems, 4-col Bento widgets, and zero-503 GitHub Actions kits.",
+      "6 Light & Dark SVG theme systems, 14 Bento & Zero-503 live widgets, Repo Skins, Agent SKILL.md, and zero-dep CLI.",
     language: "TypeScript",
     license: "MIT",
     stars: 148,
@@ -49,13 +49,13 @@ export function createDefaultRepoData(): RepoSkinData {
     htmlUrl: "https://github.com/Furina-he/gitskins",
     topics: ["svg-themes", "github-readme", "ai-agents", "bento-grid"],
     installLabel: "CLI QUICKSTART",
-    installCommand: "npx gitskins init --mode repo --theme swiss-bauhaus-pixel",
+    installCommand: "node cli/gitskins.mjs init --mode repo --theme swiss-bauhaus-pixel",
     installHint: "NODE 18+ · ZERO DEPS",
     features: [
       {
         tag: "TOKENS",
-        title: "4 Curated Aesthetic Systems",
-        desc: "Swiss-Bauhaus, Blueprint CAD, Broadsheet Zine, and CRT Terminal with true Light & Dark parity.",
+        title: "6 Curated Aesthetic Systems",
+        desc: "Swiss-Bauhaus, Blueprint CAD, Broadsheet Zine, CRT Terminal, 16-bit RPG HUD & Seal Ink Scroll.",
       },
       {
         tag: "XML-SAFE",
