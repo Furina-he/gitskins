@@ -67,6 +67,10 @@ pnpm dev
 
 Want to add a new GitHub Profile skin (e.g., 16-bit Pixel RPG, Bento Grid, Ink & Seal Stationery, Brutalist Zine)? Read [CONTRIBUTING.md](CONTRIBUTING.md) — adding a new folder under `themes/<theme-id>/` and running `python scripts/build_all.py` automatically registers it in the live gallery.
 
+## Acknowledgments
+
+Special thanks to the **[LINUX DO](https://linux.do)** community for the inspiration, feedback, and support.
+
 ## License
 
 [MIT](LICENSE)
