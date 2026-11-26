@@ -16,6 +16,72 @@ THEMES_DIR = ROOT / "themes"
 WEB_THEMES_DIR = ROOT / "web" / "public" / "themes"
 REPO_RAW_BASE = "https://raw.githubusercontent.com/Furina-he/gitskins/main"
 REPO_WEB_BASE = "https://github.com/Furina-he/gitskins/blob/main"
+HEX_RE = re.compile(r"^#[0-9A-Fa-f]{6}$")
+REQUIRED_META_KEYS = (
+    "id",
+    "order",
+    "name",
+    "nameZh",
+    "category",
+    "categoryZh",
+    "tagline",
+    "taglineZh",
+    "bestFor",
+    "bestForZh",
+    "author",
+    "accent",
+    "palette",
+    "tokens",
+    "features",
+    "featuresZh",
+    "buttons",
+    "cards",
+    "sections",
+    "subLinks",
+)
+REQUIRED_TOKEN_KEYS = (
+    "bg",
+    "surface",
+    "ink",
+    "sub",
+    "muted",
+    "border",
+    "borderSoft",
+    "accent",
+    "accentFg",
+    "secondary",
+    "tertiary",
+    "highlight",
+    "patternBg",
+    "patternFg",
+)
+
+
+def validate_meta(meta: dict, folder_name: str) -> None:
+    missing = [k for k in REQUIRED_META_KEYS if k not in meta]
+    if missing:
+        raise SystemExit(f"Theme {folder_name}/meta.json missing keys: {', '.join(missing)}")
+    if meta["id"] != folder_name:
+        raise SystemExit(f"Theme {folder_name}/meta.json id '{meta['id']}' != folder name '{folder_name}'")
+    if not HEX_RE.match(str(meta["accent"])):
+        raise SystemExit(f"Theme {folder_name}/meta.json invalid accent hex: {meta['accent']}")
+
+    for mode in ("light", "dark"):
+        pal = meta.get("palette", {}).get(mode)
+        if not isinstance(pal, list) or not pal or not all(HEX_RE.match(str(c)) for c in pal):
+            raise SystemExit(f"Theme {folder_name}/meta.json invalid palette.{mode}")
+
+        tok = meta.get("tokens", {}).get(mode)
+        if not isinstance(tok, dict):
+            raise SystemExit(f"Theme {folder_name}/meta.json missing tokens.{mode}")
+        missing_tok = [k for k in REQUIRED_TOKEN_KEYS if k not in tok]
+        if missing_tok:
+            raise SystemExit(
+                f"Theme {folder_name}/meta.json tokens.{mode} missing keys: {', '.join(missing_tok)}"
+            )
+        for k in REQUIRED_TOKEN_KEYS:
+            if not HEX_RE.match(str(tok[k])):
+                raise SystemExit(f"Theme {folder_name}/meta.json tokens.{mode}.{k} invalid hex: {tok[k]}")
 
 
 def parse_bilingual_prompt(text: str) -> dict[str, str]:
@@ -41,6 +107,7 @@ def main() -> None:
             subprocess.run([sys.executable, str(gen)], check=True)
 
         meta = json.loads((tdir / "meta.json").read_text(encoding="utf-8"))
+        validate_meta(meta, tdir.name)
         tid = meta["id"]
         assets_dir = tdir / "assets"
         svg_files = sorted(assets_dir.glob("*.svg"))

@@ -15,6 +15,40 @@
     "light": ["#F4F7FB", "#0E2A4D", "#1D5BB8", "#0284C7", "#D4E1F0", "#0F766E"],
     "dark": ["#0A1E38", "#E8F3FF", "#38BDF8", "#60A5FA", "#16355E", "#2DD4BF"]
   },
+  "tokens": {
+    "light": {
+      "bg": "#F4F7FB",
+      "surface": "#FFFFFF",
+      "ink": "#0C2340",
+      "sub": "#2C4C74",
+      "muted": "#567499",
+      "border": "#0E2A4D",
+      "borderSoft": "#C6D8ED",
+      "accent": "#1D5BB8",
+      "accentFg": "#F4F7FB",
+      "secondary": "#0284C7",
+      "tertiary": "#0F766E",
+      "highlight": "#B45309",
+      "patternBg": "#EDF3FA",
+      "patternFg": "#C6D8ED"
+    },
+    "dark": {
+      "bg": "#0A1E38",
+      "surface": "#0D2442",
+      "ink": "#ECF5FF",
+      "sub": "#B3D4F7",
+      "muted": "#72A2D4",
+      "border": "#5EA8F0",
+      "borderSoft": "#1B4272",
+      "accent": "#38BDF8",
+      "accentFg": "#07162A",
+      "secondary": "#60A5FA",
+      "tertiary": "#2DD4BF",
+      "highlight": "#FBBF24",
+      "patternBg": "#07162B",
+      "patternFg": "#1B4272"
+    }
+  },
   "features": [
     "Prussian Blueprint (Dark) & Vellum Tracing Paper (Light)",
     "Millimeter coordinate grid & 4-corner registration crosshairs",

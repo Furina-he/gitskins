@@ -15,6 +15,40 @@
     "light": ["#F7F5EE", "#182026", "#0E7C5B", "#1D5FD6", "#B45309", "#A21CAF"],
     "dark": ["#0A0F12", "#E6F1F5", "#34D399", "#38BDF8", "#FBBF24", "#F472B6"]
   },
+  "tokens": {
+    "light": {
+      "bg": "#F7F5EE",
+      "surface": "#FCFBF7",
+      "ink": "#182026",
+      "sub": "#44515C",
+      "muted": "#6E7B85",
+      "border": "#C5BFAF",
+      "borderSoft": "#DDD8CA",
+      "accent": "#0E7C5B",
+      "accentFg": "#FFFFFF",
+      "secondary": "#0274A6",
+      "tertiary": "#1D5FD6",
+      "highlight": "#B45309",
+      "patternBg": "#EAE5D8",
+      "patternFg": "#DDD8CA"
+    },
+    "dark": {
+      "bg": "#0A0F12",
+      "surface": "#0E151A",
+      "ink": "#E6F1F5",
+      "sub": "#A8BDC9",
+      "muted": "#647B8A",
+      "border": "#22313D",
+      "borderSoft": "#19242D",
+      "accent": "#34D399",
+      "accentFg": "#071412",
+      "secondary": "#38BDF8",
+      "tertiary": "#60A5FA",
+      "highlight": "#FBBF24",
+      "patternBg": "#11181E",
+      "patternFg": "#19242D"
+    }
+  },
   "features": [
     "Phosphor Terminal (Dark) & Solarized Paper Terminal (Light)",
     "Two-pane tmux Hero with pixel monogram & neofetch readout",

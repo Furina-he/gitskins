@@ -15,6 +15,40 @@
     "light": ["#F7F3EA", "#141311", "#C93B2B", "#1F4E79", "#2D6A4F", "#B07D2B"],
     "dark": ["#131210", "#F0EBE1", "#E45847", "#6EA8E5", "#52B788", "#E3B25B"]
   },
+  "tokens": {
+    "light": {
+      "bg": "#F7F3EA",
+      "surface": "#FBF8F1",
+      "ink": "#141311",
+      "sub": "#3B3832",
+      "muted": "#726C62",
+      "border": "#141311",
+      "borderSoft": "#D9D1C1",
+      "accent": "#C93B2B",
+      "accentFg": "#F7F3EA",
+      "secondary": "#1F4E79",
+      "tertiary": "#2D6A4F",
+      "highlight": "#B07D2B",
+      "patternBg": "#F0EAE0",
+      "patternFg": "#D9D1C1"
+    },
+    "dark": {
+      "bg": "#131210",
+      "surface": "#191714",
+      "ink": "#F0EBE1",
+      "sub": "#C2BBB0",
+      "muted": "#8A8377",
+      "border": "#4A453D",
+      "borderSoft": "#2A2722",
+      "accent": "#E45847",
+      "accentFg": "#131210",
+      "secondary": "#6EA8E5",
+      "tertiary": "#52B788",
+      "highlight": "#E3B25B",
+      "patternBg": "#1E1B18",
+      "patternFg": "#2A2722"
+    }
+  },
   "features": [
     "Archival warm paper (Light) & Obsidian press (Dark)",
     "Double-rule broadsheet masthead & colophon ledger",

@@ -41,6 +41,40 @@
         "#D99B00"
       ]
     },
+    "tokens": {
+      "light": {
+        "bg": "#FAF9F5",
+        "surface": "#FFFFFF",
+        "ink": "#0A0A0A",
+        "sub": "#3F3F46",
+        "muted": "#71717A",
+        "border": "#0A0A0A",
+        "borderSoft": "#D4D4D8",
+        "accent": "#00A3CC",
+        "accentFg": "#FFFFFF",
+        "secondary": "#2370E8",
+        "tertiary": "#2BA676",
+        "highlight": "#F5B700",
+        "patternBg": "#7CC4FA",
+        "patternFg": "#4CA4EC"
+      },
+      "dark": {
+        "bg": "#101115",
+        "surface": "#16181F",
+        "ink": "#F4F4F6",
+        "sub": "#B4B6C2",
+        "muted": "#7C8091",
+        "border": "#2E313D",
+        "borderSoft": "#232631",
+        "accent": "#38BDF8",
+        "accentFg": "#0A0A0A",
+        "secondary": "#60A5FA",
+        "tertiary": "#22C98A",
+        "highlight": "#F5B700",
+        "patternBg": "#14243A",
+        "patternFg": "#1F3C63"
+      }
+    },
     "features": [
       "22 XML-validated Light & Dark SVGs",
       "9-row geometric pixel wordmark",
@@ -194,6 +228,40 @@
         "#16355E",
         "#2DD4BF"
       ]
+    },
+    "tokens": {
+      "light": {
+        "bg": "#F4F7FB",
+        "surface": "#FFFFFF",
+        "ink": "#0C2340",
+        "sub": "#2C4C74",
+        "muted": "#567499",
+        "border": "#0E2A4D",
+        "borderSoft": "#C6D8ED",
+        "accent": "#1D5BB8",
+        "accentFg": "#F4F7FB",
+        "secondary": "#0284C7",
+        "tertiary": "#0F766E",
+        "highlight": "#B45309",
+        "patternBg": "#EDF3FA",
+        "patternFg": "#C6D8ED"
+      },
+      "dark": {
+        "bg": "#0A1E38",
+        "surface": "#0D2442",
+        "ink": "#ECF5FF",
+        "sub": "#B3D4F7",
+        "muted": "#72A2D4",
+        "border": "#5EA8F0",
+        "borderSoft": "#1B4272",
+        "accent": "#38BDF8",
+        "accentFg": "#07162A",
+        "secondary": "#60A5FA",
+        "tertiary": "#2DD4BF",
+        "highlight": "#FBBF24",
+        "patternBg": "#07162B",
+        "patternFg": "#1B4272"
+      }
     },
     "features": [
       "Prussian Blueprint (Dark) & Vellum Tracing Paper (Light)",
@@ -349,6 +417,40 @@
         "#E3B25B"
       ]
     },
+    "tokens": {
+      "light": {
+        "bg": "#F7F3EA",
+        "surface": "#FBF8F1",
+        "ink": "#141311",
+        "sub": "#3B3832",
+        "muted": "#726C62",
+        "border": "#141311",
+        "borderSoft": "#D9D1C1",
+        "accent": "#C93B2B",
+        "accentFg": "#F7F3EA",
+        "secondary": "#1F4E79",
+        "tertiary": "#2D6A4F",
+        "highlight": "#B07D2B",
+        "patternBg": "#F0EAE0",
+        "patternFg": "#D9D1C1"
+      },
+      "dark": {
+        "bg": "#131210",
+        "surface": "#191714",
+        "ink": "#F0EBE1",
+        "sub": "#C2BBB0",
+        "muted": "#8A8377",
+        "border": "#4A453D",
+        "borderSoft": "#2A2722",
+        "accent": "#E45847",
+        "accentFg": "#131210",
+        "secondary": "#6EA8E5",
+        "tertiary": "#52B788",
+        "highlight": "#E3B25B",
+        "patternBg": "#1E1B18",
+        "patternFg": "#2A2722"
+      }
+    },
     "features": [
       "Archival warm paper (Light) & Obsidian press (Dark)",
       "Double-rule broadsheet masthead & colophon ledger",
@@ -502,6 +604,40 @@
         "#FBBF24",
         "#F472B6"
       ]
+    },
+    "tokens": {
+      "light": {
+        "bg": "#F7F5EE",
+        "surface": "#FCFBF7",
+        "ink": "#182026",
+        "sub": "#44515C",
+        "muted": "#6E7B85",
+        "border": "#C5BFAF",
+        "borderSoft": "#DDD8CA",
+        "accent": "#0E7C5B",
+        "accentFg": "#FFFFFF",
+        "secondary": "#0274A6",
+        "tertiary": "#1D5FD6",
+        "highlight": "#B45309",
+        "patternBg": "#EAE5D8",
+        "patternFg": "#DDD8CA"
+      },
+      "dark": {
+        "bg": "#0A0F12",
+        "surface": "#0E151A",
+        "ink": "#E6F1F5",
+        "sub": "#A8BDC9",
+        "muted": "#647B8A",
+        "border": "#22313D",
+        "borderSoft": "#19242D",
+        "accent": "#34D399",
+        "accentFg": "#071412",
+        "secondary": "#38BDF8",
+        "tertiary": "#60A5FA",
+        "highlight": "#FBBF24",
+        "patternBg": "#11181E",
+        "patternFg": "#19242D"
+      }
     },
     "features": [
       "Phosphor Terminal (Dark) & Solarized Paper Terminal (Light)",
