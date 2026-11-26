@@ -39,7 +39,9 @@ import type {
   RunwayMode,
   RunwaySpeed,
   SkillDockConfig,
+  SpotifyRecentConfig,
   StickerMotif,
+  WakaTimeWeeklyConfig,
   WeatherKind,
   WidgetConfigMap,
   WidgetId,
@@ -475,7 +477,13 @@ export default function WidgetsStudio({
                   <span className="mini-skin-dot" style={{ backgroundColor: skin.accent }} />
                   <span>0{skin.order}</span>
                   <span className="mini-skin-label">
-                    {lang === "zh" ? skin.nameZh.slice(0, 4) : skin.name.split(" ")[0]}
+                    {lang === "zh"
+                      ? skin.id === "pixel-rpg-hud"
+                        ? "像素RPG"
+                        : skin.nameZh.slice(0, 4)
+                      : skin.id === "pixel-rpg-hud"
+                        ? "RPG"
+                        : skin.name.split(" ")[0]}
                   </span>
                 </button>
               ))}
@@ -1715,6 +1723,144 @@ export default function WidgetsStudio({
                     </div>
                   </div>
                   <p className="diy-hint-note">{t.fieldLivePreviewNote}</p>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "wakatime-weekly" && (() => {
+              const cfg = current.config as WakaTimeWeeklyConfig;
+              return (
+                <div className="diy-form">
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>{t.fieldWakaTotal}</label>
+                      <input
+                        type="text"
+                        maxLength={18}
+                        value={cfg.totalHours}
+                        onChange={(e) =>
+                          patchConfig<"wakatime-weekly">({ totalHours: e.target.value })
+                        }
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>{t.fieldWakaAvg}</label>
+                      <input
+                        type="text"
+                        maxLength={18}
+                        value={cfg.dailyAvg}
+                        onChange={(e) =>
+                          patchConfig<"wakatime-weekly">({ dailyAvg: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldWakaEditor}</label>
+                    <input
+                      type="text"
+                      maxLength={24}
+                      value={cfg.editor}
+                      onChange={(e) => patchConfig<"wakatime-weekly">({ editor: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldGhLanguages}</label>
+                    <input
+                      type="text"
+                      maxLength={100}
+                      value={cfg.languages}
+                      onChange={(e) =>
+                        patchConfig<"wakatime-weekly">({ languages: e.target.value })
+                      }
+                    />
+                  </div>
+                  <p className="diy-hint-note">{t.fieldWakaSecretNote}</p>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "spotify-recent" && (() => {
+              const cfg = current.config as SpotifyRecentConfig;
+              const statuses: SpotifyRecentConfig["status"][] = [
+                "NOW PLAYING",
+                "RECENTLY PLAYED",
+                "PAUSED",
+              ];
+              return (
+                <div className="diy-form">
+                  <div className="diy-field">
+                    <label>{t.fieldTrack}</label>
+                    <input
+                      type="text"
+                      maxLength={48}
+                      value={cfg.track}
+                      onChange={(e) => patchConfig<"spotify-recent">({ track: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>{t.fieldArtist}</label>
+                      <input
+                        type="text"
+                        maxLength={36}
+                        value={cfg.artist}
+                        onChange={(e) =>
+                          patchConfig<"spotify-recent">({ artist: e.target.value })
+                        }
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>{t.fieldSpotifyDuration}</label>
+                      <input
+                        type="text"
+                        maxLength={10}
+                        value={cfg.duration}
+                        onChange={(e) =>
+                          patchConfig<"spotify-recent">({ duration: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldSpotifyAlbum}</label>
+                    <input
+                      type="text"
+                      maxLength={48}
+                      value={cfg.album}
+                      onChange={(e) => patchConfig<"spotify-recent">({ album: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldStatus}</label>
+                    <div className="seg-group cols-3">
+                      {statuses.map((st) => (
+                        <button
+                          key={st}
+                          type="button"
+                          className={`seg-btn ${cfg.status === st ? "active" : ""}`}
+                          onClick={() => patchConfig<"spotify-recent">({ status: st })}
+                        >
+                          {st === "NOW PLAYING" ? "LIVE" : st === "RECENTLY PLAYED" ? "RECENT" : "PAUSED"}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>
+                      {t.fieldProgress}: <strong>{cfg.progress}%</strong>
+                    </label>
+                    <input
+                      type="range"
+                      min={0}
+                      max={100}
+                      value={cfg.progress}
+                      onChange={(e) =>
+                        patchConfig<"spotify-recent">({ progress: Number(e.target.value) })
+                      }
+                    />
+                  </div>
+                  <p className="diy-hint-note">{t.fieldSpotifySecretNote}</p>
                 </div>
               );
             })()}

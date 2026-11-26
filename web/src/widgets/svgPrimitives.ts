@@ -223,8 +223,8 @@ export function chamferPolygon(x: number, y: number, w: number, h: number, cut =
 }
 
 export function themeHeadingFont(themeId: string): string {
-  if (themeId === "editorial-zine") return FONT_SERIF;
-  if (themeId === "crt-terminal") return FONT_MONO;
+  if (themeId === "editorial-zine" || themeId === "seal-ink-scroll") return FONT_SERIF;
+  if (themeId === "crt-terminal" || themeId === "pixel-rpg-hud") return FONT_MONO;
   return FONT_SANS;
 }
 
@@ -310,6 +310,38 @@ export function renderThemeFrame(opts: {
   <text x="${w - 14}" y="16.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${safeMeta}</text>
   <rect x="1" y="26" width="${w - 2}" height="${h - 27}" fill="url(#${scanId})"/>`;
     return { defs, chrome, contentTop: 35, contentBottom: h - 12, padX: 16 };
+  }
+
+  if (themeId === "pixel-rpg-hud") {
+    const chrome = `
+  <rect x="2" y="2" width="${w - 4}" height="${h - 4}" fill="${t.bg}" stroke="${t.border}" stroke-width="2" shape-rendering="crispEdges"/>
+  <rect x="6" y="6" width="${w - 12}" height="${h - 12}" fill="none" stroke="${t.borderSoft}" stroke-width="1" shape-rendering="crispEdges"/>
+  <rect x="0" y="0" width="5" height="5" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="${w - 5}" y="0" width="5" height="5" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="0" y="${h - 5}" width="5" height="5" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="${w - 5}" y="${h - 5}" width="5" height="5" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="7" y="7" width="${w - 14}" height="22" fill="${t.patternBg}"/>
+  <line x1="6" y1="29.5" x2="${w - 6}" y2="29.5" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="15" y="15" width="6" height="6" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <text x="27" y="21.5" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.ink}">${safeTag}</text>
+  <text x="${w - 16}" y="21.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9" font-weight="700" fill="${t.accent}">${safeMeta}</text>`;
+    return { defs: "", chrome, contentTop: 36, contentBottom: h - 12, padX: 18 };
+  }
+
+  if (themeId === "seal-ink-scroll") {
+    const chrome = `
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.borderSoft}" stroke-width="1"/>
+  <rect x="6.5" y="6.5" width="${w - 13}" height="${h - 13}" fill="none" stroke="${t.border}" stroke-opacity="0.7" stroke-width="0.9"/>
+  <path d="M 10 20 L 10 10 L 20 10" fill="none" stroke="${t.accent}" stroke-width="1.2"/>
+  <path d="M ${w - 20} 10 L ${w - 10} 10 L ${w - 10} 20" fill="none" stroke="${t.accent}" stroke-width="1.2"/>
+  <path d="M 10 ${h - 20} L 10 ${h - 10} L 20 ${h - 10}" fill="none" stroke="${t.accent}" stroke-width="1.2"/>
+  <path d="M ${w - 20} ${h - 10} L ${w - 10} ${h - 10} L ${w - 10} ${h - 20}" fill="none" stroke="${t.accent}" stroke-width="1.2"/>
+  <rect x="18" y="16" width="11" height="11" rx="1" fill="${t.accent}"/>
+  <rect x="20.5" y="18.5" width="6" height="6" fill="none" stroke="${t.accentFg}" stroke-width="0.9"/>
+  <text x="36" y="25" font-family='${FONT_MONO}' font-size="9.2" font-weight="700" letter-spacing="0.9" fill="${t.ink}">${safeTag}</text>
+  <text x="${w - 18}" y="25" text-anchor="end" font-family='${FONT_MONO}' font-size="9.2" fill="${t.muted}">${safeMeta}</text>
+  <line x1="16" y1="32.5" x2="${w - 16}" y2="32.5" stroke="${t.borderSoft}" stroke-width="0.9"/>`;
+    return { defs: "", chrome, contentTop: 38, contentBottom: h - 14, padX: 18 };
   }
 
   // Default: swiss-bauhaus-pixel

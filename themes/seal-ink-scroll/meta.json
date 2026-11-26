@@ -1,0 +1,89 @@
+{
+  "id": "seal-ink-scroll",
+  "order": 6,
+  "name": "Seal Ink Monograph",
+  "nameZh": "东方印章水墨卷轴",
+  "category": "East Asian Print",
+  "categoryZh": "印章水墨",
+  "tagline": "Warm Xuan paper and obsidian inkstone paired with carved cinnabar seals, fretwork corners, and layered mountain horizons.",
+  "taglineZh": "暖调宣纸与端砚墨黑双主题，配朱砂篆印、回纹角饰、远山叠墨层次与典雅书卷排版。",
+  "bestFor": ["Design Engineers", "Writers & Researchers", "Minimalist Craftsmen"],
+  "bestForZh": ["设计工程师", "技术作者 / 研究者", "东方极简美学控"],
+  "author": "Furina-he",
+  "accent": "#C4362C",
+  "palette": {
+    "light": ["#F7F3EA", "#1C1917", "#C4362C", "#2C5E5A", "#7C5C3B", "#B5842A"],
+    "dark": ["#141311", "#F2ECE1", "#E0564A", "#56A39B", "#C79C6D", "#DFB35B"]
+  },
+  "tokens": {
+    "light": {
+      "bg": "#F7F3EA",
+      "surface": "#FCF9F2",
+      "ink": "#1C1917",
+      "sub": "#4E4740",
+      "muted": "#847B70",
+      "border": "#2B2622",
+      "borderSoft": "#DED5C5",
+      "accent": "#C4362C",
+      "accentFg": "#FCF9F2",
+      "secondary": "#2C5E5A",
+      "tertiary": "#7C5C3B",
+      "highlight": "#B5842A",
+      "patternBg": "#EFE8DA",
+      "patternFg": "#DCD2BF"
+    },
+    "dark": {
+      "bg": "#141311",
+      "surface": "#1B1916",
+      "ink": "#F2ECE1",
+      "sub": "#C2B9AA",
+      "muted": "#8C8274",
+      "border": "#D6CCB9",
+      "borderSoft": "#35312A",
+      "accent": "#E0564A",
+      "accentFg": "#141311",
+      "secondary": "#56A39B",
+      "tertiary": "#C79C6D",
+      "highlight": "#DFB35B",
+      "patternBg": "#221F1B",
+      "patternFg": "#322E28"
+    }
+  },
+  "features": [
+    "Warm Xuan Paper (Light) & Inkstone Charcoal (Dark)",
+    "Carved cinnabar red seal stamp & classical corner fretwork",
+    "Layered minimalist ink-mountain silhouette with calm mist",
+    "Bookbinding spine rules & serene serif monograph cards"
+  ],
+  "featuresZh": [
+    "浅色暖调宣纸 + 深色端砚墨石双视觉体系",
+    "经典朱砂阴文方印与细密四角回纹装帧线",
+    "克制几何叠墨远山剪影与低频流云微动效",
+    "古籍双线栏格与沉静衬线项目笺卡"
+  ],
+  "buttons": [
+    { "id": "cloudlink", "label": "· cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+    { "id": "openpet", "label": "· openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+    { "id": "release", "label": "· CloudLink v0.6.0", "url": "https://github.com/Furina-he/cloudlink/releases/latest" },
+    { "id": "github", "label": "· @Furina-he", "url": "https://github.com/Furina-he?tab=repositories" }
+  ],
+  "cards": [
+    { "id": "cloudlink", "title": "CloudLink", "url": "https://github.com/Furina-he/cloudlink" },
+    { "id": "openpet", "title": "OpenPet", "url": "https://github.com/Furina-he/OpenPet" },
+    { "id": "gitskins", "title": "GitSkins", "url": "https://github.com/Furina-he/gitskins" },
+    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" }
+  ],
+  "sections": ["work", "activity"],
+  "subLinks": [
+    { "group": "Live works", "items": [
+      { "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+      { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+      { "label": "gitskins.blessc.com", "url": "https://gitskins.blessc.com" }
+    ]},
+    { "group": "Archive", "items": [
+      { "label": "openpet-market", "url": "https://github.com/Furina-he/openpet-market" },
+      { "label": "carview", "url": "https://github.com/Furina-he/carview" },
+      { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" }
+    ]}
+  ]
+}

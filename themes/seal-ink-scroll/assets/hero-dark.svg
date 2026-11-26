@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="300" viewBox="0 0 846 300" role="img" aria-label="Furina-he — Seal Ink Monograph GitHub Profile">
+  <title>Furina-he — Seal Ink Monograph</title>
+  <style>
+    @keyframes mist_ink-dark { 0%, 100% { transform: translateX(0px); opacity: 0.45; } 50% { transform: translateX(10px); opacity: 0.72; } }
+    .mist-ink-dark { animation: mist_ink-dark 7s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .mist-ink-dark { animation: none !important; } }
+  </style>
+  <rect x="0.5" y="0.5" width="845" height="299" fill="#141311" stroke="#35312A" stroke-width="1"/><rect x="8.5" y="8.5" width="829" height="283" fill="none" stroke="#D6CCB9" stroke-opacity="0.72" stroke-width="0.9"/><path d="M 12 20 L 12 12 L 20 12" fill="none" stroke="#E0564A" stroke-width="1.3"/><path d="M 826 12 L 834 12 L 834 20" fill="none" stroke="#E0564A" stroke-width="1.3"/><path d="M 12 280 L 12 288 L 20 288" fill="none" stroke="#E0564A" stroke-width="1.3"/><path d="M 826 288 L 834 288 L 834 280" fill="none" stroke="#E0564A" stroke-width="1.3"/>
+  <!-- Layered geometric ink-wash mountain horizon on lower right -->
+  <path d="M 480 222 Q 555 152 628 192 T 764 148 L 836 186 L 836 222 Z" fill="#221F1B" fill-opacity="0.85"/>
+  <path d="M 556 222 Q 625 168 696 198 T 836 172 L 836 222 Z" fill="#322E28" fill-opacity="0.58"/>
+  <g class="mist-ink-dark">
+    <line x1="566" y1="184" x2="668" y2="184" stroke="#1B1916" stroke-width="2" stroke-linecap="round"/>
+    <line x1="636" y1="196" x2="724" y2="196" stroke="#1B1916" stroke-width="1.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Masthead line -->
+  <text x="28" y="34" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" letter-spacing="1.4" fill="#8C8274">MONOGRAPH SCROLL · @FURINA-HE</text>
+  <text x="818" y="34" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" letter-spacing="1.1" fill="#8C8274">CLOUDLINK.BLESSC.COM · 2026</text>
+  <line x1="22" y1="44.5" x2="824" y2="44.5" stroke="#35312A" stroke-width="0.9"/>
+
+  <!-- Primary Typography -->
+  <rect x="28" y="64" width="6" height="6" fill="#E0564A"/>
+  <text x="42" y="71" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.8" font-weight="700" letter-spacing="1.2" fill="#E0564A">INDIE DEVELOPER · LOCAL-FIRST AI STUDIO</text>
+  <text x="28" y="128" font-family="'Newsreader',Georgia,'Times New Roman',serif" font-size="46" font-weight="700" fill="#F2ECE1">Furina-he<tspan fill="#E0564A">.</tspan></text>
+  <text x="28" y="160" font-family="'Newsreader',Georgia,'Times New Roman',serif" font-size="15.5" font-style="italic" fill="#C2B9AA">Crafting deterministic agent guardrails, desktop companions, and quiet SVG craft.</text>
+  <text x="28" y="190" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.5" fill="#8C8274">STACK · Rust · TypeScript · Python · Tauri · Electron · Cloudflare</text>
+
+  <!-- Carved Cinnabar Seal Stamp & Vertical Bookbinding Rule -->
+  <line x1="736.5" y1="62" x2="736.5" y2="148" stroke="#35312A" stroke-width="1"/>
+  <g aria-hidden="true"><rect x="756" y="62" width="46" height="46" rx="2" fill="#E0564A"/><rect x="760" y="66" width="38" height="38" fill="none" stroke="#141311" stroke-width="1.3"/><line x1="779" y1="69" x2="779" y2="101" stroke="#141311" stroke-width="1.6"/><line x1="764" y1="85" x2="794" y2="85" stroke="#141311" stroke-width="1.5"/><path d="M 766 73 H 776 V 81 H 766" fill="none" stroke="#141311" stroke-width="1.4"/><path d="M 783 73 H 792 V 97 H 783" fill="none" stroke="#141311" stroke-width="1.4"/><line x1="766" y1="97" x2="776" y2="97" stroke="#141311" stroke-width="1.5"/></g>
+  <text x="779" y="124" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" letter-spacing="1" fill="#E0564A">SEAL · 06</text>
+
+  <!-- Bottom Colophon Rail -->
+  <line x1="22" y1="222.5" x2="824" y2="222.5" stroke="#D6CCB9" stroke-opacity="0.65" stroke-width="0.9"/>
+  <line x1="22" y1="225.5" x2="824" y2="225.5" stroke="#35312A" stroke-width="0.7"/>
+  <rect x="22" y="234" width="5" height="5" fill="#E0564A"/><text x="33" y="240" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="0.6" fill="#8C8274">FLAGSHIP WORKS</text><text x="22" y="263" font-family="'Newsreader',Georgia,'Times New Roman',serif" font-size="18" font-weight="700" fill="#F2ECE1">04</text><text x="22" y="280" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#C2B9AA">Ops · AI Pet · Skins · 3D</text><line x1="214" y1="234" x2="214" y2="278" stroke="#35312A" stroke-width="0.9"/><rect x="224" y="234" width="5" height="5" fill="#56A39B"/><text x="235" y="240" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="0.6" fill="#8C8274">PUBLIC REPOS</text><text x="224" y="263" font-family="'Newsreader',Georgia,'Times New Roman',serif" font-size="18" font-weight="700" fill="#F2ECE1">13</text><text x="224" y="280" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#C2B9AA">Rust · TypeScript · Python</text><line x1="416" y1="234" x2="416" y2="278" stroke="#35312A" stroke-width="0.9"/><rect x="426" y="234" width="5" height="5" fill="#C79C6D"/><text x="437" y="240" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="0.6" fill="#8C8274">SYNCED AGENTS</text><text x="426" y="263" font-family="'Newsreader',Georgia,'Times New Roman',serif" font-size="18" font-weight="700" fill="#F2ECE1">20+</text><text x="426" y="280" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#C2B9AA">CloudLink Skill &amp; Guard</text><line x1="618" y1="234" x2="618" y2="278" stroke="#35312A" stroke-width="0.9"/><rect x="628" y="234" width="5" height="5" fill="#DFB35B"/><text x="639" y="240" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="0.6" fill="#8C8274">CRAFT ETHOS</text><text x="628" y="263" font-family="'Newsreader',Georgia,'Times New Roman',serif" font-size="18" font-weight="700" fill="#F2ECE1">LOCAL</text><text x="628" y="280" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#C2B9AA">Calm · Crisp · Static</text>
+</svg>

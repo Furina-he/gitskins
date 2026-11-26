@@ -753,5 +753,381 @@
       "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/crt-terminal/PROMPT.md",
       "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/crt-terminal"
     }
+  },
+  {
+    "id": "pixel-rpg-hud",
+    "order": 5,
+    "name": "16-bit Pixel RPG HUD",
+    "nameZh": "16-bit 像素 RPG 冒险面板",
+    "category": "Retro Game UI",
+    "categoryZh": "像素游戏面板",
+    "tagline": "Stepped pixel dialogue frames, HP/MP/XP stat meters, quest-log project scrolls, and 16-bit handheld cartridge palettes.",
+    "taglineZh": "阶梯像素边框、HP/MP/XP 分段能量条、任务卷轴项目卡与经典掌机/主机双主题配色。",
+    "bestFor": [
+      "Game & Creative Devs",
+      "Indie Makers",
+      "Retro Pixel Lovers"
+    ],
+    "bestForZh": [
+      "游戏 / 创意开发者",
+      "独立开发者",
+      "复古像素爱好者"
+    ],
+    "author": "Furina-he",
+    "accent": "#EAB308",
+    "palette": {
+      "light": [
+        "#F6F2E4",
+        "#1B1E2E",
+        "#D97706",
+        "#DC2626",
+        "#15803D",
+        "#2563EB"
+      ],
+      "dark": [
+        "#121524",
+        "#F6F4EA",
+        "#FACC15",
+        "#F87171",
+        "#4ADE80",
+        "#38BDF8"
+      ]
+    },
+    "tokens": {
+      "light": {
+        "bg": "#F6F2E4",
+        "surface": "#FFFDF6",
+        "ink": "#1B1E2E",
+        "sub": "#434963",
+        "muted": "#6F7591",
+        "border": "#1B1E2E",
+        "borderSoft": "#D5CEBA",
+        "accent": "#D97706",
+        "accentFg": "#FFFFFF",
+        "secondary": "#DC2626",
+        "tertiary": "#15803D",
+        "highlight": "#2563EB",
+        "patternBg": "#EAE4D1",
+        "patternFg": "#D9D1BA"
+      },
+      "dark": {
+        "bg": "#121524",
+        "surface": "#191E33",
+        "ink": "#F6F4EA",
+        "sub": "#B8C0DC",
+        "muted": "#7F8AAD",
+        "border": "#EAB308",
+        "borderSoft": "#2F385C",
+        "accent": "#FACC15",
+        "accentFg": "#121524",
+        "secondary": "#F87171",
+        "tertiary": "#4ADE80",
+        "highlight": "#38BDF8",
+        "patternBg": "#1E2540",
+        "patternFg": "#2B3457"
+      }
+    },
+    "features": [
+      "Handheld Parchment (Light) & 16-bit Battle HUD (Dark)",
+      "Crisp pixel-stepped bevel frames & corner rivets",
+      "Segmented HP / MP / XP status meters & pixel emblem",
+      "Quest-log project cards with custom 12x12 pixel relics"
+    ],
+    "featuresZh": [
+      "浅色复古掌机羊皮纸 + 深色 16-bit 战斗 HUD 双主题",
+      "无模糊锐利像素阶梯双边框与四角铆钉装饰",
+      "HP / MP / XP 分段状态槽与像素勇者徽章动效",
+      "任务卷轴风格项目卡，每张内置专属 12×12 像素装备图标"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "[EQUIP] cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "[PET] openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "[DROP] CloudLink v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "[GUILD] @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Active portals",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
+          }
+        ]
+      },
+      {
+        "group": "Side quests",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **16-bit Pixel RPG HUD** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Use `gh auth status` / `gh api user` (or `git config`) to read my real username, bio, public repos, stars, languages, and live URLs. Never fabricate stats.\n2. **Generate the 16-bit RPG HUD SVG suite**:\n   - Follow `SPEC.md` and adapt `generator.py` to output paired Light (handheld parchment) and Dark (16-bit battle HUD) SVGs into `assets/`: `846x304` Hero status sheet with stepped pixel bevels, HP/MP/XP bars, twinkling pixel crest (`prefers-reduced-motion`), and 4-column inventory stats; stepped command buttons; quest-log section headers; and `2x2` quest cards (`417x196`) with custom `12x12` pixel-art relic icons.\n3. **Validate & Ship**: Parse every SVG with strict XML validation, check `846px` Light/Dark readability with zero overlap, wire `<picture>` blocks in `README.md`, and push to `<username>/<username>`.",
+        "zh": "请使用 GitSkins 的 **「16-bit 像素 RPG 冒险面板（16-bit Pixel RPG HUD）」** 主题，帮我设计并更新我的 GitHub 个人主页（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：通过本地 `gh` 或 `git config` 读取我的真实用户名、简介、公开仓库、Star 与官网链接，绝不编造虚假数据。\n2. **生成 16-bit RPG 双主题 SVG 套件**：\n   - 参考 `SPEC.md` 与 `generator.py`，生成完整的 Light（经典掌机羊皮纸）与 Dark（16-bit 战斗菜单深蓝金框）SVG：`846×304` 勇者状态主图（阶梯像素双框、HP/MP/XP 分段槽、闪烁像素徽章、4 栏装备数据）、像素指令按钮、任务日志分区条、以及 2×2 任务卷轴项目卡（每张内置 12×12 像素装备图标）。\n3. **严格校验后推送**：确认全部 SVG 通过严格 XML 校验、内置 `prefers-reduced-motion` 且在 `846px` 宽度下深浅清晰无重叠，用 `<picture>` 写入 `README.md` 并推送。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins '16-bit Pixel RPG HUD' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/generator.py). Auto-detect my GitHub username, avatar, and real repositories via gh/git config, adapt the SVGs faithfully, validate XML & renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「16-bit 像素 RPG 冒险面板」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、头像与真实公开仓库，定制深/浅双主题 SVG 并校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# 16-bit Pixel RPG HUD — Visual Specification\n\n## Aesthetic Identity\nA crisp 16-bit console / handheld RPG status interface engineered for GitHub's `846px` README canvas:\n- **Zero fuzzy glow or blurry shadows** — every frame uses stepped `2px` pixel bevels (`shape-rendering=\"crispEdges\"`) and corner rivets.\n- **Light Mode**: Warm classic manual parchment (`#F6F2E4`) with crisp obsidian borders (`#1B1E2E`) and quest gold (`#D97706`).\n- **Dark Mode**: Classic 16-bit midnight battle menu (`#121524`) framed in gold (`#EAB308`), HP crimson (`#F87171`), emerald (`#4ADE80`), and mana cyan (`#38BDF8`).\n\n## Module Dimensions\n- `hero-{light,dark}.svg`: `846×304` — top guild banner, character handle + class bio, HP/MP/XP segmented bars, right-hand framed pixel relic emblem with twinkling star animation (`prefers-reduced-motion`), and 4-column inventory strip.\n- `btn-*-{light,dark}.svg`: `height=\"30\"` stepped RPG command pills.\n- `sec-*-{light,dark}.svg`: `846×36` quest-log section headers.\n- `card-*-{light,dark}.svg`: `417×196` quest cards (`2×2`, `width=\"49%\"`) featuring rarity stars and custom `12×12` pixel-art icons.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/pixel-rpg-hud/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/pixel-rpg-hud/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pixel-rpg-hud/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/pixel-rpg-hud"
+    }
+  },
+  {
+    "id": "seal-ink-scroll",
+    "order": 6,
+    "name": "Seal Ink Monograph",
+    "nameZh": "东方印章水墨卷轴",
+    "category": "East Asian Print",
+    "categoryZh": "印章水墨",
+    "tagline": "Warm Xuan paper and obsidian inkstone paired with carved cinnabar seals, fretwork corners, and layered mountain horizons.",
+    "taglineZh": "暖调宣纸与端砚墨黑双主题，配朱砂篆印、回纹角饰、远山叠墨层次与典雅书卷排版。",
+    "bestFor": [
+      "Design Engineers",
+      "Writers & Researchers",
+      "Minimalist Craftsmen"
+    ],
+    "bestForZh": [
+      "设计工程师",
+      "技术作者 / 研究者",
+      "东方极简美学控"
+    ],
+    "author": "Furina-he",
+    "accent": "#C4362C",
+    "palette": {
+      "light": [
+        "#F7F3EA",
+        "#1C1917",
+        "#C4362C",
+        "#2C5E5A",
+        "#7C5C3B",
+        "#B5842A"
+      ],
+      "dark": [
+        "#141311",
+        "#F2ECE1",
+        "#E0564A",
+        "#56A39B",
+        "#C79C6D",
+        "#DFB35B"
+      ]
+    },
+    "tokens": {
+      "light": {
+        "bg": "#F7F3EA",
+        "surface": "#FCF9F2",
+        "ink": "#1C1917",
+        "sub": "#4E4740",
+        "muted": "#847B70",
+        "border": "#2B2622",
+        "borderSoft": "#DED5C5",
+        "accent": "#C4362C",
+        "accentFg": "#FCF9F2",
+        "secondary": "#2C5E5A",
+        "tertiary": "#7C5C3B",
+        "highlight": "#B5842A",
+        "patternBg": "#EFE8DA",
+        "patternFg": "#DCD2BF"
+      },
+      "dark": {
+        "bg": "#141311",
+        "surface": "#1B1916",
+        "ink": "#F2ECE1",
+        "sub": "#C2B9AA",
+        "muted": "#8C8274",
+        "border": "#D6CCB9",
+        "borderSoft": "#35312A",
+        "accent": "#E0564A",
+        "accentFg": "#141311",
+        "secondary": "#56A39B",
+        "tertiary": "#C79C6D",
+        "highlight": "#DFB35B",
+        "patternBg": "#221F1B",
+        "patternFg": "#322E28"
+      }
+    },
+    "features": [
+      "Warm Xuan Paper (Light) & Inkstone Charcoal (Dark)",
+      "Carved cinnabar red seal stamp & classical corner fretwork",
+      "Layered minimalist ink-mountain silhouette with calm mist",
+      "Bookbinding spine rules & serene serif monograph cards"
+    ],
+    "featuresZh": [
+      "浅色暖调宣纸 + 深色端砚墨石双视觉体系",
+      "经典朱砂阴文方印与细密四角回纹装帧线",
+      "克制几何叠墨远山剪影与低频流云微动效",
+      "古籍双线栏格与沉静衬线项目笺卡"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "· cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "· openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "· CloudLink v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "· @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Live works",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
+          }
+        ]
+      },
+      {
+        "group": "Archive",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Seal Ink Monograph** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Use `gh auth status` / `gh api user` (or `git config`) to read my real username, display name, bio, public repositories, stars, and live URLs. Never fabricate data.\n2. **Generate the Seal Ink SVG suite**:\n   - Follow `SPEC.md` and adapt `generator.py` to output paired Light (warm Xuan paper) and Dark (inkstone charcoal) SVGs into `assets/`: `846x300` Hero scroll with double-hairline framing, corner fretwork, carved cinnabar seal stamp, layered geometric ink-mountain horizon (`prefers-reduced-motion`), and 4-column colophon; bookmark link buttons; chapter section dividers; and `2x2` monograph project folio cards (`417x196`).\n3. **Validate & Publish**: Run strict XML parsing on all SVGs, inspect `846px` Light/Dark contrast and whitespace, wire `<picture>` blocks in `README.md`, and push to `<username>/<username>`.",
+        "zh": "请使用 GitSkins 的 **「东方印章水墨卷轴（Seal Ink Monograph）」** 主题，帮我设计并更新我的 GitHub 个人主页（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：优先通过本地 `gh` 或 `git config` 读取我的真实用户名、简介、公开仓库与官网链接，绝不编造虚假指标。\n2. **生成印章水墨双主题 SVG 套件**：\n   - 参考 `SPEC.md` 与 `generator.py`，生成完整的 Light（暖调宣纸朱印）与 Dark（端砚墨石朱砂）SVG：`846×300` 卷轴主图（古籍双线框、四角回纹装饰、朱砂雕刻方印、叠墨远山层次与流云微动效、4 栏题跋指标）、书签链接条、章节分隔眉条，以及 2×2 项目笺卡（`417×196`）。\n3. **严格校验后推送**：确认全部 SVG 通过严格 XML 校验且具备 `prefers-reduced-motion` 保护，检查 `846px` 深浅渲染无重叠截断，用 `<picture>` 写入 `README.md` 并推送。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins 'Seal Ink Monograph' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/generator.py). Auto-detect my GitHub username, avatar, and real repositories via gh/git config, adapt the SVGs faithfully, validate XML & renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「东方印章水墨卷轴」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、头像与真实公开仓库，定制深/浅双主题 SVG 并校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# Seal Ink Monograph — Visual Specification\n\n## Aesthetic Identity\nMuseum-grade East Asian bookbinding and ink-wash restraint engineered for GitHub's `846px` README canvas:\n- **Light Mode**: Warm Xuan paper (`#F7F3EA`) with deep charcoal ink (`#1C1917`), cinnabar vermilion seal (`#C4362C`), and celadon (`#2C5E5A`).\n- **Dark Mode**: Obsidian inkstone (`#141311`) with parchment ink (`#F2ECE1`), luminous vermilion (`#E0564A`), and jade celadon (`#56A39B`).\n- **Signature Geometry**: Double-hairline scroll borders, geometric corner fretwork brackets, a carved geometric vermilion square seal chop, and serene layered geometric ink-mountain paths with gentle mist drift (`prefers-reduced-motion`).\n\n## Module Dimensions\n- `hero-{light,dark}.svg`: `846×300` — scroll masthead, serif display handle, italic monograph motto, right-hand carved vermilion seal stamp + layered ink mountain horizon, and 4-column colophon metrics rail.\n- `btn-*-{light,dark}.svg`: `height=\"30\"` thin-framed monograph bookmarks with cinnabar square chop.\n- `sec-*-{light,dark}.svg`: `846×36` scroll chapter dividers with double-hairline rules and vermilion square seal.\n- `card-*-{light,dark}.svg`: `417×196` monograph folio cards (`2×2`, `width=\"49%\"`) with top seal bar, corner fret brackets, serif title, and mono colophon.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/seal-ink-scroll/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/seal-ink-scroll/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/seal-ink-scroll"
+    }
   }
 ]

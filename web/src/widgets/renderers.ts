@@ -34,6 +34,8 @@ import type {
   QuoteBannerConfig,
   RssFeedConfig,
   SkillDockConfig,
+  SpotifyRecentConfig,
+  WakaTimeWeeklyConfig,
   WidgetConfigMap,
   WidgetId,
   WidgetRenderOptions,
@@ -1525,6 +1527,143 @@ function renderLiveWeather(cfg: LiveWeatherConfig, opts: WidgetRenderOptions): s
 </svg>`;
 }
 
+function renderWakaTimeWeekly(cfg: WakaTimeWeeklyConfig, opts: WidgetRenderOptions): string {
+  const t = resolveTokens(opts.tokens, opts.accentOverride);
+  const w = colSpanToPx(opts.colSpan);
+  const h = opts.targetHeight ?? BENTO_ROW_HEIGHT;
+  const uid = makeUid("lwaka", opts);
+  const editor = fitText(cfg.editor || "VS Code", 120, 9.5, true);
+
+  const frame = renderThemeFrame({
+    uid,
+    themeId: opts.themeId,
+    mode: opts.mode,
+    tokens: t,
+    width: w,
+    height: h,
+    tag: "WAKATIME · 7D",
+    rightMeta: editor,
+  });
+
+  const pad = frame.padX;
+  const headFont = themeHeadingFont(opts.themeId);
+  const langs = (cfg.languages || "TypeScript:44, Rust:28, Python:18, CSS:10")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .slice(0, 4)
+    .map((entry) => {
+      const [name, pctRaw] = entry.split(":");
+      return {
+        name: (name || "Code").trim(),
+        pct: Math.max(1, Math.min(100, Number(pctRaw) || 25)),
+      };
+    });
+  const barColors = [t.accent, t.secondary, t.tertiary, t.highlight];
+  const leftW = opts.colSpan === 2 ? 132 : 164;
+  const rightX = pad + leftW + 14;
+  const rightW = w - rightX - pad;
+
+  const rowsSvg = langs
+    .map((item, idx) => {
+      const y = frame.contentTop + 12 + idx * 24;
+      const col = barColors[idx % 4];
+      const trackX = rightX + 76;
+      const trackW = Math.max(48, rightW - 114);
+      const fillW = Math.max(4, Math.round((trackW * Math.min(100, item.pct)) / 100));
+      return `
+  <text x="${rightX}" y="${y + 8}" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.ink}">${escapeXml(fitText(item.name, 70, 9.5, true))}</text>
+  <rect x="${trackX}" y="${y}" width="${trackW}" height="9" fill="${t.patternBg}" stroke="${t.borderSoft}" stroke-width="0.7" shape-rendering="crispEdges"/>
+  <rect x="${trackX}" y="${y}" width="${fillW}" height="9" fill="${col}" shape-rendering="crispEdges"/>
+  <text x="${w - pad}" y="${y + 8}" text-anchor="end" font-family='${FONT_MONO}' font-size="9.2" fill="${t.muted}">${item.pct}%</text>`;
+    })
+    .join("");
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="WakaTime Weekly Coding: ${escapeXml(cfg.totalHours || "38h 42m")}">
+  <title>WakaTime Weekly — ${escapeXml(cfg.totalHours || "38h 42m")}</title>${frame.defs ? `\n  <defs>${frame.defs}\n  </defs>` : ""}
+  ${frame.chrome}
+  <rect x="${pad}" y="${frame.contentTop + 8}" width="${leftW}" height="${h - frame.contentTop - 22}" fill="${t.surface}" stroke="${t.borderSoft}" stroke-width="1"/>
+  <rect x="${pad + 10}" y="${frame.contentTop + 18}" width="6" height="6" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <text x="${pad + 22}" y="${frame.contentTop + 24}" font-family='${FONT_MONO}' font-size="8.8" font-weight="700" fill="${t.muted}">LAST 7 DAYS</text>
+  <text x="${pad + 10}" y="${frame.contentTop + 56}" font-family='${headFont}' font-size="22" font-weight="800" fill="${t.ink}">${escapeXml(fitText(cfg.totalHours || "38h 42m", leftW - 20, 22))}</text>
+  <line x1="${pad + 10}" y1="${frame.contentTop + 68}" x2="${pad + leftW - 10}" y2="${frame.contentTop + 68}" stroke="${t.borderSoft}" stroke-width="0.8"/>
+  <text x="${pad + 10}" y="${frame.contentTop + 86}" font-family='${FONT_MONO}' font-size="9.5" fill="${t.sub}">AVG ${escapeXml(fitText(cfg.dailyAvg || "5h 31m", leftW - 40, 9.5, true))}</text>
+  ${rowsSvg}
+</svg>`;
+}
+
+function renderSpotifyRecent(cfg: SpotifyRecentConfig, opts: WidgetRenderOptions): string {
+  const t = resolveTokens(opts.tokens, opts.accentOverride);
+  const w = colSpanToPx(opts.colSpan);
+  const h = opts.targetHeight ?? BENTO_ROW_HEIGHT;
+  const uid = makeUid("lspot", opts);
+  const status = cfg.status || "NOW PLAYING";
+
+  const frame = renderThemeFrame({
+    uid,
+    themeId: opts.themeId,
+    mode: opts.mode,
+    tokens: t,
+    width: w,
+    height: h,
+    tag: "SPOTIFY",
+    rightMeta: status,
+  });
+
+  const pad = frame.padX;
+  const headFont = themeHeadingFont(opts.themeId);
+  const discCx = pad + 48;
+  const discCy = frame.contentTop + 54;
+  const tx = pad + 110;
+  const textW = w - tx - pad - 44;
+  const progW = w - tx - pad;
+  const pct = Math.max(0, Math.min(100, Math.round(cfg.progress ?? 68)));
+  const progFill = Math.max(8, Math.round((progW * pct) / 100));
+
+  const eqHeights = [12, 22, 16, 26];
+  const eqBars = eqHeights
+    .map((bh, i) => {
+      const ex = w - pad - 28 + i * 7;
+      return `<rect class="eq-${uid}-${i}" x="${ex}" y="${frame.contentTop + 40 - bh}" width="4" height="${bh}" fill="${i % 2 === 0 ? t.accent : t.secondary}" shape-rendering="crispEdges"/>`;
+    })
+    .join("");
+
+  const styleBlock = opts.animated
+    ? `\n  <style>
+    @keyframes spin_${uid} { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes eq_${uid} { 0%, 100% { transform: scaleY(0.45); } 50% { transform: scaleY(1); } }
+    .disc-${uid} { transform-origin: ${discCx}px ${discCy}px; animation: spin_${uid} 10s linear infinite; }
+    .eq-${uid}-0 { transform-origin: ${w - pad - 26}px ${frame.contentTop + 40}px; animation: eq_${uid} 1.1s ease-in-out infinite; }
+    .eq-${uid}-1 { transform-origin: ${w - pad - 19}px ${frame.contentTop + 40}px; animation: eq_${uid} 0.9s ease-in-out 0.15s infinite; }
+    .eq-${uid}-2 { transform-origin: ${w - pad - 12}px ${frame.contentTop + 40}px; animation: eq_${uid} 1.25s ease-in-out 0.3s infinite; }
+    .eq-${uid}-3 { transform-origin: ${w - pad - 5}px ${frame.contentTop + 40}px; animation: eq_${uid} 1.0s ease-in-out 0.45s infinite; }
+    @media (prefers-reduced-motion: reduce) { .disc-${uid}, .eq-${uid}-0, .eq-${uid}-1, .eq-${uid}-2, .eq-${uid}-3 { animation: none !important; } }
+  </style>`
+    : "";
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Spotify: ${escapeXml(cfg.track || "Aruarian Dance")}">
+  <title>Spotify — ${escapeXml(cfg.track || "Aruarian Dance")}</title>${frame.defs ? `\n  <defs>${frame.defs}\n  </defs>` : ""}${styleBlock}
+  ${frame.chrome}
+  <rect x="${pad}" y="${frame.contentTop + 8}" width="96" height="92" fill="${t.patternBg}" stroke="${t.border}" stroke-width="1"/>
+  <g class="disc-${uid}">
+    <circle cx="${discCx}" cy="${discCy}" r="36" fill="${t.ink}"/>
+    <circle cx="${discCx}" cy="${discCy}" r="26" fill="none" stroke="${t.muted}" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="${discCx}" cy="${discCy}" r="18" fill="none" stroke="${t.muted}" stroke-opacity="0.35" stroke-width="1"/>
+    <circle cx="${discCx}" cy="${discCy}" r="12" fill="${t.accent}"/>
+    <rect x="${discCx - 2}" y="${discCy - 30}" width="4" height="8" fill="${t.surface}"/>
+    <circle cx="${discCx}" cy="${discCy}" r="3.5" fill="${t.bg}"/>
+  </g>
+  ${eqBars}
+  <text x="${tx}" y="${frame.contentTop + 26}" font-family='${headFont}' font-size="17" font-weight="800" fill="${t.ink}">${escapeXml(fitText(cfg.track || "Aruarian Dance", textW, 17))}</text>
+  <text x="${tx}" y="${frame.contentTop + 47}" font-family='${FONT_SANS}' font-size="12.5" font-weight="600" fill="${t.sub}">${escapeXml(fitText(cfg.artist || "Nujabes", textW + 20, 12.5))}</text>
+  <text x="${tx}" y="${frame.contentTop + 66}" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">ALBUM · ${escapeXml(fitText(cfg.album || "Samurai Champloo OST", progW - 60, 9.5, true))}</text>
+  <rect x="${tx}" y="${frame.contentTop + 79}" width="${progW}" height="7" fill="${t.patternBg}" stroke="${t.borderSoft}" stroke-width="0.7"/>
+  <rect x="${tx}" y="${frame.contentTop + 79}" width="${progFill}" height="7" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <text x="${tx}" y="${frame.contentTop + 100}" font-family='${FONT_MONO}' font-size="9" fill="${t.muted}">${pct}%</text>
+  <text x="${w - pad}" y="${frame.contentTop + 100}" text-anchor="end" font-family='${FONT_MONO}' font-size="9" fill="${t.muted}">${escapeXml(cfg.duration || "4:10")}</text>
+</svg>`;
+}
+
 export function renderWidgetSvg<K extends WidgetId>(
   widgetId: K,
   config: WidgetConfigMap[K],
@@ -1555,5 +1694,9 @@ export function renderWidgetSvg<K extends WidgetId>(
       return renderRssFeed(config as RssFeedConfig, opts);
     case "live-weather":
       return renderLiveWeather(config as LiveWeatherConfig, opts);
+    case "wakatime-weekly":
+      return renderWakaTimeWeekly(config as WakaTimeWeeklyConfig, opts);
+    case "spotify-recent":
+      return renderSpotifyRecent(config as SpotifyRecentConfig, opts);
   }
 }

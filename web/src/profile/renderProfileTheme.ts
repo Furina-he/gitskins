@@ -350,6 +350,139 @@ function renderHeroForTheme(
 </svg>`;
   }
 
+  if (theme.id === "pixel-rpg-hud") {
+    const w = 846;
+    const h = 304;
+    const safeHandle = escapeXml(fitText(handleUpper, 520, 38, true));
+    const safeSub = escapeXml(fitText(profile.bio, 535, 13, false));
+    const bar = (y: number, label: string, val: string, ratio: number, col: string) => {
+      const segs = 14;
+      const filled = Math.max(1, Math.min(segs, Math.round(segs * ratio)));
+      const rects = Array.from({ length: segs }, (_, i) => {
+        const sx = 64 + i * 13;
+        return `<rect x="${sx}" y="${y - 9}" width="10" height="10" fill="${i < filled ? col : t.patternBg}" stroke="${t.borderSoft}" stroke-width="0.8" shape-rendering="crispEdges"/>`;
+      }).join("");
+      return `<text x="28" y="${y}" font-family='${FONT_MONO}' font-size="10.5" font-weight="700" fill="${col}">${label}</text>${rects}<text x="254" y="${y}" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.ink}">${escapeXml(val)}</text>`;
+    };
+    const stats: [string, string, string, string][] = [
+      [t.accent, fmtNum(profile.publicRepos), "PUBLIC REPOS", fitText(stackLine, 108, 10)],
+      [t.secondary, fmtNum(profile.totalStars), "STARS LOOT", "Verified Repos"],
+      [t.tertiary, fmtNum(profile.followers), "GUILD ALLIES", fitText(profile.location, 108, 10)],
+      [t.highlight, profile.topLanguages[0] || "OSS", "MAIN CLASS", "Live GitHub"],
+    ];
+    const cols = [6, 216, 426, 636];
+    const statsSvg = stats
+      .map(([col, val, lbl, sub], idx) => {
+        const cx = cols[idx];
+        const div =
+          idx > 0
+            ? `<line x1="${cx}" y1="234" x2="${cx}" y2="${h - 6}" stroke="${t.borderSoft}" stroke-width="1"/>`
+            : "";
+        return `${div}
+  <rect x="${cx + 14}" y="244" width="6" height="6" fill="${col}" shape-rendering="crispEdges"/>
+  <text x="${cx + 26}" y="250" font-family='${FONT_MONO}' font-size="8.8" font-weight="700" fill="${t.muted}">${lbl}</text>
+  <text x="${cx + 14}" y="272" font-family='${FONT_MONO}' font-size="16" font-weight="800" fill="${t.ink}">${escapeXml(fitText(val, 180, 16, true))}</text>
+  <text x="${cx + 14}" y="288" font-family='${FONT_SANS}' font-size="10" fill="${t.sub}">${escapeXml(fitText(sub, 180, 10))}</text>`;
+      })
+      .join("\n");
+
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(profile.username)} — 16-bit Pixel RPG HUD Profile">
+  <title>${escapeXml(profile.username)} — 16-bit Pixel RPG HUD</title>
+  <rect x="2" y="2" width="${w - 4}" height="${h - 4}" fill="${t.bg}" stroke="${t.border}" stroke-width="2" shape-rendering="crispEdges"/>
+  <rect x="6" y="6" width="${w - 12}" height="${h - 12}" fill="none" stroke="${t.borderSoft}" stroke-width="1" shape-rendering="crispEdges"/>
+  <rect x="0" y="0" width="6" height="6" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="${w - 6}" y="0" width="6" height="6" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="0" y="${h - 6}" width="6" height="6" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="${w - 6}" y="${h - 6}" width="6" height="6" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="7" y="7" width="${w - 14}" height="28" fill="${t.patternBg}"/>
+  <line x1="6" y1="35.5" x2="${w - 6}" y2="35.5" stroke="${t.border}" stroke-width="1.4"/>
+  <rect x="18" y="16" width="8" height="8" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <text x="34" y="25" font-family='${FONT_MONO}' font-size="10.5" font-weight="700" fill="${t.ink}">LV.${Math.min(99, 10 + profile.publicRepos)} · CLASS: ${escapeXml(fitText((profile.topLanguages[0] || "BUILDER").toUpperCase(), 140, 10.5, true))} · @${escapeXml(fitText(handleUpper, 140, 10.5, true))}</text>
+  <text x="${w - 18}" y="25" text-anchor="end" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.accent}">${escapeXml(fitText(siteShort, 170, 10, true))}</text>
+
+  <text x="28" y="64" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.accent}">&gt; PLAYER STATUS // ${escapeXml(fitText(profile.displayName.toUpperCase(), 260, 10, true))}</text>
+  <text x="31" y="114" font-family='${FONT_MONO}' font-size="38" font-weight="800" fill="${t.borderSoft}">${safeHandle}</text>
+  <text x="28" y="111" font-family='${FONT_MONO}' font-size="38" font-weight="800" fill="${t.ink}">${safeHandle}</text>
+  <text x="28" y="137" font-family='${FONT_SANS}' font-size="13" font-weight="600" fill="${t.sub}">${safeSub}</text>
+  ${bar(168, "HP", `${Math.min(999, 500 + profile.totalStars * 2)}/999`, 0.94, t.secondary)}
+  ${bar(191, "MP", `${Math.min(999, 400 + profile.publicRepos * 15)}/999`, 0.86, t.highlight)}
+  ${bar(214, "XP", `${fmtNum(profile.followers)} ALLIES`, 0.82, t.tertiary)}
+
+  <rect x="624" y="52" width="196" height="168" fill="${t.surface}" stroke="${t.border}" stroke-width="1.6" shape-rendering="crispEdges"/>
+  <rect x="630" y="58" width="184" height="156" fill="${t.patternBg}" stroke="${t.borderSoft}" stroke-width="1" shape-rendering="crispEdges"/>
+  ${renderPixelAvatarGroup(profile.pixelAvatar, initials, 668, 70, 108, t)}
+  <text x="722" y="200" text-anchor="middle" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.ink}">@${escapeXml(fitText(profile.username, 148, 9.5, true))}</text>
+
+  <line x1="6" y1="233.5" x2="${w - 6}" y2="233.5" stroke="${t.border}" stroke-width="1.4"/>
+  ${statsSvg}
+</svg>`;
+  }
+
+  if (theme.id === "seal-ink-scroll") {
+    const w = 846;
+    const h = 300;
+    const safeName = escapeXml(fitText(profile.username, 490, 44, false));
+    const bioLines = wrapText(profile.bio, 510, 14.5, 2, false);
+    const metrics: [string, string, string, string][] = [
+      [t.accent, fmtNum(profile.publicRepos), "PUBLIC REPOS", fitText(stackLine, 110, 10)],
+      [t.secondary, fmtNum(profile.totalStars), "TOTAL STARS", "Verified Open Source"],
+      [t.tertiary, fmtNum(profile.followers), "FOLLOWERS", fitText(profile.location, 110, 10)],
+      [t.highlight, profile.topLanguages[0] || "OSS", "PRIMARY CRAFT", "Seal Monograph"],
+    ];
+    const cols = [22, 224, 426, 628];
+    const colophon = metrics
+      .map(([col, val, lbl, sub], idx) => {
+        const cx = cols[idx];
+        const div =
+          idx > 0
+            ? `<line x1="${cx - 10}" y1="234" x2="${cx - 10}" y2="278" stroke="${t.borderSoft}" stroke-width="0.9"/>`
+            : "";
+        return `${div}
+  <rect x="${cx}" y="234" width="5" height="5" fill="${col}"/>
+  <text x="${cx + 11}" y="240" font-family='${FONT_MONO}' font-size="8.5" font-weight="700" letter-spacing="0.6" fill="${t.muted}">${lbl}</text>
+  <text x="${cx}" y="263" font-family='${FONT_SERIF}' font-size="17.5" font-weight="700" fill="${t.ink}">${escapeXml(fitText(val, 180, 17.5))}</text>
+  <text x="${cx}" y="280" font-family='${FONT_SANS}' font-size="10" fill="${t.sub}">${escapeXml(fitText(sub, 180, 10))}</text>`;
+      })
+      .join("\n");
+
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(profile.username)} — Seal Ink Monograph Profile">
+  <title>${escapeXml(profile.username)} — Seal Ink Monograph</title>
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.borderSoft}" stroke-width="1"/>
+  <rect x="8.5" y="8.5" width="${w - 17}" height="${h - 17}" fill="none" stroke="${t.border}" stroke-opacity="0.72" stroke-width="0.9"/>
+  <path d="M 12 24 L 12 12 L 24 12" fill="none" stroke="${t.accent}" stroke-width="1.3"/>
+  <path d="M ${w - 24} 12 L ${w - 12} 12 L ${w - 12} 24" fill="none" stroke="${t.accent}" stroke-width="1.3"/>
+  <path d="M 12 ${h - 24} L 12 ${h - 12} L 24 ${h - 12}" fill="none" stroke="${t.accent}" stroke-width="1.3"/>
+  <path d="M ${w - 24} ${h - 12} L ${w - 12} ${h - 12} L ${w - 12} ${h - 24}" fill="none" stroke="${t.accent}" stroke-width="1.3"/>
+
+  <path d="M 480 222 Q 555 152 628 192 T 764 148 L 836 186 L 836 222 Z" fill="${t.patternBg}" fill-opacity="0.85"/>
+  <path d="M 556 222 Q 625 168 696 198 T 836 172 L 836 222 Z" fill="${t.patternFg}" fill-opacity="0.58"/>
+
+  <text x="28" y="34" font-family='${FONT_MONO}' font-size="9.5" letter-spacing="1.4" fill="${t.muted}">MONOGRAPH SCROLL · @${escapeXml(fitText(handleUpper, 150, 9.5, true))}</text>
+  <text x="${w - 28}" y="34" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${escapeXml(fitText(siteShort, 190, 9.5, true))}</text>
+  <line x1="22" y1="44.5" x2="${w - 22}" y2="44.5" stroke="${t.borderSoft}" stroke-width="0.9"/>
+
+  <rect x="28" y="64" width="6" height="6" fill="${t.accent}"/>
+  <text x="42" y="71" font-family='${FONT_MONO}' font-size="9.8" font-weight="700" letter-spacing="1.1" fill="${t.accent}">${escapeXml(fitText(`${profile.displayName.toUpperCase()} · ${profile.location.toUpperCase()}`, 480, 9.8, true))}</text>
+  <text x="28" y="126" font-family='${FONT_SERIF}' font-size="44" font-weight="700" fill="${t.ink}">${safeName}<tspan fill="${t.accent}">.</tspan></text>
+  ${bioLines.map((line, i) => `<text x="28" y="${158 + i * 22}" font-family='${FONT_SERIF}' font-size="15" font-style="italic" fill="${t.sub}">${escapeXml(line)}</text>`).join("\n  ")}
+  <text x="28" y="206" font-family='${FONT_MONO}' font-size="10" fill="${t.muted}">STACK · ${escapeXml(fitText(stackLine, 460, 10, true))}</text>
+
+  <!-- Carved Cinnabar Seal -->
+  <line x1="736.5" y1="62" x2="736.5" y2="148" stroke="${t.borderSoft}" stroke-width="1"/>
+  <rect x="756" y="62" width="46" height="46" rx="2" fill="${t.accent}"/>
+  <rect x="760" y="66" width="38" height="38" fill="none" stroke="${t.accentFg}" stroke-width="1.3"/>
+  <line x1="779" y1="69" x2="779" y2="101" stroke="${t.accentFg}" stroke-width="1.6"/>
+  <line x1="764" y1="85" x2="794" y2="85" stroke="${t.accentFg}" stroke-width="1.5"/>
+  <path d="M 766 73 H 776 V 81 H 766" fill="none" stroke="${t.accentFg}" stroke-width="1.4"/>
+  <path d="M 783 73 H 792 V 97 H 783" fill="none" stroke="${t.accentFg}" stroke-width="1.4"/>
+  <text x="779" y="124" text-anchor="middle" font-family='${FONT_MONO}' font-size="8.5" letter-spacing="1" fill="${t.accent}">SEAL · 06</text>
+
+  <line x1="22" y1="222.5" x2="${w - 22}" y2="222.5" stroke="${t.border}" stroke-opacity="0.65" stroke-width="0.9"/>
+  <line x1="22" y1="225.5" x2="${w - 22}" y2="225.5" stroke="${t.borderSoft}" stroke-width="0.7"/>
+  ${colophon}
+</svg>`;
+  }
+
   // Default: swiss-bauhaus-pixel
   const w = 846;
   const h = 294;
@@ -496,6 +629,29 @@ function renderSectionHeaderSvg(
 </svg>`;
   }
 
+  if (themeId === "pixel-rpg-hud") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect x="1" y="1" width="${w - 2}" height="${h - 2}" fill="${t.surface}" stroke="${t.border}" stroke-width="2" shape-rendering="crispEdges"/>
+  <rect x="8" y="7" width="76" height="22" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <text x="46" y="21.5" text-anchor="middle" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accentFg}">${escapeXml(code)}</text>
+  <text x="98" y="22.5" font-family='${FONT_MONO}' font-size="12.5" font-weight="800" fill="${t.ink}">${safeTitle}</text>
+  <text x="${w - 14}" y="22" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.muted}">${safeRight}</text>
+</svg>`;
+  }
+
+  if (themeId === "seal-ink-scroll") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect width="${w}" height="${h}" fill="${t.bg}"/>
+  <line x1="0" y1="2.5" x2="${w}" y2="2.5" stroke="${t.border}" stroke-opacity="0.75" stroke-width="1.2"/>
+  <line x1="0" y1="5.5" x2="${w}" y2="5.5" stroke="${t.borderSoft}" stroke-width="0.7"/>
+  <rect x="2" y="12" width="14" height="14" rx="1" fill="${t.accent}"/>
+  <rect x="5" y="15" width="8" height="8" fill="none" stroke="${t.accentFg}" stroke-width="1"/>
+  <text x="26" y="24" font-family='${FONT_SERIF}' font-size="15.5" font-weight="700" fill="${t.ink}">${safeTitle}</text>
+  <text x="${w - 4}" y="23" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" letter-spacing="0.8" fill="${t.muted}">${safeRight}</text>
+  <line x1="0" y1="34.5" x2="${w}" y2="34.5" stroke="${t.borderSoft}" stroke-width="0.9"/>
+</svg>`;
+  }
+
   // swiss-bauhaus-pixel
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
   <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.surface}" stroke="${t.border}" stroke-width="1"/>
@@ -593,6 +749,39 @@ function renderCardSvg(
     .join("\n  ")}
   <line x1="14" y1="146" x2="${w - 14}" y2="146" stroke="${t.borderSoft}" stroke-width="1"/>
   <text x="16" y="170" font-family='${FONT_MONO}' font-size="10" fill="${t.muted}">${escapeXml(fitText(specLine, 384, 10, true))}</text>
+</svg>`;
+  }
+
+  if (themeId === "pixel-rpg-hud") {
+    const descLines = wrapText(repo.description, 368, 12.2, 2, false);
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(repo.name)}">
+  <rect x="2" y="2" width="${w - 4}" height="${h - 4}" fill="${t.surface}" stroke="${t.border}" stroke-width="2" shape-rendering="crispEdges"/>
+  <rect x="6" y="6" width="${w - 12}" height="${h - 12}" fill="none" stroke="${t.borderSoft}" stroke-width="1" shape-rendering="crispEdges"/>
+  <rect x="7" y="7" width="${w - 14}" height="26" fill="${t.patternBg}"/>
+  <line x1="6" y1="33.5" x2="${w - 6}" y2="33.5" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="16" y="15" width="8" height="8" fill="${plateColor}" shape-rendering="crispEdges"/>
+  <text x="31" y="23.5" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.ink}">QUEST ${numStr} · ${escapeXml(repo.language.toUpperCase())}</text>
+  <text x="${w - 16}" y="23.5" text-anchor="end" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${plateColor}">★ ${fmtNum(repo.stars)}</text>
+  <text x="18" y="68" font-family='${FONT_MONO}' font-size="19" font-weight="800" fill="${t.ink}">${escapeXml(fitText(repo.name, 365, 19, true))}</text>
+  ${descLines.map((line, i) => `<text x="18" y="${96 + i * 20}" font-family='${FONT_SANS}' font-size="12.2" fill="${t.sub}">${escapeXml(line)}</text>`).join("\n  ")}
+  <line x1="16" y1="148" x2="${w - 16}" y2="148" stroke="${t.borderSoft}" stroke-width="1"/>
+  <text x="18" y="172" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.muted}">LOOT // ${escapeXml(fitText(specLine, 330, 10, true))}</text>
+</svg>`;
+  }
+
+  if (themeId === "seal-ink-scroll") {
+    const descLines = wrapText(repo.description, 368, 12.5, 2, false);
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(repo.name)}">
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.surface}" stroke="${t.borderSoft}" stroke-width="1"/>
+  <rect x="7.5" y="7.5" width="${w - 15}" height="${h - 15}" fill="none" stroke="${t.border}" stroke-opacity="0.7" stroke-width="0.9"/>
+  <rect x="8" y="8" width="${w - 16}" height="3" fill="${plateColor}"/>
+  <text x="20" y="33" font-family='${FONT_MONO}' font-size="9.2" font-weight="700" letter-spacing="1.1" fill="${plateColor}">FOLIO ${roman} · ${escapeXml(repo.language.toUpperCase())}</text>
+  <rect x="${w - 36}" y="21" width="13" height="13" rx="1" fill="${plateColor}"/>
+  <rect x="${w - 33}" y="24" width="7" height="7" fill="none" stroke="${t.surface}" stroke-width="1"/>
+  <text x="20" y="70" font-family='${FONT_SERIF}' font-size="23" font-weight="700" fill="${t.ink}">${escapeXml(fitText(repo.name, 360, 23))}</text>
+  ${descLines.map((line, i) => `<text x="20" y="${100 + i * 20}" font-family='${FONT_SANS}' font-size="12.5" fill="${t.sub}">${escapeXml(line)}</text>`).join("\n  ")}
+  <line x1="20" y1="148" x2="${w - 20}" y2="148" stroke="${t.borderSoft}" stroke-width="0.9"/>
+  <text x="20" y="170" font-family='${FONT_MONO}' font-size="10" fill="${t.muted}">${escapeXml(fitText(specLine, 372, 10, true))}</text>
 </svg>`;
   }
 

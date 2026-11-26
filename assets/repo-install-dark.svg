@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="72" viewBox="0 0 846 72" role="img" aria-label="Quick Install: npx gitskins init --mode repo --theme swiss-bauhaus-pixel --badge">
+  <title>Quick Install Command</title>
+  <style>
+    @keyframes cur_ri-swiss-bauhaus-pixel-dark { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.12; } }
+    .cur-ri-swiss-bauhaus-pixel-dark { animation: cur_ri-swiss-bauhaus-pixel-dark 1.4s steps(1, end) infinite; }
+    @media (prefers-reduced-motion: reduce) { .cur-ri-swiss-bauhaus-pixel-dark { animation: none !important; } }
+  </style>
+  <rect x="0.5" y="0.5" width="845" height="71" fill="#16181F" stroke="#2E313D" stroke-width="1"/>
+  <rect x="1" y="1" width="144" height="70" fill="#F4F4F6"/>
+  <rect x="14" y="31" width="8" height="8" fill="#38BDF8" shape-rendering="crispEdges"/>
+  <text x="30" y="39.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" font-weight="700" fill="#101115">CLI QUICKSTART</text>
+  <text x="162" y="41" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="13" font-weight="700" fill="#F4F4F6">$ npx gitskins init --mode repo --theme swiss-bauhaus-pixel --badge</text>
+  <rect class="cur-ri-swiss-bauhaus-pixel-dark" x="650" y="29" width="7" height="14" fill="#38BDF8"/>
+  <line x1="664" y1="14" x2="664" y2="58" stroke="#232631" stroke-width="1"/>
+  <text x="828" y="40" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" font-weight="700" fill="#7C8091">NODE 18+ · ZERO DEPS</text>
+</svg>

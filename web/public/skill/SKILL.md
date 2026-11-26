@@ -18,6 +18,8 @@ GitSkins turns GitHub Profile READMEs and Open-Source Repository READMEs into de
 | `blueprint-cad` | Architectural Blueprint CAD | `12px/48px` drafting grid, corner registration crosshairs, chamfered plates, CAD title blocks |
 | `editorial-zine` | Editorial Broadsheet Zine | Double hairline masthead rules, classic serif titles, italic lead-ins, right-hand specs ledger |
 | `crt-terminal` | Retro CRT Terminal TUI | Scanline overlay, tmux panes, phosphor monospace tables, ANSI color swatches & status bars |
+| `pixel-rpg-hud` | 16-bit Pixel RPG HUD | Stepped pixel bevel frames, HP/MP/XP stat meters, quest-log cards & 12x12 pixel relics |
+| `seal-ink-scroll` | Seal Ink Monograph | Warm Xuan paper & inkstone dark, carved cinnabar red seal stamp, corner fretwork & mountain mist |
 
 Every theme defines semantic tokens (`bg`, `surface`, `patternBg`, `patternFg`, `border`, `borderSoft`, `ink`, `sub`, `muted`, `accent`, `accentFg`, `secondary`, `tertiary`, `highlight`) in `themes/<id>/meta.json`.
 
@@ -51,9 +53,9 @@ Every theme defines semantic tokens (`bg`, `surface`, `patternBg`, `patternFg`, 
    - Spec: `https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/<theme>/SPEC.md`
    - Generator: `https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/<theme>/generator.py`
 3. **Customize & Run**: Update the profile data & real repositories inside `generator.py`, run it to generate `assets/*-{light,dark}.svg`, and wire `README.md`.
-4. **Optional Zero-503 Live Widgets (`L01`–`L04`)**:
+4. **Optional Zero-503 Live Widgets (`L01`–`L06`)**:
    - Download `https://raw.githubusercontent.com/Furina-he/gitskins/main/live-widgets/generate_live_widgets.py` to `scripts/generate_live_widgets.py` (zero `pip` dependencies).
-   - Add `.github/workflows/gitskins-widgets.yml` (template: `https://raw.githubusercontent.com/Furina-he/gitskins/main/live-widgets/gitskins-widgets.yml`) targeting `--widgets "github-stats:2,coding-rhythm:2,live-weather:1,rss-feed:3"`.
+   - Add `.github/workflows/gitskins-widgets.yml` (template: `https://raw.githubusercontent.com/Furina-he/gitskins/main/live-widgets/gitskins-widgets.yml`) targeting any of: `github-stats`, `coding-rhythm`, `rss-feed`, `live-weather`, `wakatime-weekly` (uses optional `WAKATIME_API_KEY`), `spotify-recent` (uses optional Spotify refresh token secrets).
    - Mount `./assets/live-<id>-{light,dark}.svg` via `<picture>` in `README.md`.
 
 ---

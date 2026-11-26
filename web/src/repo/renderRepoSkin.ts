@@ -95,6 +95,30 @@ export function renderGitSkinsBadgeSvg(
 </svg>`;
   }
 
+  if (themeId === "pixel-rpg-hud") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Styled with GitSkins">
+  <title>Styled with GitSkins</title>
+  <rect x="1" y="1" width="${w - 2}" height="${h - 2}" fill="${t.bg}" stroke="${t.border}" stroke-width="2" shape-rendering="crispEdges"/>
+  <rect x="8" y="8" width="16" height="16" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <rect x="12" y="12" width="8" height="8" fill="${t.accentFg}" shape-rendering="crispEdges"/>
+  <text x="32" y="19.5" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.muted}">EQUIP</text>
+  <text x="78" y="19.5" font-family='${FONT_MONO}' font-size="11" font-weight="800" fill="${t.ink}">GITSKINS</text>
+  <text x="${w - 10}" y="19.5" text-anchor="end" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.accent}">★ ↗</text>
+</svg>`;
+  }
+
+  if (themeId === "seal-ink-scroll") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Styled with GitSkins">
+  <title>Styled with GitSkins</title>
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.surface}" stroke="${t.border}" stroke-opacity="0.7" stroke-width="1"/>
+  <rect x="9" y="8" width="16" height="16" rx="1" fill="${t.accent}"/>
+  <rect x="12" y="11" width="10" height="10" fill="none" stroke="${t.accentFg}" stroke-width="1"/>
+  <text x="34" y="19.5" font-family='${FONT_MONO}' font-size="9" fill="${t.muted}">SEALED BY</text>
+  <text x="104" y="20.5" font-family='${FONT_SERIF}' font-size="13" font-weight="700" fill="${t.ink}">GitSkins</text>
+  <text x="${w - 10}" y="19.5" text-anchor="end" font-family='${FONT_MONO}' font-size="10" fill="${t.accent}">↗</text>
+</svg>`;
+  }
+
   // swiss-bauhaus-pixel
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Styled with GitSkins">
   <title>Styled with GitSkins</title>
@@ -300,6 +324,74 @@ export function renderRepoHeroSvg(
 </svg>`;
   }
 
+  if (themeId === "pixel-rpg-hud") {
+    const safeName = escapeXml(fitText(repo.name.toUpperCase(), 520, 36, true));
+    const tagLines = wrapText(repo.tagline, 530, 12.5, 2, false);
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(slug)} — 16-bit Pixel RPG Repo Banner">
+  <title>${escapeXml(slug)} — RPG Repo Hero</title>
+  <rect x="2" y="2" width="${w - 4}" height="${h - 4}" fill="${t.bg}" stroke="${t.border}" stroke-width="2" shape-rendering="crispEdges"/>
+  <rect x="6" y="6" width="${w - 12}" height="${h - 12}" fill="none" stroke="${t.borderSoft}" stroke-width="1" shape-rendering="crispEdges"/>
+  <rect x="0" y="0" width="6" height="6" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="${w - 6}" y="0" width="6" height="6" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="0" y="${h - 6}" width="6" height="6" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="${w - 6}" y="${h - 6}" width="6" height="6" fill="${t.border}" shape-rendering="crispEdges"/>
+  <rect x="7" y="7" width="${w - 14}" height="26" fill="${t.patternBg}"/>
+  <line x1="6" y1="33.5" x2="${w - 6}" y2="33.5" stroke="${t.border}" stroke-width="1.3"/>
+  <rect x="18" y="15" width="8" height="8" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <text x="34" y="23.5" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.ink}">QUEST REPO // ${escapeXml(fitText(slug.toUpperCase(), 280, 10, true))} · ${escapeXml(repo.version)}</text>
+  <text x="${w - 18}" y="23.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accent}">${escapeXml(fitText(siteShort, 180, 9.5, true))}</text>
+
+  <text x="28" y="60" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accent}">&gt; OPEN-SOURCE ARTIFACT // ${escapeXml(repo.language.toUpperCase())}</text>
+  <text x="31" y="106" font-family='${FONT_MONO}' font-size="36" font-weight="800" fill="${t.borderSoft}">${safeName}</text>
+  <text x="28" y="103" font-family='${FONT_MONO}' font-size="36" font-weight="800" fill="${t.ink}">${safeName}</text>
+  ${tagLines.map((l, i) => `<text x="28" y="${130 + i * 19}" font-family='${FONT_SANS}' font-size="12.5" font-weight="600" fill="${t.sub}">${escapeXml(l)}</text>`).join("\n  ")}
+
+  <rect x="646" y="48" width="174" height="122" fill="${t.surface}" stroke="${t.border}" stroke-width="1.5" shape-rendering="crispEdges"/>
+  <rect x="654" y="56" width="158" height="106" fill="${t.patternBg}" stroke="${t.borderSoft}" stroke-width="1" shape-rendering="crispEdges"/>
+  <text x="733" y="96" text-anchor="middle" font-family='${FONT_MONO}' font-size="24" font-weight="800" fill="${t.accent}">★ ${fmtNum(repo.stars)}</text>
+  <text x="733" y="118" text-anchor="middle" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.ink}">${fmtNum(repo.forks)} FORKS</text>
+  <text x="733" y="142" text-anchor="middle" font-family='${FONT_MONO}' font-size="9.5" fill="${t.tertiary}">${escapeXml(repo.license)} · ${escapeXml(repo.version)}</text>
+
+  <line x1="6" y1="186.5" x2="${w - 6}" y2="186.5" stroke="${t.border}" stroke-width="1.3"/>
+  <text x="26" y="208" font-family='${FONT_MONO}' font-size="8.8" font-weight="700" fill="${t.muted}">EQUIPPED TAGS</text>
+  <text x="26" y="228" font-family='${FONT_MONO}' font-size="12" font-weight="700" fill="${t.ink}">${escapeXml(fitText(topics.map((x) => `#${x}`).join("  "), 520, 12, true))}</text>
+  <text x="${w - 26}" y="226" text-anchor="end" font-family='${FONT_MONO}' font-size="11" font-weight="700" fill="${t.accent}">S-RANK · READY</text>
+</svg>`;
+  }
+
+  if (themeId === "seal-ink-scroll") {
+    const safeName = escapeXml(fitText(repo.name, 480, 42, false));
+    const tagLines = wrapText(repo.tagline, 500, 14.5, 2, false);
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(slug)} — Seal Ink Repo Banner">
+  <title>${escapeXml(slug)} — Seal Ink Repo Hero</title>
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.borderSoft}" stroke-width="1"/>
+  <rect x="8.5" y="8.5" width="${w - 17}" height="${h - 17}" fill="none" stroke="${t.border}" stroke-opacity="0.72" stroke-width="0.9"/>
+  <path d="M 12 24 L 12 12 L 24 12" fill="none" stroke="${t.accent}" stroke-width="1.3"/>
+  <path d="M ${w - 24} 12 L ${w - 12} 12 L ${w - 12} 24" fill="none" stroke="${t.accent}" stroke-width="1.3"/>
+  <path d="M 12 ${h - 24} L 12 ${h - 12} L 24 ${h - 12}" fill="none" stroke="${t.accent}" stroke-width="1.3"/>
+  <path d="M ${w - 24} ${h - 12} L ${w - 12} ${h - 12} L ${w - 12} ${h - 24}" fill="none" stroke="${t.accent}" stroke-width="1.3"/>
+  <path d="M 520 190 Q 595 132 668 164 T 836 138 L 836 190 Z" fill="${t.patternBg}" fill-opacity="0.82"/>
+
+  <text x="28" y="33" font-family='${FONT_MONO}' font-size="9.5" letter-spacing="1.2" fill="${t.muted}">REPOSITORY SCROLL · ${escapeXml(fitText(slug.toUpperCase(), 260, 9.5, true))}</text>
+  <text x="${w - 28}" y="33" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${escapeXml(repo.version)} · ${escapeXml(repo.license)}</text>
+  <line x1="22" y1="43.5" x2="${w - 22}" y2="43.5" stroke="${t.borderSoft}" stroke-width="0.9"/>
+
+  <rect x="28" y="60" width="6" height="6" fill="${t.accent}"/>
+  <text x="42" y="67" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" letter-spacing="1.1" fill="${t.accent}">${escapeXml(fitText(topics.join(" · ").toUpperCase(), 460, 9.5, true))}</text>
+  <text x="28" y="116" font-family='${FONT_SERIF}' font-size="42" font-weight="700" fill="${t.ink}">${safeName}<tspan fill="${t.accent}">.</tspan></text>
+  ${tagLines.map((l, i) => `<text x="28" y="${148 + i * 21}" font-family='${FONT_SERIF}' font-size="14.5" font-style="italic" fill="${t.sub}">${escapeXml(l)}</text>`).join("\n  ")}
+
+  <rect x="758" y="60" width="44" height="44" rx="2" fill="${t.accent}"/>
+  <rect x="762" y="64" width="36" height="36" fill="none" stroke="${t.accentFg}" stroke-width="1.3"/>
+  <line x1="780" y1="68" x2="780" y2="96" stroke="${t.accentFg}" stroke-width="1.5"/>
+  <line x1="766" y1="82" x2="794" y2="82" stroke="${t.accentFg}" stroke-width="1.4"/>
+
+  <line x1="22" y1="190.5" x2="${w - 22}" y2="190.5" stroke="${t.border}" stroke-opacity="0.6" stroke-width="0.9"/>
+  <text x="28" y="216" font-family='${FONT_MONO}' font-size="10.5" fill="${t.ink}">LANGUAGE <tspan font-weight="700" fill="${t.accent}">${escapeXml(repo.language)}</tspan>  ·  STARS <tspan font-weight="700">★ ${fmtNum(repo.stars)}</tspan>  ·  FORKS <tspan font-weight="700">${fmtNum(repo.forks)}</tspan></text>
+  <text x="${w - 28}" y="216" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${escapeXml(fitText(siteShort, 200, 9.5, true))}</text>
+</svg>`;
+  }
+
   // swiss-bauhaus-pixel
   const safeTitle = escapeXml(fitText(repo.name.toUpperCase(), 540, 42, false));
   const tagLines = wrapText(repo.tagline, 540, 13.5, 2, false);
@@ -451,6 +543,37 @@ export function renderRepoInstallSvg(
 </svg>`;
   }
 
+  if (themeId === "pixel-rpg-hud") {
+    const curX = Math.min(650, 158 + Math.round(estimateTextPx(cmdStr, 13, true) + 6));
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Quick Install: ${escapeXml(repo.installCommand)}">
+  <title>Quick Install Command</title>
+  ${style}
+  <rect x="2" y="2" width="${w - 4}" height="${h - 4}" fill="${t.surface}" stroke="${t.border}" stroke-width="2" shape-rendering="crispEdges"/>
+  <rect x="8" y="16" width="132" height="40" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <text x="74" y="40" text-anchor="middle" font-family='${FONT_MONO}' font-size="10" font-weight="800" fill="${t.accentFg}">${label}</text>
+  <text x="158" y="41" font-family='${FONT_MONO}' font-size="13" font-weight="700" fill="${t.ink}">${safeCmd}</text>
+  <rect class="cur-${uid}" x="${curX}" y="29" width="7" height="14" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <text x="826" y="40" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.muted}">${hint}</text>
+</svg>`;
+  }
+
+  if (themeId === "seal-ink-scroll") {
+    const curX = Math.min(646, 154 + Math.round(estimateTextPx(cmdStr, 13, true) + 6));
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Quick Install: ${escapeXml(repo.installCommand)}">
+  <title>Quick Install Command</title>
+  ${style}
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.surface}" stroke="${t.borderSoft}" stroke-width="1"/>
+  <rect x="6.5" y="6.5" width="${w - 13}" height="${h - 13}" fill="none" stroke="${t.border}" stroke-opacity="0.6" stroke-width="0.8"/>
+  <rect x="18" y="25" width="18" height="18" rx="1" fill="${t.accent}"/>
+  <rect x="21.5" y="28.5" width="11" height="11" fill="none" stroke="${t.accentFg}" stroke-width="1"/>
+  <text x="46" y="39" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accent}">${label}</text>
+  <line x1="138" y1="16" x2="138" y2="56" stroke="${t.borderSoft}" stroke-width="0.9"/>
+  <text x="154" y="41" font-family='${FONT_MONO}' font-size="13" font-weight="700" fill="${t.ink}">${safeCmd}</text>
+  <rect class="cur-${uid}" x="${curX}" y="29" width="7" height="14" fill="${t.accent}"/>
+  <text x="824" y="40" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${hint}</text>
+</svg>`;
+  }
+
   // swiss-bauhaus-pixel
   const curX = Math.min(650, 162 + Math.round(estimateTextPx(cmdStr, 13, true) + 6));
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Quick Install: ${escapeXml(repo.installCommand)}">
@@ -509,6 +632,29 @@ function renderRepoSectionHeaderSvg(
   <text x="14" y="22" font-family='${FONT_MONO}' font-size="11.5" font-weight="700" fill="${t.accent}">[${escapeXml(code)}]</text>
   <text x="74" y="22" font-family='${FONT_MONO}' font-size="11.5" font-weight="700" fill="${t.ink}">${safeTitle}</text>
   <text x="${w - 14}" y="22" text-anchor="end" font-family='${FONT_MONO}' font-size="10" fill="${t.muted}">${safeRight}</text>
+</svg>`;
+  }
+
+  if (themeId === "pixel-rpg-hud") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect x="1" y="1" width="${w - 2}" height="${h - 2}" fill="${t.surface}" stroke="${t.border}" stroke-width="2" shape-rendering="crispEdges"/>
+  <rect x="8" y="7" width="74" height="22" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <text x="45" y="21.5" text-anchor="middle" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accentFg}">${escapeXml(code)}</text>
+  <text x="96" y="22.5" font-family='${FONT_MONO}' font-size="12.5" font-weight="800" fill="${t.ink}">${safeTitle}</text>
+  <text x="${w - 14}" y="22" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.muted}">${safeRight}</text>
+</svg>`;
+  }
+
+  if (themeId === "seal-ink-scroll") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect width="${w}" height="${h}" fill="${t.bg}"/>
+  <line x1="0" y1="2.5" x2="${w}" y2="2.5" stroke="${t.border}" stroke-opacity="0.75" stroke-width="1.2"/>
+  <line x1="0" y1="5.5" x2="${w}" y2="5.5" stroke="${t.borderSoft}" stroke-width="0.7"/>
+  <rect x="2" y="12" width="14" height="14" rx="1" fill="${t.accent}"/>
+  <rect x="5" y="15" width="8" height="8" fill="none" stroke="${t.accentFg}" stroke-width="1"/>
+  <text x="26" y="24" font-family='${FONT_SERIF}' font-size="15.5" font-weight="700" fill="${t.ink}">${safeTitle}</text>
+  <text x="${w - 4}" y="23" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" letter-spacing="0.8" fill="${t.muted}">${safeRight}</text>
+  <line x1="0" y1="34.5" x2="${w}" y2="34.5" stroke="${t.borderSoft}" stroke-width="0.9"/>
 </svg>`;
   }
 
@@ -597,6 +743,32 @@ export function renderRepoFeatureCardSvg(
         `<text x="16" y="${86 + i * 20}" font-family='${FONT_MONO}' font-size="11.2" fill="${t.sub}">${escapeXml(line)}</text>`
     )
     .join("\n  ")}
+</svg>`;
+  }
+
+  if (themeId === "pixel-rpg-hud") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect x="2" y="2" width="${w - 4}" height="${h - 4}" fill="${t.surface}" stroke="${t.border}" stroke-width="2" shape-rendering="crispEdges"/>
+  <rect x="6" y="6" width="${w - 12}" height="${h - 12}" fill="none" stroke="${t.borderSoft}" stroke-width="1" shape-rendering="crispEdges"/>
+  <rect x="7" y="7" width="${w - 14}" height="24" fill="${t.patternBg}"/>
+  <line x1="6" y1="31.5" x2="${w - 6}" y2="31.5" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="16" y="15" width="7" height="7" fill="${color}" shape-rendering="crispEdges"/>
+  <text x="29" y="22.5" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.ink}">SKILL ${numStr} · ${safeTag}</text>
+  <text x="${w - 16}" y="22.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${color}">LV.MAX</text>
+  <text x="18" y="64" font-family='${FONT_MONO}' font-size="16" font-weight="800" fill="${t.ink}">${safeTitle}</text>
+  ${descLines.map((line, i) => `<text x="18" y="${92 + i * 20}" font-family='${FONT_SANS}' font-size="12.2" fill="${t.sub}">${escapeXml(line)}</text>`).join("\n  ")}
+</svg>`;
+  }
+
+  if (themeId === "seal-ink-scroll") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.surface}" stroke="${t.borderSoft}" stroke-width="1"/>
+  <rect x="6.5" y="6.5" width="${w - 13}" height="${h - 13}" fill="none" stroke="${t.border}" stroke-opacity="0.7" stroke-width="0.9"/>
+  <rect x="7" y="7" width="${w - 14}" height="3" fill="${color}"/>
+  <text x="18" y="30" font-family='${FONT_MONO}' font-size="9.2" font-weight="700" letter-spacing="1.1" fill="${color}">FOLIO ${roman}</text>
+  <text x="${w - 18}" y="30" text-anchor="end" font-family='${FONT_MONO}' font-size="9.2" fill="${t.muted}">${safeTag}</text>
+  <text x="18" y="64" font-family='${FONT_SERIF}' font-size="20" font-weight="700" fill="${t.ink}">${safeTitle}</text>
+  ${descLines.map((line, i) => `<text x="18" y="${93 + i * 20}" font-family='${FONT_SANS}' font-size="12.2" fill="${t.sub}">${escapeXml(line)}</text>`).join("\n  ")}
 </svg>`;
   }
 

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="36" viewBox="0 0 846 36" role="img" aria-label="KEY CAPABILITIES">
+  <rect x="0.5" y="0.5" width="845" height="35" fill="#16181F" stroke="#2E313D" stroke-width="1"/>
+  <rect x="10" y="9" width="18" height="18" fill="#38BDF8" shape-rendering="crispEdges"/>
+  <text x="19" y="21.5" text-anchor="middle" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" font-weight="700" fill="#0A0A0A">01</text>
+  <text x="38" y="22.5" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="13" font-weight="800" fill="#F4F4F6">KEY CAPABILITIES</text>
+  <text x="832" y="22" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" fill="#7C8091">04 MODULES</text>
+</svg>

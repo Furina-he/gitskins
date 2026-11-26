@@ -12,7 +12,9 @@ export type WidgetId =
   | "github-stats"
   | "coding-rhythm"
   | "rss-feed"
-  | "live-weather";
+  | "live-weather"
+  | "wakatime-weekly"
+  | "spotify-recent";
 
 /** 4-column 846px Bento grid: 1=204px, 2=418px, 3=632px, 4=846px (10px gaps) */
 export type BentoColSpan = 1 | 2 | 3 | 4;
@@ -129,6 +131,22 @@ export interface LiveWeatherConfig {
   humidity: number;
 }
 
+export interface WakaTimeWeeklyConfig {
+  totalHours: string;
+  dailyAvg: string;
+  editor: string;
+  languages: string; // e.g. "TypeScript:44, Rust:28, Python:18, CSS:10"
+}
+
+export interface SpotifyRecentConfig {
+  track: string;
+  artist: string;
+  album: string;
+  status: "NOW PLAYING" | "RECENTLY PLAYED" | "PAUSED";
+  progress: number;
+  duration: string;
+}
+
 export type WidgetConfigMap = {
   "pixel-companion": PixelCompanionConfig;
   "now-playing": NowPlayingConfig;
@@ -142,6 +160,8 @@ export type WidgetConfigMap = {
   "coding-rhythm": CodingRhythmConfig;
   "rss-feed": RssFeedConfig;
   "live-weather": LiveWeatherConfig;
+  "wakatime-weekly": WakaTimeWeeklyConfig;
+  "spotify-recent": SpotifyRecentConfig;
 };
 
 export type AnyWidgetConfig = WidgetConfigMap[WidgetId];

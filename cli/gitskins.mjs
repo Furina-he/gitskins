@@ -176,6 +176,82 @@ const FALLBACK_THEMES = {
       },
     },
   },
+  "pixel-rpg-hud": {
+    name: "16-bit Pixel RPG HUD",
+    category: "Retro Game UI",
+    tokens: {
+      light: {
+        bg: "#F6F2E4",
+        surface: "#FFFDF6",
+        patternBg: "#EAE4D1",
+        patternFg: "#D9D1BA",
+        border: "#1B1E2E",
+        borderSoft: "#D5CEBA",
+        ink: "#1B1E2E",
+        sub: "#434963",
+        muted: "#6F7591",
+        accent: "#D97706",
+        accentFg: "#FFFFFF",
+        secondary: "#DC2626",
+        tertiary: "#15803D",
+        highlight: "#2563EB",
+      },
+      dark: {
+        bg: "#121524",
+        surface: "#191E33",
+        patternBg: "#1E2540",
+        patternFg: "#2B3457",
+        border: "#EAB308",
+        borderSoft: "#2F385C",
+        ink: "#F6F4EA",
+        sub: "#B8C0DC",
+        muted: "#7F8AAD",
+        accent: "#FACC15",
+        accentFg: "#121524",
+        secondary: "#F87171",
+        tertiary: "#4ADE80",
+        highlight: "#38BDF8",
+      },
+    },
+  },
+  "seal-ink-scroll": {
+    name: "Seal Ink Monograph",
+    category: "East Asian Print",
+    tokens: {
+      light: {
+        bg: "#F7F3EA",
+        surface: "#FCF9F2",
+        patternBg: "#EFE8DA",
+        patternFg: "#DCD2BF",
+        border: "#2B2622",
+        borderSoft: "#DED5C5",
+        ink: "#1C1917",
+        sub: "#4E4740",
+        muted: "#847B70",
+        accent: "#C4362C",
+        accentFg: "#FCF9F2",
+        secondary: "#2C5E5A",
+        tertiary: "#7C5C3B",
+        highlight: "#B5842A",
+      },
+      dark: {
+        bg: "#141311",
+        surface: "#1B1916",
+        patternBg: "#221F1B",
+        patternFg: "#322E28",
+        border: "#D6CCB9",
+        borderSoft: "#35312A",
+        ink: "#F2ECE1",
+        sub: "#C2B9AA",
+        muted: "#8C8274",
+        accent: "#E0564A",
+        accentFg: "#141311",
+        secondary: "#56A39B",
+        tertiary: "#C79C6D",
+        highlight: "#DFB35B",
+      },
+    },
+  },
 };
 
 function loadThemes() {
@@ -669,7 +745,7 @@ Usage:
 
 Options for init:
   --mode <repo|profile>   Target mode (default: repo)
-  --theme <id>            swiss-bauhaus-pixel | blueprint-cad | editorial-zine | crt-terminal
+  --theme <id>            swiss-bauhaus-pixel | blueprint-cad | editorial-zine | crt-terminal | pixel-rpg-hud | seal-ink-scroll
   --out <dir>             Output directory (default: .)
   --repo <owner/name>     Repository slug for repo mode (auto-detected if omitted)
   --tagline <text>        Project tagline for repo mode
@@ -694,8 +770,8 @@ function runList(themes) {
   console.log(
     "  pixel-companion, now-playing, dev-badge, skill-dock, quote-banner, hero-sticker, pixel-runway, mini-tile"
   );
-  console.log("\nZero-503 Live Actions Widgets (L01-L04):");
-  console.log("  github-stats, coding-rhythm, rss-feed, live-weather");
+  console.log("\nZero-503 Live Actions Widgets (L01-L06):");
+  console.log("  github-stats, coding-rhythm, rss-feed, live-weather, wakatime-weekly, spotify-recent");
   console.log("\nRepo Skin Modules (R01-R05):");
   console.log("  repo-hero (846x248), repo-install (846x72), repo-feat (417x152), repo-arch (846x168), gitskins-badge (216x32)");
 }

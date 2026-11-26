@@ -2,10 +2,12 @@
 """GitSkins Zero-503 Live Widgets Generator (Python 3.10+ stdlib only).
 
 Generates Light & Dark theme-matched SVGs for GitHub Actions cron workflows:
-  - github-stats   (2/3/4 cols x 160px) — GitHub metrics + proportional language bar
-  - coding-rhythm  (2/3/4 cols x 160px) — 24h commit histogram + circadian persona
-  - rss-feed       (2/3/4 cols x 160px) — Latest 3 RSS/Atom articles
-  - live-weather   (1/2   cols x 160px) — Open-Meteo real-time pixel weather window
+  - github-stats    (2/3/4 cols x 160px) — GitHub metrics + proportional language bar
+  - coding-rhythm   (2/3/4 cols x 160px) — 24h commit histogram + circadian persona
+  - rss-feed        (2/3/4 cols x 160px) — Latest 3 RSS/Atom articles
+  - live-weather    (1/2   cols x 160px) — Open-Meteo real-time pixel weather window
+  - wakatime-weekly (2/3/4 cols x 160px) — WakaTime 7-day coding hours + language breakdown
+  - spotify-recent  (2/3/4 cols x 160px) — Spotify Now Playing / recently played vinyl deck
 
 Zero pip dependencies. Every SVG is strictly XML-validated before write.
 """
@@ -13,6 +15,7 @@ Zero pip dependencies. Every SVG is strictly XML-validated before write.
 from __future__ import annotations
 
 import argparse
+import base64
 from datetime import datetime, timedelta, timezone
 import json
 import math
@@ -88,6 +91,34 @@ THEME_TOKENS: dict[str, dict[str, dict[str, str]]] = {
             "muted": "#647B8A", "border": "#22313D", "borderSoft": "#19242D",
             "accent": "#34D399", "accentFg": "#071412", "secondary": "#38BDF8",
             "tertiary": "#60A5FA", "highlight": "#FBBF24", "patternBg": "#11181E", "patternFg": "#19242D",
+        },
+    },
+    "pixel-rpg-hud": {
+        "light": {
+            "bg": "#F6F2E4", "surface": "#FFFDF6", "ink": "#1B1E2E", "sub": "#434963",
+            "muted": "#6F7591", "border": "#1B1E2E", "borderSoft": "#D5CEBA",
+            "accent": "#D97706", "accentFg": "#FFFFFF", "secondary": "#DC2626",
+            "tertiary": "#15803D", "highlight": "#2563EB", "patternBg": "#EAE4D1", "patternFg": "#D9D1BA",
+        },
+        "dark": {
+            "bg": "#121524", "surface": "#191E33", "ink": "#F6F4EA", "sub": "#B8C0DC",
+            "muted": "#7F8AAD", "border": "#EAB308", "borderSoft": "#2F385C",
+            "accent": "#FACC15", "accentFg": "#121524", "secondary": "#F87171",
+            "tertiary": "#4ADE80", "highlight": "#38BDF8", "patternBg": "#1E2540", "patternFg": "#2B3457",
+        },
+    },
+    "seal-ink-scroll": {
+        "light": {
+            "bg": "#F7F3EA", "surface": "#FCF9F2", "ink": "#1C1917", "sub": "#4E4740",
+            "muted": "#847B70", "border": "#2B2622", "borderSoft": "#DED5C5",
+            "accent": "#C4362C", "accentFg": "#FCF9F2", "secondary": "#2C5E5A",
+            "tertiary": "#7C5C3B", "highlight": "#B5842A", "patternBg": "#EFE8DA", "patternFg": "#DCD2BF",
+        },
+        "dark": {
+            "bg": "#141311", "surface": "#1B1916", "ink": "#F2ECE1", "sub": "#C2B9AA",
+            "muted": "#8C8274", "border": "#D6CCB9", "borderSoft": "#35312A",
+            "accent": "#E0564A", "accentFg": "#141311", "secondary": "#56A39B",
+            "tertiary": "#C79C6D", "highlight": "#DFB35B", "patternBg": "#221F1B", "patternFg": "#322E28",
         },
     },
 }
@@ -167,9 +198,9 @@ def chamfer(x: float, y: float, w: float, h: float, cut: float = 5) -> str:
 
 
 def head_font(theme_id: str) -> str:
-    if theme_id == "editorial-zine":
+    if theme_id in ("editorial-zine", "seal-ink-scroll"):
         return FONT_SERIF
-    if theme_id == "crt-terminal":
+    if theme_id in ("crt-terminal", "pixel-rpg-hud"):
         return FONT_MONO
     return FONT_SANS
 
@@ -241,6 +272,36 @@ def render_theme_frame(
   <text x="{w - 14}" y="16.5" text-anchor="end" font-family='{FONT_MONO}' font-size="9.5" fill="{t['muted']}">{safe_meta}</text>
   <rect x="1" y="26" width="{w - 2}" height="{h - 27}" fill="url(#scan-{uid})"/>"""
         return defs, chrome, 35, 16
+
+    if theme_id == "pixel-rpg-hud":
+        chrome = f"""
+  <rect x="2" y="2" width="{w - 4}" height="{h - 4}" fill="{t['bg']}" stroke="{t['border']}" stroke-width="2" shape-rendering="crispEdges"/>
+  <rect x="6" y="6" width="{w - 12}" height="{h - 12}" fill="none" stroke="{t['borderSoft']}" stroke-width="1" shape-rendering="crispEdges"/>
+  <rect x="0" y="0" width="5" height="5" fill="{t['border']}" shape-rendering="crispEdges"/>
+  <rect x="{w - 5}" y="0" width="5" height="5" fill="{t['border']}" shape-rendering="crispEdges"/>
+  <rect x="0" y="{h - 5}" width="5" height="5" fill="{t['border']}" shape-rendering="crispEdges"/>
+  <rect x="{w - 5}" y="{h - 5}" width="5" height="5" fill="{t['border']}" shape-rendering="crispEdges"/>
+  <rect x="7" y="7" width="{w - 14}" height="22" fill="{t['patternBg']}"/>
+  <line x1="6" y1="29.5" x2="{w - 6}" y2="29.5" stroke="{t['border']}" stroke-width="1.2"/>
+  <rect x="15" y="15" width="6" height="6" fill="{t['accent']}" shape-rendering="crispEdges"/>
+  <text x="27" y="21.5" font-family='{FONT_MONO}' font-size="9.5" font-weight="700" fill="{t['ink']}">{safe_tag}</text>
+  <text x="{w - 16}" y="21.5" text-anchor="end" font-family='{FONT_MONO}' font-size="9" font-weight="700" fill="{t['accent']}">{safe_meta}</text>"""
+        return "", chrome, 36, 18
+
+    if theme_id == "seal-ink-scroll":
+        chrome = f"""
+  <rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" fill="{t['bg']}" stroke="{t['borderSoft']}" stroke-width="1"/>
+  <rect x="6.5" y="6.5" width="{w - 13}" height="{h - 13}" fill="none" stroke="{t['border']}" stroke-opacity="0.7" stroke-width="0.9"/>
+  <path d="M 10 20 L 10 10 L 20 10" fill="none" stroke="{t['accent']}" stroke-width="1.2"/>
+  <path d="M {w - 20} 10 L {w - 10} 10 L {w - 10} 20" fill="none" stroke="{t['accent']}" stroke-width="1.2"/>
+  <path d="M 10 {h - 20} L 10 {h - 10} L 20 {h - 10}" fill="none" stroke="{t['accent']}" stroke-width="1.2"/>
+  <path d="M {w - 20} {h - 10} L {w - 10} {h - 10} L {w - 10} {h - 20}" fill="none" stroke="{t['accent']}" stroke-width="1.2"/>
+  <rect x="18" y="16" width="11" height="11" rx="1" fill="{t['accent']}"/>
+  <rect x="20.5" y="18.5" width="6" height="6" fill="none" stroke="{t['accentFg']}" stroke-width="0.9"/>
+  <text x="36" y="25" font-family='{FONT_MONO}' font-size="9.2" font-weight="700" letter-spacing="0.9" fill="{t['ink']}">{safe_tag}</text>
+  <text x="{w - 18}" y="25" text-anchor="end" font-family='{FONT_MONO}' font-size="9.2" fill="{t['muted']}">{safe_meta}</text>
+  <line x1="16" y1="32.5" x2="{w - 16}" y2="32.5" stroke="{t['borderSoft']}" stroke-width="0.9"/>"""
+        return "", chrome, 38, 18
 
     chrome = f"""
   <rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" fill="{t['bg']}" stroke="{t['border']}" stroke-width="1"/>
@@ -464,6 +525,104 @@ def fetch_live_weather(city: str, unit: str, demo: bool) -> dict:
     except Exception as exc:
         print(f"[warn] live-weather fetch failed ({exc}), using fallback", file=sys.stderr)
         return fetch_live_weather(clean_city, u, True)
+
+
+def fetch_wakatime_weekly(api_key: str, demo: bool) -> dict:
+    if demo or not api_key:
+        return {
+            "total": "38h 42m",
+            "daily_avg": "5h 31m / day",
+            "editor": "VS Code",
+            "langs": [("TypeScript", 44), ("Rust", 28), ("Python", 18), ("CSS", 10)],
+        }
+    try:
+        tok = base64.b64encode(f"{api_key}:".encode("utf-8")).decode("ascii")
+        res = http_get_json(
+            "https://wakatime.com/api/v1/users/current/stats/last_7_days",
+            {"Authorization": f"Basic {tok}"},
+        )
+        d = res.get("data", {}) if isinstance(res, dict) else {}
+        raw_langs = d.get("languages") or []
+        langs = [
+            (str(item.get("name", "Code")), max(1, round(float(item.get("percent", 1)))))
+            for item in raw_langs[:4]
+            if isinstance(item, dict)
+        ] or [("Code", 100)]
+        editors = d.get("editors") or []
+        editor = str(editors[0].get("name", "Editor")) if editors and isinstance(editors[0], dict) else "Editor"
+        return {
+            "total": str(d.get("human_readable_total_including_other_language") or d.get("human_readable_total") or "0h 0m"),
+            "daily_avg": f"{d.get('human_readable_daily_average') or '0h 0m'} / day",
+            "editor": editor,
+            "langs": langs,
+        }
+    except Exception as exc:
+        print(f"[warn] wakatime fetch failed ({exc}), using fallback", file=sys.stderr)
+        return fetch_wakatime_weekly("", True)
+
+
+def fetch_spotify_recent(client_id: str, client_secret: str, refresh_token: str, demo: bool) -> dict:
+    if demo or not (client_id and client_secret and refresh_token):
+        return {
+            "track": "Aruarian Dance",
+            "artist": "Nujabes",
+            "album": "Samurai Champloo OST",
+            "status": "NOW PLAYING",
+            "progress": 68,
+            "duration": "4:10",
+        }
+    try:
+        basic = base64.b64encode(f"{client_id}:{client_secret}".encode("utf-8")).decode("ascii")
+        body = urllib.parse.urlencode({"grant_type": "refresh_token", "refresh_token": refresh_token}).encode("utf-8")
+        req = urllib.request.Request(
+            "https://accounts.spotify.com/api/token",
+            data=body,
+            headers={
+                "Authorization": f"Basic {basic}",
+                "Content-Type": "application/x-www-form-urlencoded",
+                "User-Agent": "GitSkins-LiveWidgets/0.6",
+            },
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=12) as resp:
+            tok_data = json.loads(resp.read().decode("utf-8"))
+        access = tok_data["access_token"]
+        auth_h = {"Authorization": f"Bearer {access}"}
+        item = None
+        status = "RECENTLY PLAYED"
+        progress = 72
+        try:
+            now_req = urllib.request.Request("https://api.spotify.com/v1/me/player/currently-playing", headers=auth_h)
+            with urllib.request.urlopen(now_req, timeout=12) as nr:
+                if nr.status == 200:
+                    payload = json.loads(nr.read().decode("utf-8"))
+                    if payload.get("item"):
+                        item = payload["item"]
+                        status = "NOW PLAYING" if payload.get("is_playing") else "PAUSED"
+                        dur_ms = max(1, int(item.get("duration_ms", 1)))
+                        progress = max(5, min(98, round(int(payload.get("progress_ms", 0)) * 100 / dur_ms)))
+        except Exception:
+            item = None
+        if not item:
+            rec = http_get_json("https://api.spotify.com/v1/me/player/recently-played?limit=1", auth_h)
+            items = rec.get("items") if isinstance(rec, dict) else []
+            if items and isinstance(items[0], dict):
+                item = items[0].get("track")
+        if not isinstance(item, dict):
+            raise ValueError("No Spotify track returned")
+        artists = ", ".join(a.get("name", "") for a in item.get("artists", []) if isinstance(a, dict)) or "Artist"
+        dur_s = round(int(item.get("duration_ms", 210000)) / 1000)
+        return {
+            "track": str(item.get("name", "Untitled")),
+            "artist": artists,
+            "album": str((item.get("album") or {}).get("name", "Spotify")),
+            "status": status,
+            "progress": progress,
+            "duration": f"{dur_s // 60}:{dur_s % 60:02d}",
+        }
+    except Exception as exc:
+        print(f"[warn] spotify fetch failed ({exc}), using fallback", file=sys.stderr)
+        return fetch_spotify_recent("", "", "", True)
 
 
 # ---------------------------------------------------------------------------
@@ -699,8 +858,114 @@ def render_live_weather_svg(data: dict, theme_id: str, mode: str, span: int, acc
 </svg>"""
 
 
+def render_wakatime_weekly_svg(data: dict, theme_id: str, mode: str, span: int, accent: str, animated: bool) -> str:
+    t = resolve_tokens(theme_id, mode, accent)
+    w = col_span_to_px(span)
+    h = 160
+    uid = f"lwaka-{theme_id}-{mode}-c{span}"
+    defs, chrome, top, pad = render_theme_frame(uid, theme_id, mode, t, w, h, "WAKATIME · 7D", data["editor"])
+    inner_w = w - pad * 2
+    langs = data["langs"][:4]
+    bar_colors = [t["accent"], t["secondary"], t["tertiary"], t["highlight"]]
+
+    left_w = 132 if span == 2 else 164
+    right_x = pad + left_w + 14
+    right_w = w - right_x - pad
+
+    rows_svg: list[str] = []
+    row_y0 = top + 12
+    for idx, (lname, pct) in enumerate(langs):
+        y = row_y0 + idx * 24
+        col = bar_colors[idx % 4]
+        track_x = right_x + 76
+        track_w = max(48, right_w - 114)
+        fill_w = max(4, round(track_w * min(100, pct) / 100))
+        rows_svg.append(
+            f'  <text x="{right_x}" y="{y + 8}" font-family=\'{FONT_MONO}\' font-size="9.5" font-weight="700" fill="{t["ink"]}">{esc(fit_text(lname, 70, 9.5, True))}</text>'
+            f'  <rect x="{track_x}" y="{y}" width="{track_w}" height="9" fill="{t["patternBg"]}" stroke="{t["borderSoft"]}" stroke-width="0.7" shape-rendering="crispEdges"/>'
+            f'  <rect x="{track_x}" y="{y}" width="{fill_w}" height="9" fill="{col}" shape-rendering="crispEdges"/>'
+            f'  <text x="{w - pad}" y="{y + 8}" text-anchor="end" font-family=\'{FONT_MONO}\' font-size="9.2" fill="{t["muted"]}">{pct}%</text>'
+        )
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="WakaTime Weekly Coding: {esc(data['total'])}">
+  <title>WakaTime Weekly — {esc(data['total'])}</title>{f'<defs>{defs}</defs>' if defs else ''}
+  {chrome}
+  <rect x="{pad}" y="{top + 8}" width="{left_w}" height="{h - top - 22}" fill="{t['surface']}" stroke="{t['borderSoft']}" stroke-width="1"/>
+  <rect x="{pad + 10}" y="{top + 18}" width="6" height="6" fill="{t['accent']}" shape-rendering="crispEdges"/>
+  <text x="{pad + 22}" y="{top + 24}" font-family='{FONT_MONO}' font-size="8.8" font-weight="700" fill="{t['muted']}">LAST 7 DAYS</text>
+  <text x="{pad + 10}" y="{top + 56}" font-family='{head_font(theme_id)}' font-size="22" font-weight="800" fill="{t['ink']}">{esc(fit_text(data['total'], left_w - 20, 22))}</text>
+  <line x1="{pad + 10}" y1="{top + 68}" x2="{pad + left_w - 10}" y2="{top + 68}" stroke="{t['borderSoft']}" stroke-width="0.8"/>
+  <text x="{pad + 10}" y="{top + 86}" font-family='{FONT_MONO}' font-size="9.5" fill="{t['sub']}">AVG {esc(fit_text(data['daily_avg'], left_w - 40, 9.5, True))}</text>
+{"".join(rows_svg)}
+</svg>"""
+
+
+def render_spotify_recent_svg(data: dict, theme_id: str, mode: str, span: int, accent: str, animated: bool) -> str:
+    t = resolve_tokens(theme_id, mode, accent)
+    w = col_span_to_px(span)
+    h = 160
+    uid = f"lspot-{theme_id}-{mode}-c{span}"
+    defs, chrome, top, pad = render_theme_frame(uid, theme_id, mode, t, w, h, "SPOTIFY", data["status"])
+    disc_cx = pad + 48
+    disc_cy = top + 54
+    tx = pad + 110
+    text_w = w - tx - pad - 44
+    prog_w = w - tx - pad
+    prog_fill = max(8, round(prog_w * max(0, min(100, int(data["progress"]))) / 100))
+
+    eq_bars = ""
+    for i, bh in enumerate((12, 22, 16, 26)):
+        ex = w - pad - 28 + i * 7
+        eq_bars += f'<rect class="eq-{uid}-{i}" x="{ex}" y="{top + 40 - bh}" width="4" height="{bh}" fill="{t["accent"] if i % 2 == 0 else t["secondary"]}" shape-rendering="crispEdges"/>'
+
+    style_block = (
+        f"""<style>
+    @keyframes spin_{uid} {{ from {{ transform: rotate(0deg); }} to {{ transform: rotate(360deg); }} }}
+    @keyframes eq_{uid} {{ 0%, 100% {{ transform: scaleY(0.45); }} 50% {{ transform: scaleY(1); }} }}
+    .disc-{uid} {{ transform-origin: {disc_cx}px {disc_cy}px; animation: spin_{uid} 10s linear infinite; }}
+    .eq-{uid}-0 {{ transform-origin: {w - pad - 26}px {top + 40}px; animation: eq_{uid} 1.1s ease-in-out infinite; }}
+    .eq-{uid}-1 {{ transform-origin: {w - pad - 19}px {top + 40}px; animation: eq_{uid} 0.9s ease-in-out 0.15s infinite; }}
+    .eq-{uid}-2 {{ transform-origin: {w - pad - 12}px {top + 40}px; animation: eq_{uid} 1.25s ease-in-out 0.3s infinite; }}
+    .eq-{uid}-3 {{ transform-origin: {w - pad - 5}px {top + 40}px; animation: eq_{uid} 1.0s ease-in-out 0.45s infinite; }}
+    @media (prefers-reduced-motion: reduce) {{ .disc-{uid}, .eq-{uid}-0, .eq-{uid}-1, .eq-{uid}-2, .eq-{uid}-3 {{ animation: none !important; }} }}
+  </style>"""
+        if animated
+        else ""
+    )
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="Spotify: {esc(data['track'])} by {esc(data['artist'])}">
+  <title>Spotify — {esc(data['track'])}</title>{f'<defs>{defs}</defs>' if defs else ''}
+  {style_block}
+  {chrome}
+  <rect x="{pad}" y="{top + 8}" width="96" height="92" fill="{t['patternBg']}" stroke="{t['border']}" stroke-width="1"/>
+  <g class="disc-{uid}">
+    <circle cx="{disc_cx}" cy="{disc_cy}" r="36" fill="{t['ink']}"/>
+    <circle cx="{disc_cx}" cy="{disc_cy}" r="26" fill="none" stroke="{t['muted']}" stroke-opacity="0.4" stroke-width="1"/>
+    <circle cx="{disc_cx}" cy="{disc_cy}" r="18" fill="none" stroke="{t['muted']}" stroke-opacity="0.35" stroke-width="1"/>
+    <circle cx="{disc_cx}" cy="{disc_cy}" r="12" fill="{t['accent']}"/>
+    <rect x="{disc_cx - 2}" y="{disc_cy - 30}" width="4" height="8" fill="{t['surface']}"/>
+    <circle cx="{disc_cx}" cy="{disc_cy}" r="3.5" fill="{t['bg']}"/>
+  </g>
+  {eq_bars}
+  <text x="{tx}" y="{top + 26}" font-family='{head_font(theme_id)}' font-size="17" font-weight="800" fill="{t['ink']}">{esc(fit_text(data['track'], text_w, 17))}</text>
+  <text x="{tx}" y="{top + 47}" font-family='{FONT_SANS}' font-size="12.5" font-weight="600" fill="{t['sub']}">{esc(fit_text(data['artist'], text_w + 20, 12.5))}</text>
+  <text x="{tx}" y="{top + 66}" font-family='{FONT_MONO}' font-size="9.5" fill="{t['muted']}">ALBUM · {esc(fit_text(data['album'], prog_w - 60, 9.5, True))}</text>
+  <rect x="{tx}" y="{top + 79}" width="{prog_w}" height="7" fill="{t['patternBg']}" stroke="{t['borderSoft']}" stroke-width="0.7"/>
+  <rect x="{tx}" y="{top + 79}" width="{prog_fill}" height="7" fill="{t['accent']}" shape-rendering="crispEdges"/>
+  <text x="{tx}" y="{top + 100}" font-family='{FONT_MONO}' font-size="9" fill="{t['muted']}">{data['progress']}%</text>
+  <text x="{w - pad}" y="{top + 100}" text-anchor="end" font-family='{FONT_MONO}' font-size="9" fill="{t['muted']}">{esc(data['duration'])}</text>
+</svg>"""
+
+
 def parse_widget_specs(raw: str) -> list[tuple[str, int]]:
-    defaults = {"github-stats": 2, "coding-rhythm": 2, "rss-feed": 3, "live-weather": 1}
+    defaults = {
+        "github-stats": 2,
+        "coding-rhythm": 2,
+        "rss-feed": 3,
+        "live-weather": 1,
+        "wakatime-weekly": 2,
+        "spotify-recent": 2,
+    }
     out: list[tuple[str, int]] = []
     for part in (raw or "").split(","):
         part = part.strip()
@@ -737,6 +1002,19 @@ def generate_one(wid: str, span: int, theme_id: str, mode: str, args: argparse.N
         if "weather" not in cache:
             cache["weather"] = fetch_live_weather(args.city, args.unit, args.demo)
         return render_live_weather_svg(cache["weather"], theme_id, mode, span, args.accent, animated)
+    if wid == "wakatime-weekly":
+        if "wakatime" not in cache:
+            cache["wakatime"] = fetch_wakatime_weekly(os.environ.get("WAKATIME_API_KEY", ""), args.demo)
+        return render_wakatime_weekly_svg(cache["wakatime"], theme_id, mode, span, args.accent, animated)
+    if wid == "spotify-recent":
+        if "spotify" not in cache:
+            cache["spotify"] = fetch_spotify_recent(
+                os.environ.get("SPOTIFY_CLIENT_ID", ""),
+                os.environ.get("SPOTIFY_CLIENT_SECRET", ""),
+                os.environ.get("SPOTIFY_REFRESH_TOKEN", ""),
+                args.demo,
+            )
+        return render_spotify_recent_svg(cache["spotify"], theme_id, mode, span, args.accent, animated)
     raise ValueError(f"Unknown live widget: {wid}")
 
 
@@ -758,7 +1036,14 @@ def main() -> None:
 
     if args.check_all:
         args.demo = True
-        specs = [("github-stats", 2), ("coding-rhythm", 2), ("rss-feed", 3), ("live-weather", 1)]
+        specs = [
+            ("github-stats", 2),
+            ("coding-rhythm", 2),
+            ("rss-feed", 3),
+            ("live-weather", 1),
+            ("wakatime-weekly", 2),
+            ("spotify-recent", 2),
+        ]
         count = 0
         for tid in THEME_TOKENS:
             cache: dict = {}

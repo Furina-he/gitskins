@@ -24,6 +24,11 @@ jobs:
       - name: Generate theme-matched live SVGs (zero pip deps)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional secrets when enabling wakatime-weekly or spotify-recent:
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+          SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
         run: |
           python scripts/generate_live_widgets.py \
             --username "${{ github.repository_owner }}" \

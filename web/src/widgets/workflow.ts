@@ -11,6 +11,8 @@ const LIVE_IDS = new Set<WidgetId>([
   "coding-rhythm",
   "rss-feed",
   "live-weather",
+  "wakatime-weekly",
+  "spotify-recent",
 ]);
 
 export const RAW_LIVE_GENERATOR_URL =
@@ -65,6 +67,16 @@ export function buildLiveWorkflowYaml(params: {
     extraFlags.push(`            --static \\`);
   }
 
+  const extraEnvLines: string[] = [`          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}`];
+  if (seen.has("wakatime-weekly")) {
+    extraEnvLines.push(`          WAKATIME_API_KEY: \${{ secrets.WAKATIME_API_KEY }}`);
+  }
+  if (seen.has("spotify-recent")) {
+    extraEnvLines.push(`          SPOTIFY_CLIENT_ID: \${{ secrets.SPOTIFY_CLIENT_ID }}`);
+    extraEnvLines.push(`          SPOTIFY_CLIENT_SECRET: \${{ secrets.SPOTIFY_CLIENT_SECRET }}`);
+    extraEnvLines.push(`          SPOTIFY_REFRESH_TOKEN: \${{ secrets.SPOTIFY_REFRESH_TOKEN }}`);
+  }
+
   return `name: Update GitSkins Live Widgets
 
 on:
@@ -89,7 +101,7 @@ jobs:
 
       - name: Generate theme-matched live SVGs (zero pip deps)
         env:
-          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}
+${extraEnvLines.join("\n")}
         run: |
           if [ ! -f scripts/generate_live_widgets.py ]; then
             mkdir -p scripts

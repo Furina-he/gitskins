@@ -239,10 +239,10 @@ button {
   font-weight: 700;
 }
 
-/* Skin Selector Strip */
+/* Skin Selector Strip (3x2 grid for 6 curated themes) */
 .skin-rail {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 20px;
 }

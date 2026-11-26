@@ -1,0 +1,89 @@
+{
+  "id": "pixel-rpg-hud",
+  "order": 5,
+  "name": "16-bit Pixel RPG HUD",
+  "nameZh": "16-bit 像素 RPG 冒险面板",
+  "category": "Retro Game UI",
+  "categoryZh": "像素游戏面板",
+  "tagline": "Stepped pixel dialogue frames, HP/MP/XP stat meters, quest-log project scrolls, and 16-bit handheld cartridge palettes.",
+  "taglineZh": "阶梯像素边框、HP/MP/XP 分段能量条、任务卷轴项目卡与经典掌机/主机双主题配色。",
+  "bestFor": ["Game & Creative Devs", "Indie Makers", "Retro Pixel Lovers"],
+  "bestForZh": ["游戏 / 创意开发者", "独立开发者", "复古像素爱好者"],
+  "author": "Furina-he",
+  "accent": "#EAB308",
+  "palette": {
+    "light": ["#F6F2E4", "#1B1E2E", "#D97706", "#DC2626", "#15803D", "#2563EB"],
+    "dark": ["#121524", "#F6F4EA", "#FACC15", "#F87171", "#4ADE80", "#38BDF8"]
+  },
+  "tokens": {
+    "light": {
+      "bg": "#F6F2E4",
+      "surface": "#FFFDF6",
+      "ink": "#1B1E2E",
+      "sub": "#434963",
+      "muted": "#6F7591",
+      "border": "#1B1E2E",
+      "borderSoft": "#D5CEBA",
+      "accent": "#D97706",
+      "accentFg": "#FFFFFF",
+      "secondary": "#DC2626",
+      "tertiary": "#15803D",
+      "highlight": "#2563EB",
+      "patternBg": "#EAE4D1",
+      "patternFg": "#D9D1BA"
+    },
+    "dark": {
+      "bg": "#121524",
+      "surface": "#191E33",
+      "ink": "#F6F4EA",
+      "sub": "#B8C0DC",
+      "muted": "#7F8AAD",
+      "border": "#EAB308",
+      "borderSoft": "#2F385C",
+      "accent": "#FACC15",
+      "accentFg": "#121524",
+      "secondary": "#F87171",
+      "tertiary": "#4ADE80",
+      "highlight": "#38BDF8",
+      "patternBg": "#1E2540",
+      "patternFg": "#2B3457"
+    }
+  },
+  "features": [
+    "Handheld Parchment (Light) & 16-bit Battle HUD (Dark)",
+    "Crisp pixel-stepped bevel frames & corner rivets",
+    "Segmented HP / MP / XP status meters & pixel emblem",
+    "Quest-log project cards with custom 12x12 pixel relics"
+  ],
+  "featuresZh": [
+    "浅色复古掌机羊皮纸 + 深色 16-bit 战斗 HUD 双主题",
+    "无模糊锐利像素阶梯双边框与四角铆钉装饰",
+    "HP / MP / XP 分段状态槽与像素勇者徽章动效",
+    "任务卷轴风格项目卡，每张内置专属 12×12 像素装备图标"
+  ],
+  "buttons": [
+    { "id": "cloudlink", "label": "[EQUIP] cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+    { "id": "openpet", "label": "[PET] openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+    { "id": "release", "label": "[DROP] CloudLink v0.6.0", "url": "https://github.com/Furina-he/cloudlink/releases/latest" },
+    { "id": "github", "label": "[GUILD] @Furina-he", "url": "https://github.com/Furina-he?tab=repositories" }
+  ],
+  "cards": [
+    { "id": "cloudlink", "title": "CloudLink", "url": "https://github.com/Furina-he/cloudlink" },
+    { "id": "openpet", "title": "OpenPet", "url": "https://github.com/Furina-he/OpenPet" },
+    { "id": "gitskins", "title": "GitSkins", "url": "https://github.com/Furina-he/gitskins" },
+    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" }
+  ],
+  "sections": ["work", "activity"],
+  "subLinks": [
+    { "group": "Active portals", "items": [
+      { "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+      { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+      { "label": "gitskins.blessc.com", "url": "https://gitskins.blessc.com" }
+    ]},
+    { "group": "Side quests", "items": [
+      { "label": "openpet-market", "url": "https://github.com/Furina-he/openpet-market" },
+      { "label": "carview", "url": "https://github.com/Furina-he/carview" },
+      { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" }
+    ]}
+  ]
+}

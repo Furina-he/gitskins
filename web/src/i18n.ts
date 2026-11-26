@@ -217,6 +217,14 @@ export const COPY: Record<
     repoFieldInstall: string;
     repoFieldArch: string;
     repoFieldFeatures: string;
+    // v0.6 WakaTime & Spotify Live Fields
+    fieldWakaTotal: string;
+    fieldWakaAvg: string;
+    fieldWakaEditor: string;
+    fieldWakaSecretNote: string;
+    fieldSpotifyAlbum: string;
+    fieldSpotifyDuration: string;
+    fieldSpotifySecretNote: string;
   }
 > = {
   en: {
@@ -285,7 +293,7 @@ export const COPY: Record<
     widgetsHeroTitleA: "Craft custom widgets.",
     widgetsHeroTitleB: "Place them anywhere on your profile.",
     widgetsHeroLead:
-      "12 skin-adaptive widgets: 8 Static DIY blocks (Hero stickers, patrol runways, mini tiles, cards) + 4 Zero-503 GitHub Actions Live Widgets (Stats, Coding Rhythm, RSS Blog, City Weather).",
+      "14 skin-adaptive widgets: 8 Static DIY blocks (Hero stickers, patrol runways, mini tiles, cards) + 6 Zero-503 GitHub Actions Live Widgets (Stats, Rhythm, RSS, Weather, WakaTime, Spotify).",
     widgetMountedBadge: "MOUNTED",
     widgetMountBtn: "Mount to Profile Loadout",
     widgetMountedBtn: "Mounted in Loadout (Remove)",
@@ -448,6 +456,13 @@ export const COPY: Record<
     repoFieldInstall: "Quick Install Command",
     repoFieldArch: "Architecture Flow (Title | Sub -> ...)",
     repoFieldFeatures: "Feature Cards (Tag + Title)",
+    fieldWakaTotal: "Preview 7-Day Total",
+    fieldWakaAvg: "Preview Daily Avg",
+    fieldWakaEditor: "Primary Editor",
+    fieldWakaSecretNote: "Add repo secret WAKATIME_API_KEY in GitHub Actions to auto-refresh real 7-day coding stats.",
+    fieldSpotifyAlbum: "Album / Playlist",
+    fieldSpotifyDuration: "Duration",
+    fieldSpotifySecretNote: "Add SPOTIFY_CLIENT_ID / SECRET / REFRESH_TOKEN secrets in Actions to sync your real Spotify playback.",
   },
   zh: {
     subtitle: "面向 AI 编程 Agent 的 GitHub 主页主题与挂件工坊",
@@ -478,7 +493,7 @@ export const COPY: Record<
     openGen: "生成脚本",
     openRepo: "源码目录",
     contactHeading: "全主题同框对比",
-    contactSub: "同一位开发者的真实仓库在 4 套完全不同美学体系下的效果对比，点击任意海报立即切换预览与复制提示词。",
+    contactSub: "同一位开发者的真实仓库在 6 套完全不同美学体系下的效果对比，点击任意海报立即切换预览与复制提示词。",
     selectedBadge: "当前预览",
     previewSkin: "查看这套皮肤",
     howHeading: "为什么复制提示词后，Agent 能一次稳定出好图？",
@@ -515,7 +530,7 @@ export const COPY: Record<
     widgetsHeroTitleA: "自由 DIY 小挂件，",
     widgetsHeroTitleB: "任意位置、多种形态自动换肤。",
     widgetsHeroLead:
-      "12 款主题联动挂件：8 款纯前端 DIY 积木（Hero 角落贴纸、巡逻跑道、迷你方砖与卡片）+ 4 款零 503 GitHub Actions 定时活挂件（同皮肤 GitHub 统计、编码作息、RSS 博客、实时城市天气窗）。",
+      "14 款主题联动挂件：8 款纯前端 DIY 积木 + 6 款零 503 GitHub Actions 定时活挂件（GitHub 统计、编码作息、RSS 博客、实时天气窗、WakaTime 时长雷达、Spotify 循环黑胶）。",
     widgetMountedBadge: "已挂载",
     widgetMountBtn: "挂载到主页套装",
     widgetMountedBtn: "已挂载到套装（点击移出）",
@@ -678,5 +693,12 @@ export const COPY: Record<
     repoFieldInstall: "快速安装命令",
     repoFieldArch: "架构流程（阶段 | 说明 -> 下一阶段）",
     repoFieldFeatures: "特性卡片（角标 + 标题）",
+    fieldWakaTotal: "预览近 7 天总时长",
+    fieldWakaAvg: "预览日均时长",
+    fieldWakaEditor: "常用编辑器",
+    fieldWakaSecretNote: "在 GitHub 仓库 Secrets 中配置 WAKATIME_API_KEY 即可定时同步真实 7 天编程时长（未配置时优雅回退）。",
+    fieldSpotifyAlbum: "所属专辑 / 歌单",
+    fieldSpotifyDuration: "歌曲时长",
+    fieldSpotifySecretNote: "在仓库 Secrets 配置 SPOTIFY_CLIENT_ID / SECRET / REFRESH_TOKEN 即可定时同步真实正在播放或最近曲目。",
   },
 };

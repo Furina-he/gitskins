@@ -80,7 +80,9 @@ GitSkins 正在从「4 套精选 GitHub 主页主题库」演进为 **「面向 
   - [x] **编码作息分布图（`L02`）**（24 小时提交热力柱 + 早鸟 / 夜猫子作息标签）
   - [x] **最近博客 / RSS 动态列表（`L03`）**（零依赖 XML 解析 RSS 2.0 / Atom 订阅源最新 3 篇）
   - [x] **城市像素天气窗（`L04`）**（免费免 Key 接入 Open-Meteo 实时气温，自动切换晴 / 多云 / 雨 / 雪像素动画）
-- [ ] 第二批扩展活挂件：**WakaTime / Spotify 最近动态卡片**（需可选个人 API Token / Secret）
+- [x] 第二批扩展活挂件（`L05`–`L06`）：
+  - [x] **WakaTime 7 天编程时长雷达（`L05`）**（可选 `WAKATIME_API_KEY` Secret，自动同步总时长 / 日均 / 编辑器 / 语言占比）
+  - [x] **Spotify 最近循环黑胶（`L06`）**（可选 Spotify OAuth Refresh Token Secrets，同步正在听或最近单曲 + 旋转黑胶动效）
 
 ---
 
@@ -95,8 +97,10 @@ GitSkins 正在从「4 套精选 GitHub 主页主题库」演进为 **「面向 
   - 提供标准 Agent Skill（[skill/gitskins/SKILL.md](skill/gitskins/SKILL.md)，同步上线 `/skill/SKILL.md`）
   - 提供零依赖 Node 18+ CLI（[cli/gitskins.mjs](cli/gitskins.mjs)：`list` / `init --mode repo|profile` / `validate`），让 Claude Code / Codex / Cursor / Antigravity 直接拉取规范、脚手架生成并严格校验 SVG
 - [x] 提供可选的极简 `Styled with GitSkins` 尾标挂件（`216×32` 双主题同皮肤适配，支持主页与仓库 README 自由开关）
-- [ ] **持续扩充主题与社区共创（v0.6+）**：
-  - 新增更多高辨识度皮肤（如 16-bit Pixel RPG、Bento Grid、印章水墨等）
+- [x] **持续扩充主题与社区共创（v0.6）**：
+  - [x] 新增 `05` **16-bit Pixel RPG HUD（16-bit 像素 RPG 冒险面板）** — 阶梯像素边框、HP/MP/XP 分段槽与任务卷轴卡片（22 张双主题 SVG + 全套挂件 & 仓库皮肤联动）
+  - [x] 新增 `06` **Seal Ink Monograph（东方印章水墨卷轴）** — 暖调宣纸/端砚墨黑、朱砂雕刻方印、回纹角饰与远山叠墨层次（22 张双主题 SVG + 全套挂件 & 仓库皮肤联动）
+  - [ ] 社区主题共建：欢迎通过 [CONTRIBUTING.md](CONTRIBUTING.md) PR 投稿更多高辨识度皮肤（如 Bento Grid、Cyberpunk Wireframe 等）
 
 ---
 
