@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="417" height="196" viewBox="0 0 417 196" role="img" aria-label="PLATE III — GitSkins">
+  <title>PLATE III — GitSkins</title>
+  <rect x="0.5" y="0.5" width="416" height="195" fill="#191714" stroke="#2A2722" stroke-width="1"/>
+  <rect x="0.5" y="0.5" width="416" height="3.5" fill="#52B788"/>
+
+  <!-- Plate Index & Editorial Category -->
+  <text x="20" y="30" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" font-weight="700" letter-spacing="1.1" fill="#52B788">PLATE III</text>
+  <text x="86" y="30" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" letter-spacing="0.8" fill="#8A8377">/  PROFILE THEMES</text>
+  <rect x="372" y="21" width="24" height="22" fill="none" stroke="#F0EBE1" stroke-width="1.2"/><rect x="375" y="24" width="11" height="7" fill="#52B788"/><rect x="375" y="34" width="7" height="6" fill="none" stroke="#F0EBE1" stroke-width="1"/><rect x="385" y="34" width="8" height="6" fill="none" stroke="#52B788" stroke-width="1"/>
+
+  <line x1="20" y1="50.5" x2="397" y2="50.5" stroke="#2A2722" stroke-width="0.9"/>
+
+  <!-- Serif Title & Italic Folio URL -->
+  <text x="20" y="82" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="22" font-weight="700" letter-spacing="-0.3" fill="#F0EBE1">GitSkins</text>
+  <text x="397" y="80" text-anchor="end" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="11.5" font-style="italic" fill="#C2BBB0">gitskins.blessc.com &#8599;</text>
+
+  <!-- Crisp Two-Line Editorial Copy -->
+  <text x="20" y="110" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="12.5" fill="#C2BBB0">Curated Light &amp; Dark GitHub profile SVG themes for AI</text>
+  <text x="20" y="129" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="12.5" fill="#C2BBB0">coding agents — copy one zero-config prompt to re-skin.</text>
+
+  <!-- Hairline Footnote Colophon -->
+  <line x1="20" y1="156.5" x2="397" y2="156.5" stroke="#2A2722" stroke-width="0.9"/>
+  <rect x="20" y="170" width="5" height="5" fill="#52B788"/>
+  <text x="32" y="176.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" fill="#8A8377">TypeScript · React · Python · 88 SVGs · MIT</text>
+  <text x="397" y="176.5" text-anchor="end" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="13" font-weight="700" fill="#F0EBE1">&#8594;</text>
+</svg>

@@ -55,9 +55,9 @@ def build_hero(mode: str) -> str:
     ledger = [
         ("AUTHOR", "NeverGiveUp"),
         ("FLAGSHIPS", "04 Systems"),
-        ("REPOSITORIES", "12 Public"),
+        ("REPOSITORIES", "13 Public"),
         ("AGENTS SYNCED", "20+ via CloudLink"),
-        ("PRIMARY STACK", "Rust · TS · Java"),
+        ("PRIMARY STACK", "Rust · TS · Python"),
         ("DISPATCH", "cloudlink.blessc.com"),
     ]
     ledger_svg = []
@@ -163,14 +163,14 @@ def colophon_mark(idx: int, color: str, ink: str) -> str:
         )
     if idx == 2:
         return (
-            f'<polygon points="384,20 396,32 384,44 372,32" fill="none" stroke="{ink}" stroke-width="1.2"/>'
-            f'<polyline points="376,32 381,27 387,37 392,32" fill="none" stroke="{color}" stroke-width="1.4"/>'
+            f'<rect x="372" y="21" width="24" height="22" fill="none" stroke="{ink}" stroke-width="1.2"/>'
+            f'<rect x="375" y="24" width="11" height="7" fill="{color}"/>'
+            f'<rect x="375" y="34" width="7" height="6" fill="none" stroke="{ink}" stroke-width="1"/>'
+            f'<rect x="385" y="34" width="8" height="6" fill="none" stroke="{color}" stroke-width="1"/>'
         )
     return (
-        f'<rect x="372" y="22" width="24" height="20" fill="none" stroke="{ink}" stroke-width="1.2"/>'
-        f'<line x1="376" y1="38" x2="376" y2="31" stroke="{color}" stroke-width="2"/>'
-        f'<line x1="384" y1="38" x2="384" y2="27" stroke="{ink}" stroke-width="2"/>'
-        f'<line x1="392" y1="38" x2="392" y2="33" stroke="{color}" stroke-width="2"/>'
+        f'<polygon points="384,20 396,32 384,44 372,32" fill="none" stroke="{ink}" stroke-width="1.2"/>'
+        f'<polyline points="376,32 381,27 387,37 392,32" fill="none" stroke="{color}" stroke-width="1.4"/>'
     )
 
 
@@ -251,27 +251,27 @@ def main() -> None:
             line2="Obsidian-ready memory wiki, MCP tools &amp; plugin packs.",
             spec="TypeScript · Electron · Vue 3 · MCP · 2 ★ · MIT",
         )
-        files[f"card-virtual-{mode}.svg"] = build_card(
+        files[f"card-gitskins-{mode}.svg"] = build_card(
             mode,
             plate_idx=2,
             plate_label="PLATE III",
+            category="PROFILE THEMES",
+            title="GitSkins",
+            link_label="gitskins.blessc.com",
+            line1="Curated Light &amp; Dark GitHub profile SVG themes for AI",
+            line2="coding agents — copy one zero-config prompt to re-skin.",
+            spec="TypeScript · React · Python · 88 SVGs · MIT",
+        )
+        files[f"card-virtual-{mode}.svg"] = build_card(
+            mode,
+            plate_idx=3,
+            plate_label="PLATE IV",
             category="3D CIRCUIT LAB",
             title="Virtual",
             link_label="Furina-he/virtual",
             line1="Offline 3D electrical &amp; electronics virtual lab built with",
             line2="Electron, Three.js and real ngspice circuit simulation.",
             spec="TypeScript · Electron · Three.js · ngspice",
-        )
-        files[f"card-carview-{mode}.svg"] = build_card(
-            mode,
-            plate_idx=3,
-            plate_label="PLATE IV",
-            category="IOT TELEMETRY",
-            title="CarView",
-            link_label="Furina-he/carview",
-            line1="Big-data IoT connected vehicle monitoring pipeline using",
-            line2="Kafka, Flink streaming, Spark batch &amp; Vue 3 dashboard.",
-            spec="Java · Kafka · Flink · Spark · Spring Boot · Vue 3",
         )
 
     for fname, content in files.items():

@@ -71,7 +71,7 @@
 
   <!-- Chamfered Engineering Note Box -->
   <polygon points="28,191 542,191 552,201 552,220 28,220" fill="#FFFFFF" stroke="#0E2A4D" stroke-width="1"/>
-  <text x="39" y="209.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11" fill="#0C2340"><tspan fill="#1D5BB8" font-weight="700">NOTE 01:</tspan> building safe agent infra, resident AI pets &amp; 3D labs</text>
+  <text x="39" y="209.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11" fill="#0C2340"><tspan fill="#1D5BB8" font-weight="700">NOTE 01:</tspan> building agent guardrails, AI pets, GitSkins &amp; 3D labs</text>
 
   <!-- Right Panel: Calibrated Reticle & Isometric Core Diagram -->
   <g transform="translate(0, 0)">
@@ -121,7 +121,7 @@
 
   <line x1="432.5" y1="232.5" x2="432.5" y2="289.5" stroke="#94B3D8" stroke-width="1"/>
   <text x="448" y="251" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" fill="#567499">PUBLIC REPOSITORIES</text>
-  <text x="448" y="274" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="16" font-weight="700" fill="#0C2340">12 <tspan font-size="11.5" font-weight="600" fill="#2C4C74">OSS REPOS</tspan></text>
+  <text x="448" y="274" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="16" font-weight="700" fill="#0C2340">13 <tspan font-size="11.5" font-weight="600" fill="#2C4C74">OSS REPOS</tspan></text>
 
   <line x1="636.5" y1="232.5" x2="636.5" y2="289.5" stroke="#94B3D8" stroke-width="1"/>
   <text x="652" y="251" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" fill="#567499">SYNCED AI AGENTS</text>

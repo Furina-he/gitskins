@@ -87,14 +87,14 @@
         "url": "https://github.com/Furina-he/OpenPet"
       },
       {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
         "id": "virtual",
         "title": "Virtual",
         "url": "https://github.com/Furina-he/virtual"
-      },
-      {
-        "id": "carview",
-        "title": "CarView",
-        "url": "https://github.com/Furina-he/carview"
       }
     ],
     "sections": [
@@ -112,23 +112,27 @@
           {
             "label": "openpet.myfurina.top",
             "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
           }
         ]
       },
       {
-        "group": "Companion & more repos",
+        "group": "More repos",
         "items": [
           {
             "label": "openpet-market",
             "url": "https://github.com/Furina-he/openpet-market"
           },
           {
-            "label": "furina_learining",
-            "url": "https://github.com/Furina-he/furina_learining"
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
           },
           {
-            "label": "bless",
-            "url": "https://github.com/Furina-he/bless"
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
           }
         ]
       }
@@ -237,14 +241,14 @@
         "url": "https://github.com/Furina-he/OpenPet"
       },
       {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
         "id": "virtual",
         "title": "Virtual",
         "url": "https://github.com/Furina-he/virtual"
-      },
-      {
-        "id": "carview",
-        "title": "CarView",
-        "url": "https://github.com/Furina-he/carview"
       }
     ],
     "sections": [
@@ -262,6 +266,10 @@
           {
             "label": "openpet.myfurina.top",
             "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
           }
         ]
       },
@@ -273,12 +281,12 @@
             "url": "https://github.com/Furina-he/openpet-market"
           },
           {
-            "label": "furina_learining",
-            "url": "https://github.com/Furina-he/furina_learining"
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
           },
           {
-            "label": "bless",
-            "url": "https://github.com/Furina-he/bless"
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
           }
         ]
       }
@@ -387,14 +395,14 @@
         "url": "https://github.com/Furina-he/OpenPet"
       },
       {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
         "id": "virtual",
         "title": "Virtual",
         "url": "https://github.com/Furina-he/virtual"
-      },
-      {
-        "id": "carview",
-        "title": "CarView",
-        "url": "https://github.com/Furina-he/carview"
       }
     ],
     "sections": [
@@ -412,6 +420,10 @@
           {
             "label": "openpet.myfurina.top",
             "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
           }
         ]
       },
@@ -423,12 +435,12 @@
             "url": "https://github.com/Furina-he/openpet-market"
           },
           {
-            "label": "furina_learining",
-            "url": "https://github.com/Furina-he/furina_learining"
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
           },
           {
-            "label": "bless",
-            "url": "https://github.com/Furina-he/bless"
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
           }
         ]
       }
@@ -537,14 +549,14 @@
         "url": "https://github.com/Furina-he/OpenPet"
       },
       {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
         "id": "virtual",
         "title": "Virtual",
         "url": "https://github.com/Furina-he/virtual"
-      },
-      {
-        "id": "carview",
-        "title": "CarView",
-        "url": "https://github.com/Furina-he/carview"
       }
     ],
     "sections": [
@@ -562,6 +574,10 @@
           {
             "label": "openpet.myfurina.top",
             "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
           }
         ]
       },
@@ -573,12 +589,12 @@
             "url": "https://github.com/Furina-he/openpet-market"
           },
           {
-            "label": "furina_learining",
-            "url": "https://github.com/Furina-he/furina_learining"
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
           },
           {
-            "label": "bless",
-            "url": "https://github.com/Furina-he/bless"
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
           }
         ]
       }

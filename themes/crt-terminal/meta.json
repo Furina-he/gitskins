@@ -36,19 +36,20 @@
   "cards": [
     { "id": "cloudlink", "title": "CloudLink", "url": "https://github.com/Furina-he/cloudlink" },
     { "id": "openpet", "title": "OpenPet", "url": "https://github.com/Furina-he/OpenPet" },
-    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" },
-    { "id": "carview", "title": "CarView", "url": "https://github.com/Furina-he/carview" }
+    { "id": "gitskins", "title": "GitSkins", "url": "https://github.com/Furina-he/gitskins" },
+    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" }
   ],
   "sections": ["work", "activity"],
   "subLinks": [
     { "group": "Live hosts", "items": [
       { "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
-      { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" }
+      { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+      { "label": "gitskins.blessc.com", "url": "https://gitskins.blessc.com" }
     ]},
     { "group": "Additional repos", "items": [
       { "label": "openpet-market", "url": "https://github.com/Furina-he/openpet-market" },
-      { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" },
-      { "label": "bless", "url": "https://github.com/Furina-he/bless" }
+      { "label": "carview", "url": "https://github.com/Furina-he/carview" },
+      { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" }
     ]}
   ]
 }

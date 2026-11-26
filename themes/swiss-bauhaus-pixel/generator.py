@@ -158,6 +158,17 @@ GLYPHS_9: dict[str, list[str]] = {
         "#######",
         "#######",
     ],
+    "3": [
+        ".#####.",
+        "#######",
+        "##...##",
+        "...###.",
+        "...###.",
+        ".....##",
+        "##...##",
+        "#######",
+        ".#####.",
+    ],
     "4": [
         "....##.",
         "...###.",
@@ -485,7 +496,34 @@ EMBLEM_OPENPET = [
     "................",
 ]
 
-# 03: Virtual — 3D electrical & electronics circuit simulator (IC chip + oscilloscope trace)
+# 03: GitSkins — layered Bauhaus multi-skin GitHub profile frame mark
+EMBLEM_GITSKINS_PAL = {
+    "W": "#FFFFFF",
+    "C": "#00A3CC",
+    "R": "#E45847",
+    "Y": "#F5B700",
+    "G": "#22C98A",
+}
+EMBLEM_GITSKINS = [
+    "................",
+    ".WWWWWWWWWWWWWW.",
+    ".W............W.",
+    ".W.CCCCCC.WWW.W.",
+    ".W.CCCCCC.WWW.W.",
+    ".W.CCCCCC.WWW.W.",
+    ".W.CCCCCC.WWW.W.",
+    ".W............W.",
+    ".W.GGGG.RRRRR.W.",
+    ".W.GGGG.RRRRR.W.",
+    ".W.GGGG.RRWRR.W.",
+    ".W.GGGG.RRRRR.W.",
+    ".W.YYYY.RRRRR.W.",
+    ".W............W.",
+    ".WWWWWWWWWWWWWW.",
+    "................",
+]
+
+# 04: Virtual — 3D electrical & electronics circuit simulator (IC chip + oscilloscope trace)
 EMBLEM_VIRTUAL_PAL = {
     "W": "#FFFFFF",
     "G": "#22C98A",
@@ -512,38 +550,11 @@ EMBLEM_VIRTUAL = [
     "................",
 ]
 
-# 04: CarView — IoT vehicle telemetry & real-time streaming dashboard
-EMBLEM_CARVIEW_PAL = {
-    "W": "#FFFFFF",
-    "Y": "#F5B700",
-    "B": "#5393F5",
-    "R": "#FF5A5A",
-    "G": "#22C98A",
-}
-EMBLEM_CARVIEW = [
-    "................",
-    ".WWWWWWWWWWWWWW.",
-    ".W..R..Y..G..BW.",
-    ".WWWWWWWWWWWWWW.",
-    ".W............W.",
-    ".W....BBBB....W.",
-    ".W...BWWWWB...W.",
-    ".W..BBBBBBBB..W.",
-    ".W.BBYYYYYYBB.W.",
-    ".W.BBWBBBBWBB.W.",
-    ".W..WW....WW..W.",
-    ".W............W.",
-    ".W.GG..YY..RR.W.",
-    ".W.GG..YY..RR.W.",
-    ".WWWWWWWWWWWWWW.",
-    "................",
-]
-
 for name, grid in [
     ("cloudlink", EMBLEM_CLOUDLINK),
     ("openpet", EMBLEM_OPENPET),
+    ("gitskins", EMBLEM_GITSKINS),
     ("virtual", EMBLEM_VIRTUAL),
-    ("carview", EMBLEM_CARVIEW),
 ]:
     assert len(grid) == 16 and all(len(r) == 16 for r in grid), f"Bad emblem: {name}"
 
@@ -615,8 +626,8 @@ def build_hero(mode: str) -> str:
 
     # Bottom 4-column metric bar (4 equal columns across 846px)
     metrics = [
-        ("#00A3CC", "04", "Flagship Systems", "Agent Ops · AI Pet · 3D Lab"),
-        ("#2370E8", "12", "Public Repos", "Rust · TypeScript · Java"),
+        ("#00A3CC", "04", "Flagship Systems", "Ops · AI Pet · Skins · 3D"),
+        ("#2370E8", "13", "Public Repos", "Rust · TypeScript · Python"),
         ("#2BA676", "20+", "Synced Agents", "CloudLink Skill &amp; Guard"),
         ("#F5B700", "MCP", "Local-First", "Tauri · Electron · OSS"),
     ]
@@ -702,8 +713,8 @@ def build_hero(mode: str) -> str:
 
   <!-- Crisp Terminal / Bio Box -->
   <rect x="24.5" y="186.5" width="538" height="28" fill="{t["surface"]}" stroke="{t["border"]}" stroke-width="1"/>
-  <text x="36" y="204.5" font-family='{FONT_MONO}' font-size="11.5" fill="{t["text"]}"><tspan fill="#00A3CC" font-weight="700">$</tspan> building safe agent infra, resident AI pets &amp; 3D circuit labs</text>
-  <rect class="cursor" x="441" y="194" width="7" height="13" fill="{t["text"]}" shape-rendering="crispEdges"/>
+  <text x="36" y="204.5" font-family='{FONT_MONO}' font-size="11.5" fill="{t["text"]}"><tspan fill="#00A3CC" font-weight="700">$</tspan> building agent guardrails, AI pets, GitSkins &amp; 3D labs</text>
+  <rect class="cursor" x="397" y="194" width="7" height="13" fill="{t["text"]}" shape-rendering="crispEdges"/>
 
   <!-- Framed Bauhaus Pixel Avatar Portrait on Right -->
   <rect x="650" y="62" width="142" height="142" fill="{t["portrait_shadow"]}" shape-rendering="crispEdges"/>
@@ -886,39 +897,39 @@ def main() -> None:
             emblem_grid=EMBLEM_OPENPET,
             emblem_pal=EMBLEM_OPENPET_PAL,
         )
-        files[f"card-virtual-{mode}.svg"] = build_card(
+        files[f"card-gitskins-{mode}.svg"] = build_card(
             mode,
-            title="Virtual",
-            category="(03) 3D Circuit Lab",
-            pill_w=128,
-            link_label="Furina-he/virtual",
-            line1="Offline 3D electrical &amp; electronics virtual lab built with",
-            line2="Electron, Three.js and real ngspice circuit simulation.",
-            spec="TypeScript · Electron · Three.js · ngspice",
+            title="GitSkins",
+            category="(03) Profile Skin Studio",
+            pill_w=156,
+            link_label="gitskins.blessc.com",
+            line1="Curated Light &amp; Dark GitHub profile SVG themes for AI",
+            line2="coding agents — copy one zero-config prompt to re-skin.",
+            spec="TypeScript · React · Python · 88 SVGs · MIT",
             weave_kind="tartan",
             weave_light=("#2BA676", "#2370E8"),
             weave_dark=("#1E825C", "#1D4ED8"),
             dot_light="#2BA676",
             dot_dark="#1E825C",
-            emblem_grid=EMBLEM_VIRTUAL,
-            emblem_pal=EMBLEM_VIRTUAL_PAL,
+            emblem_grid=EMBLEM_GITSKINS,
+            emblem_pal=EMBLEM_GITSKINS_PAL,
         )
-        files[f"card-carview-{mode}.svg"] = build_card(
+        files[f"card-virtual-{mode}.svg"] = build_card(
             mode,
-            title="CarView",
-            category="(04) IoT Vehicle Telemetry",
-            pill_w=168,
-            link_label="Furina-he/carview",
-            line1="Big-data IoT connected vehicle monitoring pipeline using",
-            line2="Kafka, Flink streaming, Spark batch &amp; Vue 3 dashboard.",
-            spec="Java · Kafka · Flink · Spark · Spring Boot · Vue 3",
+            title="Virtual",
+            category="(04) 3D Circuit Lab",
+            pill_w=128,
+            link_label="Furina-he/virtual",
+            line1="Offline 3D electrical &amp; electronics virtual lab built with",
+            line2="Electron, Three.js and real ngspice circuit simulation.",
+            spec="TypeScript · Electron · Three.js · ngspice",
             weave_kind="basket",
             weave_light=("#F5B700", "#DE7E12"),
             weave_dark=("#D99B00", "#B45309"),
             dot_light="#F5B700",
             dot_dark="#D99B00",
-            emblem_grid=EMBLEM_CARVIEW,
-            emblem_pal=EMBLEM_CARVIEW_PAL,
+            emblem_grid=EMBLEM_VIRTUAL,
+            emblem_pal=EMBLEM_VIRTUAL_PAL,
         )
 
     for fname, content in files.items():

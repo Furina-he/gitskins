@@ -26,7 +26,7 @@
 </p>
 
 <p>
-  <a href="https://github.com/Furina-he/virtual"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/card-virtual-dark.svg"><img src="./assets/card-virtual-light.svg" alt="DWG-03 Virtual" width="49%"></picture></a>&nbsp;<a href="https://github.com/Furina-he/carview"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/card-carview-dark.svg"><img src="./assets/card-carview-light.svg" alt="DWG-04 CarView" width="49%"></picture></a>
+  <a href="https://github.com/Furina-he/gitskins"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/card-gitskins-dark.svg"><img src="./assets/card-gitskins-light.svg" alt="DWG-03 GitSkins" width="49%"></picture></a>&nbsp;<a href="https://github.com/Furina-he/virtual"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/card-virtual-dark.svg"><img src="./assets/card-virtual-light.svg" alt="DWG-04 Virtual" width="49%"></picture></a>
 </p>
 
-<sub>Live deployments: <a href="https://cloudlink.blessc.com">cloudlink.blessc.com</a> · <a href="https://openpet.myfurina.top">openpet.myfurina.top</a> &nbsp;|&nbsp; Additional modules: <a href="https://github.com/Furina-he/openpet-market">openpet-market</a> · <a href="https://github.com/Furina-he/furina_learining">furina_learining</a> · <a href="https://github.com/Furina-he/bless">bless</a></sub>
+<sub>Live deployments: <a href="https://cloudlink.blessc.com">cloudlink.blessc.com</a> · <a href="https://openpet.myfurina.top">openpet.myfurina.top</a> · <a href="https://gitskins.blessc.com">gitskins.blessc.com</a> &nbsp;|&nbsp; Additional modules: <a href="https://github.com/Furina-he/openpet-market">openpet-market</a> · <a href="https://github.com/Furina-he/carview">carview</a> · <a href="https://github.com/Furina-he/furina_learining">furina_learining</a></sub>

@@ -153,7 +153,7 @@ def build_hero(mode: str) -> str:
 
   <!-- Chamfered Engineering Note Box -->
   <polygon points="28,191 542,191 552,201 552,220 28,220" fill="{t["panel"]}" stroke="{t["line"]}" stroke-width="1"/>
-  <text x="39" y="209.5" font-family='{FONT_MONO}' font-size="11" fill="{t["text"]}"><tspan fill="{t["accent"]}" font-weight="700">NOTE 01:</tspan> building safe agent infra, resident AI pets &amp; 3D labs</text>
+  <text x="39" y="209.5" font-family='{FONT_MONO}' font-size="11" fill="{t["text"]}"><tspan fill="{t["accent"]}" font-weight="700">NOTE 01:</tspan> building agent guardrails, AI pets, GitSkins &amp; 3D labs</text>
 
   <!-- Right Panel: Calibrated Reticle & Isometric Core Diagram -->
   <g transform="translate(0, 0)">
@@ -203,7 +203,7 @@ def build_hero(mode: str) -> str:
 
   <line x1="432.5" y1="232.5" x2="432.5" y2="289.5" stroke="{t["line_soft"]}" stroke-width="1"/>
   <text x="448" y="251" font-family='{FONT_MONO}' font-size="9" fill="{t["text_muted"]}">PUBLIC REPOSITORIES</text>
-  <text x="448" y="274" font-family='{FONT_MONO}' font-size="16" font-weight="700" fill="{t["text"]}">12 <tspan font-size="11.5" font-weight="600" fill="{t["text_sub"]}">OSS REPOS</tspan></text>
+  <text x="448" y="274" font-family='{FONT_MONO}' font-size="16" font-weight="700" fill="{t["text"]}">13 <tspan font-size="11.5" font-weight="600" fill="{t["text_sub"]}">OSS REPOS</tspan></text>
 
   <line x1="636.5" y1="232.5" x2="636.5" y2="289.5" stroke="{t["line_soft"]}" stroke-width="1"/>
   <text x="652" y="251" font-family='{FONT_MONO}' font-size="9" fill="{t["text_muted"]}">SYNCED AI AGENTS</text>
@@ -264,7 +264,15 @@ def schematic_svg(kind: str, t: dict[str, str]) -> str:
             f'<circle cx="360" cy="108" r="2.2" fill="{c_acc}"/>'
             f'<circle cx="380" cy="108" r="2.2" fill="{c_teal}"/>'
         )
-    elif kind == "virtual":
+    elif kind == "gitskins":
+        inner = (
+            f'<rect x="331" y="64" width="58" height="48" fill="none" stroke="{c_line}" stroke-width="1.2"/>'
+            f'<rect x="336" y="69" width="32" height="16" fill="{c_acc}" fill-opacity="0.25" stroke="{c_acc}" stroke-width="1.1"/>'
+            f'<rect x="372" y="69" width="12" height="16" fill="none" stroke="{c_soft}" stroke-width="1"/>'
+            f'<rect x="336" y="90" width="22" height="17" fill="none" stroke="{c_teal}" stroke-width="1.2"/>'
+            f'<rect x="362" y="90" width="22" height="17" fill="none" stroke="{c_line}" stroke-width="1.2"/>'
+        )
+    else:  # virtual
         inner = (
             f'<polyline points="329,84 338,84 342,76 347,92 352,76 357,92 361,84 371,84" fill="none" stroke="{c_acc}" stroke-width="1.5" stroke-linejoin="round"/>'
             f'<line x1="371" y1="74" x2="371" y2="94" stroke="{c_line}" stroke-width="1.5"/>'
@@ -273,15 +281,6 @@ def schematic_svg(kind: str, t: dict[str, str]) -> str:
             f'<line x1="354" y1="104" x2="366" y2="104" stroke="{c_teal}" stroke-width="1.4"/>'
             f'<line x1="357" y1="108" x2="363" y2="108" stroke="{c_teal}" stroke-width="1.4"/>'
             f'<line x1="360" y1="94" x2="360" y2="104" stroke="{c_teal}" stroke-width="1"/>'
-        )
-    else:  # carview
-        inner = (
-            f'<rect x="331" y="70" width="14" height="14" fill="none" stroke="{c_line}" stroke-width="1.2"/>'
-            f'<rect x="353" y="70" width="14" height="14" fill="none" stroke="{c_acc}" stroke-width="1.4"/>'
-            f'<rect x="375" y="70" width="14" height="14" fill="none" stroke="{c_teal}" stroke-width="1.2"/>'
-            f'<line x1="345" y1="77" x2="353" y2="77" stroke="{c_line}" stroke-width="1.1"/>'
-            f'<line x1="367" y1="77" x2="375" y2="77" stroke="{c_line}" stroke-width="1.1"/>'
-            f'<polyline points="331,106 342,99 351,103 362,92 374,97 389,90" fill="none" stroke="{c_acc}" stroke-width="1.5"/>'
         )
     return (
         f'<rect x="322" y="56" width="76" height="64" fill="{t["schematic_bg"]}" stroke="{t["line_soft"]}" stroke-width="0.9"/>'
@@ -370,9 +369,20 @@ def main() -> None:
             spec="TypeScript · Electron · Vue 3 · MCP · 2 ★",
             kind="openpet",
         )
+        files[f"card-gitskins-{mode}.svg"] = build_card(
+            mode,
+            dwg="DWG-03 · PROFILE SKIN KIT",
+            pill_w=172,
+            title="GitSkins",
+            link_label="gitskins.blessc.com",
+            line1="Agent-ready Light &amp; Dark GitHub profile",
+            line2="themes — copy one prompt to re-skin.",
+            spec="TypeScript · React · Python · 88 SVGs · MIT",
+            kind="gitskins",
+        )
         files[f"card-virtual-{mode}.svg"] = build_card(
             mode,
-            dwg="DWG-03 · 3D CIRCUIT LAB",
+            dwg="DWG-04 · 3D CIRCUIT LAB",
             pill_w=162,
             title="Virtual",
             link_label="Furina-he/virtual",
@@ -380,17 +390,6 @@ def main() -> None:
             line2="Electron, Three.js &amp; ngspice solver.",
             spec="TypeScript · Electron · Three.js · ngspice",
             kind="virtual",
-        )
-        files[f"card-carview-{mode}.svg"] = build_card(
-            mode,
-            dwg="DWG-04 · IOT TELEMETRY",
-            pill_w=160,
-            title="CarView",
-            link_label="Furina-he/carview",
-            line1="Connected vehicle monitoring pipeline:",
-            line2="Kafka, Flink streaming &amp; Vue 3 view.",
-            spec="Java · Kafka · Flink · Spark · Vue 3",
-            kind="carview",
         )
 
     for fname, content in files.items():

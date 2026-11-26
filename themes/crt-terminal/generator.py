@@ -115,10 +115,10 @@ def build_hero(mode: str) -> str:
     rows = [
         ("role", "Indie Developer · Local-First Builder"),
         ("focus", "AI Agent Guardrails · AI Pets · 3D Labs"),
-        ("stack", "Rust · TypeScript · Tauri · Electron · Java"),
-        ("flagship", "04 systems (CloudLink, OpenPet, Virtual, CarView)"),
-        ("repos", "12 public repos · 20+ synced agents via CloudLink"),
-        ("sites", "cloudlink.blessc.com · openpet.myfurina.top"),
+        ("stack", "Rust · TypeScript · Tauri · Electron · Python"),
+        ("flagship", "04 systems (CloudLink, OpenPet, GitSkins, Virtual)"),
+        ("repos", "13 public repos · 20+ synced agents via CloudLink"),
+        ("sites", "cloudlink.blessc.com · gitskins.blessc.com"),
     ]
     neo_lines = []
     for i, (k, v) in enumerate(rows):
@@ -190,7 +190,7 @@ def build_hero(mode: str) -> str:
   <line x1="0.5" y1="281.5" x2="845.5" y2="281.5" stroke="{t["border"]}" stroke-width="1"/>
   <rect x="1" y="281" width="74" height="24" fill="{t["pill_bg"]}"/>
   <text x="38" y="297" text-anchor="middle" font-family='{FONT_MONO}' font-size="10.5" font-weight="700" fill="{t["pill_fg"]}">NORMAL</text>
-  <text x="88" y="297" font-family='{FONT_MONO}' font-size="10.5" fill="{t["text"]}"><tspan fill="{t["green"]}" font-weight="700">0:profile*</tspan>  <tspan fill="{t["sub"]}">1:cloudlink  2:openpet  3:virtual  4:carview</tspan></text>
+  <text x="88" y="297" font-family='{FONT_MONO}' font-size="10.5" fill="{t["text"]}"><tspan fill="{t["green"]}" font-weight="700">0:profile*</tspan>  <tspan fill="{t["sub"]}">1:cloudlink  2:openpet  3:gitskins  4:virtual</tspan></text>
   <text x="832" y="297" text-anchor="end" font-family='{FONT_MONO}' font-size="10.5" fill="{t["muted"]}">UTF-8 │ MIT │ 100%</text>
 </svg>
 """
@@ -296,27 +296,27 @@ def main() -> None:
             line2="Obsidian memory wiki, MCP tools &amp; plugins.",
             spec="TypeScript · Electron · Vue 3 · MCP · 2 ★",
         )
+        files[f"card-gitskins-{mode}.svg"] = build_card(
+            mode,
+            tab="[3] gitskins.tsx",
+            status="live",
+            accent_key="green",
+            title="GitSkins",
+            link_label="gitskins.blessc.com",
+            line1="Agent-ready Light &amp; Dark GitHub profile SVG",
+            line2="themes — copy one prompt to re-skin profiles.",
+            spec="TypeScript · React · Python · 88 SVGs · MIT",
+        )
         files[f"card-virtual-{mode}.svg"] = build_card(
             mode,
-            tab="[3] virtual.ts",
+            tab="[4] virtual.ts",
             status="ngspice",
-            accent_key="green",
+            accent_key="amber",
             title="Virtual",
             link_label="Furina-he/virtual",
             line1="Offline 3D electrical &amp; electronics virtual",
             line2="lab powered by Electron, Three.js &amp; ngspice.",
             spec="TypeScript · Electron · Three.js · ngspice",
-        )
-        files[f"card-carview-{mode}.svg"] = build_card(
-            mode,
-            tab="[4] carview.java",
-            status="stream",
-            accent_key="amber",
-            title="CarView",
-            link_label="Furina-he/carview",
-            line1="Connected vehicle IoT monitoring pipeline:",
-            line2="Kafka, Flink streaming, Spark &amp; Vue 3 UI.",
-            spec="Java · Kafka · Flink · Spark · Vue 3",
         )
 
     for fname, content in files.items():

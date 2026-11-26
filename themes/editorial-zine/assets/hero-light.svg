@@ -41,13 +41,13 @@
   <text x="818" y="126" text-anchor="end" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="12.5" font-weight="700" fill="#141311">04 Systems</text>
   <line x1="572" y1="138" x2="818" y2="138" stroke="#D9D1C1" stroke-width="0.9"/>
   <text x="572" y="156" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" letter-spacing="0.6" fill="#726C62">REPOSITORIES</text>
-  <text x="818" y="156" text-anchor="end" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="12.5" font-weight="700" fill="#141311">12 Public</text>
+  <text x="818" y="156" text-anchor="end" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="12.5" font-weight="700" fill="#141311">13 Public</text>
   <line x1="572" y1="168" x2="818" y2="168" stroke="#D9D1C1" stroke-width="0.9"/>
   <text x="572" y="186" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" letter-spacing="0.6" fill="#726C62">AGENTS SYNCED</text>
   <text x="818" y="186" text-anchor="end" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="12.5" font-weight="700" fill="#141311">20+ via CloudLink</text>
   <line x1="572" y1="198" x2="818" y2="198" stroke="#D9D1C1" stroke-width="0.9"/>
   <text x="572" y="216" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" letter-spacing="0.6" fill="#726C62">PRIMARY STACK</text>
-  <text x="818" y="216" text-anchor="end" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="12.5" font-weight="700" fill="#141311">Rust · TS · Java</text>
+  <text x="818" y="216" text-anchor="end" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="12.5" font-weight="700" fill="#141311">Rust · TS · Python</text>
   <line x1="572" y1="228" x2="818" y2="228" stroke="#D9D1C1" stroke-width="0.9"/>
   <text x="572" y="246" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" letter-spacing="0.6" fill="#726C62">DISPATCH</text>
   <text x="818" y="246" text-anchor="end" font-family='Georgia, "Times New Roman", "Noto Serif CJK SC", serif' font-size="12.5" font-weight="700" fill="#141311">cloudlink.blessc.com</text>
