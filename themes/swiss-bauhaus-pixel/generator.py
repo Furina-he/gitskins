@@ -905,7 +905,7 @@ def main() -> None:
             link_label="gitskins.blessc.com",
             line1="Curated Light &amp; Dark GitHub profile SVG themes for AI",
             line2="coding agents — copy one zero-config prompt to re-skin.",
-            spec="TypeScript · React · Python · 132 SVGs · MIT",
+            spec="TypeScript · React · Python · 242 SVGs · MIT",
             weave_kind="tartan",
             weave_light=("#2BA676", "#2370E8"),
             weave_dark=("#1E825C", "#1D4ED8"),

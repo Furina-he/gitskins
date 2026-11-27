@@ -17,6 +17,7 @@ import {
 } from "../repo/repoGithubApi";
 import type { Lang, PreviewMode, SkinTheme } from "../types";
 import { ACCENT_PRESETS, validateSvgXml } from "../widgets/catalog";
+import ThemePicker from "./ThemePicker";
 import { svgToDataUri } from "./WidgetsStudio";
 
 interface RepoSkinsStudioProps {
@@ -193,40 +194,17 @@ export default function RepoSkinsStudio({
         </div>
       </section>
 
-      {/* 4-Skin Switcher */}
-      <nav className="skin-rail" aria-label="Repo theme skins">
-        {themes.map((skin) => {
-          const isActive = skin.id === activeTheme.id;
-          const swatches = skin.palette[previewMode].slice(0, 5);
-          return (
-            <button
-              key={skin.id}
-              type="button"
-              className={`skin-tab ${isActive ? "active" : ""}`}
-              onClick={() => onSelectTheme(skin.id)}
-            >
-              <div className="skin-tab-top">
-                <span className="skin-index">0{skin.order}</span>
-                <span className="skin-swatches">
-                  {swatches.map((hex) => (
-                    <span
-                      key={hex}
-                      className="swatch-mini"
-                      style={{ backgroundColor: hex }}
-                    />
-                  ))}
-                </span>
-              </div>
-              <div className="skin-tab-name">
-                {lang === "zh" ? skin.nameZh : skin.name}
-              </div>
-              <div className="skin-tab-cat">
-                {lang === "zh" ? skin.categoryZh : skin.category}
-              </div>
-            </button>
-          );
-        })}
-      </nav>
+      {/* Scalable Single-Row Skin Picker + Visual Gallery Drawer */}
+      <ThemePicker
+        themes={themes}
+        activeTheme={activeTheme}
+        previewMode={previewMode}
+        lang={lang}
+        variant="rail"
+        onSelectTheme={onSelectTheme}
+        onChangePreviewMode={onChangePreviewMode}
+        ariaLabel="Repo theme skins"
+      />
 
       <section className="workspace" aria-label="Repo skins studio">
         {/* Left: Authentic 846px GitHub Repository README Stage */}

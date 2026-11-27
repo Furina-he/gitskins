@@ -305,7 +305,7 @@ def main() -> None:
             link_label="gitskins.blessc.com",
             line1="Agent-ready Light &amp; Dark GitHub profile SVG",
             line2="themes — copy one prompt to re-skin profiles.",
-            spec="TypeScript · React · Python · 132 SVGs · MIT",
+            spec="TypeScript · React · Python · 242 SVGs · MIT",
         )
         files[f"card-virtual-{mode}.svg"] = build_card(
             mode,

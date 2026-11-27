@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="300" viewBox="0 0 846 300" role="img" aria-label="Furina-he — Classic Desktop OS Profile">
+  <title>Furina-he — Classic Desktop OS</title>
+  <defs>
+    <pattern id="bayer-cos-dark" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="#121318"/>
+      <rect x="0" y="0" width="1" height="1" fill="#2D303A"/>
+      <rect x="2" y="2" width="1" height="1" fill="#2D303A"/>
+      <rect x="2" y="0" width="1" height="1" fill="#2D303A" opacity="0.45"/>
+      <rect x="0" y="2" width="1" height="1" fill="#2D303A" opacity="0.45"/>
+    </pattern>
+  </defs>
+  <style>
+    @keyframes blinkOpen_cos-dark {
+      0%, 91%, 96%, 100% { opacity: 1; }
+      92%, 95% { opacity: 0; }
+    }
+    @keyframes blinkClosed_cos-dark {
+      0%, 91%, 96%, 100% { opacity: 0; }
+      92%, 95% { opacity: 1; }
+    }
+    @keyframes cursorTick_cos-dark {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0.15; }
+    }
+    .ava-open-cos-dark { animation: blinkOpen_cos-dark 5.4s steps(1, end) infinite; }
+    .ava-shut-cos-dark { opacity: 0; animation: blinkClosed_cos-dark 5.4s steps(1, end) infinite; }
+    .cur-cos-dark { animation: cursorTick_cos-dark 1.3s steps(1, end) infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .ava-open-cos-dark, .ava-shut-cos-dark, .cur-cos-dark { animation: none !important; }
+    }
+  </style>
+
+  <!-- 1-bit Bayer Dot-Dither Desktop Backdrop -->
+  <rect x="0.5" y="0.5" width="845" height="299" fill="url(#bayer-cos-dark)" stroke="#D8D8D2" stroke-width="1.2" shape-rendering="crispEdges"/>
+
+  <!-- Top OS Menu Bar -->
+  <rect x="1" y="1" width="844" height="24" fill="#202229" shape-rendering="crispEdges"/>
+  <line x1="1" y1="25.5" x2="845" y2="25.5" stroke="#D8D8D2" stroke-width="1.2"/>
+  <g shape-rendering="crispEdges"><path fill="#F1F1EE" d="M16 6h10v2h-10zM14 8h2v2h-2zM26 8h2v2h-2zM14 10h2v2h-2zM18 10h2v2h-2zM22 10h2v2h-2zM26 10h2v2h-2zM14 12h2v2h-2zM26 12h2v2h-2zM14 14h2v2h-2zM18 14h6v2h-6zM26 14h2v2h-2zM14 16h14v2h-14zM18 18h6v2h-6z"/><path fill="#60A5FA" d="M16 8h10v2h-10zM16 10h2v2h-2zM20 10h2v2h-2zM24 10h2v2h-2zM16 12h10v2h-10zM16 14h2v2h-2zM24 14h2v2h-2z"/></g>
+  <text x="38" y="17" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11.5" font-weight="700" fill="#F1F1EE">File</text>
+  <text x="76" y="17" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11.5" font-weight="700" fill="#F1F1EE">Edit</text>
+  <text x="115" y="17" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11.5" font-weight="700" fill="#F1F1EE">View</text>
+  <text x="158" y="17" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11.5" font-weight="700" fill="#F1F1EE">Special</text>
+
+  <text x="818" y="17" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10" font-weight="700" fill="#BCBCC4">NeXTSTEP 3.3 · cloudlink.blessc.com</text>
+  <rect x="826" y="9" width="7" height="7" fill="#4ADE80" shape-rendering="crispEdges"/>
+
+  <!-- Elevated "About This Developer" Window + Crisp 3px Hard Shadow -->
+  <rect x="21" y="39" width="807" height="248" fill="#07080B" shape-rendering="crispEdges"/>
+  <rect x="18" y="36" width="807" height="248" fill="#202229" stroke="#D8D8D2" stroke-width="1.5" shape-rendering="crispEdges"/>
+
+  <!-- 6-Line Pin-Stripe Window Titlebar -->
+  <rect x="19" y="37" width="805" height="23" fill="#17181D" shape-rendering="crispEdges"/>
+  <path fill="#868792" opacity="0.72" shape-rendering="crispEdges" d="M24 43h795v1h-795zM24 45h795v1h-795zM24 47h795v1h-795zM24 49h795v1h-795zM24 51h795v1h-795zM24 53h795v1h-795z"/>
+  <line x1="18" y1="60.5" x2="825" y2="60.5" stroke="#D8D8D2" stroke-width="1.2"/>
+
+  <!-- Top-Left Classic Square Close Box -->
+  <rect x="25" y="40" width="18" height="17" fill="#17181D" shape-rendering="crispEdges"/>
+  <rect x="28" y="42" width="12" height="12" fill="#202229" stroke="#D8D8D2" stroke-width="1.2" shape-rendering="crispEdges"/>
+
+  <!-- Top-Right Classic Zoom Box -->
+  <rect x="799" y="40" width="18" height="17" fill="#17181D" shape-rendering="crispEdges"/>
+  <rect x="802" y="42" width="12" height="12" fill="#202229" stroke="#D8D8D2" stroke-width="1.2" shape-rendering="crispEdges"/>
+  <rect x="802" y="42" width="7" height="7" fill="none" stroke="#D8D8D2" stroke-width="1" shape-rendering="crispEdges"/>
+
+  <!-- Centered Masked Title Plaque -->
+  <rect x="311" y="39" width="220" height="19" fill="#17181D" shape-rendering="crispEdges"/>
+  <text x="421" y="52.5" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="11" font-weight="700" fill="#F1F1EE">About This Developer</text>
+
+  <!-- Left Developer Identity Panel -->
+  <rect x="36" y="71" width="90" height="18" fill="#60A5FA" shape-rendering="crispEdges"/>
+  <text x="81" y="83.5" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="700" fill="#111318">PROFILE OS</text>
+  <text x="136" y="83.5" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.5" font-weight="700" fill="#BCBCC4">@Furina-he  ·  NeverGiveUp  ·  Local-First AI</text>
+
+  <text x="38" y="129" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="38" font-weight="800" fill="#383B46">FURINA-HE</text>
+  <text x="36" y="127" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="38" font-weight="800" fill="#F1F1EE">FURINA-HE</text>
+  <text x="36" y="152" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#BCBCC4">AI Agent Guardrails · Desktop Companions · Interactive Systems</text>
+
+  <!-- Classic Recessed System Info Well -->
+  <rect x="36" y="166" width="568" height="34" fill="#17181D" stroke="#D8D8D2" stroke-width="1.1" shape-rendering="crispEdges"/>
+  <line x1="37" y1="167.5" x2="603" y2="167.5" stroke="#383B46" stroke-width="1"/>
+  <text x="48" y="187" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.8" font-weight="700" fill="#F1F1EE"><tspan fill="#60A5FA">ROM:</tspan> Rust · TypeScript · Tauri · Electron · Python</text>
+  <rect class="cur-cos-dark" x="586" y="176" width="7" height="14" fill="#60A5FA" shape-rendering="crispEdges"/>
+
+  <!-- Right Framed 24x24 Pixel Portrait Slot -->
+  <rect x="634" y="71" width="172" height="133" fill="#17181D" stroke="#D8D8D2" stroke-width="1.2" shape-rendering="crispEdges"/>
+  <rect x="668" y="78" width="104" height="104" fill="#202229" stroke="#D8D8D2" stroke-width="1" shape-rendering="crispEdges"/>
+  <g class="ava-open-cos-dark"><g shape-rendering="crispEdges"><path fill="#181C2E" d="M700 82h12v4h-12zM728 82h12v4h-12zM692 86h8v4h-8zM712 86h4v4h-4zM724 86h4v4h-4zM740 86h8v4h-8zM688 90h4v4h-4zM712 90h16v4h-16zM748 90h4v4h-4zM684 94h4v4h-4zM696 94h48v4h-48zM752 94h4v4h-4zM680 98h4v4h-4zM692 98h4v4h-4zM744 98h4v4h-4zM756 98h4v4h-4zM680 102h4v4h-4zM688 102h4v4h-4zM748 102h4v4h-4zM756 102h4v4h-4zM680 106h4v4h-4zM688 106h4v4h-4zM748 106h4v4h-4zM756 106h4v4h-4zM676 110h12v4h-12zM712 110h4v4h-4zM724 110h4v4h-4zM752 110h4v4h-4zM760 110h4v4h-4zM676 114h4v4h-4zM712 114h4v4h-4zM724 114h4v4h-4zM748 114h4v4h-4zM760 114h4v4h-4zM676 118h4v4h-4zM700 118h8v4h-8zM732 118h8v4h-8zM748 118h4v4h-4zM756 118h4v4h-4zM676 122h4v4h-4zM692 122h4v4h-4zM700 122h4v4h-4zM712 122h4v4h-4zM724 122h4v4h-4zM736 122h4v4h-4zM744 122h4v4h-4zM760 122h4v4h-4zM676 126h4v4h-4zM688 126h4v4h-4zM696 126h16v4h-16zM728 126h16v4h-16zM748 126h4v4h-4zM760 126h4v4h-4zM676 130h4v4h-4zM688 130h4v4h-4zM696 130h4v4h-4zM712 130h4v4h-4zM724 130h4v4h-4zM740 130h4v4h-4zM748 130h4v4h-4zM760 130h4v4h-4zM676 134h4v4h-4zM688 134h4v4h-4zM696 134h4v4h-4zM712 134h4v4h-4zM724 134h4v4h-4zM740 134h4v4h-4zM748 134h4v4h-4zM760 134h4v4h-4zM676 138h4v4h-4zM688 138h4v4h-4zM696 138h4v4h-4zM712 138h4v4h-4zM724 138h4v4h-4zM740 138h4v4h-4zM748 138h4v4h-4zM760 138h4v4h-4zM680 142h4v4h-4zM688 142h4v4h-4zM700 142h12v4h-12zM728 142h12v4h-12zM748 142h4v4h-4zM756 142h4v4h-4zM680 146h8v4h-8zM752 146h8v4h-8zM684 150h4v4h-4zM696 150h8v4h-8zM736 150h8v4h-8zM752 150h4v4h-4zM680 154h4v4h-4zM700 154h8v4h-8zM732 154h8v4h-8zM756 154h4v4h-4zM680 158h4v4h-4zM704 158h32v4h-32zM756 158h4v4h-4zM676 162h4v4h-4zM700 162h4v4h-4zM712 162h4v4h-4zM724 162h4v4h-4zM736 162h4v4h-4zM760 162h4v4h-4zM676 166h4v4h-4zM696 166h8v4h-8zM712 166h4v4h-4zM724 166h4v4h-4zM736 166h8v4h-8zM760 166h4v4h-4zM676 170h4v4h-4zM692 170h4v4h-4zM704 170h4v4h-4zM732 170h4v4h-4zM744 170h4v4h-4zM760 170h4v4h-4zM680 174h16v4h-16zM700 174h40v4h-40zM744 174h16v4h-16z"/><path fill="#FFFFFF" d="M700 86h12v4h-12zM728 86h12v4h-12zM692 90h20v4h-20zM728 90h20v4h-20zM688 94h4v4h-4zM748 94h4v4h-4zM684 98h8v4h-8zM748 98h8v4h-8zM684 102h4v4h-4zM752 102h4v4h-4zM684 106h4v4h-4zM752 106h4v4h-4zM748 110h4v4h-4zM744 114h4v4h-4zM700 130h4v4h-4zM728 130h4v4h-4zM700 134h4v4h-4zM728 134h4v4h-4zM696 154h4v4h-4zM740 154h4v4h-4zM692 158h4v4h-4zM744 158h4v4h-4zM692 162h8v4h-8zM740 162h8v4h-8zM692 166h4v4h-4zM744 166h4v4h-4zM696 170h8v4h-8zM736 170h8v4h-8z"/><path fill="#D6E0F0" d="M692 94h4v4h-4zM744 94h4v4h-4zM696 158h8v4h-8zM736 158h8v4h-8z"/><path fill="#4A66C4" d="M696 98h48v4h-48zM692 102h8v4h-8zM708 102h24v4h-24zM740 102h8v4h-8zM692 106h56v4h-56zM688 110h24v4h-24zM716 110h8v4h-8zM728 110h20v4h-20zM680 114h32v4h-32zM716 114h8v4h-8zM728 114h16v4h-16zM680 118h8v4h-8zM692 118h8v4h-8zM708 118h24v4h-24zM740 118h8v4h-8zM680 122h12v4h-12zM704 122h8v4h-8zM716 122h8v4h-8zM728 122h8v4h-8zM748 122h12v4h-12zM680 126h8v4h-8zM752 126h8v4h-8zM680 130h8v4h-8zM752 130h8v4h-8zM680 134h8v4h-8zM752 134h8v4h-8zM684 138h4v4h-4zM752 138h4v4h-4zM684 142h4v4h-4zM752 142h4v4h-4zM688 150h8v4h-8zM744 150h8v4h-8zM688 154h8v4h-8zM744 154h8v4h-8zM688 158h4v4h-4zM748 158h4v4h-4zM684 162h8v4h-8zM748 162h8v4h-8zM684 166h8v4h-8zM748 166h8v4h-8zM684 170h8v4h-8zM748 170h8v4h-8z"/><path fill="#89A6F2" d="M700 102h8v4h-8zM732 102h8v4h-8zM688 118h4v4h-4z"/><path fill="#4AB9EE" d="M756 110h4v4h-4zM752 114h8v4h-8zM752 118h4v4h-4zM716 162h8v4h-8zM716 166h8v4h-8z"/><path fill="#FFF2EA" d="M696 122h4v4h-4zM740 122h4v4h-4zM692 126h4v4h-4zM712 126h16v4h-16zM744 126h4v4h-4zM692 130h4v4h-4zM716 130h8v4h-8zM744 130h4v4h-4zM692 134h4v4h-4zM716 134h8v4h-8zM744 134h4v4h-4zM692 138h4v4h-4zM716 138h8v4h-8zM744 138h4v4h-4zM712 142h16v4h-16zM688 146h8v4h-8zM704 146h32v4h-32zM744 146h8v4h-8zM704 150h32v4h-32zM708 154h24v4h-24z"/><path fill="#243574" d="M704 130h8v4h-8zM732 130h8v4h-8zM704 134h4v4h-4zM732 134h4v4h-4z"/><path fill="#7092E6" d="M708 134h4v4h-4zM736 134h4v4h-4zM700 138h12v4h-12zM728 138h12v4h-12z"/><path fill="#2F4492" d="M680 138h4v4h-4zM756 138h4v4h-4zM684 154h4v4h-4zM752 154h4v4h-4zM684 158h4v4h-4zM752 158h4v4h-4zM680 162h4v4h-4zM756 162h4v4h-4zM680 166h4v4h-4zM756 166h4v4h-4zM680 170h4v4h-4zM756 170h4v4h-4z"/><path fill="#F4AAB4" d="M692 142h8v4h-8zM740 142h8v4h-8zM696 146h8v4h-8zM736 146h8v4h-8z"/><path fill="#242D52" d="M704 162h8v4h-8zM728 162h8v4h-8zM704 166h8v4h-8zM728 166h8v4h-8zM708 170h24v4h-24z"/></g></g>
+  <g class="ava-shut-cos-dark"><g shape-rendering="crispEdges"><path fill="#181C2E" d="M700 82h12v4h-12zM728 82h12v4h-12zM692 86h8v4h-8zM712 86h4v4h-4zM724 86h4v4h-4zM740 86h8v4h-8zM688 90h4v4h-4zM712 90h16v4h-16zM748 90h4v4h-4zM684 94h4v4h-4zM696 94h48v4h-48zM752 94h4v4h-4zM680 98h4v4h-4zM692 98h4v4h-4zM744 98h4v4h-4zM756 98h4v4h-4zM680 102h4v4h-4zM688 102h4v4h-4zM748 102h4v4h-4zM756 102h4v4h-4zM680 106h4v4h-4zM688 106h4v4h-4zM748 106h4v4h-4zM756 106h4v4h-4zM676 110h12v4h-12zM712 110h4v4h-4zM724 110h4v4h-4zM752 110h4v4h-4zM760 110h4v4h-4zM676 114h4v4h-4zM712 114h4v4h-4zM724 114h4v4h-4zM748 114h4v4h-4zM760 114h4v4h-4zM676 118h4v4h-4zM700 118h8v4h-8zM732 118h8v4h-8zM748 118h4v4h-4zM756 118h4v4h-4zM676 122h4v4h-4zM692 122h4v4h-4zM700 122h4v4h-4zM712 122h4v4h-4zM724 122h4v4h-4zM736 122h4v4h-4zM744 122h4v4h-4zM760 122h4v4h-4zM676 126h4v4h-4zM688 126h4v4h-4zM748 126h4v4h-4zM760 126h4v4h-4zM676 130h4v4h-4zM688 130h4v4h-4zM748 130h4v4h-4zM760 130h4v4h-4zM676 134h4v4h-4zM688 134h4v4h-4zM696 134h16v4h-16zM728 134h16v4h-16zM748 134h4v4h-4zM760 134h4v4h-4zM676 138h4v4h-4zM688 138h4v4h-4zM748 138h4v4h-4zM760 138h4v4h-4zM680 142h4v4h-4zM688 142h4v4h-4zM748 142h4v4h-4zM756 142h4v4h-4zM680 146h8v4h-8zM752 146h8v4h-8zM684 150h4v4h-4zM696 150h8v4h-8zM736 150h8v4h-8zM752 150h4v4h-4zM680 154h4v4h-4zM700 154h8v4h-8zM732 154h8v4h-8zM756 154h4v4h-4zM680 158h4v4h-4zM704 158h32v4h-32zM756 158h4v4h-4zM676 162h4v4h-4zM700 162h4v4h-4zM712 162h4v4h-4zM724 162h4v4h-4zM736 162h4v4h-4zM760 162h4v4h-4zM676 166h4v4h-4zM696 166h8v4h-8zM712 166h4v4h-4zM724 166h4v4h-4zM736 166h8v4h-8zM760 166h4v4h-4zM676 170h4v4h-4zM692 170h4v4h-4zM704 170h4v4h-4zM732 170h4v4h-4zM744 170h4v4h-4zM760 170h4v4h-4zM680 174h16v4h-16zM700 174h40v4h-40zM744 174h16v4h-16z"/><path fill="#FFFFFF" d="M700 86h12v4h-12zM728 86h12v4h-12zM692 90h20v4h-20zM728 90h20v4h-20zM688 94h4v4h-4zM748 94h4v4h-4zM684 98h8v4h-8zM748 98h8v4h-8zM684 102h4v4h-4zM752 102h4v4h-4zM684 106h4v4h-4zM752 106h4v4h-4zM748 110h4v4h-4zM744 114h4v4h-4zM696 154h4v4h-4zM740 154h4v4h-4zM692 158h4v4h-4zM744 158h4v4h-4zM692 162h8v4h-8zM740 162h8v4h-8zM692 166h4v4h-4zM744 166h4v4h-4zM696 170h8v4h-8zM736 170h8v4h-8z"/><path fill="#D6E0F0" d="M692 94h4v4h-4zM744 94h4v4h-4zM696 158h8v4h-8zM736 158h8v4h-8z"/><path fill="#4A66C4" d="M696 98h48v4h-48zM692 102h8v4h-8zM708 102h24v4h-24zM740 102h8v4h-8zM692 106h56v4h-56zM688 110h24v4h-24zM716 110h8v4h-8zM728 110h20v4h-20zM680 114h32v4h-32zM716 114h8v4h-8zM728 114h16v4h-16zM680 118h8v4h-8zM692 118h8v4h-8zM708 118h24v4h-24zM740 118h8v4h-8zM680 122h12v4h-12zM704 122h8v4h-8zM716 122h8v4h-8zM728 122h8v4h-8zM748 122h12v4h-12zM680 126h8v4h-8zM752 126h8v4h-8zM680 130h8v4h-8zM752 130h8v4h-8zM680 134h8v4h-8zM752 134h8v4h-8zM684 138h4v4h-4zM752 138h4v4h-4zM684 142h4v4h-4zM752 142h4v4h-4zM688 150h8v4h-8zM744 150h8v4h-8zM688 154h8v4h-8zM744 154h8v4h-8zM688 158h4v4h-4zM748 158h4v4h-4zM684 162h8v4h-8zM748 162h8v4h-8zM684 166h8v4h-8zM748 166h8v4h-8zM684 170h8v4h-8zM748 170h8v4h-8z"/><path fill="#89A6F2" d="M700 102h8v4h-8zM732 102h8v4h-8zM688 118h4v4h-4z"/><path fill="#4AB9EE" d="M756 110h4v4h-4zM752 114h8v4h-8zM752 118h4v4h-4zM716 162h8v4h-8zM716 166h8v4h-8z"/><path fill="#FFF2EA" d="M696 122h4v4h-4zM740 122h4v4h-4zM692 126h56v4h-56zM692 130h56v4h-56zM692 134h4v4h-4zM712 134h16v4h-16zM744 134h4v4h-4zM692 138h56v4h-56zM700 142h40v4h-40zM688 146h8v4h-8zM704 146h32v4h-32zM744 146h8v4h-8zM704 150h32v4h-32zM708 154h24v4h-24z"/><path fill="#2F4492" d="M680 138h4v4h-4zM756 138h4v4h-4zM684 154h4v4h-4zM752 154h4v4h-4zM684 158h4v4h-4zM752 158h4v4h-4zM680 162h4v4h-4zM756 162h4v4h-4zM680 166h4v4h-4zM756 166h4v4h-4zM680 170h4v4h-4zM756 170h4v4h-4z"/><path fill="#F4AAB4" d="M692 142h8v4h-8zM740 142h8v4h-8zM696 146h8v4h-8zM736 146h8v4h-8z"/><path fill="#242D52" d="M704 162h8v4h-8zM728 162h8v4h-8zM704 166h8v4h-8zM728 166h8v4h-8zM708 170h24v4h-24z"/></g></g>
+  <text x="714" y="197" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.2" font-weight="700" fill="#BCBCC4">USER_ICON.PICT</text>
+  <rect class="cur-cos-dark" x="767" y="189" width="5" height="9" fill="#60A5FA" shape-rendering="crispEdges"/>
+
+  <!-- Bottom 4 Classic Memory / Disk Stat Bars -->
+  <line x1="18" y1="216.5" x2="825" y2="216.5" stroke="#D8D8D2" stroke-width="1.2"/>
+  <rect x="19" y="217" width="805" height="66" fill="#17181D" shape-rendering="crispEdges"/>
+  <text x="33" y="234" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.2" font-weight="700" fill="#BCBCC4">FLAGSHIP APPS</text>
+  <text x="206" y="234" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="11.5" font-weight="800" fill="#F1F1EE">04</text>
+  <rect x="33" y="244" width="173" height="12" fill="#202229" stroke="#D8D8D2" stroke-width="1" shape-rendering="crispEdges"/>
+  <line x1="76.5" y1="245" x2="76.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/><line x1="119.5" y1="245" x2="119.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/><line x1="162.5" y1="245" x2="162.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/>
+  <rect x="35" y="246" width="149" height="8" fill="#60A5FA" shape-rendering="crispEdges"/>
+  <text x="33" y="272" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#BCBCC4">Ops · Pet · Skins · 3D</text>
+  <line x1="220.5" y1="217" x2="220.5" y2="283" stroke="#383B46" stroke-width="1"/>
+  <text x="234" y="234" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.2" font-weight="700" fill="#BCBCC4">PUBLIC REPOS</text>
+  <text x="407" y="234" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="11.5" font-weight="800" fill="#F1F1EE">13</text>
+  <rect x="234" y="244" width="173" height="12" fill="#202229" stroke="#D8D8D2" stroke-width="1" shape-rendering="crispEdges"/>
+  <line x1="277.5" y1="245" x2="277.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/><line x1="320.5" y1="245" x2="320.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/><line x1="363.5" y1="245" x2="363.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/>
+  <rect x="236" y="246" width="125" height="8" fill="#4ADE80" shape-rendering="crispEdges"/>
+  <text x="234" y="272" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#BCBCC4">Rust · TS · Python</text>
+  <line x1="421.5" y1="217" x2="421.5" y2="283" stroke="#383B46" stroke-width="1"/>
+  <text x="435" y="234" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.2" font-weight="700" fill="#BCBCC4">SYNCED AGENTS</text>
+  <text x="608" y="234" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="11.5" font-weight="800" fill="#F1F1EE">20+</text>
+  <rect x="435" y="244" width="173" height="12" fill="#202229" stroke="#D8D8D2" stroke-width="1" shape-rendering="crispEdges"/>
+  <line x1="478.5" y1="245" x2="478.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/><line x1="521.5" y1="245" x2="521.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/><line x1="564.5" y1="245" x2="564.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/>
+  <rect x="437" y="246" width="155" height="8" fill="#F87171" shape-rendering="crispEdges"/>
+  <text x="435" y="272" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#BCBCC4">CloudLink Guard</text>
+  <line x1="622.5" y1="217" x2="622.5" y2="283" stroke="#383B46" stroke-width="1"/>
+  <text x="636" y="234" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.2" font-weight="700" fill="#BCBCC4">LOCAL MEMORY</text>
+  <text x="810" y="234" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="11.5" font-weight="800" fill="#F1F1EE">100%</text>
+  <rect x="636" y="244" width="174" height="12" fill="#202229" stroke="#D8D8D2" stroke-width="1" shape-rendering="crispEdges"/>
+  <line x1="679.5" y1="245" x2="679.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/><line x1="723.5" y1="245" x2="723.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/><line x1="766.5" y1="245" x2="766.5" y2="255" stroke="#383B46" stroke-width="1" opacity="0.65"/>
+  <rect x="638" y="246" width="163" height="8" fill="#FACC15" shape-rendering="crispEdges"/>
+  <text x="636" y="272" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#BCBCC4">Tauri · Electron · OSS</text>
+</svg>

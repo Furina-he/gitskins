@@ -1,0 +1,89 @@
+{
+  "id": "pcb-solder-mask",
+  "order": 8,
+  "name": "Solder Mask PCB",
+  "nameZh": "沉金 PCB 电路板",
+  "category": "Circuit Hardware",
+  "categoryZh": "沉金电路板",
+  "tagline": "Precision matte-white and deep emerald solder mask boards with ENIG immersion gold vias, 45° copper traces, QFP IC packages, and crisp silkscreen.",
+  "taglineZh": "哑光白漆与深翡翠绿阻焊油墨双主题电路板，配 ENIG 沉金过孔、45° 铜箔走线、QFP 芯片封装与高精丝印标号。",
+  "bestFor": ["Embedded & Hardware Devs", "Systems Engineers", "Maker & Firmware Builders"],
+  "bestForZh": ["嵌入式 / 硬件工程师", "底层系统开发者", "极客创客 / 固件作者"],
+  "author": "Furina-he",
+  "accent": "#C48A18",
+  "palette": {
+    "light": ["#F5F5F2", "#16211B", "#B87D14", "#1C6B4A", "#0D7D8C", "#D49B1A"],
+    "dark": ["#0B1F17", "#F2F7F4", "#E5B84B", "#34D399", "#38BDF8", "#F59E0B"]
+  },
+  "tokens": {
+    "light": {
+      "bg": "#F5F5F2",
+      "surface": "#FFFFFF",
+      "ink": "#16211B",
+      "sub": "#3D4F45",
+      "muted": "#67786E",
+      "border": "#1C4F38",
+      "borderSoft": "#CBD6CF",
+      "accent": "#B87D14",
+      "accentFg": "#FFFFFF",
+      "secondary": "#1C6B4A",
+      "tertiary": "#0D7D8C",
+      "highlight": "#D49B1A",
+      "patternBg": "#EAECE8",
+      "patternFg": "#C7D4CC"
+    },
+    "dark": {
+      "bg": "#0B1F17",
+      "surface": "#102B20",
+      "ink": "#F2F7F4",
+      "sub": "#B6D4C5",
+      "muted": "#76A38E",
+      "border": "#E5B84B",
+      "borderSoft": "#1E4A38",
+      "accent": "#E5B84B",
+      "accentFg": "#0B1F17",
+      "secondary": "#34D399",
+      "tertiary": "#38BDF8",
+      "highlight": "#F59E0B",
+      "patternBg": "#081711",
+      "patternFg": "#193D2E"
+    }
+  },
+  "features": [
+    "Matte White Solder Mask (Light) & Deep Emerald PCB (Dark)",
+    "ENIG immersion gold corner mounting holes, via pads & 45° copper traces",
+    "Hero QFP Silicon IC Package (U1 · DEV-SOC) with gull-wing pins & signal pulse",
+    "Gold-finger edge-connector tabs & U1–U4 SMD/IC component footprint cards"
+  ],
+  "featuresZh": [
+    "浅色哑光白阻焊板 + 深色经典翡翠绿沉金 PCB 双视觉体系",
+    "ENIG 沉金四角安装孔、过孔焊盘与 45° 精密铜箔走线网络",
+    "主图 QFP 封装核心芯片（U1 · DEV-SOC）、鸥翼金引脚与沉金脉冲信号",
+    "金手指边缘连接器按钮与 U1–U4 贴片元件封装项目卡"
+  ],
+  "buttons": [
+    { "id": "cloudlink", "label": "J1 · cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+    { "id": "openpet", "label": "J2 · openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+    { "id": "release", "label": "J3 · CloudLink v0.6.0", "url": "https://github.com/Furina-he/cloudlink/releases/latest" },
+    { "id": "github", "label": "J4 · @Furina-he", "url": "https://github.com/Furina-he?tab=repositories" }
+  ],
+  "cards": [
+    { "id": "cloudlink", "title": "CloudLink", "url": "https://github.com/Furina-he/cloudlink" },
+    { "id": "openpet", "title": "OpenPet", "url": "https://github.com/Furina-he/OpenPet" },
+    { "id": "gitskins", "title": "GitSkins", "url": "https://github.com/Furina-he/gitskins" },
+    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" }
+  ],
+  "sections": ["work", "activity"],
+  "subLinks": [
+    { "group": "Live boards", "items": [
+      { "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+      { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+      { "label": "gitskins.blessc.com", "url": "https://gitskins.blessc.com" }
+    ]},
+    { "group": "Archive", "items": [
+      { "label": "openpet-market", "url": "https://github.com/Furina-he/openpet-market" },
+      { "label": "carview", "url": "https://github.com/Furina-he/carview" },
+      { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" }
+    ]}
+  ]
+}

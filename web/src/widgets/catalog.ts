@@ -1,9 +1,10 @@
 import type { Lang, SkinTheme } from "../types";
 import { packBentoRows } from "./bento";
 import { colSpanToPx } from "./renderers";
-import { RAW_LIVE_GENERATOR_URL, isLiveWidgetId } from "./workflow";
+import { RAW_LIVE_GENERATOR_URL, getSnakePaletteForTheme, isLiveWidgetId, isPlataneSnakeInstance } from "./workflow";
 import type {
   BentoColSpan,
+  ContributionSnakeConfig,
   HeroAnchor,
   HeroStickerConfig,
   WidgetCatalogEntry,
@@ -178,6 +179,77 @@ export const WIDGET_CATALOG: WidgetCatalogEntry[] = [
     },
   },
   {
+    id: "keycap-rig",
+    code: "W09",
+    name: "Mechanical Keycap Rig",
+    nameZh: "机械键盘键帽阵",
+    desc: "Sculpted 3D mechanical keycaps showcasing your core toolchain & hardware setup.",
+    descZh: "把主力工具链做成实体机械键帽矩阵，带配色功能键与克制按压微动效（2/3/4 格）。",
+    defaultColSpan: 2,
+    supportedColSpans: [2, 3, 4],
+    defaultPlacement: "under-cards",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      title: "DAILY RIG",
+      keys: "ESC, VIM, RUST, TS, PY, AI, GIT, RET",
+      accentKeys: "ESC, AI, RET",
+      hardware: "HHKB HYBRID · NEOVIM · GHOSTTY · MACOS",
+    },
+  },
+  {
+    id: "split-flap",
+    code: "W10",
+    name: "Split-Flap Departure Board",
+    nameZh: "机场机械翻页屏",
+    desc: "Classic hinged airport split-flap letter board for your motto, release, or yearly goal.",
+    descZh: "经典机场/车站机械翻页字母牌，带中缝折痕与翻页闪烁动效，秀宣言或里程碑进度。",
+    defaultColSpan: 4,
+    supportedColSpans: [2, 3, 4],
+    defaultPlacement: "under-hero",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      header: "STATUS BOARD",
+      line1: "SHIPPING GITSKINS",
+      line2: "2026 GOAL · 88% OK",
+      code: "GATE A7",
+    },
+  },
+  {
+    id: "skill-radar",
+    code: "W11",
+    name: "Hex Skill Radar",
+    nameZh: "六维能力雷达盘",
+    desc: "6-axis hexagonal ability radar adapting across blueprint, RPG, bauhaus & seal-ink skins.",
+    descZh: "自定义 6 维工程能力雷达图（1~2 格），在蓝图、RPG、水墨与包豪斯皮肤间自动变形。",
+    defaultColSpan: 2,
+    supportedColSpans: [1, 2],
+    defaultPlacement: "under-cards",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      title: "ABILITY RADAR",
+      subtitle: "ENGINEER SPEC",
+      axes: "SYS:88, AI:92, UI:84, INFRA:78, OSS:95, HW:72",
+    },
+  },
+  {
+    id: "qr-pass",
+    code: "W12",
+    name: "Scannable Vector QR Pass",
+    nameZh: "矢量二维码名片砖",
+    desc: "Genuine ISO-standard scannable vector QR code (<path>) for your site, blog, or socials.",
+    descZh: "纯前端编码真可扫码的矢量像素二维码，高对比静区保护，直接放进 1~2 格 Bento 砖。",
+    defaultColSpan: 1,
+    supportedColSpans: [1, 2],
+    defaultPlacement: "under-hero",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      url: "https://gitskins.blessc.com",
+      title: "SCAN SITE",
+      subtitle: "gitskins.blessc.com",
+      badge: "VERIFIED",
+    },
+  },
+  {
     id: "github-stats",
     code: "L01",
     name: "Live GitHub Stats",
@@ -294,6 +366,82 @@ export const WIDGET_CATALOG: WidgetCatalogEntry[] = [
       status: "NOW PLAYING",
       progress: 68,
       duration: "4:10",
+    },
+  },
+  {
+    id: "contribution-snake",
+    code: "L07",
+    name: "Contribution Snake",
+    nameZh: "贡献图贪吃蛇",
+    desc: "GitHub contribution snake auto-tinted to your skin's Light/Dark tokens (Platane/snk or framed SVG).",
+    descZh: "GitHub 同款贡献图贪吃蛇：自动注入当前皮肤深浅色板（支持 Platane/snk 或零分支皮肤框版）。",
+    defaultColSpan: 4,
+    supportedColSpans: [4],
+    isLive: true,
+    defaultPlacement: "bottom",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      username: "Furina-he",
+      engine: "platane-snk",
+      speed: "normal",
+      schedule: "daily",
+    },
+  },
+  {
+    id: "contrib-skyline",
+    code: "L08",
+    name: "3D Contribution Skyline",
+    nameZh: "3D 贡献天际线",
+    desc: "Isometric 3D extruded city skyline rendered directly from your GitHub contribution graph.",
+    descZh: "把近期 GitHub 贡献热力图立体投影为等轴测 3D 方块城市天际线（零依赖 Actions 定时更新）。",
+    defaultColSpan: 4,
+    supportedColSpans: [3, 4],
+    isLive: true,
+    defaultPlacement: "bottom",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      username: "Furina-he",
+      totalCommits: 1284,
+      weeks: 18,
+      schedule: "daily",
+    },
+  },
+  {
+    id: "commit-streak",
+    code: "L09",
+    name: "Commit Streak Flame",
+    nameZh: "连续提交火炬",
+    desc: "Zero-503 replacement for streak stats: current streak, record best & 14-day pixel flame bar.",
+    descZh: "替代容易 503 的第三方连胜卡片：当前连胜天数、历史最长纪录与近 14 天像素火苗条。",
+    defaultColSpan: 2,
+    supportedColSpans: [1, 2],
+    isLive: true,
+    defaultPlacement: "under-cards",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      username: "Furina-he",
+      currentStreak: 42,
+      longestStreak: 96,
+      totalCommits: 1284,
+    },
+  },
+  {
+    id: "recent-activity",
+    code: "L10",
+    name: "Live Activity Log",
+    nameZh: "近期动态日志",
+    desc: "Auto-syncs latest 3 public Push, Release, or PR events as a themed terminal/chronicle ticker.",
+    descZh: "定时同步最近 3 条公开 Push / Release / PR 动态，按皮肤渲染为终端日志、任务记录或大事记。",
+    defaultColSpan: 2,
+    supportedColSpans: [2, 3, 4],
+    isLive: true,
+    defaultPlacement: "under-cards",
+    supportedPlacements: STANDARD_PLACEMENTS,
+    defaultConfig: {
+      username: "Furina-he",
+      event1: "PUSH | Furina-he/gitskins · add high-recognition skins & widgets | 2h",
+      event2: "REL | Furina-he/cloudlink · v0.6.0 infrastructure switchboard | 1d",
+      event3: "PR | Furina-he/OpenPet · crisp desktop AI companion | 3d",
     },
   },
 ];
@@ -467,6 +615,27 @@ export function buildSingleWidgetPrompt(
   }
 
   const sizeText = colSpanLabel(instance.colSpan, lang, meta.isStrip, meta.isSticker);
+  if (isPlataneSnakeInstance(instance)) {
+    const cfg = instance.config as ContributionSnakeConfig;
+    const lightPal = getSnakePaletteForTheme(theme.id, "light", theme.tokens.light, instance.accentOverride);
+    const darkPal = getSnakePaletteForTheme(theme.id, "dark", theme.tokens.dark, instance.accentOverride);
+    if (lang === "zh") {
+      return [
+        `请为我的 GitHub 个人主页配置 GitSkins 贡献图贪吃蛇「${meta.nameZh}（${instance.widgetId}）」工作流。`,
+        `- 风格与配色：跟随「${theme.nameZh}（${theme.id}）」深浅语义令牌，位置：${slotText}`,
+        `- 浅色 Platane/snk 参数：?color_snake=${lightPal.snake}&color_dots=${lightPal.dots.join(",")}`,
+        `- 深色 Platane/snk 参数：?palette=github-dark&color_snake=${darkPal.snake}&color_dots=${darkPal.dots.join(",")}`,
+        `- 自动化配置：在 .github/workflows/snake.yml 中使用 Platane/snk/svg-only@v3（定时 ${cfg.schedule === "6h" ? "0 */6 * * *" : "0 0 * * *"} + workflow_dispatch + push main）推送到 output 分支，并在 README.md 中用 <picture> 挂载。`,
+      ].join("\n");
+    }
+    return [
+      `Set up the GitSkins Contribution Snake "${meta.name}" (${instance.widgetId}) workflow in my GitHub Profile repo.`,
+      `- Theme palette sync: "${theme.name}" (${theme.id}) at "${slotText}"`,
+      `- Light Platane/snk query: ?color_snake=${lightPal.snake}&color_dots=${lightPal.dots.join(",")}`,
+      `- Dark Platane/snk query: ?palette=github-dark&color_snake=${darkPal.snake}&color_dots=${darkPal.dots.join(",")}`,
+      `- Automation: configure .github/workflows/snake.yml using Platane/snk/svg-only@v3 (cron "${cfg.schedule === "6h" ? "0 */6 * * *" : "0 0 * * *"}") pushing to the output branch, and mount via <picture> in README.md.`,
+    ].join("\n");
+  }
   if (isLiveWidgetId(instance.widgetId)) {
     if (lang === "zh") {
       return [
@@ -547,13 +716,26 @@ export function buildCombinedProfilePrompt(
     sections.push(`- [${slotName}]:\n${rowLines.join("\n")}`);
   }
 
-  const hasLive = loadout.some((w) => isLiveWidgetId(w.widgetId));
-  const liveAddonZh = hasLive
-    ? `\n- 检测到包含定时活挂件（github-stats / coding-rhythm / rss-feed / live-weather）：请一并拉取零依赖脚本 ${RAW_LIVE_GENERATOR_URL} 到 scripts/generate_live_widgets.py，并配置 .github/workflows/gitskins-widgets.yml 定时刷新对应 SVG。`
-    : "";
-  const liveAddonEn = hasLive
-    ? `\n- Live auto-updating widgets detected: also fetch ${RAW_LIVE_GENERATOR_URL} to scripts/generate_live_widgets.py and add .github/workflows/gitskins-widgets.yml to refresh those SVGs on schedule.`
-    : "";
+  const hasNativeLive = loadout.some((w) => isLiveWidgetId(w.widgetId) && !isPlataneSnakeInstance(w));
+  const hasPlataneSnake = loadout.some((w) => isPlataneSnakeInstance(w));
+  const snakeLight = getSnakePaletteForTheme(theme.id, "light", theme.tokens.light);
+  const snakeDark = getSnakePaletteForTheme(theme.id, "dark", theme.tokens.dark);
+  const liveAddonZh = [
+    hasNativeLive
+      ? `\n- 检测到包含定时活挂件：请一并拉取零依赖脚本 ${RAW_LIVE_GENERATOR_URL} 到 scripts/generate_live_widgets.py，并配置 .github/workflows/gitskins-widgets.yml 定时刷新对应 assets/live-*.svg。`
+      : "",
+    hasPlataneSnake
+      ? `\n- 检测到包含贡献图贪吃蛇（Platane/snk）：请配置 .github/workflows/snake.yml，使用 Platane/snk/svg-only@v3 并注入主题色板（浅色 color_snake=${snakeLight.snake}&color_dots=${snakeLight.dots.join(",")}，深色 palette=github-dark&color_snake=${snakeDark.snake}&color_dots=${snakeDark.dots.join(",")}），输出至 output 分支并用 <picture> 挂载。`
+      : "",
+  ].join("");
+  const liveAddonEn = [
+    hasNativeLive
+      ? `\n- Live auto-updating widgets detected: also fetch ${RAW_LIVE_GENERATOR_URL} to scripts/generate_live_widgets.py and add .github/workflows/gitskins-widgets.yml to refresh those assets/live-*.svg files on schedule.`
+      : "",
+    hasPlataneSnake
+      ? `\n- Theme-matched Contribution Snake (Platane/snk) detected: add .github/workflows/snake.yml with Platane/snk/svg-only@v3 using Light (?color_snake=${snakeLight.snake}&color_dots=${snakeLight.dots.join(",")}) and Dark (?palette=github-dark&color_snake=${snakeDark.snake}&color_dots=${snakeDark.dots.join(",")}) theme palettes pushing to the output branch.`
+      : "",
+  ].join("");
 
   if (lang === "zh") {
     return `${basePrompt}\n\n### 附加 DIY Bento 挂件拼装方案（4 列 846px 栅格，160px 等高对齐）\n所有挂件继承「${theme.nameZh}」Light/Dark 语义令牌；同一行含多个挂件时直接合成为单张 846×160 的整行 SVG（width="100%"）避免 GitHub 换行错位：\n${sections.join("\n")}${liveAddonZh}`;

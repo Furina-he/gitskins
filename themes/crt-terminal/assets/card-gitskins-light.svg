@@ -19,6 +19,6 @@
   <!-- Terminal Spec & Bottom Prompt Line -->
   <line x1="18" y1="146.5" x2="399" y2="146.5" stroke="#DDD8CA" stroke-width="1" stroke-dasharray="3 3"/>
   <rect x="18" y="162" width="7" height="7" fill="#0E7C5B" shape-rendering="crispEdges"/>
-  <text x="32" y="169.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" fill="#6E7B85">TypeScript · React · Python · 132 SVGs · MIT</text>
+  <text x="32" y="169.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10.5" fill="#6E7B85">TypeScript · React · Python · 242 SVGs · MIT</text>
   <text x="399" y="169.5" text-anchor="end" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11" font-weight="700" fill="#0E7C5B">&#8629;</text>
 </svg>

@@ -17,8 +17,8 @@
   <a href="https://gitskins.blessc.com"><img src="https://img.shields.io/badge/在线工坊-gitskins.blessc.com-00A3CC?style=flat-square&logo=cloudflare&logoColor=white" alt="在线工坊"></a>
   <a href="https://github.com/Furina-he/gitskins/stargazers"><img src="https://img.shields.io/github/stars/Furina-he/gitskins?style=flat-square&color=111214&labelColor=2B2F3A" alt="GitHub Stars"></a>
   <a href="https://github.com/Furina-he/gitskins/network/members"><img src="https://img.shields.io/github/forks/Furina-he/gitskins?style=flat-square&color=2370E8&labelColor=2B2F3A" alt="GitHub Forks"></a>
-  <a href="#主题画廊"><img src="https://img.shields.io/badge/精选皮肤-6套浅色%2F深色-E45847?style=flat-square&labelColor=2B2F3A" alt="6 套双主题皮肤"></a>
-  <a href="#主题联动挂件"><img src="https://img.shields.io/badge/自适应挂件-14款_Bento%2B活挂件-F5B700?style=flat-square&labelColor=2B2F3A" alt="14 款自适应挂件"></a>
+  <a href="#主题画廊"><img src="https://img.shields.io/badge/精选皮肤-11套浅色%2F深色-E45847?style=flat-square&labelColor=2B2F3A" alt="11 套双主题皮肤"></a>
+  <a href="#主题联动挂件"><img src="https://img.shields.io/badge/自适应挂件-22款_Bento%2B活挂件-F5B700?style=flat-square&labelColor=2B2F3A" alt="22 款自适应挂件"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/Furina-he/gitskins?style=flat-square&color=2BA676&labelColor=2B2F3A" alt="MIT License"></a>
 </p>
 
@@ -77,7 +77,7 @@
 </p>
 
 <p>
-  <picture><source media="(prefers-color-scheme: dark)" srcset="./assets/repo-feat-01-dark.svg"><img src="./assets/repo-feat-01-light.svg" alt="6 套精选视觉体系" width="49%"></picture>&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/repo-feat-02-dark.svg"><img src="./assets/repo-feat-02-light.svg" alt="4 列 Bento 与零 503 活挂件" width="49%"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="./assets/repo-feat-01-dark.svg"><img src="./assets/repo-feat-01-light.svg" alt="11 套精选视觉体系" width="49%"></picture>&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/repo-feat-02-dark.svg"><img src="./assets/repo-feat-02-light.svg" alt="4 列 Bento 与零 503 活挂件" width="49%"></picture>
 </p>
 
 <p>
@@ -88,7 +88,7 @@
 
 ## 主题画廊
 
-全部 6 套主题均配备成对 **Light / Dark** 语义令牌契约（`meta.json#tokens`）、严格 XML 校验静态 SVG（每套 `22` 张，共 `132` 张），并全链路联动 **Profile Skins**、**Repo Skins**、**DIY Bento 挂件** 与 **零 503 活挂件**。切换 GitHub 浅色/深色模式即可直接查看下方双主题实时效果：
+全部 11 套主题均配备成对 **Light / Dark** 语义令牌契约（`meta.json#tokens`）、严格 XML 校验静态 SVG（每套 `22` 张，共 `242` 张），并全链路联动 **Profile Skins**、**Repo Skins**、**DIY Bento 挂件** 与 **零 503 活挂件**。切换 GitHub 浅色/深色模式即可直接查看下方双主题实时效果：
 
 <table>
   <tr>
@@ -169,15 +169,86 @@
       <sub><a href="https://gitskins.blessc.com/#seal-ink-scroll">在线预览 ↗</a> · <a href="themes/seal-ink-scroll/SPEC.md">SPEC</a> · <a href="themes/seal-ink-scroll/PROMPT.md">PROMPT</a> · <a href="themes/seal-ink-scroll/generator.py">Generator</a></sub>
     </td>
   </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://gitskins.blessc.com/#synth-hardware">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="./themes/synth-hardware/assets/hero-dark.svg">
+          <img src="./themes/synth-hardware/assets/hero-light.svg" alt="07 工业合成器面板" width="100%">
+        </picture>
+      </a>
+      <br>
+      <strong><code>07</code> 工业合成器面板（Tactile Industrial Synth）</strong><br>
+      <sub>致敬 OP-1 / Braun 工业仪器：铝灰/阳极黑机壳、圆孔扬声器点阵、凹陷 OLED 示波器与 4 颗彩色旋钮。适合硬件与创意工程师。</sub><br>
+      <sub><a href="https://gitskins.blessc.com/#synth-hardware">在线预览 ↗</a> · <a href="themes/synth-hardware/SPEC.md">SPEC</a> · <a href="themes/synth-hardware/PROMPT.md">PROMPT</a> · <a href="themes/synth-hardware/generator.py">Generator</a></sub>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://gitskins.blessc.com/#pcb-solder-mask">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="./themes/pcb-solder-mask/assets/hero-dark.svg">
+          <img src="./themes/pcb-solder-mask/assets/hero-light.svg" alt="08 沉金 PCB 电路板" width="100%">
+        </picture>
+      </a>
+      <br>
+      <strong><code>08</code> 沉金 PCB 电路板（Solder Mask PCB）</strong><br>
+      <sub>哑光白与深墨绿阻焊层、ENIG 沉金过孔（<code>◎</code>）、45° 铜箔走线与 QFP 芯片封装项目卡。适合嵌入式、机器人与底层系统开发者。</sub><br>
+      <sub><a href="https://gitskins.blessc.com/#pcb-solder-mask">在线预览 ↗</a> · <a href="themes/pcb-solder-mask/SPEC.md">SPEC</a> · <a href="themes/pcb-solder-mask/PROMPT.md">PROMPT</a> · <a href="themes/pcb-solder-mask/generator.py">Generator</a></sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://gitskins.blessc.com/#transit-boarding">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="./themes/transit-boarding/assets/hero-dark.svg">
+          <img src="./themes/transit-boarding/assets/hero-light.svg" alt="09 航空登机牌 / 电车票" width="100%">
+        </picture>
+      </a>
+      <br>
+      <strong><code>09</code> 航空登机牌 / 电车票（Transit &amp; Boarding Pass）</strong><br>
+      <sub>热敏票据与夜间出发屏双主题、锯齿虚线副券、护照像素头像框、矢量条形码与地铁线路换乘项目卡。适合独立与全栈产品开发者。</sub><br>
+      <sub><a href="https://gitskins.blessc.com/#transit-boarding">在线预览 ↗</a> · <a href="themes/transit-boarding/SPEC.md">SPEC</a> · <a href="themes/transit-boarding/PROMPT.md">PROMPT</a> · <a href="themes/transit-boarding/generator.py">Generator</a></sub>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://gitskins.blessc.com/#classic-desktop-os">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="./themes/classic-desktop-os/assets/hero-dark.svg">
+          <img src="./themes/classic-desktop-os/assets/hero-light.svg" alt="10 经典桌面窗口 OS" width="100%">
+        </picture>
+      </a>
+      <br>
+      <strong><code>10</code> 经典桌面窗口 OS（Classic Desktop OS）</strong><br>
+      <sub>System 7 白金灰与 NeXTSTEP 暗夜工作站、1-bit 网点抖动桌面、横条纹窗格标题栏与像素应用图标。适合桌面端与复古 OS 爱好者。</sub><br>
+      <sub><a href="https://gitskins.blessc.com/#classic-desktop-os">在线预览 ↗</a> · <a href="themes/classic-desktop-os/SPEC.md">SPEC</a> · <a href="themes/classic-desktop-os/PROMPT.md">PROMPT</a> · <a href="themes/classic-desktop-os/generator.py">Generator</a></sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://gitskins.blessc.com/#riso-duotone">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="./themes/riso-duotone/assets/hero-dark.svg">
+          <img src="./themes/riso-duotone/assets/hero-light.svg" alt="11 孔版错位叠印海报" width="100%">
+        </picture>
+      </a>
+      <br>
+      <strong><code>11</code> 孔版错位叠印海报（Risograph Overprint Poster）</strong><br>
+      <sub>独立画廊 Risograph 双色油墨错位叠印（钴蓝×珊瑚红 / 荧光青×粉金）、半调网点屏与四角套印十字标。适合创意与前端工程师。</sub><br>
+      <sub><a href="https://gitskins.blessc.com/#riso-duotone">在线预览 ↗</a> · <a href="themes/riso-duotone/SPEC.md">SPEC</a> · <a href="themes/riso-duotone/PROMPT.md">PROMPT</a> · <a href="themes/riso-duotone/generator.py">Generator</a></sub>
+    </td>
+    <td width="50%" valign="middle" align="center">
+      <strong>+ 欢迎 PR 共建新皮肤</strong><br>
+      <sub>在 <code>themes/&lt;id&gt;/</code> 下提交自包含主题目录并运行 <code>python scripts/build_all.py</code> 即可自动校验并同步上线。</sub><br><br>
+      <sub><a href="CONTRIBUTING.md">查看贡献指南 ↗</a> · <a href="https://gitskins.blessc.com">打开在线工坊 ↗</a></sub>
+    </td>
+  </tr>
 </table>
 
 ---
 
 ## 主题联动挂件
 
-全部 **14 款挂件** 严丝合缝对齐 **4 列 `846px` Bento 栅格**（`204 / 418 / 632 / 846px`，统一 `160px` 行高），并随当前主题自动继承全部 14 个语义令牌实现一键换肤。
+全部 **22 款挂件** 严丝合缝对齐 **4 列 `846px` Bento 栅格**（`204 / 418 / 632 / 846px`，统一 `160px` 行高），并随当前主题自动继承全部 14 个语义令牌实现一键换肤。
 
-### 8 款静态 DIY 挂件（`W01`–`W08`）— 零后端即时导出
+### 12 款静态 DIY 挂件（`W01`–`W12`）— 零后端即时导出
 
 | 编号 | 挂件 ID | 规格 / 槽位 | 特色 |
 | :--- | :--- | :--- | :--- |
@@ -189,8 +260,12 @@
 | `W06` | `hero-sticker` | Hero 角落叠加 | 直接合成进 Hero 四角（扒边像素猫 / 印章 / 热咖啡 / 雷达） |
 | `W07` | `pixel-runway` | `846×48` 跑道条 | 像素小宠整行巡逻 / LED 跑马灯分割线 |
 | `W08` | `mini-tile` | `204×160` 迷你砖 | 像素咖啡杯、天气窗、沙漏与迷你频谱 |
+| `W09` | `keycap-rig` | 2–4 列 Bento | 实体 3D 机械键盘键帽阵 + 主力硬件配置条 |
+| `W10` | `split-flap` | 2–4 列 Bento | 机场经典机械翻页字母屏，秀口号与年度目标进度 |
+| `W11` | `skill-radar` | 1–2 列 Bento | 6 维工程能力六边形雷达盘，自动跟随皮肤重绘 |
+| `W12` | `qr-pass` | 1–2 列 Bento | 纯前端编码真可扫码的 ISO-18004 矢量像素二维码名片 |
 
-### 6 款零 503 GitHub Actions 活挂件（`L01`–`L06`）
+### 10 款零 503 GitHub Actions 活挂件（`L01`–`L10`）
 
 由单文件零依赖 Python 标准库脚本（[live-widgets/generate_live_widgets.py](live-widgets/generate_live_widgets.py)）在你自己的仓库内定时运行更新，**无需服务器、永不 503**：
 
@@ -202,6 +277,10 @@
 | `L04` | `live-weather` | 免费免 Key 接入 Open-Meteo 实时气温与像素天气动画 | 无需密钥 |
 | `L05` | `wakatime-weekly` | 7 天编程总时长、日均时长与语言分布 | 可选 `WAKATIME_API_KEY` |
 | `L06` | `spotify-recent` | 正在听 / 最近循环曲目黑胶唱机 | 可选 Spotify Refresh Token |
+| `L07` | `contribution-snake` | GitHub 同款贡献图贪吃蛇（自动注入当前皮肤深/浅色板或皮肤框版） | 仅内置 `GITHUB_TOKEN` |
+| `L08` | `contrib-skyline` | 等轴测 3D 立体方块贡献天际线（近 14–18 周提交） | 仅内置 `GITHUB_TOKEN` |
+| `L09` | `commit-streak` | 当前连胜天数、历史最长纪录与近 14 天像素火苗条 | 仅内置 `GITHUB_TOKEN` |
+| `L10` | `recent-activity` | 最近 3 条公开 Push / Release / PR 动态日志条 | 仅内置 `GITHUB_TOKEN` |
 
 <details>
 <summary><strong>查看零 503 活挂件自动刷新原理</strong></summary>
@@ -246,7 +325,7 @@
 git clone https://github.com/Furina-he/gitskins.git
 cd gitskins
 
-# 1. 查看全部 6 套主题、14 款挂件与 Repo Skin 模块
+# 1. 查看全部 11 套主题、22 款挂件与 Repo Skin 模块
 node cli/gitskins.mjs list
 
 # 2. 为开源仓库一键脚手架生成 Repo Skin（Hero + 安装条 + 4 张特性卡 + 架构图 + 尾标）
@@ -254,7 +333,7 @@ node cli/gitskins.mjs init --mode repo --theme blueprint-cad --repo owner/my-too
 
 # 3. 为个人主页生成零 503 活挂件 Actions 工作流
 node cli/gitskins.mjs init --mode profile --theme seal-ink-scroll \
-  --widgets "github-stats:2,coding-rhythm:2,wakatime-weekly:2,spotify-recent:2" --out ./my-profile
+  --widgets "github-stats:2,coding-rhythm:2,contrib-skyline:4,commit-streak:2,recent-activity:2" --out ./my-profile
 
 # 4. 严格校验 XML 合法性、零 <script> 安全规范与 prefers-reduced-motion 兼容
 node cli/gitskins.mjs validate ./assets
@@ -288,7 +367,7 @@ gitskins/
 ├── docs/                   # 架构契约、挂件系统、真身预览、活挂件与 Repo Skins 规范
 ├── live-widgets/           # 零依赖 Python 标准库活挂件生成器与 Actions 模板
 ├── scripts/
-│   └── build_all.py        # 构建 6 套主题（132 SVG）、校验 72 张活挂件 SVG 并同步 web/public/
+│   └── build_all.py        # 构建 11 套主题（242 SVG）、校验 220 张活挂件 SVG 并同步 web/public/
 ├── skill/gitskins/
 │   └── SKILL.md            # 标准 Agent Skill 技能定义
 ├── themes/<theme-id>/      # 自包含主题目录（meta.json、SPEC、PROMPT、generator.py、assets/）
@@ -309,7 +388,7 @@ gitskins/
 ## 本地开发
 
 ```bash
-# 1. 重新生成 6 套主题（132 张 SVG）、校验 72 张活挂件 SVG 并同步到 web/public/
+# 1. 重新生成 11 套主题（242 张 SVG）、校验 220 张活挂件 SVG 并同步到 web/public/
 python scripts/build_all.py
 
 # 2. 校验本仓库 SVG 资产
@@ -323,7 +402,7 @@ cd web && pnpm install && pnpm dev
 
 ## 路线图与参与贡献
 
-- **演进路线**：查看 [ROADMAP.md](ROADMAP.md) 了解 `v0.1`–`v0.6` 已上线功能及社区主题规划。
+- **演进路线**：查看 [ROADMAP.md](ROADMAP.md) 了解 `v0.1`–`v0.8` 已上线功能及社区主题规划。
 - **参与共建**：欢迎提交新皮肤或主题联动 DIY 挂件！请阅读 [CONTRIBUTING.md](CONTRIBUTING.md) —— 只需在 `themes/<theme-id>/` 下新增自包含目录并执行 `python scripts/build_all.py` 即可自动校验并注册到在线工坊。
 
 如果 GitSkins 让你的 GitHub 主页或开源项目耳目一新，欢迎点亮一颗 **Star** 支持！

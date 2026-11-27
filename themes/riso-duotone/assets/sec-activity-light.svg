@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="40" viewBox="0 0 846 40" role="img" aria-label="+ PLATE 02 · CONTRIBUTION LEDGER">
+  <title>+ PLATE 02 — CONTRIBUTION LEDGER</title>
+  <defs>
+    <pattern id="ht-sec-activity-light" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1.8" cy="1.8" r="1.20" fill="#0066CC" fill-opacity="0.24"/><circle cx="5.2" cy="5.2" r="1.20" fill="#0066CC" fill-opacity="0.24"/><circle cx="3.5" cy="7.0" r="0.90" fill="#0066CC" fill-opacity="0.13"/></pattern>
+  </defs>
+  <rect x="0" y="0" width="846" height="40" fill="#F8F3E8"/>
+  <!-- Halftone right-hand overprint strip -->
+  <rect x="440" y="4" width="404" height="31" fill="#EFE8D8"/>
+  <rect x="440" y="4" width="404" height="31" fill="url(#ht-sec-activity-light)"/>
+  <!-- Top & bottom bold overprint rules -->
+  <line x1="0" y1="2.5" x2="846" y2="2.5" stroke="#17203B" stroke-width="1.4"/>
+  <line x1="0" y1="36.5" x2="846" y2="36.5" stroke="#17203B" stroke-width="1.3"/>
+  <line x1="0" y1="38.8" x2="846" y2="38.8" stroke="#FF4F5E" stroke-opacity="0.72" stroke-width="1.5"/>
+
+  <!-- Misregistered 2-ink plate badge (+ PLATE 01 / + PLATE 02) -->
+  <rect x="8.5" y="9.5" width="112" height="22" fill="#FF4F5E" fill-opacity="0.85"/>
+  <rect x="6" y="7" width="112" height="22" fill="#0066CC" stroke="#17203B" stroke-width="1.1"/>
+  <text x="62" y="21.5" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10" font-weight="700" letter-spacing="0.8" fill="#FFFFFF">+ PLATE 02</text>
+
+  <!-- Misregistered duotone section title -->
+  <text x="135.8" y="25.8" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="16.5" font-weight="900" letter-spacing="0.6" fill="#FF4F5E" fill-opacity="0.62">CONTRIBUTION LEDGER</text>
+  <text x="134" y="24" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="16.5" font-weight="900" letter-spacing="0.6" fill="#17203B">CONTRIBUTION LEDGER</text>
+
+  <!-- Right-side knockout spec pill + registration crosshair -->
+  <rect x="682" y="9" width="136" height="21" fill="#FDFBF5" stroke="#17203B" stroke-width="1"/>
+  <text x="750.0" y="22.8" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.2" font-weight="700" letter-spacing="0.6" fill="#17203B">@FURINA-HE · 2026</text>
+  <g aria-hidden="true"><circle cx="834.1" cy="20.6" r="3.8" fill="none" stroke="#FF4F5E" stroke-opacity="0.55" stroke-width="0.9"/><circle cx="833.0" cy="19.5" r="3.8" fill="none" stroke="#17203B" stroke-width="1"/><line x1="826.6" y1="19.5" x2="839.4" y2="19.5" stroke="#17203B" stroke-width="1"/><line x1="833.0" y1="13.1" x2="833.0" y2="25.9" stroke="#17203B" stroke-width="1"/><circle cx="833.0" cy="19.5" r="1.1" fill="#17203B"/></g>
+</svg>

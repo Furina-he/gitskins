@@ -14,15 +14,27 @@ import {
   validateSvgXml,
 } from "../widgets/catalog";
 import { colSpanToPx, renderWidgetSvg } from "../widgets/renderers";
-import { buildLiveWorkflowYaml, isLiveWidgetId } from "../widgets/workflow";
+import {
+  buildLiveWorkflowYaml,
+  buildSnakePlataneMarkdown,
+  buildSnakeWorkflowYaml,
+  getSnakePaletteForTheme,
+  isLiveWidgetId,
+  isPlataneSnakeInstance,
+} from "../widgets/workflow";
+import ThemePicker from "./ThemePicker";
 import type {
   BentoColSpan,
   CodingRhythmConfig,
+  CommitStreakConfig,
+  ContribSkylineConfig,
+  ContributionSnakeConfig,
   DevBadgeConfig,
   DevStatus,
   GitHubStatsConfig,
   HeroAnchor,
   HeroStickerConfig,
+  KeycapRigConfig,
   LiveWeatherCondition,
   LiveWeatherConfig,
   MediaKind,
@@ -33,12 +45,17 @@ import type {
   PetMood,
   PixelCompanionConfig,
   PixelRunwayConfig,
+  QrPassConfig,
   QuoteBannerConfig,
+  RecentActivityConfig,
   RhythmPersona,
   RssFeedConfig,
   RunwayMode,
   RunwaySpeed,
   SkillDockConfig,
+  SkillRadarConfig,
+  SnakeEngine,
+  SplitFlapConfig,
   SpotifyRecentConfig,
   StickerMotif,
   WakaTimeWeeklyConfig,
@@ -128,6 +145,7 @@ export default function WidgetsStudio({
   const [stageScheme, setStageScheme] = useState<StageScheme>("both");
   const [mdMode, setMdMode] = useState<MarkdownMode>("standard");
   const [catalogFilter, setCatalogFilter] = useState<CatalogFilter>("all");
+  const [catalogExpanded, setCatalogExpanded] = useState(false);
   const [stickerPreviewOnHero, setStickerPreviewOnHero] = useState(true);
   const [copiedMd, setCopiedMd] = useState(false);
   const [copiedYaml, setCopiedYaml] = useState(false);
@@ -150,6 +168,7 @@ export default function WidgetsStudio({
 
   const isHeroSticker = activeWidgetId === "hero-sticker";
   const isLiveWidget = isLiveWidgetId(activeWidgetId);
+  const isPlataneSnake = isPlataneSnakeInstance(current);
   const svgFileBase = isLiveWidget ? `live-${activeWidgetId}` : `widget-${activeWidgetId}`;
   const showOverlayPreview = isHeroSticker && stickerPreviewOnHero && current.placement === "hero-overlay";
   const supportsFloatRight = current.colSpan === 1;
@@ -256,6 +275,10 @@ export default function WidgetsStudio({
         `</picture>`,
       ].join("\n");
     }
+    if (isPlataneSnake) {
+      const sc = current.config as ContributionSnakeConfig;
+      return buildSnakePlataneMarkdown(sc.username || "your-username");
+    }
     return buildWidgetMarkdown(
       svgFileBase,
       altText,
@@ -265,6 +288,8 @@ export default function WidgetsStudio({
     );
   }, [
     showOverlayPreview,
+    isPlataneSnake,
+    current.config,
     activeTheme.name,
     svgFileBase,
     altText,
@@ -276,13 +301,22 @@ export default function WidgetsStudio({
 
   const liveWorkflowYaml = useMemo(() => {
     if (!isLiveWidget) return "";
+    if (isPlataneSnake) {
+      const sc = current.config as ContributionSnakeConfig;
+      return buildSnakeWorkflowYaml({
+        theme: activeTheme,
+        username: sc.username,
+        accentOverride: current.accentOverride,
+        schedule: sc.schedule,
+      });
+    }
     return buildLiveWorkflowYaml({
       themeId: activeTheme.id,
       liveWidgets: [current],
       accentOverride: current.accentOverride,
       animated: current.animated,
     });
-  }, [isLiveWidget, activeTheme.id, current]);
+  }, [isLiveWidget, isPlataneSnake, activeTheme, current]);
 
   const singlePrompt = useMemo(
     () => buildSingleWidgetPrompt(current, activeTheme, lang),
@@ -388,106 +422,132 @@ export default function WidgetsStudio({
         </div>
       </section>
 
-      {/* Catalog Category Filter + 12-Widget Grid (8 Static DIY + 4 Live Actions) */}
-      <div className="widget-filter-bar" role="tablist" aria-label="Widget category filter">
+      {/* Catalog Category Filter + Compact/Expanded Widget Selector */}
+      <div className="widget-catalog-head">
+        <div className="widget-filter-bar" role="tablist" aria-label="Widget category filter">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={catalogFilter === "all"}
+            className={`widget-filter-btn ${catalogFilter === "all" ? "active" : ""}`}
+            onClick={() => setCatalogFilter("all")}
+          >
+            {t.widgetFilterAll} ({WIDGET_CATALOG.length})
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={catalogFilter === "static"}
+            className={`widget-filter-btn ${catalogFilter === "static" ? "active" : ""}`}
+            onClick={() => setCatalogFilter("static")}
+          >
+            {t.widgetFilterStatic} ({staticCount})
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={catalogFilter === "live"}
+            className={`widget-filter-btn live ${catalogFilter === "live" ? "active" : ""}`}
+            onClick={() => setCatalogFilter("live")}
+          >
+            <span className="live-dot" />
+            <span>
+              {t.widgetFilterLive} ({liveCount})
+            </span>
+          </button>
+        </div>
+
         <button
           type="button"
-          role="tab"
-          aria-selected={catalogFilter === "all"}
-          className={`widget-filter-btn ${catalogFilter === "all" ? "active" : ""}`}
-          onClick={() => setCatalogFilter("all")}
+          className="widget-view-toggle"
+          aria-expanded={catalogExpanded}
+          onClick={() => setCatalogExpanded((prev) => !prev)}
         >
-          {t.widgetFilterAll} ({WIDGET_CATALOG.length})
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={catalogFilter === "static"}
-          className={`widget-filter-btn ${catalogFilter === "static" ? "active" : ""}`}
-          onClick={() => setCatalogFilter("static")}
-        >
-          {t.widgetFilterStatic} ({staticCount})
-        </button>
-        <button
-          type="button"
-          role="tab"
-          aria-selected={catalogFilter === "live"}
-          className={`widget-filter-btn live ${catalogFilter === "live" ? "active" : ""}`}
-          onClick={() => setCatalogFilter("live")}
-        >
-          <span className="live-dot" />
-          <span>
-            {t.widgetFilterLive} ({liveCount})
-          </span>
+          <span>{catalogExpanded ? t.widgetCatalogCompact : t.widgetCatalogExpand}</span>
+          <span aria-hidden="true">{catalogExpanded ? "▴" : "▾"}</span>
         </button>
       </div>
 
-      <nav className="widget-rail" aria-label="DIY Widgets catalog">
-        {filteredCatalog.map((item) => {
-          const active = item.id === activeWidgetId;
-          const count = mountedWidgets.filter((w) => w.widgetId === item.id).length;
-          return (
-            <button
-              key={item.id}
-              type="button"
-              className={`skin-tab widget-tab ${active ? "active" : ""} ${item.isLive ? "is-live" : ""}`}
-              onClick={() => {
-                if (editingUid) onExitEditInstance();
-                onSelectWidgetId(item.id);
-              }}
-            >
-              <div className="skin-tab-top">
-                <span className="skin-index-group">
-                  <span className="skin-index">{item.code}</span>
-                  {item.isLive && <span className="live-pill">{t.widgetLiveBadge}</span>}
-                </span>
-                {count > 0 ? (
-                  <span className="mounted-pill">
-                    {t.widgetMountedBadge} ×{count}
+      {catalogExpanded ? (
+        <nav className="widget-rail" aria-label="DIY Widgets catalog">
+          {filteredCatalog.map((item) => {
+            const active = item.id === activeWidgetId;
+            const count = mountedWidgets.filter((w) => w.widgetId === item.id).length;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                className={`skin-tab widget-tab ${active ? "active" : ""} ${item.isLive ? "is-live" : ""}`}
+                onClick={() => {
+                  if (editingUid) onExitEditInstance();
+                  onSelectWidgetId(item.id);
+                }}
+              >
+                <div className="skin-tab-top">
+                  <span className="skin-index-group">
+                    <span className="skin-index">{item.code}</span>
+                    {item.isLive && <span className="live-pill">{t.widgetLiveBadge}</span>}
                   </span>
-                ) : (
-                  <span className="size-tag">
-                    {colSpanLabel(item.defaultColSpan, lang, item.isStrip, item.isSticker)}
-                  </span>
-                )}
-              </div>
-              <div className="skin-tab-name">
-                {lang === "zh" ? item.nameZh : item.name}
-              </div>
-              <div className="skin-tab-cat">
-                {lang === "zh" ? item.descZh : item.desc}
-              </div>
-            </button>
-          );
-        })}
-      </nav>
+                  {count > 0 ? (
+                    <span className="mounted-pill">
+                      {t.widgetMountedBadge} ×{count}
+                    </span>
+                  ) : (
+                    <span className="size-tag">
+                      {colSpanLabel(item.defaultColSpan, lang, item.isStrip, item.isSticker)}
+                    </span>
+                  )}
+                </div>
+                <div className="skin-tab-name">
+                  {lang === "zh" ? item.nameZh : item.name}
+                </div>
+                <div className="skin-tab-cat">
+                  {lang === "zh" ? item.descZh : item.desc}
+                </div>
+              </button>
+            );
+          })}
+        </nav>
+      ) : (
+        <nav className="widget-rail-compact" aria-label="DIY Widgets catalog">
+          {filteredCatalog.map((item) => {
+            const active = item.id === activeWidgetId;
+            const count = mountedWidgets.filter((w) => w.widgetId === item.id).length;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                className={`widget-chip ${active ? "active" : ""}`}
+                title={lang === "zh" ? item.descZh : item.desc}
+                onClick={() => {
+                  if (editingUid) onExitEditInstance();
+                  onSelectWidgetId(item.id);
+                }}
+              >
+                {item.isLive && <span className="widget-chip-live-dot" aria-hidden="true" />}
+                <span className="widget-chip-code">{item.code}</span>
+                <span>{lang === "zh" ? item.nameZh : item.name}</span>
+                {count > 0 && <span className="widget-chip-count">×{count}</span>}
+              </button>
+            );
+          })}
+        </nav>
+      )}
 
       <section className="workspace" aria-label="DIY widget customizer">
         {/* Left: Live Specimen Stage + Zero-Agent Export */}
         <div className="stage-card">
           <div className="stage-toolbar">
-            <div className="widget-skin-bar" role="group" aria-label={t.widgetSkinLabel}>
-              {themes.map((skin) => (
-                <button
-                  key={skin.id}
-                  type="button"
-                  className={`mini-skin-btn ${skin.id === activeTheme.id ? "active" : ""}`}
-                  onClick={() => onSelectTheme(skin.id)}
-                >
-                  <span className="mini-skin-dot" style={{ backgroundColor: skin.accent }} />
-                  <span>0{skin.order}</span>
-                  <span className="mini-skin-label">
-                    {lang === "zh"
-                      ? skin.id === "pixel-rpg-hud"
-                        ? "像素RPG"
-                        : skin.nameZh.slice(0, 4)
-                      : skin.id === "pixel-rpg-hud"
-                        ? "RPG"
-                        : skin.name.split(" ")[0]}
-                  </span>
-                </button>
-              ))}
-            </div>
+            <ThemePicker
+              themes={themes}
+              activeTheme={activeTheme}
+              previewMode={previewMode}
+              lang={lang}
+              variant="compact"
+              onSelectTheme={onSelectTheme}
+              onChangePreviewMode={onChangePreviewMode}
+              ariaLabel={t.widgetSkinLabel}
+            />
 
             <div className="stage-controls">
               {isHeroSticker && current.placement === "hero-overlay" && (
@@ -664,11 +724,17 @@ export default function WidgetsStudio({
               <div className="live-workflow-box">
                 <div className="widget-export-head">
                   <span className="section-micro-label" style={{ margin: 0 }}>
-                    {t.widgetLiveWorkflowHeading}
+                    {isPlataneSnake
+                      ? t.widgetSnakeWorkflowHeading
+                      : t.widgetLiveWorkflowHeading}
                   </span>
-                  <span className="live-pill">{t.widgetLiveBadge} · ACTIONS</span>
+                  <span className="live-pill">
+                    {isPlataneSnake ? "PLATANE/SNK · ACTIONS" : `${t.widgetLiveBadge} · ACTIONS`}
+                  </span>
                 </div>
-                <p className="live-workflow-hint">{t.widgetLiveWorkflowHint}</p>
+                <p className="live-workflow-hint">
+                  {isPlataneSnake ? t.widgetSnakeWorkflowHint : t.widgetLiveWorkflowHint}
+                </p>
                 <div className="export-actions-row">
                   <button
                     type="button"
@@ -682,21 +748,23 @@ export default function WidgetsStudio({
                     className="export-btn"
                     onClick={() =>
                       downloadTextFile(
-                        "gitskins-widgets.yml",
+                        isPlataneSnake ? "snake.yml" : "gitskins-widgets.yml",
                         liveWorkflowYaml,
                         "text/yaml;charset=utf-8"
                       )
                     }
                   >
-                    ↓ {t.widgetDownloadYaml}
+                    ↓ {isPlataneSnake ? "snake.yml" : t.widgetDownloadYaml}
                   </button>
-                  <button
-                    type="button"
-                    className="export-btn"
-                    onClick={handleDownloadPythonScript}
-                  >
-                    ↓ {t.widgetDownloadPy}
-                  </button>
+                  {!isPlataneSnake && (
+                    <button
+                      type="button"
+                      className="export-btn"
+                      onClick={handleDownloadPythonScript}
+                    >
+                      ↓ {t.widgetDownloadPy}
+                    </button>
+                  )}
                 </div>
                 <pre className="prompt-box compact">{liveWorkflowYaml}</pre>
               </div>
@@ -1861,6 +1929,441 @@ export default function WidgetsStudio({
                     />
                   </div>
                   <p className="diy-hint-note">{t.fieldSpotifySecretNote}</p>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "contribution-snake" && (() => {
+              const cfg = current.config as ContributionSnakeConfig;
+              const engines: { id: SnakeEngine; label: string }[] = [
+                { id: "platane-snk", label: t.fieldSnakeEnginePlatane },
+                { id: "gitskins-svg", label: t.fieldSnakeEngineNative },
+              ];
+              const speeds: { id: RunwaySpeed; en: string; zh: string }[] = [
+                { id: "calm", en: "Calm", zh: "舒缓" },
+                { id: "normal", en: "Normal", zh: "标准" },
+                { id: "brisk", en: "Brisk", zh: "轻快" },
+              ];
+              const lightPal = getSnakePaletteForTheme(
+                activeTheme.id,
+                "light",
+                activeTheme.tokens.light,
+                current.accentOverride
+              );
+              const darkPal = getSnakePaletteForTheme(
+                activeTheme.id,
+                "dark",
+                activeTheme.tokens.dark,
+                current.accentOverride
+              );
+              return (
+                <div className="diy-form">
+                  <div className="diy-field">
+                    <label>{t.fieldGhUsername}</label>
+                    <input
+                      type="text"
+                      maxLength={39}
+                      value={cfg.username}
+                      onChange={(e) =>
+                        patchConfig<"contribution-snake">({ username: e.target.value })
+                      }
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldSnakeEngine}</label>
+                    <div className="seg-group">
+                      {engines.map((eng) => (
+                        <button
+                          key={eng.id}
+                          type="button"
+                          className={`seg-btn ${cfg.engine === eng.id ? "active" : ""}`}
+                          onClick={() => patchConfig<"contribution-snake">({ engine: eng.id })}
+                        >
+                          {eng.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldSnakeSpeed}</label>
+                    <div className="seg-group cols-3">
+                      {speeds.map((sp) => (
+                        <button
+                          key={sp.id}
+                          type="button"
+                          className={`seg-btn ${cfg.speed === sp.id ? "active" : ""}`}
+                          onClick={() => patchConfig<"contribution-snake">({ speed: sp.id })}
+                        >
+                          {lang === "zh" ? sp.zh : sp.en}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldCronSchedule}</label>
+                    <div className="seg-group">
+                      <button
+                        type="button"
+                        className={`seg-btn ${cfg.schedule === "daily" ? "active" : ""}`}
+                        onClick={() => patchConfig<"contribution-snake">({ schedule: "daily" })}
+                      >
+                        {lang === "zh" ? "每日 0 点" : "Daily UTC"}
+                      </button>
+                      <button
+                        type="button"
+                        className={`seg-btn ${cfg.schedule === "6h" ? "active" : ""}`}
+                        onClick={() => patchConfig<"contribution-snake">({ schedule: "6h" })}
+                      >
+                        {lang === "zh" ? "每 6 小时" : "Every 6 hours"}
+                      </button>
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>
+                      {lang === "zh" ? "自动同步的主题蛇配色（Light / Dark）" : "Synced Theme Palette (Light / Dark)"}
+                    </label>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10.5, fontFamily: "var(--font-mono)" }}>
+                        <span style={{ minWidth: 38, color: "var(--studio-muted)" }}>LIGHT</span>
+                        <span className="swatch-mini" style={{ backgroundColor: lightPal.snake, width: 12, height: 12 }} title={`snake ${lightPal.snake}`} />
+                        <span style={{ color: "var(--studio-muted)" }}>→</span>
+                        {lightPal.dots.map((hex, i) => (
+                          <span key={`l-${i}`} className="swatch-mini" style={{ backgroundColor: hex, width: 12, height: 12 }} title={hex} />
+                        ))}
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 10.5, fontFamily: "var(--font-mono)" }}>
+                        <span style={{ minWidth: 38, color: "var(--studio-muted)" }}>DARK</span>
+                        <span className="swatch-mini" style={{ backgroundColor: darkPal.snake, width: 12, height: 12 }} title={`snake ${darkPal.snake}`} />
+                        <span style={{ color: "var(--studio-muted)" }}>→</span>
+                        {darkPal.dots.map((hex, i) => (
+                          <span key={`d-${i}`} className="swatch-mini" style={{ backgroundColor: hex, width: 12, height: 12 }} title={hex} />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <p className="diy-hint-note">
+                    {cfg.engine === "gitskins-svg" ? t.fieldSnakeNoteNative : t.fieldSnakeNotePlatane}
+                  </p>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "keycap-rig" && (() => {
+              const cfg = current.config as KeycapRigConfig;
+              return (
+                <div className="diy-form">
+                  <div className="diy-field">
+                    <label>{t.fieldKeycapTitle}</label>
+                    <input
+                      type="text"
+                      maxLength={24}
+                      value={cfg.title}
+                      onChange={(e) => patchConfig<"keycap-rig">({ title: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldKeycapKeys}</label>
+                    <input
+                      type="text"
+                      maxLength={120}
+                      value={cfg.keys}
+                      onChange={(e) => patchConfig<"keycap-rig">({ keys: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldKeycapAccent}</label>
+                    <input
+                      type="text"
+                      maxLength={60}
+                      value={cfg.accentKeys}
+                      onChange={(e) => patchConfig<"keycap-rig">({ accentKeys: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldKeycapHardware}</label>
+                    <input
+                      type="text"
+                      maxLength={70}
+                      value={cfg.hardware}
+                      onChange={(e) => patchConfig<"keycap-rig">({ hardware: e.target.value })}
+                    />
+                  </div>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "split-flap" && (() => {
+              const cfg = current.config as SplitFlapConfig;
+              return (
+                <div className="diy-form">
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>{t.fieldFlapHeader}</label>
+                      <input
+                        type="text"
+                        maxLength={24}
+                        value={cfg.header}
+                        onChange={(e) => patchConfig<"split-flap">({ header: e.target.value })}
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>{t.fieldFlapCode}</label>
+                      <input
+                        type="text"
+                        maxLength={16}
+                        value={cfg.code}
+                        onChange={(e) => patchConfig<"split-flap">({ code: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldFlapLine1}</label>
+                    <input
+                      type="text"
+                      maxLength={24}
+                      value={cfg.line1}
+                      onChange={(e) => patchConfig<"split-flap">({ line1: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldFlapLine2}</label>
+                    <input
+                      type="text"
+                      maxLength={24}
+                      value={cfg.line2}
+                      onChange={(e) => patchConfig<"split-flap">({ line2: e.target.value })}
+                    />
+                  </div>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "skill-radar" && (() => {
+              const cfg = current.config as SkillRadarConfig;
+              return (
+                <div className="diy-form">
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>{t.fieldRadarTitle}</label>
+                      <input
+                        type="text"
+                        maxLength={24}
+                        value={cfg.title}
+                        onChange={(e) => patchConfig<"skill-radar">({ title: e.target.value })}
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>{t.fieldRadarSub}</label>
+                      <input
+                        type="text"
+                        maxLength={24}
+                        value={cfg.subtitle}
+                        onChange={(e) => patchConfig<"skill-radar">({ subtitle: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldRadarAxes}</label>
+                    <input
+                      type="text"
+                      maxLength={100}
+                      value={cfg.axes}
+                      onChange={(e) => patchConfig<"skill-radar">({ axes: e.target.value })}
+                    />
+                  </div>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "qr-pass" && (() => {
+              const cfg = current.config as QrPassConfig;
+              return (
+                <div className="diy-form">
+                  <div className="diy-field">
+                    <label>{t.fieldQrUrl}</label>
+                    <input
+                      type="url"
+                      maxLength={78}
+                      value={cfg.url}
+                      onChange={(e) => patchConfig<"qr-pass">({ url: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>{t.fieldQrTitle}</label>
+                      <input
+                        type="text"
+                        maxLength={24}
+                        value={cfg.title}
+                        onChange={(e) => patchConfig<"qr-pass">({ title: e.target.value })}
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>{t.fieldQrBadge}</label>
+                      <input
+                        type="text"
+                        maxLength={14}
+                        value={cfg.badge}
+                        onChange={(e) => patchConfig<"qr-pass">({ badge: e.target.value })}
+                      />
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldQrSub}</label>
+                    <input
+                      type="text"
+                      maxLength={32}
+                      value={cfg.subtitle}
+                      onChange={(e) => patchConfig<"qr-pass">({ subtitle: e.target.value })}
+                    />
+                  </div>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "contrib-skyline" && (() => {
+              const cfg = current.config as ContribSkylineConfig;
+              return (
+                <div className="diy-form">
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>{t.fieldGhUsername}</label>
+                      <input
+                        type="text"
+                        maxLength={39}
+                        value={cfg.username}
+                        onChange={(e) => patchConfig<"contrib-skyline">({ username: e.target.value })}
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>{t.fieldSkylineCommits}</label>
+                      <input
+                        type="number"
+                        min={0}
+                        max={99999}
+                        value={cfg.totalCommits}
+                        onChange={(e) =>
+                          patchConfig<"contrib-skyline">({ totalCommits: Number(e.target.value) || 0 })
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>
+                      {t.fieldSkylineWeeks}: <strong>{cfg.weeks}W</strong>
+                    </label>
+                    <input
+                      type="range"
+                      min={12}
+                      max={22}
+                      value={cfg.weeks}
+                      onChange={(e) =>
+                        patchConfig<"contrib-skyline">({ weeks: Number(e.target.value) })
+                      }
+                    />
+                  </div>
+                  <p className="diy-hint-note">{t.fieldLivePreviewNote}</p>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "commit-streak" && (() => {
+              const cfg = current.config as CommitStreakConfig;
+              return (
+                <div className="diy-form">
+                  <div className="diy-field">
+                    <label>{t.fieldGhUsername}</label>
+                    <input
+                      type="text"
+                      maxLength={39}
+                      value={cfg.username}
+                      onChange={(e) => patchConfig<"commit-streak">({ username: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field-row">
+                    <div className="diy-field">
+                      <label>{t.fieldStreakCurrent}</label>
+                      <input
+                        type="number"
+                        min={0}
+                        max={3650}
+                        value={cfg.currentStreak}
+                        onChange={(e) =>
+                          patchConfig<"commit-streak">({ currentStreak: Number(e.target.value) || 0 })
+                        }
+                      />
+                    </div>
+                    <div className="diy-field">
+                      <label>{t.fieldStreakLongest}</label>
+                      <input
+                        type="number"
+                        min={0}
+                        max={3650}
+                        value={cfg.longestStreak}
+                        onChange={(e) =>
+                          patchConfig<"commit-streak">({ longestStreak: Number(e.target.value) || 0 })
+                        }
+                      />
+                    </div>
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldSkylineCommits}</label>
+                    <input
+                      type="number"
+                      min={0}
+                      max={99999}
+                      value={cfg.totalCommits}
+                      onChange={(e) =>
+                        patchConfig<"commit-streak">({ totalCommits: Number(e.target.value) || 0 })
+                      }
+                    />
+                  </div>
+                  <p className="diy-hint-note">{t.fieldLivePreviewNote}</p>
+                </div>
+              );
+            })()}
+
+            {activeWidgetId === "recent-activity" && (() => {
+              const cfg = current.config as RecentActivityConfig;
+              return (
+                <div className="diy-form">
+                  <div className="diy-field">
+                    <label>{t.fieldGhUsername}</label>
+                    <input
+                      type="text"
+                      maxLength={39}
+                      value={cfg.username}
+                      onChange={(e) => patchConfig<"recent-activity">({ username: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldActivityEvent1}</label>
+                    <input
+                      type="text"
+                      maxLength={96}
+                      value={cfg.event1}
+                      onChange={(e) => patchConfig<"recent-activity">({ event1: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldActivityEvent2}</label>
+                    <input
+                      type="text"
+                      maxLength={96}
+                      value={cfg.event2}
+                      onChange={(e) => patchConfig<"recent-activity">({ event2: e.target.value })}
+                    />
+                  </div>
+                  <div className="diy-field">
+                    <label>{t.fieldActivityEvent3}</label>
+                    <input
+                      type="text"
+                      maxLength={96}
+                      value={cfg.event3}
+                      onChange={(e) => patchConfig<"recent-activity">({ event3: e.target.value })}
+                    />
+                  </div>
+                  <p className="diy-hint-note">{t.fieldLivePreviewNote}</p>
                 </div>
               );
             })()}

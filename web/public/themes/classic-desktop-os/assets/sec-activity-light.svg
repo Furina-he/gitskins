@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="40" viewBox="0 0 846 40" role="img" aria-label="Daily Contribution Activity">
+  <title>Daily Contribution Activity</title>
+  <!-- Hard Shadow + Classic Finder Folder Header Strip -->
+  <rect x="2" y="2" width="843" height="37" fill="#111111" shape-rendering="crispEdges"/>
+  <rect x="0.5" y="0.5" width="843" height="37" fill="#E6E5DF" stroke="#111111" stroke-width="1.3" shape-rendering="crispEdges"/>
+  <path fill="#111111" opacity="0.55" shape-rendering="crispEdges" d="M6 9h832v1h-832zM6 13h832v1h-832zM6 17h832v1h-832zM6 21h832v1h-832zM6 25h832v1h-832zM6 29h832v1h-832z"/>
+
+  <!-- Left Masked Folder + Title Plaque -->
+  <rect x="10" y="5" width="372" height="28" fill="#FFFFFF" stroke="#111111" stroke-width="1" shape-rendering="crispEdges"/>
+  <g shape-rendering="crispEdges"><path fill="#111111" d="M18 12h8v2h-8zM18 14h18v2h-18zM18 16h2v2h-2zM34 16h2v2h-2zM18 18h2v2h-2zM34 18h2v2h-2zM18 20h2v2h-2zM34 20h2v2h-2zM18 22h2v2h-2zM34 22h2v2h-2zM18 24h18v2h-18z"/><path fill="#1E824C" d="M20 16h14v2h-14zM20 18h14v2h-14zM20 20h14v2h-14zM20 22h14v2h-14z"/></g>
+  <rect x="44" y="10" width="86" height="18" fill="#1E824C" shape-rendering="crispEdges"/>
+  <text x="87" y="22.5" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="700" fill="#FFFFFF">SYSTEM LOG</text>
+  <text x="144" y="23" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="12" font-weight="800" fill="#111111">Daily Contribution Activity</text>
+
+  <!-- Right Masked Item Count Plaque -->
+  <rect x="677" y="5" width="157" height="28" fill="#FFFFFF" stroke="#111111" stroke-width="1" shape-rendering="crispEdges"/>
+  <text x="755" y="22.5" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10" font-weight="700" fill="#3B3B3F">@Furina-he · 846px</text>
+</svg>

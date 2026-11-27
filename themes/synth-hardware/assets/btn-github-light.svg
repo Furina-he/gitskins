@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="149" height="30" viewBox="0 0 149 30" role="img" aria-label="[CH.4] @Furina-he">
+  <rect x="0.5" y="0.5" width="148" height="29" rx="5" fill="#E3DFD6" stroke="#1C1E22" stroke-width="1"/>
+  <rect x="2" y="2" width="145" height="24" rx="3.5" fill="#FAF8F4" stroke="#CFCBC2" stroke-width="0.9"/>
+  <circle cx="14" cy="14" r="4.5" fill="#E3DFD6" stroke="#1C1E22" stroke-opacity="0.45" stroke-width="0.7"/>
+  <circle cx="14" cy="14" r="2.8" fill="#D49B00"/>
+  <circle cx="13.2" cy="13.2" r="0.8" fill="#FFFFFF" fill-opacity="0.75"/>
+  <text x="25" y="17.5" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10" font-weight="700" fill="#141517"><tspan fill="#44474D">[CH.4]</tspan> @Furina-he</text>
+</svg>

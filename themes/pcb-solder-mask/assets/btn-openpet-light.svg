@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="226" height="30" viewBox="0 0 226 30" role="img" aria-label="J2 · openpet.myfurina.top">
+  <rect x="0.75" y="0.75" width="224.5" height="28.5" rx="3" fill="#FFFFFF" stroke="#1C4F38" stroke-width="1.2"/>
+  <!-- Gold-finger edge connector contacts -->
+  <rect x="3" y="5" width="7" height="4" rx="0.6" fill="#D49B1A"/>
+  <rect x="3" y="13" width="7" height="4" rx="0.6" fill="#D49B1A"/>
+  <rect x="3" y="21" width="7" height="4" rx="0.6" fill="#D49B1A"/>
+  <line x1="13.5" y1="4" x2="13.5" y2="26" stroke="#1C4F38" stroke-opacity="0.35" stroke-width="0.8"/>
+  <!-- Left & right solder pad dots -->
+  <circle cx="20" cy="15" r="2.7" fill="#D49B1A"/>
+  <circle cx="20" cy="15" r="1.1" fill="#FFFFFF"/>
+  <text x="29" y="18.8" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.2" font-weight="700" fill="#16211B">J2 · openpet.myfurina.top</text>
+  <circle cx="215" cy="15" r="2.5" fill="#D49B1A"/>
+  <circle cx="215" cy="15" r="1.0" fill="#FFFFFF"/>
+</svg>

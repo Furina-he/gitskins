@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="417" height="196" viewBox="0 0 417 196" role="img" aria-label="Virtual">
+  <title>Virtual — Classic Desktop App Window</title>
+  <!-- Hard 3px Window Shadow + Mini Application Window -->
+  <rect x="3" y="3" width="413" height="192" fill="#111111" shape-rendering="crispEdges"/>
+  <rect x="0.5" y="0.5" width="413" height="192" fill="#FFFFFF" stroke="#111111" stroke-width="1.4" shape-rendering="crispEdges"/>
+
+  <!-- 6-Line Pin-Stripe Titlebar -->
+  <rect x="1" y="1" width="412" height="25" fill="#E6E5DF" shape-rendering="crispEdges"/>
+  <path fill="#111111" opacity="0.65" shape-rendering="crispEdges" d="M6 8h402v1h-402zM6 10h402v1h-402zM6 12h402v1h-402zM6 14h402v1h-402zM6 16h402v1h-402zM6 18h402v1h-402z"/>
+  <line x1="1" y1="26.5" x2="413" y2="26.5" stroke="#111111" stroke-width="1.2"/>
+
+  <!-- Top-Left Square Close Box -->
+  <rect x="8" y="5" width="17" height="17" fill="#E6E5DF" shape-rendering="crispEdges"/>
+  <rect x="11" y="8" width="11" height="11" fill="#FFFFFF" stroke="#111111" stroke-width="1.1" shape-rendering="crispEdges"/>
+
+  <!-- Top-Right App Accent Chip -->
+  <rect x="388" y="5" width="17" height="17" fill="#E6E5DF" shape-rendering="crispEdges"/>
+  <rect x="391" y="8" width="11" height="11" fill="#C98A00" stroke="#111111" stroke-width="1.1" shape-rendering="crispEdges"/>
+
+  <!-- Centered Masked Title -->
+  <rect x="135" y="4" width="144" height="19" fill="#E6E5DF" shape-rendering="crispEdges"/>
+  <text x="207" y="17.5" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10" font-weight="700" fill="#111111">04 · Virtual.app</text>
+
+  <!-- Left Content Area -->
+  <rect x="18" y="42" width="7" height="7" fill="#C98A00" shape-rendering="crispEdges"/>
+  <text x="31" y="49" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="700" fill="#3B3B3F">SANDBOX · 3D LAB</text>
+  <text x="18" y="78" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="20" font-weight="800" fill="#111111">Virtual</text>
+  <text x="18" y="104" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12.2" fill="#3B3B3F">Interactive 3D virtual lab &amp; spatial</text>
+  <text x="18" y="123" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12.2" fill="#3B3B3F">experimentation playground.</text>
+  <text x="18" y="149" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="700" fill="#3B3B3F">/Applications/Virtual.app</text>
+
+  <!-- Right 12x12 Pixel App Icon Well -->
+  <rect x="316" y="44" width="82" height="82" fill="#E6E5DF" stroke="#111111" stroke-width="1.1" shape-rendering="crispEdges"/>
+  <g shape-rendering="crispEdges"><path fill="#111111" d="M347 55h20v5h-20zM337 60h10v5h-10zM367 60h10v5h-10zM332 65h5v5h-5zM377 65h5v5h-5zM327 70h5v5h-5zM382 70h5v5h-5zM327 75h10v5h-10zM352 75h15v5h-15zM377 75h10v5h-10zM327 80h5v5h-5zM357 80h5v5h-5zM382 80h5v5h-5zM327 85h5v5h-5zM357 85h5v5h-5zM382 85h5v5h-5zM327 90h5v5h-5zM357 90h5v5h-5zM382 90h5v5h-5zM327 95h5v5h-5zM357 95h5v5h-5zM382 95h5v5h-5zM332 100h10v5h-10zM357 100h5v5h-5zM372 100h10v5h-10zM342 105h10v5h-10zM362 105h10v5h-10zM347 110h20v5h-20z"/><path fill="#FFFFFF" d="M347 60h20v5h-20zM337 65h40v5h-40zM332 70h50v5h-50zM367 75h10v5h-10zM367 80h15v5h-15zM367 85h15v5h-15zM367 90h15v5h-15zM367 95h15v5h-15zM362 100h10v5h-10z"/><path fill="#C98A00" d="M337 75h15v5h-15zM332 80h25v5h-25zM362 80h5v5h-5zM332 85h25v5h-25zM362 85h5v5h-5zM332 90h25v5h-25zM362 90h5v5h-5zM332 95h25v5h-25zM362 95h5v5h-5zM342 100h15v5h-15zM352 105h10v5h-10z"/></g>
+  <text x="357" y="144" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.8" font-weight="700" fill="#3B3B3F">3D MONITOR</text>
+
+  <!-- Status Footer Bar + Bottom-Right Diagonal Resize Grip Lines -->
+  <line x1="1" y1="164.5" x2="413" y2="164.5" stroke="#111111" stroke-width="1.1"/>
+  <rect x="1" y="165" width="412" height="27" fill="#E6E5DF" shape-rendering="crispEdges"/>
+  <text x="16" y="182" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.8" font-weight="700" fill="#3B3B3F">STACK: TypeScript · WebGL · 3D</text>
+
+  <line x1="389.5" y1="165" x2="389.5" y2="192" stroke="#111111" stroke-width="1"/>
+  <line x1="395" y1="189" x2="409" y2="175" stroke="#111111" stroke-width="1.2"/>
+  <line x1="400" y1="189" x2="409" y2="180" stroke="#111111" stroke-width="1.2"/>
+  <line x1="405" y1="189" x2="409" y2="185" stroke="#111111" stroke-width="1.2"/>
+</svg>

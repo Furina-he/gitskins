@@ -97,10 +97,13 @@ GitSkins 正在从「4 套精选 GitHub 主页主题库」演进为 **「面向 
   - 提供标准 Agent Skill（[skill/gitskins/SKILL.md](skill/gitskins/SKILL.md)，同步上线 `/skill/SKILL.md`）
   - 提供零依赖 Node 18+ CLI（[cli/gitskins.mjs](cli/gitskins.mjs)：`list` / `init --mode repo|profile` / `validate`），让 Claude Code / Codex / Cursor / Antigravity 直接拉取规范、脚手架生成并严格校验 SVG
 - [x] 提供可选的极简 `Styled with GitSkins` 尾标挂件（`216×32` 双主题同皮肤适配，支持主页与仓库 README 自由开关）
-- [x] **持续扩充主题与社区共创（v0.6）**：
+- [x] **持续扩充主题与社区共创（v0.6 – v0.8）**：
   - [x] 新增 `05` **16-bit Pixel RPG HUD（16-bit 像素 RPG 冒险面板）** — 阶梯像素边框、HP/MP/XP 分段槽与任务卷轴卡片（22 张双主题 SVG + 全套挂件 & 仓库皮肤联动）
   - [x] 新增 `06` **Seal Ink Monograph（东方印章水墨卷轴）** — 暖调宣纸/端砚墨黑、朱砂雕刻方印、回纹角饰与远山叠墨层次（22 张双主题 SVG + 全套挂件 & 仓库皮肤联动）
-  - [ ] 社区主题共建：欢迎通过 [CONTRIBUTING.md](CONTRIBUTING.md) PR 投稿更多高辨识度皮肤（如 Bento Grid、Cyberpunk Wireframe 等）
+  - [x] **可扩展导航重构（v0.7）**：全站 `<ThemePicker />` 单行 `46px` 滑条 + 快捷键 `K` 可视化分类皮肤图鉴抽屉 + 紧凑挂件胶囊条，无缝容纳 11–30+ 套皮肤与 22+ 挂件
+  - [x] **高辨识挂件全家桶（v0.7 – v0.8）**：新增 `W09` 机械键盘键帽阵、`W10` 机场机械翻页屏、`W11` 六维能力雷达盘、`W12` 真可扫码 ISO-18004 矢量二维码名片，以及零 503 活挂件 `L07` 贡献图贪吃蛇（`Platane/snk` 主题配色 + 原生皮肤框双引擎）、`L08` 3D 贡献天际线、`L09` 连续提交火炬、`L10` 近期动态日志
+  - [x] **新增 5 套高辨识视觉皮肤（`07`–`11`）**：`07` 工业合成器面板（`synth-hardware`）、`08` 沉金 PCB 电路板（`pcb-solder-mask`）、`09` 航空登机牌/电车票（`transit-boarding`）、`10` 经典桌面窗口 OS（`classic-desktop-os`）、`11` 孔版错位叠印海报（`riso-duotone`），全量 11 套主题（242 张双主题 SVG + 220 张活挂件 SVG）全链路打通
+  - [ ] 社区主题共建：欢迎通过 [CONTRIBUTING.md](CONTRIBUTING.md) PR 投稿更多高辨识度皮肤
 
 ---
 

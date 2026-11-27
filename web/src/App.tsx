@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import RepoSkinsStudio from "./components/RepoSkinsStudio";
+import ThemePicker, { formatSkinIndex } from "./components/ThemePicker";
 import WidgetsStudio, { svgToDataUri } from "./components/WidgetsStudio";
 import { COPY } from "./i18n";
 import { renderGitSkinsBadgeSvg } from "./repo/renderRepoSkin";
@@ -38,7 +39,7 @@ import {
   placementLabel,
 } from "./widgets/catalog";
 import { renderWidgetSvg } from "./widgets/renderers";
-import { isLiveWidgetId } from "./widgets/workflow";
+import { isLiveWidgetId, isPlataneSnakeInstance } from "./widgets/workflow";
 import type {
   BentoColSpan,
   BentoRow,
@@ -251,6 +252,22 @@ export default function App() {
       .catch((err) => console.error("Failed to load theme manifest:", err));
   }, []);
 
+  useEffect(() => {
+    const onHashChange = () => {
+      const hash = window.location.hash.replace("#", "").trim();
+      if (hash === "widgets") {
+        setActiveTab("widgets");
+      } else if (hash === "repo") {
+        setActiveTab("repo");
+      } else if (hash && themes.some((item) => item.id === hash)) {
+        setActiveTab("skins");
+        setActiveId(hash);
+      }
+    };
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, [themes]);
+
   const activeTheme = useMemo(
     () => themes.find((t) => t.id === activeId) ?? themes[0] ?? null,
     [themes, activeId]
@@ -282,7 +299,7 @@ export default function App() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (activeTab !== "skins" || !themes.length) return;
+      if ((activeTab !== "skins" && activeTab !== "repo") || !themes.length) return;
       if (
         e.target instanceof HTMLInputElement ||
         e.target instanceof HTMLTextAreaElement ||
@@ -366,7 +383,9 @@ export default function App() {
 
   async function handleExportZip() {
     if (!activeTheme) return;
-    const hasLive = mountedWidgets.some((w) => isLiveWidgetId(w.widgetId));
+    const hasLive = mountedWidgets.some(
+      (w) => isLiveWidgetId(w.widgetId) && !isPlataneSnakeInstance(w)
+    );
     let liveGeneratorPy = livePyRef.current ?? undefined;
     if (hasLive && !liveGeneratorPy) {
       try {
@@ -880,40 +899,19 @@ export default function App() {
               </div>
             </section>
 
-            {/* Horizontal Skin Switcher */}
-            <nav className="skin-rail" aria-label="Theme skins" ref={stageRef}>
-              {themes.map((skin) => {
-                const isActive = skin.id === activeTheme?.id;
-                const swatches = skin.palette[previewMode].slice(0, 5);
-                return (
-                  <button
-                    key={skin.id}
-                    type="button"
-                    className={`skin-tab ${isActive ? "active" : ""}`}
-                    onClick={() => selectTheme(skin.id, false)}
-                  >
-                    <div className="skin-tab-top">
-                      <span className="skin-index">0{skin.order}</span>
-                      <span className="skin-swatches">
-                        {swatches.map((hex) => (
-                          <span
-                            key={hex}
-                            className="swatch-mini"
-                            style={{ backgroundColor: hex }}
-                          />
-                        ))}
-                      </span>
-                    </div>
-                    <div className="skin-tab-name">
-                      {lang === "zh" ? skin.nameZh : skin.name}
-                    </div>
-                    <div className="skin-tab-cat">
-                      {lang === "zh" ? skin.categoryZh : skin.category}
-                    </div>
-                  </button>
-                );
-              })}
-            </nav>
+            {/* Scalable Single-Row Skin Picker + Visual Gallery Drawer */}
+            <div ref={stageRef}>
+              <ThemePicker
+                themes={themes}
+                activeTheme={activeTheme}
+                previewMode={previewMode}
+                lang={lang}
+                variant="rail"
+                onSelectTheme={(id) => selectTheme(id, false)}
+                onChangePreviewMode={setPreviewMode}
+                ariaLabel="Theme skins"
+              />
+            </div>
 
             {activeTheme && (
               <section className="workspace" aria-label="Interactive theme specimen">
@@ -1172,7 +1170,45 @@ export default function App() {
                         />
                       </div>
 
-                      <div className="gh-snake-strip">{t.snakeNote}</div>
+                      {!mountedWidgets.some((w) => w.widgetId === "contribution-snake") && (
+                        <button
+                          type="button"
+                          className="gh-snake-preview-btn"
+                          title={t.snakeStageCta}
+                          onClick={() => {
+                            setEditingUid(null);
+                            setSelectedWidgetId("contribution-snake");
+                            switchTab("widgets");
+                          }}
+                        >
+                          <img
+                            src={svgToDataUri(
+                              renderWidgetSvg(
+                                "contribution-snake",
+                                {
+                                  username: effectiveProfile.username,
+                                  engine: "platane-snk",
+                                  speed: "normal",
+                                  schedule: "daily",
+                                },
+                                {
+                                  themeId: activeTheme.id,
+                                  mode: previewMode,
+                                  tokens: activeTheme.tokens[previewMode],
+                                  colSpan: 4,
+                                  accentOverride: overrides.accentOverride,
+                                  animated: overrides.animated,
+                                  instanceId: "stage-default-snake",
+                                }
+                              )
+                            )}
+                            alt={`${effectiveProfile.username} themed GitHub contribution snake`}
+                          />
+                          <span className="gh-snake-preview-badge">
+                            L07 · {lang === "zh" ? "定制贡献图贪吃蛇 →" : "Customize L07 Snake →"}
+                          </span>
+                        </button>
+                      )}
 
                       {/* Slot 4: Bottom Footer */}
                       {renderSlotBento("bottom")}
@@ -1975,7 +2011,7 @@ export default function App() {
                       <div className="contact-body">
                         <div>
                           <h3 className="contact-name">
-                            0{skin.order} · {lang === "zh" ? skin.nameZh : skin.name}
+                            {formatSkinIndex(skin.order)} · {lang === "zh" ? skin.nameZh : skin.name}
                           </h3>
                           <p className="contact-tagline">
                             {lang === "zh" ? skin.taglineZh : skin.tagline}

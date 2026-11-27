@@ -9,13 +9,13 @@
 
   <rect x="16" y="12" width="10" height="10" fill="#38BDF8" shape-rendering="crispEdges"/>
   <text x="34" y="21" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="11" font-weight="700" fill="#F4F4F6">Furina-he/gitskins</text>
-  <text x="174" y="21" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" fill="#7C8091">· v0.6.0 · OPEN SOURCE</text>
+  <text x="174" y="21" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" fill="#7C8091">· v0.8.0 · OPEN SOURCE</text>
   <rect x="658" y="7" width="172" height="20" fill="#16181F" stroke="#2E313D" stroke-width="1"/>
   <text x="744" y="20.5" text-anchor="middle" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9.5" font-weight="600" fill="#F4F4F6">gitskins.blessc.com ↗</text>
 
   <text x="26" y="60" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="10" font-weight="700" fill="#38BDF8">(profile &amp; repo skins) · AGENT-NATIVE SVG ENGINE</text>
   <text x="24" y="106" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="42" font-weight="800" letter-spacing="-0.03em" fill="#F4F4F6">GITSKINS</text>
-  <text x="26" y="130" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="13" font-weight="500" fill="#B4B6C2">6 Light &amp; Dark SVG theme systems, 14 Bento &amp; Zero-503 live widgets,</text>
+  <text x="26" y="130" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="13" font-weight="500" fill="#B4B6C2">11 Light &amp; Dark SVG theme systems, 22 Bento &amp; Zero-503 live widgets,</text>
   <text x="26" y="148" font-family='"Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", Arial, sans-serif' font-size="13" font-weight="500" fill="#B4B6C2">Repo Skins, standard Agent SKILL.md, and zero-dependency CLI.</text>
   <rect x="26" y="158" width="85" height="20" fill="#16181F" stroke="#232631" stroke-width="1"/>
   <rect x="32" y="165" width="5" height="5" fill="#38BDF8" shape-rendering="crispEdges"/>
@@ -41,11 +41,11 @@
 
   <rect x="16" y="205" width="6" height="6" fill="#38BDF8" shape-rendering="crispEdges"/>
   <text x="28" y="211.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" font-weight="700" fill="#7C8091">CURATED THEMES</text>
-  <text x="16" y="234" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="14" font-weight="800" fill="#F4F4F6">6 Light &amp; Dark</text>
+  <text x="16" y="234" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="14" font-weight="800" fill="#F4F4F6">11 Light &amp; Dark</text>
   <line x1="212.5" y1="194.5" x2="212.5" y2="247.5" stroke="#2E313D" stroke-width="1"/>
   <rect x="228" y="205" width="6" height="6" fill="#60A5FA" shape-rendering="crispEdges"/>
   <text x="240" y="211.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" font-weight="700" fill="#7C8091">ADAPTIVE WIDGETS</text>
-  <text x="228" y="234" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="14" font-weight="800" fill="#F4F4F6">14 Bento + Live</text>
+  <text x="228" y="234" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="14" font-weight="800" fill="#F4F4F6">22 Bento + Live</text>
   <line x1="423.5" y1="194.5" x2="423.5" y2="247.5" stroke="#2E313D" stroke-width="1"/>
   <rect x="439" y="205" width="6" height="6" fill="#22C98A" shape-rendering="crispEdges"/>
   <text x="451" y="211.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" font-weight="700" fill="#7C8091">RUNTIME SERVERS</text>
@@ -53,5 +53,5 @@
   <line x1="634.5" y1="194.5" x2="634.5" y2="247.5" stroke="#2E313D" stroke-width="1"/>
   <rect x="650" y="205" width="6" height="6" fill="#F5B700" shape-rendering="crispEdges"/>
   <text x="662" y="211.5" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="9" font-weight="700" fill="#7C8091">LICENSE / RELEASE</text>
-  <text x="650" y="234" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="14" font-weight="800" fill="#F4F4F6">MIT · v0.6.0</text>
+  <text x="650" y="234" font-family='"JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace' font-size="14" font-weight="800" fill="#F4F4F6">MIT · v0.8.0</text>
 </svg>

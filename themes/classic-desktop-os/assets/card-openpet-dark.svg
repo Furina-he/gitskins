@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="417" height="196" viewBox="0 0 417 196" role="img" aria-label="OpenPet">
+  <title>OpenPet — Classic Desktop App Window</title>
+  <!-- Hard 3px Window Shadow + Mini Application Window -->
+  <rect x="3" y="3" width="413" height="192" fill="#07080B" shape-rendering="crispEdges"/>
+  <rect x="0.5" y="0.5" width="413" height="192" fill="#202229" stroke="#D8D8D2" stroke-width="1.4" shape-rendering="crispEdges"/>
+
+  <!-- 6-Line Pin-Stripe Titlebar -->
+  <rect x="1" y="1" width="412" height="25" fill="#17181D" shape-rendering="crispEdges"/>
+  <path fill="#868792" opacity="0.72" shape-rendering="crispEdges" d="M6 8h402v1h-402zM6 10h402v1h-402zM6 12h402v1h-402zM6 14h402v1h-402zM6 16h402v1h-402zM6 18h402v1h-402z"/>
+  <line x1="1" y1="26.5" x2="413" y2="26.5" stroke="#D8D8D2" stroke-width="1.2"/>
+
+  <!-- Top-Left Square Close Box -->
+  <rect x="8" y="5" width="17" height="17" fill="#17181D" shape-rendering="crispEdges"/>
+  <rect x="11" y="8" width="11" height="11" fill="#202229" stroke="#D8D8D2" stroke-width="1.1" shape-rendering="crispEdges"/>
+
+  <!-- Top-Right App Accent Chip -->
+  <rect x="388" y="5" width="17" height="17" fill="#17181D" shape-rendering="crispEdges"/>
+  <rect x="391" y="8" width="11" height="11" fill="#F87171" stroke="#D8D8D2" stroke-width="1.1" shape-rendering="crispEdges"/>
+
+  <!-- Centered Masked Title -->
+  <rect x="135" y="4" width="144" height="19" fill="#17181D" shape-rendering="crispEdges"/>
+  <text x="207" y="17.5" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10" font-weight="700" fill="#F1F1EE">02 · OpenPet.app</text>
+
+  <!-- Left Content Area -->
+  <rect x="18" y="42" width="7" height="7" fill="#F87171" shape-rendering="crispEdges"/>
+  <text x="31" y="49" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="700" fill="#BCBCC4">COMPANION · DESKTOP</text>
+  <text x="18" y="78" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="20" font-weight="800" fill="#F1F1EE">OpenPet</text>
+  <text x="18" y="104" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12.2" fill="#BCBCC4">Local-first desktop AI pet companion</text>
+  <text x="18" y="123" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12.2" fill="#BCBCC4">with pluggable memory &amp; plugins.</text>
+  <text x="18" y="149" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="700" fill="#BCBCC4">/Applications/OpenPet.app</text>
+
+  <!-- Right 12x12 Pixel App Icon Well -->
+  <rect x="316" y="44" width="82" height="82" fill="#17181D" stroke="#D8D8D2" stroke-width="1.1" shape-rendering="crispEdges"/>
+  <g shape-rendering="crispEdges"><path fill="#D8D8D2" d="M332 55h50v5h-50zM327 60h5v5h-5zM382 60h5v5h-5zM327 65h5v5h-5zM382 65h5v5h-5zM327 70h5v5h-5zM347 70h5v5h-5zM362 70h5v5h-5zM382 70h5v5h-5zM327 75h5v5h-5zM347 75h5v5h-5zM362 75h5v5h-5zM382 75h5v5h-5zM327 80h5v5h-5zM357 80h5v5h-5zM382 80h5v5h-5zM327 85h5v5h-5zM382 85h5v5h-5zM327 90h5v5h-5zM342 90h5v5h-5zM367 90h5v5h-5zM382 90h5v5h-5zM327 95h5v5h-5zM347 95h20v5h-20zM382 95h5v5h-5zM327 100h5v5h-5zM382 100h5v5h-5zM337 105h5v5h-5zM372 105h5v5h-5zM332 110h50v5h-50z"/><path fill="#F87171" d="M332 60h50v5h-50zM332 65h5v5h-5zM377 65h5v5h-5zM332 70h5v5h-5zM377 70h5v5h-5zM332 75h5v5h-5zM377 75h5v5h-5zM332 80h5v5h-5zM377 80h5v5h-5zM332 85h5v5h-5zM377 85h5v5h-5zM332 90h5v5h-5zM377 90h5v5h-5zM332 95h5v5h-5zM377 95h5v5h-5zM332 100h50v5h-50zM342 105h30v5h-30z"/><path fill="#202229" d="M337 65h40v5h-40zM337 70h10v5h-10zM352 70h10v5h-10zM367 70h10v5h-10zM337 75h10v5h-10zM352 75h10v5h-10zM367 75h10v5h-10zM337 80h20v5h-20zM362 80h15v5h-15zM337 85h40v5h-40zM337 90h5v5h-5zM347 90h20v5h-20zM372 90h5v5h-5zM337 95h10v5h-10zM367 95h10v5h-10z"/></g>
+  <text x="357" y="144" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.8" font-weight="700" fill="#BCBCC4">HAPPY PET</text>
+
+  <!-- Status Footer Bar + Bottom-Right Diagonal Resize Grip Lines -->
+  <line x1="1" y1="164.5" x2="413" y2="164.5" stroke="#D8D8D2" stroke-width="1.1"/>
+  <rect x="1" y="165" width="412" height="27" fill="#17181D" shape-rendering="crispEdges"/>
+  <text x="16" y="182" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.8" font-weight="700" fill="#BCBCC4">STACK: TypeScript · Electron · AI</text>
+
+  <line x1="389.5" y1="165" x2="389.5" y2="192" stroke="#D8D8D2" stroke-width="1"/>
+  <line x1="395" y1="189" x2="409" y2="175" stroke="#D8D8D2" stroke-width="1.2"/>
+  <line x1="400" y1="189" x2="409" y2="180" stroke="#D8D8D2" stroke-width="1.2"/>
+  <line x1="405" y1="189" x2="409" y2="185" stroke="#D8D8D2" stroke-width="1.2"/>
+</svg>

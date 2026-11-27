@@ -252,6 +252,96 @@ const FALLBACK_THEMES = {
       },
     },
   },
+  "synth-hardware": {
+    name: "Tactile Industrial Synth",
+    category: "Hardware Synth",
+    tokens: {
+      light: {
+        bg: "#EFECE6", surface: "#FAF8F4", patternBg: "#E3DFD6", patternFg: "#B8B3A8",
+        border: "#1C1E22", borderSoft: "#CFCBC2", ink: "#141517", sub: "#44474D",
+        muted: "#6E727A", accent: "#FF5200", accentFg: "#FFFFFF", secondary: "#0088CC",
+        tertiary: "#1E9E63", highlight: "#D49B00",
+      },
+      dark: {
+        bg: "#121316", surface: "#1A1C21", patternBg: "#0D0E11", patternFg: "#2A2E38",
+        border: "#363A44", borderSoft: "#252830", ink: "#F3F2EE", sub: "#B5B8C0",
+        muted: "#7D818C", accent: "#FF6B2B", accentFg: "#121316", secondary: "#38BDF8",
+        tertiary: "#34D399", highlight: "#FACC15",
+      },
+    },
+  },
+  "pcb-solder-mask": {
+    name: "Solder Mask PCB",
+    category: "Circuit Hardware",
+    tokens: {
+      light: {
+        bg: "#F5F5F2", surface: "#FFFFFF", patternBg: "#EAECE8", patternFg: "#C7D4CC",
+        border: "#1C4F38", borderSoft: "#CBD6CF", ink: "#16211B", sub: "#3D4F45",
+        muted: "#67786E", accent: "#B87D14", accentFg: "#FFFFFF", secondary: "#1C6B4A",
+        tertiary: "#0D7D8C", highlight: "#D49B1A",
+      },
+      dark: {
+        bg: "#0B1F17", surface: "#102B20", patternBg: "#081711", patternFg: "#193D2E",
+        border: "#E5B84B", borderSoft: "#1E4A38", ink: "#F2F7F4", sub: "#B6D4C5",
+        muted: "#76A38E", accent: "#E5B84B", accentFg: "#0B1F17", secondary: "#34D399",
+        tertiary: "#38BDF8", highlight: "#F59E0B",
+      },
+    },
+  },
+  "transit-boarding": {
+    name: "Transit & Boarding Pass",
+    category: "Transit Ticket",
+    tokens: {
+      light: {
+        bg: "#FAF6EE", surface: "#FFFDF9", patternBg: "#EFE9DC", patternFg: "#D4CCBC",
+        border: "#181B20", borderSoft: "#D8D0C2", ink: "#15171A", sub: "#444952",
+        muted: "#727885", accent: "#D93829", accentFg: "#FFFFFF", secondary: "#1B56B5",
+        tertiary: "#168052", highlight: "#C98212",
+      },
+      dark: {
+        bg: "#111317", surface: "#181B21", patternBg: "#0D0F13", patternFg: "#242830",
+        border: "#363B46", borderSoft: "#262A33", ink: "#F4F1EA", sub: "#B9B5AC",
+        muted: "#827F78", accent: "#F59E0B", accentFg: "#111317", secondary: "#60A5FA",
+        tertiary: "#34D399", highlight: "#FB7185",
+      },
+    },
+  },
+  "classic-desktop-os": {
+    name: "Classic Desktop OS",
+    category: "Retro Desktop OS",
+    tokens: {
+      light: {
+        bg: "#E6E5DF", surface: "#FFFFFF", patternBg: "#DCDAD2", patternFg: "#9C9A92",
+        border: "#111111", borderSoft: "#B8B7B0", ink: "#111111", sub: "#3B3B3F",
+        muted: "#6B6B72", accent: "#2455C8", accentFg: "#FFFFFF", secondary: "#C93B2B",
+        tertiary: "#1E824C", highlight: "#C98A00",
+      },
+      dark: {
+        bg: "#17181D", surface: "#202229", patternBg: "#121318", patternFg: "#2D303A",
+        border: "#D8D8D2", borderSoft: "#383B46", ink: "#F1F1EE", sub: "#BCBCC4",
+        muted: "#868792", accent: "#60A5FA", accentFg: "#111318", secondary: "#F87171",
+        tertiary: "#4ADE80", highlight: "#FACC15",
+      },
+    },
+  },
+  "riso-duotone": {
+    name: "Risograph Overprint Poster",
+    category: "Risograph Art",
+    tokens: {
+      light: {
+        bg: "#F8F3E8", surface: "#FDFBF5", patternBg: "#EFE8D8", patternFg: "#C9D7EA",
+        border: "#17203B", borderSoft: "#D7CEBC", ink: "#17203B", sub: "#3E4A6B",
+        muted: "#6D7896", accent: "#0066CC", accentFg: "#FFFFFF", secondary: "#FF4F5E",
+        tertiary: "#0E9472", highlight: "#F59E0B",
+      },
+      dark: {
+        bg: "#121318", surface: "#1A1C24", patternBg: "#161822", patternFg: "#263348",
+        border: "#383D4F", borderSoft: "#272B38", ink: "#F7F4EC", sub: "#C2C5D3",
+        muted: "#878CA0", accent: "#22D3EE", accentFg: "#0F1218", secondary: "#FF5E7E",
+        tertiary: "#34D399", highlight: "#F5B700",
+      },
+    },
+  },
 };
 
 function loadThemes() {
@@ -739,7 +829,7 @@ function parseFlags(argv) {
 }
 
 function printHelp() {
-  console.log(`GitSkins CLI v0.6.0 — Zero-dependency GitHub Profile & Repo Skin toolkit
+  console.log(`GitSkins CLI v0.8.0 — Zero-dependency GitHub Profile & Repo Skin toolkit
 
 Usage:
   gitskins list
@@ -748,7 +838,9 @@ Usage:
 
 Options for init:
   --mode <repo|profile>   Target mode (default: repo)
-  --theme <id>            swiss-bauhaus-pixel | blueprint-cad | editorial-zine | crt-terminal | pixel-rpg-hud | seal-ink-scroll
+  --theme <id>            swiss-bauhaus-pixel | blueprint-cad | editorial-zine | crt-terminal
+                          pixel-rpg-hud | seal-ink-scroll | synth-hardware | pcb-solder-mask
+                          transit-boarding | classic-desktop-os | riso-duotone
   --out <dir>             Output directory (default: .)
   --repo <owner/name>     Repository slug for repo mode (auto-detected if omitted)
   --tagline <text>        Project tagline for repo mode
@@ -765,16 +857,18 @@ Options for init:
 }
 
 function runList(themes) {
-  console.log("GitSkins Themes:");
+  console.log("GitSkins Themes (11 Light & Dark Systems):");
   for (const [id, info] of Object.entries(themes)) {
     console.log(`  - ${id.padEnd(22)} ${info.name} (${info.category})`);
   }
-  console.log("\nStatic DIY Widgets (W01-W08):");
+  console.log("\nStatic DIY Widgets (W01-W12):");
   console.log(
-    "  pixel-companion, now-playing, dev-badge, skill-dock, quote-banner, hero-sticker, pixel-runway, mini-tile"
+    "  pixel-companion, now-playing, dev-badge, skill-dock, quote-banner, hero-sticker, pixel-runway, mini-tile, keycap-rig, split-flap, skill-radar, qr-pass"
   );
-  console.log("\nZero-503 Live Actions Widgets (L01-L06):");
-  console.log("  github-stats, coding-rhythm, rss-feed, live-weather, wakatime-weekly, spotify-recent");
+  console.log("\nZero-503 Live Actions Widgets (L01-L10):");
+  console.log(
+    "  github-stats, coding-rhythm, rss-feed, live-weather, wakatime-weekly, spotify-recent, contribution-snake, contrib-skyline, commit-streak, recent-activity"
+  );
   console.log("\nRepo Skin Modules (R01-R05):");
   console.log("  repo-hero (846x248), repo-install (846x72), repo-feat (417x152), repo-arch (846x168), gitskins-badge (216x32)");
 }

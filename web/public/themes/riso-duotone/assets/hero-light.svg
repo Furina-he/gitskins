@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="300" viewBox="0 0 846 300" role="img" aria-label="Furina-he — Risograph Overprint Poster GitHub Profile">
+  <title>Furina-he — Risograph Overprint Poster</title>
+  <defs>
+    <pattern id="ht-hero-a-light" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2.0" cy="2.0" r="1.35" fill="#0066CC" fill-opacity="0.24"/><circle cx="6.0" cy="6.0" r="1.35" fill="#0066CC" fill-opacity="0.24"/><circle cx="4.0" cy="8.0" r="1.01" fill="#0066CC" fill-opacity="0.13"/></pattern>
+    <pattern id="ht-hero-b-light" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="2.5" cy="2.5" r="1.25" fill="#FF4F5E" fill-opacity="0.16"/><circle cx="7.5" cy="7.5" r="1.25" fill="#FF4F5E" fill-opacity="0.16"/><circle cx="5.0" cy="10.0" r="0.94" fill="#FF4F5E" fill-opacity="0.09"/></pattern>
+  </defs>
+  <style>
+    @keyframes driftA_riso-light { 0%, 100% { transform: translate(0px, 0px); } 50% { transform: translate(-2.6px, -1.6px); } }
+    @keyframes driftB_riso-light { 0%, 100% { transform: translate(0px, 0px); } 50% { transform: translate(2.6px, 1.8px); } }
+    .plate-a-riso-light { animation: driftA_riso-light 6.5s ease-in-out infinite; }
+    .plate-b-riso-light { animation: driftB_riso-light 6.5s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .plate-a-riso-light, .plate-b-riso-light { animation: none !important; } }
+  </style>
+
+  <!-- Uncoated paper / dark cardstock poster sheet -->
+  <rect x="0.5" y="0.5" width="845" height="299" fill="#F8F3E8" stroke="#D7CEBC" stroke-width="1"/>
+
+  <!-- Four-corner print registration crosshairs -->
+  <g aria-hidden="true"><circle cx="13.1" cy="13.1" r="4.0" fill="none" stroke="#FF4F5E" stroke-opacity="0.55" stroke-width="0.9"/><circle cx="12.0" cy="12.0" r="4.0" fill="none" stroke="#17203B" stroke-width="1"/><line x1="5.4" y1="12.0" x2="18.6" y2="12.0" stroke="#17203B" stroke-width="1"/><line x1="12.0" y1="5.4" x2="12.0" y2="18.6" stroke="#17203B" stroke-width="1"/><circle cx="12.0" cy="12.0" r="1.1" fill="#17203B"/></g><g aria-hidden="true"><circle cx="835.1" cy="13.1" r="4.0" fill="none" stroke="#0066CC" stroke-opacity="0.55" stroke-width="0.9"/><circle cx="834.0" cy="12.0" r="4.0" fill="none" stroke="#17203B" stroke-width="1"/><line x1="827.4" y1="12.0" x2="840.6" y2="12.0" stroke="#17203B" stroke-width="1"/><line x1="834.0" y1="5.4" x2="834.0" y2="18.6" stroke="#17203B" stroke-width="1"/><circle cx="834.0" cy="12.0" r="1.1" fill="#17203B"/></g><g aria-hidden="true"><circle cx="13.1" cy="289.1" r="4.0" fill="none" stroke="#0066CC" stroke-opacity="0.55" stroke-width="0.9"/><circle cx="12.0" cy="288.0" r="4.0" fill="none" stroke="#17203B" stroke-width="1"/><line x1="5.4" y1="288.0" x2="18.6" y2="288.0" stroke="#17203B" stroke-width="1"/><line x1="12.0" y1="281.4" x2="12.0" y2="294.6" stroke="#17203B" stroke-width="1"/><circle cx="12.0" cy="288.0" r="1.1" fill="#17203B"/></g><g aria-hidden="true"><circle cx="835.1" cy="289.1" r="4.0" fill="none" stroke="#FF4F5E" stroke-opacity="0.55" stroke-width="0.9"/><circle cx="834.0" cy="288.0" r="4.0" fill="none" stroke="#17203B" stroke-width="1"/><line x1="827.4" y1="288.0" x2="840.6" y2="288.0" stroke="#17203B" stroke-width="1"/><line x1="834.0" y1="281.4" x2="834.0" y2="294.6" stroke="#17203B" stroke-width="1"/><circle cx="834.0" cy="288.0" r="1.1" fill="#17203B"/></g>
+
+  <!-- Misregistered inner print-bed ghost frame + primary frame -->
+  <rect x="26.5" y="24.5" width="798" height="256" fill="none" stroke="#FF4F5E" stroke-opacity="0.34" stroke-width="1.4"/>
+  <rect x="24" y="22" width="798" height="256" fill="#FDFBF5" stroke="#17203B" stroke-width="1.5"/>
+
+  <!-- Right-side halftone dot screen field -->
+  <rect x="562" y="48" width="260" height="164" fill="#EFE8D8"/>
+  <rect x="562" y="48" width="260" height="164" fill="url(#ht-hero-a-light)"/>
+  <polygon points="738,48 822,48 822,132" fill="url(#ht-hero-b-light)"/>
+  <line x1="562" y1="48" x2="562" y2="212" stroke="#17203B" stroke-width="1.2"/>
+
+  <!-- Top masthead edition bar -->
+  <rect x="24.8" y="22.8" width="796.4" height="25" fill="#EFE8D8"/>
+  <line x1="24" y1="48" x2="822" y2="48" stroke="#17203B" stroke-width="1.2"/>
+  <circle cx="40" cy="35.5" r="4.5" fill="#0066CC"/>
+  <circle cx="46.5" cy="35.5" r="4.5" fill="#FF4F5E" fill-opacity="0.82"/>
+  <text x="59" y="39" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="700" letter-spacing="1.0" fill="#17203B">EDITION 011 // 2-INK RISO</text>
+  <text x="808" y="39" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.8" font-weight="700" letter-spacing="0.7" fill="#3E4A6B">PLATE A: COBALT · PLATE B: CORAL</text>
+
+  <!-- Left Typography Bay -->
+  <rect x="40.5" y="62.5" width="224" height="19" fill="#FF4F5E" fill-opacity="0.82"/>
+  <rect x="38" y="60" width="224" height="19" fill="#0066CC" stroke="#17203B" stroke-width="1"/>
+  <text x="48" y="73" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.0" font-weight="700" letter-spacing="0.8" fill="#FFFFFF">INDIE STUDIO · LOCAL-FIRST AI</text>
+
+  <!-- Misregistered duotone display headline (2.5px secondary-ink offset behind crisp primary plate) -->
+  <text x="40.5" y="133.5" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="52" font-weight="900" letter-spacing="-0.6" fill="#FF4F5E" fill-opacity="0.78">FURINA-HE</text>
+  <text x="38" y="131" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="52" font-weight="900" letter-spacing="-0.6" fill="#0066CC">FURINA-HE<tspan fill="#17203B">.</tspan></text>
+
+  <text x="38" y="156" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12.8" font-weight="600" fill="#17203B">Deterministic AI ops guardrails, desktop pets &amp; static SVG craft.</text>
+  <text x="38" y="177" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10" font-weight="600" fill="#3E4A6B">STACK · Rust · TypeScript · Python · Tauri · Electron · Cloudflare</text>
+
+  <!-- Press-proof color calibration bar -->
+  <rect x="39.5" y="191.5" width="16" height="7" fill="#17203B" fill-opacity="0.22"/><rect x="38" y="190" width="16" height="7" fill="#0066CC"/><rect x="63.5" y="191.5" width="16" height="7" fill="#17203B" fill-opacity="0.22"/><rect x="62" y="190" width="16" height="7" fill="#FF4F5E"/><rect x="87.5" y="191.5" width="16" height="7" fill="#17203B" fill-opacity="0.22"/><rect x="86" y="190" width="16" height="7" fill="#0E9472"/><rect x="111.5" y="191.5" width="16" height="7" fill="#17203B" fill-opacity="0.22"/><rect x="110" y="190" width="16" height="7" fill="#F59E0B"/>
+  <text x="142" y="197" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.2" font-weight="700" letter-spacing="0.7" fill="#3E4A6B">PASS 01/02 · 846PX GRID</text>
+
+  <!-- Right-side Overprinted Geometric Bauhaus/Riso Emblem (pure graphic art, no photo portrait) -->
+  <g aria-hidden="true">
+    <circle cx="692" cy="122" r="56" fill="none" stroke="#17203B" stroke-opacity="0.5" stroke-dasharray="3 4" stroke-width="1"/>
+    <line x1="628" y1="122" x2="756" y2="122" stroke="#17203B" stroke-opacity="0.28" stroke-width="0.9"/>
+    <line x1="692" y1="60" x2="692" y2="184" stroke="#17203B" stroke-opacity="0.28" stroke-width="0.9"/>
+    <g class="plate-a-riso-light">
+      <circle cx="674" cy="112" r="36" fill="#0066CC" fill-opacity="0.82"/>
+      <rect x="702" y="124" width="38" height="38" fill="#0066CC" fill-opacity="0.74"/>
+      <rect x="646" y="142" width="22" height="22" fill="none" stroke="#0066CC" stroke-width="2.2"/>
+    </g>
+    <g class="plate-b-riso-light">
+      <circle cx="710" cy="126" r="34" fill="#FF4F5E" fill-opacity="0.78"/>
+      <polygon points="690,74 726,74 708,104" fill="#F59E0B" fill-opacity="0.88"/>
+      <rect x="650" y="146" width="22" height="22" fill="#0E9472" fill-opacity="0.78"/>
+    </g>
+    <!-- Crisp center monogram punch-out -->
+    <circle cx="692" cy="122" r="19" fill="#FDFBF5" stroke="#17203B" stroke-width="1.8"/>
+    <text x="692" y="127" text-anchor="middle" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13.5" font-weight="900" letter-spacing="0.6" fill="#17203B">FH</text>
+  </g>
+  <!-- Emblem edition plate caption -->
+  <rect x="614" y="188" width="156" height="17" fill="#FDFBF5" stroke="#17203B" stroke-width="1"/>
+  <text x="692" y="199.5" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.2" font-weight="700" letter-spacing="0.8" fill="#17203B">RISO PRESS · NO. 011</text>
+
+  <!-- Bottom 4-column print-spec metrics rail -->
+  <line x1="24" y1="212" x2="822" y2="212" stroke="#17203B" stroke-width="1.4"/>
+  <rect x="39.8" y="222.8" width="6" height="6" fill="#FF4F5E" fill-opacity="0.65"/><rect x="38" y="221" width="6" height="6" fill="#0066CC"/><text x="51" y="227.5" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.6" font-weight="700" letter-spacing="0.6" fill="#3E4A6B">01 · FLAGSHIP</text><text x="39.8" y="252.8" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="900" fill="#0066CC" fill-opacity="0.52">04</text><text x="38" y="251" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="900" fill="#17203B">04</text><text x="38" y="268.5" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#3E4A6B">Ops · AI Pet · Skins · 3D</text><line x1="224.0" y1="212" x2="224.0" y2="278" stroke="#17203B" stroke-opacity="0.7" stroke-width="1"/><rect x="239.8" y="222.8" width="6" height="6" fill="#0066CC" fill-opacity="0.65"/><rect x="238" y="221" width="6" height="6" fill="#FF4F5E"/><text x="251" y="227.5" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.6" font-weight="700" letter-spacing="0.6" fill="#3E4A6B">02 · REPOS</text><text x="239.8" y="252.8" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="900" fill="#FF4F5E" fill-opacity="0.52">13</text><text x="238" y="251" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="900" fill="#17203B">13</text><text x="238" y="268.5" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#3E4A6B">Rust · TypeScript · Python</text><line x1="424.0" y1="212" x2="424.0" y2="278" stroke="#17203B" stroke-opacity="0.7" stroke-width="1"/><rect x="439.8" y="222.8" width="6" height="6" fill="#FF4F5E" fill-opacity="0.65"/><rect x="438" y="221" width="6" height="6" fill="#0E9472"/><text x="451" y="227.5" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.6" font-weight="700" letter-spacing="0.6" fill="#3E4A6B">03 · AGENTS</text><text x="439.8" y="252.8" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="900" fill="#0E9472" fill-opacity="0.52">20+</text><text x="438" y="251" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="900" fill="#17203B">20+</text><text x="438" y="268.5" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#3E4A6B">CloudLink Skill &amp; Guard</text><line x1="624.0" y1="212" x2="624.0" y2="278" stroke="#17203B" stroke-opacity="0.7" stroke-width="1"/><rect x="639.8" y="222.8" width="6" height="6" fill="#0066CC" fill-opacity="0.65"/><rect x="638" y="221" width="6" height="6" fill="#F59E0B"/><text x="651" y="227.5" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.6" font-weight="700" letter-spacing="0.6" fill="#3E4A6B">04 · PRESS</text><text x="639.8" y="252.8" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="900" fill="#F59E0B" fill-opacity="0.52">2-INK</text><text x="638" y="251" font-family="'Space Grotesk','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" font-weight="900" fill="#17203B">2-INK</text><text x="638" y="268.5" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" fill="#3E4A6B">Halftone · Static · Crisp</text>
+</svg>

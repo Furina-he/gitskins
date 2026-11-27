@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="40" viewBox="0 0 846 40" role="img" aria-label="L1 — PLATFORM 01 · SELECTED SYSTEMS">
+  <rect x="1" y="1" width="844" height="38" rx="5" fill="#181B21" stroke="#363B46" stroke-width="1.4"/>
+  <rect x="2" y="34" width="842" height="4" rx="1" fill="#F59E0B"/>
+  <!-- Metro Line Badge Circle -->
+  <circle cx="24" cy="18.5" r="11.5" fill="#F59E0B"/>
+  <text x="24" y="22" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="800" fill="#111317">L1</text>
+  <!-- Wayfinding Route Arrow -->
+  <path d="M 44 18.5 H 58 M 53 13.5 L 59 18.5 L 53 23.5" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="68" y="22.5" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="13.5" font-weight="800" letter-spacing="0.4" fill="#F4F1EA">PLATFORM 01 · SELECTED SYSTEMS</text>
+  <line x1="628" y1="9" x2="628" y2="28" stroke="#262A33" stroke-width="1"/>
+  <text x="830" y="22" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="700" letter-spacing="0.6" fill="#827F78">ST-01 → ST-04 · 04 LINES</text>
+</svg>

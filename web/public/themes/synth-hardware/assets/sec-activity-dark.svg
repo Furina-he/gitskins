@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="40" viewBox="0 0 846 40" role="img" aria-label="PATCH 02 // SIGNAL ACTIVITY">
+  <rect x="0.5" y="0.5" width="845" height="39" rx="6" fill="#121316" stroke="#363A44" stroke-width="1.1"/>
+  <rect x="30" y="5" width="786" height="30" rx="3.5" fill="#1A1C21" stroke="#252830" stroke-width="0.9"/>
+  <g aria-hidden="true"><circle cx="16.0" cy="20.0" r="5.0" fill="#0D0E11" stroke="#363A44" stroke-width="0.9"/><circle cx="16.0" cy="20.0" r="3.6" fill="#23262E" stroke="#252830" stroke-width="0.6"/><polygon points="17.82,21.05 16.00,22.10 14.18,21.05 14.18,18.95 16.00,17.90 17.82,18.95" fill="#090A0D" fill-opacity="0.82"/></g>
+  <g aria-hidden="true"><circle cx="830.0" cy="20.0" r="5.0" fill="#0D0E11" stroke="#363A44" stroke-width="0.9"/><circle cx="830.0" cy="20.0" r="3.6" fill="#23262E" stroke="#252830" stroke-width="0.6"/><polygon points="831.82,21.05 830.00,22.10 828.18,21.05 828.18,18.95 830.00,17.90 831.82,18.95" fill="#090A0D" fill-opacity="0.82"/></g>
+  <circle cx="46" cy="20" r="3" fill="#FF6B2B"/>
+  <circle cx="57" cy="20" r="3" fill="#38BDF8"/>
+  <circle cx="68" cy="20" r="3" fill="#34D399"/>
+  <text x="84" y="24" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="11.5" font-weight="700" letter-spacing="1.0" fill="#F3F2EE">PATCH 02 <tspan fill="#7D818C">//</tspan> SIGNAL ACTIVITY</text>
+  <rect x="510" y="15" width="3" height="10" rx="1.2" fill="#0D0E11" stroke="#252830" stroke-width="0.6"/><rect x="517" y="15" width="3" height="10" rx="1.2" fill="#0D0E11" stroke="#252830" stroke-width="0.6"/><rect x="524" y="15" width="3" height="10" rx="1.2" fill="#0D0E11" stroke="#252830" stroke-width="0.6"/><rect x="531" y="15" width="3" height="10" rx="1.2" fill="#0D0E11" stroke="#252830" stroke-width="0.6"/><rect x="538" y="15" width="3" height="10" rx="1.2" fill="#0D0E11" stroke="#252830" stroke-width="0.6"/><rect x="545" y="15" width="3" height="10" rx="1.2" fill="#0D0E11" stroke="#252830" stroke-width="0.6"/><rect x="552" y="15" width="3" height="10" rx="1.2" fill="#0D0E11" stroke="#252830" stroke-width="0.6"/><rect x="559" y="15" width="3" height="10" rx="1.2" fill="#0D0E11" stroke="#252830" stroke-width="0.6"/>
+  <text x="804" y="23.5" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.4" font-weight="700" letter-spacing="0.8" fill="#B5B8C0">CH-OUT // @FURINA-HE</text>
+</svg>

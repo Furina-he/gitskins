@@ -1129,5 +1129,945 @@
       "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/seal-ink-scroll/PROMPT.md",
       "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/seal-ink-scroll"
     }
+  },
+  {
+    "id": "synth-hardware",
+    "order": 7,
+    "name": "Tactile Industrial Synth",
+    "nameZh": "工业合成器面板",
+    "category": "Hardware Synth",
+    "categoryZh": "工业合成器",
+    "tagline": "Teenage Engineering OP-1 and Dieter Rams inspired anodized chassis with perforated speaker grills, four color-coded rotary encoders, OLED waveforms, and modular Eurorack cards.",
+    "taglineZh": "致敬 Teenage Engineering OP-1 与博朗工业设计的阳极氧化机身，集成穿孔扬声器点阵、四色旋钮编码器、OLED 示波屏与模块化 Eurorack 项目面板。",
+    "bestFor": [
+      "Systems & Audio Engineers",
+      "Industrial Design Lovers",
+      "Hardware & Creative Coders"
+    ],
+    "bestForZh": [
+      "系统 / 音频工程师",
+      "工业设计美学控",
+      "硬核极客与创意编程者"
+    ],
+    "author": "Furina-he",
+    "accent": "#FF5200",
+    "palette": {
+      "light": [
+        "#EFECE6",
+        "#141517",
+        "#FF5200",
+        "#0088CC",
+        "#1E9E63",
+        "#D49B00"
+      ],
+      "dark": [
+        "#121316",
+        "#F3F2EE",
+        "#FF6B2B",
+        "#38BDF8",
+        "#34D399",
+        "#FACC15"
+      ]
+    },
+    "tokens": {
+      "light": {
+        "bg": "#EFECE6",
+        "surface": "#FAF8F4",
+        "ink": "#141517",
+        "sub": "#44474D",
+        "muted": "#6E727A",
+        "border": "#1C1E22",
+        "borderSoft": "#CFCBC2",
+        "accent": "#FF5200",
+        "accentFg": "#FFFFFF",
+        "secondary": "#0088CC",
+        "tertiary": "#1E9E63",
+        "highlight": "#D49B00",
+        "patternBg": "#E3DFD6",
+        "patternFg": "#B8B3A8"
+      },
+      "dark": {
+        "bg": "#121316",
+        "surface": "#1A1C21",
+        "ink": "#F3F2EE",
+        "sub": "#B5B8C0",
+        "muted": "#7D818C",
+        "border": "#363A44",
+        "borderSoft": "#252830",
+        "accent": "#FF6B2B",
+        "accentFg": "#121316",
+        "secondary": "#38BDF8",
+        "tertiary": "#34D399",
+        "highlight": "#FACC15",
+        "patternBg": "#0D0E11",
+        "patternFg": "#2A2E38"
+      }
+    },
+    "features": [
+      "Anodized Aluminum (Light) & Matte Elektron Chassis (Dark) with corner hex screws",
+      "Perforated Braun/OP-1 circular speaker grill & 4 color-coded rotary encoder knobs",
+      "Recessed AMOLED oscilloscope waveform & patchbay KPI dial meters",
+      "Modular Eurorack project panels with 3.5mm IN/OUT patch jacks & LED keycaps"
+    ],
+    "featuresZh": [
+      "浅色阳极氧化铝机身 + 深色 Elektron 哑光黑机箱与四角内六角螺丝",
+      "博朗 / OP-1 穿孔圆形扬声器点阵与四色功能旋钮编码器",
+      "内嵌式 AMOLED 示波波形屏与 4 路旋钮指示仪表区",
+      "带 3.5mm IN/OUT 跳线孔的 Eurorack 项目面板与发光 LED 机械键帽"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "[CH.1] cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "[CH.2] openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "[CH.3] CloudLink v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "[CH.4] @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Live works",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
+          }
+        ]
+      },
+      {
+        "group": "Archive",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Tactile Industrial Synth** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Use `gh auth status` / `gh api user` (or `git config`) to read my real username, display name, bio, public repositories, total stars, primary languages, releases, and live websites. Only ask me if no GitHub account can be detected locally.\n2. **Curate factual content (never reuse demo entries)**: Select up to 4 of my flagship repositories (adapt layout cleanly if I have fewer than 4 repos, and omit website buttons if I have no live domains — verify every live URL returns HTTP 200). Compute all 4 rotary-dial/patchbay KPI meters (`REPOS`, `STARS`, `LIVE`, `STACK`) from my real GitHub profile. Never fabricate metrics.\n3. **Generate the Tactile Industrial Synth SVG suite & personalize hardware markings**:\n   - Follow `SPEC.md` and rewrite `generator.py` with my real data to output paired Light (anodized aluminum) and Dark (matte Elektron charcoal) SVGs into `assets/`: `846x300` Hero chassis with corner hex screws, top silkscreen status bar, recessed OLED readout strip, 4 KPI dial meters, circular perforated speaker grill, animated AMOLED oscilloscope (`prefers-reduced-motion` guarded), and 4 color-coded rotary encoders; `height=\"30\"` tactile LED keycap buttons (`[CH.1]`–`[CH.4]`); `846x40` brushed metal rack section dividers; and `2x2` Eurorack modular project cards (`417x196`) with `IN / OUT` patch jacks and mini rotary dials.\n   - **Pure Hardware Visual Anchor (No Photo Portrait)**: Keep the pure hardware instrument layout without embedding a photo portrait. Instead, personalize the chassis silkscreen channel code (e.g., `OP-<MY-INITIALS> // FIELD SYNTH · CH-01`), OLED telemetry string, and the 4 rotary encoder parameter labels/angles to reflect my engineering focus.\n   - Add `.github/workflows/snake.yml` or GitSkins Zero-503 Live Widgets if appropriate.\n4. **Validate Strict XML, Verify Zero Demo-Data Leakage & Ship**:\n   - Run strict XML validation on every generated SVG (zero `<script>`, zero `on*=` handlers, zero external `<image href=\"http...\">`, zero `@import` web fonts, and every `@keyframes` wrapped in `@media (prefers-reduced-motion: reduce)`).\n   - **Zero Demo-Data Leakage Check**: Scan every generated `assets/*.svg` and `README.md` to confirm zero leftover demo strings (`Furina-he`, `NeverGiveUp`, `cloudlink`, `openpet`, `myfurina`, `blessc.com` — except `gitskins.blessc.com` if I opt into the optional `Styled with GitSkins` footer badge).\n   - Inspect `846px` Light/Dark contrast and monospace spacing headroom, wire `<picture>` blocks in `README.md`, and push to `<username>/<username>`.",
+        "zh": "请使用 GitSkins 的 **「工业合成器面板（Tactile Industrial Synth）」** 主题，帮我设计并更新我的 GitHub 个人主页（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：优先通过本地 `gh auth status` / `gh api user`（或 `git config`）读取我的真实用户名、昵称、简介、公开仓库、总 Star 数、常用语言与官网链接；仅当本地无法识别账号时再询问我。\n2. **基于真实项目选材（禁止照搬演示项）**：精选我最具代表性的 4 个项目（不足 4 个按真实数量排版，若无个人官网则自动省略外链按键；保留的外链需验证可访问），左侧 4 组旋钮仪表指标（`REPOS`、`STARS`、`LIVE`、`STACK`）必须严格基于我的真实仓库统计，绝不编造虚假数据。\n3. **生成工业合成器双主题 SVG 并定制面板丝印参数**：\n   - 参考 `SPEC.md` 并基于我的真实信息改写 `generator.py`，生成完整的 Light（阳极氧化铝机身）与 Dark（Elektron 哑光黑机箱）双主题 SVG 至 `assets/`：`846×300` 合成器主面板（含四角内六角螺丝、顶部丝印状态条、内嵌 OLED 状态条、4 路旋钮 KPI 仪表、圆形穿孔扬声器点阵、带 `prefers-reduced-motion` 保护的 OLED 示波屏与 4 颗四色旋钮编码器）、`height=\"30\"` 发光 LED 机械键帽按钮、`846×40` 金属机架分隔条，以及 2×2 Eurorack 模块化项目面板卡（`417×196`，带 `IN / OUT` 3.5mm 跳线孔与微型旋钮表盘）。\n   - **纯硬件工业视觉锚点（无需照片头像）**：本套主题采用纯硬件乐器工业美学，不嵌入照片头像；请结合我的名字缩写、主攻方向定制机身顶部通道代号（如 `OP-<缩写> // FIELD SYNTH · CH-01`）、OLED 遥测状态行以及 4 颗旋钮的参数丝印与刻度角度。\n   - 如合适可配套 `.github/workflows/snake.yml` 或 GitSkins 零 503 活挂件。\n4. **严格 XML 校验、零演示数据残留门禁检查后推送**：\n   - 确认全部 SVG 通过严格 XML 解析校验（零 `<script>`、零 `on*=` 事件、零外链 `<image href=\"http...\">`、零 `@import` 字体，且所有 `@keyframes` 必须配有 `@media (prefers-reduced-motion: reduce)` 保护）。\n   - **零演示数据残留门禁**：交付前全局扫描生成的全部 `assets/*.svg` 与 `README.md`，确认绝对不包含任何模板演示残留字符串（`Furina-he`、`NeverGiveUp`、`cloudlink`、`openpet`、`myfurina`、`blessc.com`；仅可选的 `Styled with GitSkins` 尾标允许指向 `gitskins.blessc.com`）。\n   - 检查 `846px` 深浅对比度与等宽字体余量无重叠截断，用 `<picture>` 写入 `README.md` 并推送至我的同名主页仓库。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins 'Tactile Industrial Synth' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/generator.py). Auto-detect my GitHub username, avatar_url, and real repositories via gh/git config, pixelize my real avatar when the theme includes a portrait slot, ensure zero leftover demo strings, validate strict XML & 846px Light/Dark renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「工业合成器面板」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、真实头像（含头像框的主题须下载我的 avatar_url 像素化）与真实公开仓库，确保生成的 SVG 与 README 零模板演示残留，通过严格 XML 与 846px 深浅渲染校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# Tactile Industrial Synth — Visual Specification\n\n## Aesthetic Identity\nIndustrial hardware synthesizer ergonomics inspired by Teenage Engineering's OP-1 Field, Dieter Rams' Braun instruments, and Elektron modular rack chassis, engineered specifically for GitHub's `846px` README canvas:\n- **Light Mode**: Warm bead-blasted anodized aluminum (`#EFECE6`) with matte keycap plates (`#FAF8F4`), deep carbon silkscreen ink (`#141517`), recessed jet-black AMOLED display bays (`#111317`), and color-coded hardware controls in International Orange (`#FF5200`), Telemetry Blue (`#0088CC`), Signal Green (`#1E9E63`), and Ochre (`#D49B00`).\n- **Dark Mode**: Matte Elektron charcoal chassis (`#121316`) with recessed anodized bays (`#1A1C21` / `#0D0E11`), crisp off-white silkscreen (`#F3F2EE`), and high-contrast luminous encoders & OLED traces (`#FF6B2B`, `#38BDF8`, `#34D399`, `#FACC15`).\n- **Signature Geometry**: Corner countersunk hex socket screws, precision-drilled circular perforated speaker dot-grid grill, four color-coded rotary encoder knobs with 270° radial tick scales and pointer indicators, recessed AMOLED oscilloscope screen with animated synth waveform (`prefers-reduced-motion` guarded), 3.5mm TRS hex-nut patch jacks (`IN / OUT`), and tactile mechanical keycaps with LED dots.\n- **No Photo Portrait (By Design)**: Pure industrial hardware instrument aesthetic — identity is anchored via custom silkscreen channel codes (`OP-DEV // FIELD SYNTH · CH-01`), display typography, OLED telemetry readout, and calibrated rotary encoders.\n\n## Module Dimensions\n- `hero-{light,dark}.svg`: `846×300` — anodized aluminum chassis with 4 corner hex screws, top silkscreen status bar (`OP-DEV // FIELD SYNTH · CH-01`), left-side technical display identity + recessed OLED status readout strip + 4 rotary-dial/patchbay KPI meters (`REPOS`, `STARS`, `LIVE`, `STACK`), and right-side circular perforated speaker grill + recessed AMOLED oscilloscope waveform + 4 color-coded rotary encoder knobs.\n- `btn-*-{light,dark}.svg`: `height=\"30\"` — tactile mechanical hardware keycaps with recessed bevel lip and glowing circular LED indicator dots (`[CH.1]`–`[CH.4]`).\n- `sec-*-{light,dark}.svg`: `846×40` — brushed metal rack dividers with left/right hex mounting screws, triple signal LEDs, silkscreen channel label (`PATCH 01 // SELECTED MODULES`, `PATCH 02 // SIGNAL ACTIVITY`), and rack telemetry spec.\n- `card-*-{light,dark}.svg`: `417×196` — modular Eurorack effect panels (`2×2`, `width=\"49%\"`) with 4 corner screws, top accent strip, 3.5mm `IN / OUT` patch jacks, recessed mini rotary knob dial indicator, crisp title/description, and bottom silkscreen tech-stack footer.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/synth-hardware/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/synth-hardware/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/synth-hardware/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/synth-hardware"
+    }
+  },
+  {
+    "id": "pcb-solder-mask",
+    "order": 8,
+    "name": "Solder Mask PCB",
+    "nameZh": "沉金 PCB 电路板",
+    "category": "Circuit Hardware",
+    "categoryZh": "沉金电路板",
+    "tagline": "Precision matte-white and deep emerald solder mask boards with ENIG immersion gold vias, 45° copper traces, QFP IC packages, and crisp silkscreen.",
+    "taglineZh": "哑光白漆与深翡翠绿阻焊油墨双主题电路板，配 ENIG 沉金过孔、45° 铜箔走线、QFP 芯片封装与高精丝印标号。",
+    "bestFor": [
+      "Embedded & Hardware Devs",
+      "Systems Engineers",
+      "Maker & Firmware Builders"
+    ],
+    "bestForZh": [
+      "嵌入式 / 硬件工程师",
+      "底层系统开发者",
+      "极客创客 / 固件作者"
+    ],
+    "author": "Furina-he",
+    "accent": "#C48A18",
+    "palette": {
+      "light": [
+        "#F5F5F2",
+        "#16211B",
+        "#B87D14",
+        "#1C6B4A",
+        "#0D7D8C",
+        "#D49B1A"
+      ],
+      "dark": [
+        "#0B1F17",
+        "#F2F7F4",
+        "#E5B84B",
+        "#34D399",
+        "#38BDF8",
+        "#F59E0B"
+      ]
+    },
+    "tokens": {
+      "light": {
+        "bg": "#F5F5F2",
+        "surface": "#FFFFFF",
+        "ink": "#16211B",
+        "sub": "#3D4F45",
+        "muted": "#67786E",
+        "border": "#1C4F38",
+        "borderSoft": "#CBD6CF",
+        "accent": "#B87D14",
+        "accentFg": "#FFFFFF",
+        "secondary": "#1C6B4A",
+        "tertiary": "#0D7D8C",
+        "highlight": "#D49B1A",
+        "patternBg": "#EAECE8",
+        "patternFg": "#C7D4CC"
+      },
+      "dark": {
+        "bg": "#0B1F17",
+        "surface": "#102B20",
+        "ink": "#F2F7F4",
+        "sub": "#B6D4C5",
+        "muted": "#76A38E",
+        "border": "#E5B84B",
+        "borderSoft": "#1E4A38",
+        "accent": "#E5B84B",
+        "accentFg": "#0B1F17",
+        "secondary": "#34D399",
+        "tertiary": "#38BDF8",
+        "highlight": "#F59E0B",
+        "patternBg": "#081711",
+        "patternFg": "#193D2E"
+      }
+    },
+    "features": [
+      "Matte White Solder Mask (Light) & Deep Emerald PCB (Dark)",
+      "ENIG immersion gold corner mounting holes, via pads & 45° copper traces",
+      "Hero QFP Silicon IC Package (U1 · DEV-SOC) with gull-wing pins & signal pulse",
+      "Gold-finger edge-connector tabs & U1–U4 SMD/IC component footprint cards"
+    ],
+    "featuresZh": [
+      "浅色哑光白阻焊板 + 深色经典翡翠绿沉金 PCB 双视觉体系",
+      "ENIG 沉金四角安装孔、过孔焊盘与 45° 精密铜箔走线网络",
+      "主图 QFP 封装核心芯片（U1 · DEV-SOC）、鸥翼金引脚与沉金脉冲信号",
+      "金手指边缘连接器按钮与 U1–U4 贴片元件封装项目卡"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "J1 · cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "J2 · openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "J3 · CloudLink v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "J4 · @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Live boards",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
+          }
+        ]
+      },
+      {
+        "group": "Archive",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Solder Mask PCB** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Use `gh auth status` / `gh api user` (or `git config`) to inspect my real username, display name, bio, public repositories, stars, languages, releases, and live URLs. Only ask me if no GitHub account is detected locally.\n2. **Use factual data only (never reuse demo entries)**: Pick up to 4 of my flagship repositories (adapt cleanly if I have fewer), verify live URLs return HTTP 200, omit website buttons if I have no personal site, and compute all 4 bottom `PIN 01`–`PIN 04` metrics directly from my real GitHub account. Never fabricate stats.\n3. **Generate the Solder Mask PCB SVG suite & personalize the `U1` IC stamp**:\n   - Follow `SPEC.md` and rewrite `generator.py` with my real data to output paired Light (matte-white solder mask) and Dark (deep emerald ENIG PCB) SVGs into `assets/`:\n     - `846x300` Hero PCB (`hero-{light,dark}.svg`): pure hardware circuit aesthetic — **no photo portrait by design**; instead, laser-etch the right-hand **QFP-32 Silicon IC Package (`U1`)** stamp with my own GitHub handle, custom SoC designation (e.g., `U1 · <MY-SOC>`), and real revision code alongside gull-wing gold pins, `R01`/`C02` SMD passives, 45° copper traces, animated gold signal pulses (`prefers-reduced-motion` guarded), and `PIN 01`–`PIN 04` metric pads.\n     - Gold-finger edge-connector link buttons (`height=\"30\"`, `J1`–`J4`).\n     - Silkscreen bus dividers (`846x40`) with gold via anchors and 45° trace jogs.\n     - `2x2` SMD/IC component footprint cards (`417x196`, `U1`–`U4`) with corner gold vias, Pin-1 dot, left/right IC lead pins, and bottom `TP1`–`TP4` test-point spec bars.\n   - Add `.github/workflows/snake.yml` or GitSkins Zero-503 Live Widgets if appropriate.\n4. **Validate, Verify Zero Demo Leakage & Ship**:\n   - Run strict XML validation on all generated SVGs (`python` `xml.etree.ElementTree.fromstring` and/or `node cli/gitskins.mjs validate ./assets`) confirming zero `<script>` tags, zero `on*=` handlers, zero external `<image href=\"http...\">`, and `@media (prefers-reduced-motion: reduce)` around every `@keyframes`.\n   - **Zero Demo-Data Leakage Check**: Scan all generated `assets/*.svg` and `README.md` to confirm zero leftover demo/template strings (`Furina-he`, `NeverGiveUp`, `cloudlink`, `openpet`, `myfurina`, `blessc.com` — except `gitskins.blessc.com` if I opt into the optional `Styled with GitSkins` footer badge).\n   - Verify `846px` Light/Dark contrast and spacing without text clipping, wire `<picture>` blocks in `README.md`, and push to `<username>/<username>`.",
+        "zh": "请使用 GitSkins 的 **「沉金 PCB 电路板（Solder Mask PCB）」** 主题，帮我设计并更新我的 GitHub 个人主页（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：优先通过本地 `gh auth status` / `gh api user`（或 `git config`）读取我的真实用户名、昵称、简介、公开仓库、Star、主要语言、Release 与官网链接；仅当本地无法识别时再询问我。\n2. **基于真实数据排版（禁止照搬演示内容）**：精选我最具代表性的 4 个项目（不足 4 个按真实数量排版），校验官网链接可正常访问（无个人网站则省略对应按钮），底部 `PIN 01`–`PIN 04` 指标严格来自我的真实 GitHub 数据，绝不编造虚假数字。\n3. **生成沉金 PCB 深浅双主题 SVG 并定制 `U1` 芯片丝印**：\n   - 参考 `SPEC.md` 并基于我的真实信息改写 `generator.py`，在 `assets/` 中生成完整的 Light（哑光白阻焊板）与 Dark（深翡翠绿沉金 PCB）双主题 SVG：\n     - `846×300` 主板 Hero（本套主题为纯硬件电路板美学，**无需照片头像**；请将右侧 **QFP-32 封装主芯片 `U1`** 的丝印铭牌定制为我的真实用户名 / 个人芯片型号与版本号，保留四角 ENIG 沉金安装孔、鸥翼金引脚、`R01`/`C02` 贴片元件丝印、45° 铜箔走线、受 `prefers-reduced-motion` 保护的沉金信号脉冲以及底部 `PIN 01`–`PIN 04` 排针焊盘指标）。\n     - 金手指边缘连接器按钮（`height=\"30\"`，`J1`–`J4` 丝印连接器与焊盘点）。\n     - `846×40` 丝印总线分隔条（`BUS 01` / `BUS 02`，带沉金过孔锚点与 45° 差分走线拐角）。\n     - `2×2` SMD/IC 元件封装项目卡（`417×196`，`U1`–`U4`，含四角沉金过孔、Pin-1 丝印圆点、左右 IC 引脚及底部 `TP1`–`TP4` 测试点技术栈栏）。\n   - 如合适可一并配置 `.github/workflows/snake.yml` 或 GitSkins 零 503 活挂件。\n4. **严格校验、零演示残留检查后推送**：\n   - 确保全部 SVG 通过严格 XML 校验（零 `<script>`、零 `on*=` 事件、零外链 `<image href=\"http...\">`，全部 `@keyframes` 均带有 `@media (prefers-reduced-motion: reduce)` 保护）。\n   - **零演示数据残留门禁**：交付前全局扫描生成的全部 `assets/*.svg` 与 `README.md`，确认绝对不包含任何模板演示残留字符串（`Furina-he`、`NeverGiveUp`、`cloudlink`、`openpet`、`myfurina`、`blessc.com`；仅可选的 `Styled with GitSkins` 尾标允许指向 `gitskins.blessc.com`）。\n   - 检查 `846px` 深浅渲染对比度与留白无截断重叠，用 `<picture>` 写入 `README.md` 并推送至我的同名主页仓库。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins 'Solder Mask PCB' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/generator.py). Auto-detect my GitHub username, avatar_url, and real repositories via gh/git config, pixelize my real avatar when the theme includes a portrait slot, ensure zero leftover demo strings, validate strict XML & 846px Light/Dark renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「沉金 PCB 电路板」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、真实头像（含头像框的主题须下载我的 avatar_url 像素化）与真实公开仓库，确保生成的 SVG 与 README 零模板演示残留，通过严格 XML 与 846px 深浅渲染校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# Solder Mask PCB — Visual Specification\n\n## Aesthetic Identity\nPrecision printed circuit board (PCB) hardware engineering translated cleanly to GitHub's `846px` README canvas:\n- **Light Mode (Matte White Solder Mask)**: Matte ceramic-white FR-4 substrate (`#F5F5F2`) with crisp dark emerald silkscreen ink (`#16211B` / `#1C4F38`), ENIG immersion gold pads & vias (`#B87D14` / `#D49B1A`), deep trace green (`#1C6B4A`), and solder-flux cyan (`#0D7D8C`).\n- **Dark Mode (Classic Emerald ENIG PCB)**: Deep solder-mask emerald green (`#0B1F17`) with elevated board panels (`#102B20`), high-contrast white silkscreen (`#F2F7F4`), bright ENIG immersion gold traces & pads (`#E5B84B`), live signal green (`#34D399`), and probe cyan (`#38BDF8`).\n- **Signature Hardware Geometry**:\n  - 4 ENIG gold-plated corner mounting holes with concentric annular rings, drill centers, and thermal-relief stitching vias (`◎`).\n  - Authentic 45° angled copper trace routing networks terminated with gold via pads (`via_pad`).\n  - Central **QFP-32 Silicon IC Package (`U1 · DEV-SOC`)** surrounded by 32 gull-wing gold leads, Pin-1 orientation bevel & gold dot, neighboring SMD passive footprints (`R01`, `C02`, `VCC`, `GND`), and calm animated ENIG gold signal pulses (`@keyframes` strictly guarded by `@media (prefers-reduced-motion: reduce)`).\n  - Pure circuit-board visual language — no photo portrait by design.\n\n## Module Dimensions & Anatomy\n- `hero-{light,dark}.svg` (`846×300`):\n  - Routed FR-4 board outline (`rx=\"5\"`) + inner silkscreen courtyard + 4 corner ENIG mounting holes.\n  - Top silkscreen revision bar: `REV 2.6 // PCB-846 · ENIG GOLD`, board stackup specs, and `3V3 PWR` live LED indicator.\n  - Left silkscreen zone (`x=42..552`): display handle, silkscreen handle badge, engineering summary, and framed `BUS` tech-stack callout.\n  - Right IC zone (`x=562..804`): `U1 · DEV-SOC` QFP-32 silicon chip with gull-wing gold pins, `R01`/`C02` SMD passives, `VCC`/`GND` symbols, and animated 45° copper signal pulses.\n  - Bottom pin-header rail (`PIN 01`–`PIN 04`): plated square Pin-1 pad + circular gold through-hole pads for 4 factual profile metrics.\n- `btn-*-{light,dark}.svg` (`height=\"30\"`):\n  - Gold-finger card-edge connector tabs with 3 left-edge ENIG contact fingers, solder pad dots, and mono `J1`–`J4` connector labels.\n- `sec-*-{light,dark}.svg` (`846×40`):\n  - Silkscreen bus dividers (`BUS 01 // IC MODULES`, `BUS 02 // CLOCK & COMMITS`) featuring differential-pair 45° trace jogs anchored by ENIG gold vias.\n- `card-*-{light,dark}.svg` (`417×196`, `2×2` at `width=\"49%\"`):\n  - SMD/IC component footprint cards (`U1`–`U4`) with 6 left & 6 right gold IC lead pins, 4 corner gold vias, silkscreen Pin-1 dot, package code stamp, crisp 2-line description, and bottom test-point spec bar (`TP1`–`TP4`).\n\n## Verification Requirements\n1. Strict XML well-formedness (`xml.etree.ElementTree.fromstring` + `node cli/gitskins.mjs validate`).\n2. Zero `<script>`, zero `on*=` attributes, zero external `<image href=\"http...\">`, and `prefers-reduced-motion: reduce` protection on every `@keyframes` animation.\n3. Verify WCAG text contrast `>= 4.5:1` across both Matte White (Light) and Deep Emerald (Dark) solder masks, and confirm generous monospace width headroom across Windows/macOS/Linux.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/pcb-solder-mask/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/pcb-solder-mask/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/pcb-solder-mask/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/pcb-solder-mask"
+    }
+  },
+  {
+    "id": "transit-boarding",
+    "order": 9,
+    "name": "Transit & Boarding Pass",
+    "nameZh": "航空登机牌 / 电车票",
+    "category": "Transit Ticket",
+    "categoryZh": "登机牌 / 电车票",
+    "tagline": "Shinkansen thermal boarding passes with semicircular tear-off notches, 24×24 passport pixel portraits, vector barcodes, and metro-line transfer cards.",
+    "taglineZh": "新干线热敏登机牌撕裂虚线与半圆检票缺口、24×24 护照像素肖像、矢量条形码、地铁换乘线路项目卡与夜间机场翻牌屏深色主题。",
+    "bestFor": [
+      "Full-Stack & Systems Devs",
+      "Indie Makers",
+      "Transit & Signage Lovers"
+    ],
+    "bestForZh": [
+      "全栈 / 系统开发者",
+      "独立开发者",
+      "轨道交通与导视美学爱好者"
+    ],
+    "author": "Furina-he",
+    "accent": "#D93829",
+    "palette": {
+      "light": [
+        "#FAF6EE",
+        "#15171A",
+        "#D93829",
+        "#1B56B5",
+        "#168052",
+        "#C98212"
+      ],
+      "dark": [
+        "#111317",
+        "#F4F1EA",
+        "#F59E0B",
+        "#60A5FA",
+        "#34D399",
+        "#FB7185"
+      ]
+    },
+    "tokens": {
+      "light": {
+        "bg": "#FAF6EE",
+        "surface": "#FFFDF9",
+        "ink": "#15171A",
+        "sub": "#444952",
+        "muted": "#727885",
+        "border": "#181B20",
+        "borderSoft": "#D8D0C2",
+        "accent": "#D93829",
+        "accentFg": "#FFFFFF",
+        "secondary": "#1B56B5",
+        "tertiary": "#168052",
+        "highlight": "#C98212",
+        "patternBg": "#EFE9DC",
+        "patternFg": "#D4CCBC"
+      },
+      "dark": {
+        "bg": "#111317",
+        "surface": "#181B21",
+        "ink": "#F4F1EA",
+        "sub": "#B9B5AC",
+        "muted": "#827F78",
+        "border": "#363B46",
+        "borderSoft": "#262A33",
+        "accent": "#F59E0B",
+        "accentFg": "#111317",
+        "secondary": "#60A5FA",
+        "tertiary": "#34D399",
+        "highlight": "#FB7185",
+        "patternBg": "#0D0F13",
+        "patternFg": "#242830"
+      }
+    },
+    "features": [
+      "Shinkansen Thermal Ticket (Light) & Nocturnal Split-Flap Departure Board (Dark)",
+      "Detachable boarding-pass stub with semicircular punch notches & dashed perforation",
+      "Framed 24x24 pixel passport portrait slot, calm boarding-LED blink & vector barcode",
+      "Metro-line station transfer cards with interchange nodes (○—●—○) & validation stubs"
+    ],
+    "featuresZh": [
+      "浅色日式新干线热敏车票纸感 + 深色夜间机场翻牌航班显示屏双主题",
+      "真实半圆检票缺口与虚线撕裂线分隔主登机牌与右侧副联存根",
+      "右侧护照证件框内置 24×24 像素肖像槽、登机指示灯微闪烁与锐利矢量条形码",
+      "地铁线路换乘风格项目卡，内置换乘节点（○—●—○）、车站编号与底部票价规格栏"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "[L1] cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "[L2] openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "[L3] CloudLink v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "[L4] @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Live terminals",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
+          }
+        ]
+      },
+      {
+        "group": "Branch lines",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Transit & Boarding Pass** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Use `gh auth status` / `gh api user` (or `git config`) to read my real username, display name, bio, `avatar_url`, public repos, stars, languages, releases, and live URLs. Only ask me if no GitHub account is detected locally.\n2. **Select real stations & transit stats (never reuse demo entries)**: Pick up to 4 of my flagship repositories (adapt cleanly if I have fewer than 4 or no personal website URLs), verify live links return HTTP 200, and map the 4 boarding boxes (`GATE`, `SEAT`, `CLASS`, `MILES`) transparently to my real GitHub data (flagship count, public repos, primary language/OSS class, stars/followers). Never fabricate metrics or links.\n3. **Generate the Transit & Boarding Pass SVG suite & pixelize my real avatar**:\n   - Follow `SPEC.md` and rewrite `generator.py` with my real data to output paired Light (Shinkansen / thermal boarding pass) and Dark (nocturnal split-flap departure board) SVGs into `assets/`:\n     - `846×300` notched Boarding Pass Hero (`0..608` main pass + `608..846` detachable stub with semicircular punch notches and dashed perforation), `DEV ✈ OSS` route header, passenger name, bio, 4 boarding boxes (`GATE`, `SEAT`, `CLASS`, `MILES`), calm boarding-LED blink (`@keyframes` guarded by `prefers-reduced-motion`), and sharp vector barcode strip.\n     - `height=\"30\"` transit ticket validation / colored metro line pill buttons (`[L1]`..`[L4]`).\n     - `846×40` metro station wayfinding section signboards (`L1`, `L2`) with line-badge circles and route arrows.\n     - `417×196` metro-line station transfer project cards (`ST-01`..`ST-04`) with colored horizontal route bar, circular interchange nodes (`○—●—○`), and perforated fare/spec ticket line.\n   - **Real Avatar Passport Photo**: Matching the GitSkins Web Studio live preview, download my real GitHub `avatar_url` (`?s=96`) and programmatically downsample + color-quantize it (e.g. via Python `Pillow` or stdlib script) into a crisp `24×24` `<path shape-rendering=\"crispEdges\">` passport portrait inside the right-hand detachable stub frame (fall back to a themed pixel emblem only if no avatar is available).\n   - Add `.github/workflows/snake.yml` or GitSkins Zero-503 Live Widgets if appropriate.\n4. **Validate, Verify Zero Demo Leakage & Ship**:\n   - Parse every SVG with strict XML validation (`xml.etree.ElementTree.fromstring` + `node cli/gitskins.mjs validate`): zero `<script>`, zero `on*=` attributes, zero external `<image href=\"http...\">`, and `prefers-reduced-motion` guarded on all `@keyframes`.\n   - **Zero Demo-Data Leakage Check**: Scan all generated `assets/*.svg` and `README.md` to confirm zero leftover template strings (`Furina-he`, `NeverGiveUp`, `cloudlink`, `openpet`, `myfurina`, `blessc.com` — except `gitskins.blessc.com` if I opt into the optional `Styled with GitSkins` footer badge).\n   - Verify `846px` Light/Dark readability with zero text overlap, wire `<picture>` blocks in `README.md`, and push to `<username>/<username>`.",
+        "zh": "请使用 GitSkins 的 **「航空登机牌 / 电车票（Transit & Boarding Pass）」** 主题，帮我设计并更新我的 GitHub 个人主页（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：优先通过本地 `gh auth status` / `gh api user`（或 `git config`）读取我的真实用户名、昵称、简介、`avatar_url` 头像、公开仓库、Star、语言、Release 与官网链接；仅当本地无法获取账号时再询问我。\n2. **基于真实项目选站（禁止照搬演示项）**：挑选我最具代表性的 4 个旗舰仓库（不足 4 个或无个人网站链接时优雅自适应），校验官网链接返回 HTTP 200，并将 4 个登机信息栏（`GATE`、`SEAT`、`CLASS`、`MILES`）透明映射到我的真实 GitHub 数据，绝不编造虚假统计。\n3. **生成航空登机牌 / 电车票双主题 SVG 套件并嵌入真实像素护照头像**：\n   - 参考 `SPEC.md` 并基于我的真实信息改写 `generator.py`，生成完整的 Light（新干线热敏登机牌）与 Dark（夜间机场翻牌屏）双主题 SVG 至 `assets/`：\n     - `846×300` 检票缺口登机牌主图（左侧 `0..608` 主登机牌 + 右侧 `608..846` 可撕副联存根，含上下半圆检票缺口与虚线撕裂线）、`DEV ✈ OSS` 航线头、乘客姓名、简介、4 格登机数据栏、柔和登机指示灯动效（须内置 `prefers-reduced-motion` 保护）以及锐利矢量条形码。\n     - `height=\"30\"` 地铁线路色标检票按钮（`[L1]`..`[L4]`）。\n     - `846×40` 轨道交通站台导视分区栏（`L1`、`L2` 圆形线路标 + 方向箭头）。\n     - `417×196` 地铁换乘站风格项目卡（`ST-01`..`ST-04`），含彩色横向线路条、圆形换乘节点（`○—●—○`）与底部虚线票价/技术栈副联。\n   - **右侧护照证件框（真实头像像素化）**：与 GitSkins 在线工坊保持一致，下载我真实的 GitHub `avatar_url`（加 `?s=96`），用 Python 下采样并量化配色为清晰的 `24×24` 矢量像素护照肖像（`<path shape-rendering=\"crispEdges\">`）嵌入右侧可撕副联的证件框内（仅在无法拉取头像时回退到定制像素徽章）。\n   - 如合适可配套 `.github/workflows/snake.yml` 或 GitSkins 零 503 活挂件。\n4. **严格校验、零演示残留检查后推送**：\n   - 确认全部 SVG 通过严格 XML 校验（零 `<script>`、零 `on*=` 事件属性、零外链 `<image href=\"http...\">`、所有 `@keyframes` 均带 `prefers-reduced-motion` 降级保护）。\n   - **零演示数据残留门禁**：交付前全局检查生成的全部 `assets/*.svg` 与 `README.md`，确认绝对不包含任何模板演示残留字符串（`Furina-he`、`NeverGiveUp`、`cloudlink`、`openpet`、`myfurina`、`blessc.com`；仅可选的 `Styled with GitSkins` 尾标允许指向 `gitskins.blessc.com`）。\n   - 检查 `846px` 宽度下深浅渲染清晰无重叠，用 `<picture>` 写入 `README.md` 并推送至我的同名主页仓库。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins 'Transit & Boarding Pass' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/generator.py). Auto-detect my GitHub username, avatar_url, and real repositories via gh/git config, pixelize my real avatar when the theme includes a portrait slot, ensure zero leftover demo strings, validate strict XML & 846px Light/Dark renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「航空登机牌 / 电车票」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、真实头像（含头像框的主题须下载我的 avatar_url 像素化）与真实公开仓库，确保生成的 SVG 与 README 零模板演示残留，通过严格 XML 与 846px 深浅渲染校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# Transit & Boarding Pass — Visual Specification\n\n## Aesthetic Identity\nInspired by Japanese Shinkansen / JR thermal transit tickets, international airport boarding passes, and nocturnal split-flap departure boards — engineered for GitHub's `846px` README canvas:\n- **Tactile Ticket Geometry**: Crisp semicircular tear-off punch notches, dashed perforation lines, deterministic Code-128 style vector barcodes (`shape-rendering=\"crispEdges\"`), and high-contrast wayfinding line badges.\n- **Light Mode (Thermal Transit Ticket)**: Warm ticket stock (`#FAF6EE`) & crisp cream card surfaces (`#FFFDF9`), obsidian ink (`#15171A`), signal vermilion (`#D93829`), transit cobalt (`#1B56B5`), platform emerald (`#168052`), and express ochre (`#C98212`).\n- **Dark Mode (Split-Flap Departure Board)**: Nocturnal terminal obsidian (`#111317`) & flap panels (`#181B21`), warm off-white ink (`#F4F1EA`), split-flap amber (`#F59E0B`), concourse sky (`#60A5FA`), boarding emerald (`#34D399`), and express rose (`#FB7185`).\n\n## Module Dimensions\n- `hero-{light,dark}.svg`: `846×300` — notched boarding pass split into a left main pass (`0..608`) and a right detachable passenger stub (`608..846`) along a dashed perforation line with top/bottom semicircular punch notches. Left features the `DEV ✈ OSS` route lockup, passenger handle + bio, and 4 boarding boxes (`GATE`, `SEAT`, `CLASS`, `MILES`). Right stub frames a `24×24` crisp vector pixel passport portrait/emblem (`<path shape-rendering=\"crispEdges\">`), a calm boarding-LED blink animation (`@media (prefers-reduced-motion: reduce)` guarded), and a sharp vector barcode strip.\n- `btn-*-{light,dark}.svg`: `height=\"30\"` — ticket-punched metro line validation pills (`[L1]`..`[L4]`).\n- `sec-*-{light,dark}.svg`: `846×40` — metro station wayfinding signboards with colored line-badge circles (`L1`, `L2`) and directional route arrows.\n- `card-*-{light,dark}.svg`: `417×196` — metro-line station transfer cards (`2×2`, `width=\"49%\"`) with side ticket notches, colored horizontal transit route bar + circular interchange nodes (`○—●—○`), station codes (`ST-01`..`ST-04`), and perforated bottom fare/spec ticket stub.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/transit-boarding/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/transit-boarding/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/transit-boarding/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/transit-boarding"
+    }
+  },
+  {
+    "id": "classic-desktop-os",
+    "order": 10,
+    "name": "Classic Desktop OS",
+    "nameZh": "经典桌面窗口 OS",
+    "category": "Retro Desktop OS",
+    "categoryZh": "经典桌面窗口",
+    "tagline": "Classic System 7 / Platinum & NeXTSTEP desktop windows with 6-line pin-stripe titlebars, 1-bit Bayer dither wallpaper, close boxes, and crisp pixel icons.",
+    "taglineZh": "经典 System 7 / Platinum 浅色桌面与 NeXTSTEP 深色工作站窗口，内置 6 道水平条纹标题栏、1-bit 抖动点阵壁纸、关闭方框与硬边像素图标。",
+    "bestFor": [
+      "Desktop App Builders",
+      "Systems & OS Devs",
+      "Retro Computing Fans"
+    ],
+    "bestForZh": [
+      "桌面应用开发者",
+      "系统 / OS 工程师",
+      "复古计算爱好者"
+    ],
+    "author": "Furina-he",
+    "accent": "#2455C8",
+    "palette": {
+      "light": [
+        "#E6E5DF",
+        "#111111",
+        "#2455C8",
+        "#C93B2B",
+        "#1E824C",
+        "#C98A00"
+      ],
+      "dark": [
+        "#17181D",
+        "#F1F1EE",
+        "#60A5FA",
+        "#F87171",
+        "#4ADE80",
+        "#FACC15"
+      ]
+    },
+    "tokens": {
+      "light": {
+        "bg": "#E6E5DF",
+        "surface": "#FFFFFF",
+        "ink": "#111111",
+        "sub": "#3B3B3F",
+        "muted": "#6B6B72",
+        "border": "#111111",
+        "borderSoft": "#B8B7B0",
+        "accent": "#2455C8",
+        "accentFg": "#FFFFFF",
+        "secondary": "#C93B2B",
+        "tertiary": "#1E824C",
+        "highlight": "#C98A00",
+        "patternBg": "#DCDAD2",
+        "patternFg": "#9C9A92"
+      },
+      "dark": {
+        "bg": "#17181D",
+        "surface": "#202229",
+        "ink": "#F1F1EE",
+        "sub": "#BCBCC4",
+        "muted": "#868792",
+        "border": "#D8D8D2",
+        "borderSoft": "#383B46",
+        "accent": "#60A5FA",
+        "accentFg": "#111318",
+        "secondary": "#F87171",
+        "tertiary": "#4ADE80",
+        "highlight": "#FACC15",
+        "patternBg": "#121318",
+        "patternFg": "#2D303A"
+      }
+    },
+    "features": [
+      "Classic Macintosh System 7 / Platinum (Light) & NeXTSTEP Workstation (Dark)",
+      "1-bit Bayer dot-dither desktop backdrop & top OS menu bar",
+      "6-line pin-stripe titlebars, top-left close boxes & hard 3px window shadows",
+      "Mini app-window project cards with resize grips & 12x12 pixel icons"
+    ],
+    "featuresZh": [
+      "经典 Macintosh System 7 / Platinum 浅色桌面 + NeXTSTEP 深色工作站双主题",
+      "1-bit 抖动点阵桌面壁纸与顶部操作系统菜单栏",
+      "经典 6 道水平条纹标题栏、左上角关闭方框与硬边 3px 阶梯阴影",
+      "迷你桌面应用窗口项目卡，内置右下角缩放斜纹与 12×12 像素图标"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "Open cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "Open openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "Disk: CloudLink v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "Finder: @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Mounted disks",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
+          }
+        ]
+      },
+      {
+        "group": "Desktop folders",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Classic Desktop OS** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Use `gh auth status` / `gh api user` (or `git config`) to read my real username, display name, bio, `avatar_url`, public repos, stars, primary languages, releases, and live website URLs. Only ask me if no GitHub account is detected locally.\n2. **Select real desktop apps (never reuse demo entries)**: Pick up to 4 of my flagship repositories (adapt cleanly if I have fewer than 4 repos or no personal website), verify any live links return HTTP 200, and compute all memory/disk stat bars and Finder item counts directly from my real GitHub data. Never fabricate stats.\n3. **Generate the Classic Desktop OS SVG suite & pixelize my real avatar**:\n   - Follow `SPEC.md` and rewrite `generator.py` with my real data to output paired Light (Macintosh System 7 / Platinum) and Dark (NeXTSTEP Midnight Workstation) SVGs into `assets/`: `846x300` Hero desktop with 1-bit Bayer dot-dither backdrop, top OS menu bar, `About This Developer` window with 6-line pin-stripe titlebar, close box, hard `3px` shadow, and 4 classic memory/disk bars; double-border default-action and bevelled OS push buttons (`height=\"30\"`); Finder folder section strips (`846x40`); and `2x2` mini app-window cards (`417x196`) with pin-stripe titlebars, bottom-right resize grip lines, and bespoke `12x12` pixel app icons tailored to my projects.\n   - **Real Avatar in `About This Developer` Portrait Slot**: Matching the GitSkins Web Studio live preview, download my real GitHub `avatar_url` (`?s=96`) and programmatically downsample + color-quantize it (e.g. via Python `Pillow` or stdlib script) into a crisp `24x24` `<path shape-rendering=\"crispEdges\">` vector portrait inside the right-hand framed portrait slot of the `About This Developer` window (fall back to a classic OS pixel emblem only if no avatar is available). Keep any cursor/blink `@keyframes` guarded with `@media (prefers-reduced-motion: reduce)`.\n   - Add `.github/workflows/snake.yml` or GitSkins Zero-503 Live Widgets if appropriate.\n4. **Validate, Verify Zero Demo Leakage & Ship**:\n   - Parse every SVG with strict XML validation (zero `<script>`, zero `on*=` handlers, zero external `<image href=\"http...\">`, and `prefers-reduced-motion` guarded).\n   - **Zero Demo-Data Leakage Check**: Scan all generated `assets/*.svg` and `README.md` to confirm zero leftover demo/template strings (`Furina-he`, `NeverGiveUp`, `cloudlink`, `openpet`, `myfurina`, `blessc.com` — except `gitskins.blessc.com` if I opt into the optional `Styled with GitSkins` footer badge).\n   - Verify `846px` Light/Dark contrast and readability with zero overlap, wire `<picture>` blocks in `README.md`, and push to `<username>/<username>`.",
+        "zh": "请使用 GitSkins 的 **「经典桌面窗口 OS（Classic Desktop OS）」** 主题，帮我设计并更新我的 GitHub 个人主页（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：优先通过本地 `gh auth status` / `gh api user`（或 `git config`）读取我的真实用户名、昵称、简介、`avatar_url` 头像、公开仓库、Star、主要语言、Release 与官网链接；仅当本地无法获取账号时再询问我。\n2. **基于真实项目选材（禁止照搬演示项）**：挑选我最具代表性的 4 个旗舰项目（不足 4 个或无独立网站时按真实情况优雅排版），校验官网链接可访问，所有底部内存/磁盘状态条与 Finder 项数均基于我的真实数据计算，绝不编造虚假指标。\n3. **生成经典桌面双主题 SVG 套件并嵌入真实像素头像**：\n   - 参考 `SPEC.md` 并基于我的真实信息改写 `generator.py`，在 `assets/` 中生成完整的 Light（经典 Macintosh System 7 / Platinum 浅灰桌面）与 Dark（NeXTSTEP 午夜工作站深灰窗口）双主题 SVG：`846×300` 桌面主图（1-bit 点阵抖动壁纸、顶部系统菜单栏、带 6 道水平条纹标题栏与关闭方框及硬边 `3px` 阴影的 `About This Developer` 窗口、底部 4 栏内存/磁盘进度条）；双线默认按钮与立体像素按钮（`height=\"30\"`）；Finder 文件夹条纹分区条（`846×40`）；以及 2×2 迷你应用窗口项目卡（`417×196`，含条纹标题栏、右下角缩放斜纹与贴合各项目的 `12×12` 像素应用图标）。\n   - **真实头像像素化放入 `About This Developer` 肖像框**：与 GitSkins 在线工坊保持一致，下载我真实的 GitHub `avatar_url`（加 `?s=96`），用 Python 下采样并量化配色为清晰的 `24×24` 矢量像素肖像（`<path shape-rendering=\"crispEdges\">`）放入 `About This Developer` 窗口右侧头像框（仅在无法拉取头像时回退到经典系统像素图标），并确保光标/眨眼 `@keyframes` 动效全部包含 `@media (prefers-reduced-motion: reduce)` 保护。\n   - 如合适可配套 `.github/workflows/snake.yml` 或 GitSkins 零 503 活挂件。\n4. **严格校验、零演示数据残留检查后推送**：\n   - 确认全部 SVG 通过严格 XML 校验（零 `<script>`、零 `on*=` 事件属性、零外链 `<image href=\"http...\">`、内置 `prefers-reduced-motion` 保护）。\n   - **零演示数据残留检查**：交付前全局扫描生成的全部 `assets/*.svg` 与 `README.md`，确认绝对不包含任何模板演示残留字符串（`Furina-he`、`NeverGiveUp`、`cloudlink`、`openpet`、`myfurina`、`blessc.com`；仅可选的 `Styled with GitSkins` 尾标允许指向 `gitskins.blessc.com`）。\n   - 检查 `846px` 宽度下深浅渲染清晰无重叠、对比度达标，用 `<picture>` 写入 `README.md` 并推送至我的同名主页仓库。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins 'Classic Desktop OS' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/generator.py). Auto-detect my GitHub username, avatar_url, and real repositories via gh/git config, pixelize my real avatar when the theme includes a portrait slot, ensure zero leftover demo strings, validate strict XML & 846px Light/Dark renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「经典桌面窗口 OS」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、真实头像（含头像框的主题须下载我的 avatar_url 像素化）与真实公开仓库，确保生成的 SVG 与 README 零模板演示残留，通过严格 XML 与 846px 深浅渲染校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# Classic Desktop OS — Visual Specification\n\n## Aesthetic Identity\nA crisp retro desktop operating system interface engineered for GitHub's `846px` README canvas, pairing Classic Macintosh System 7 / Platinum with NeXTSTEP Midnight Workstation craft:\n- **Zero fuzzy glow or blurry shadows** — every window uses `1px–1.5px` crisp borders, `3px` hard stepped window shadows, 6-line horizontal pin-stripe titlebars, and `shape-rendering=\"crispEdges\"` pixel icons.\n- **Light Mode (System 7 / Platinum)**: Warm putty gray chrome (`#E6E5DF`), crisp paper white window canvases (`#FFFFFF`), 1-bit Bayer dot-dither desktop pattern (`#DCDAD2` / `#9C9A92`), solid obsidian borders (`#111111`), and Cobalt OS accent (`#2455C8`).\n- **Dark Mode (NeXTSTEP / Midnight Workstation)**: Deep workstation graphite (`#17181D`), elevated slate window interiors (`#202229`), dark dithered backdrop (`#121318` / `#2D303A`), cool silver-bone window rules (`#D8D8D2`), and electric sky highlight (`#60A5FA`).\n\n## Semantic Token Contract\n| Token | Light (Platinum) | Dark (NeXTSTEP) | Role |\n| :--- | :--- | :--- | :--- |\n| `bg` | `#E6E5DF` | `#17181D` | Chrome titlebars, footers, recessed wells |\n| `surface` | `#FFFFFF` | `#202229` | Window interior canvas, menu bar, push buttons |\n| `ink` | `#111111` | `#F1F1EE` | Primary headings & high-contrast labels |\n| `sub` | `#3B3B3F` | `#BCBCC4` | Secondary body text & status captions |\n| `muted` | `#6B6B72` | `#868792` | Quiet metadata & subtle structural chrome |\n| `border` | `#111111` | `#D8D8D2` | Crisp outer window frames & dividers |\n| `borderSoft` | `#B8B7B0` | `#383B46` | Hairline inner rules & inactive partitions |\n| `accent` | `#2455C8` | `#60A5FA` | Default action button, primary memory bar, highlights |\n| `accentFg` | `#FFFFFF` | `#111318` | Text rendered over `accent` fills (`>= 6.9:1`) |\n| `secondary` | `#C93B2B` | `#F87171` | Alert / secondary disk bar & app tag |\n| `tertiary` | `#1E824C` | `#4ADE80` | Active system / repo bar & online dot |\n| `highlight` | `#C98A00` | `#FACC15` | Memory highlight bar & fourth app tag |\n| `patternBg` | `#DCDAD2` | `#121318` | Desktop 1-bit dither base |\n| `patternFg` | `#9C9A92` | `#2D303A` | Desktop 1-bit Bayer dot pattern foreground |\n\n## Module Dimensions\n- `hero-{light,dark}.svg`: `846×300` — 1-bit dot-dither desktop backdrop (`<pattern>`), top OS menu bar (`File  Edit  View  Special` + crisp vector OS emblem), elevated `About This Developer` window with 6-line horizontal pin-stripe titlebar, top-left close box, top-right zoom box, hard `3px` window shadow, right-hand framed `24×24` pixel vector portrait slot with calm blink & cursor `@keyframes` (`prefers-reduced-motion`), and 4 classic memory/disk stat bars along the footer.\n- `btn-*-{light,dark}.svg`: `height=\"30\"` — classic OS push buttons (primary uses iconic System 7 double-border default-action ring; secondary buttons use hard bevelled caps with pixel arrow/window/floppy/folder glyphs).\n- `sec-*-{light,dark}.svg`: `846×40` — classic Finder folder header strip with 6 horizontal pin-stripes, crisp pixel folder icon, and right-hand item count plaque (`4 items · 846px`).\n- `card-*-{light,dark}.svg`: `417×196` — mini desktop application windows (`2×2`, `width=\"49%\"`) with 6-line pin-stripe titlebar, top-left close box, bespoke `12×12` pixel app icon well, title/description, status bar footer, and bottom-right diagonal resize grip lines.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/classic-desktop-os/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/classic-desktop-os/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/classic-desktop-os/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/classic-desktop-os"
+    }
+  },
+  {
+    "id": "riso-duotone",
+    "order": 11,
+    "name": "Risograph Overprint Poster",
+    "nameZh": "孔版错位叠印海报",
+    "category": "Risograph Art",
+    "categoryZh": "孔版叠印海报",
+    "tagline": "Independent Tokyo/London Risograph studio poster with intentional 2–3px misregistered duotone ink overprints, halftone dot screens, and four-corner registration crosshairs.",
+    "taglineZh": "东京/伦敦独立孔版画工坊海报美学：2–3px 刻意错位双色叠印、网点半调滤网、高对比海报色块与四角套准十字线。",
+    "bestFor": [
+      "Creative Technologists",
+      "Design Engineers",
+      "Indie Makers & Studios"
+    ],
+    "bestForZh": [
+      "创意技术人",
+      "设计工程师",
+      "独立开发者 / 工作室"
+    ],
+    "author": "Furina-he",
+    "accent": "#0066CC",
+    "palette": {
+      "light": [
+        "#F8F3E8",
+        "#17203B",
+        "#0066CC",
+        "#FF4F5E",
+        "#0E9472",
+        "#F59E0B"
+      ],
+      "dark": [
+        "#121318",
+        "#F7F4EC",
+        "#22D3EE",
+        "#FF5E7E",
+        "#34D399",
+        "#F5B700"
+      ]
+    },
+    "tokens": {
+      "light": {
+        "bg": "#F8F3E8",
+        "surface": "#FDFBF5",
+        "ink": "#17203B",
+        "sub": "#3E4A6B",
+        "muted": "#6D7896",
+        "border": "#17203B",
+        "borderSoft": "#D7CEBC",
+        "accent": "#0066CC",
+        "accentFg": "#FFFFFF",
+        "secondary": "#FF4F5E",
+        "tertiary": "#0E9472",
+        "highlight": "#F59E0B",
+        "patternBg": "#EFE8D8",
+        "patternFg": "#C9D7EA"
+      },
+      "dark": {
+        "bg": "#121318",
+        "surface": "#1A1C24",
+        "ink": "#F7F4EC",
+        "sub": "#C2C5D3",
+        "muted": "#878CA0",
+        "border": "#383D4F",
+        "borderSoft": "#272B38",
+        "accent": "#22D3EE",
+        "accentFg": "#0F1218",
+        "secondary": "#FF5E7E",
+        "tertiary": "#34D399",
+        "highlight": "#F5B700",
+        "patternBg": "#161822",
+        "patternFg": "#263348"
+      }
+    },
+    "features": [
+      "Uncoated cream poster stock (Light) & midnight cardstock (Dark)",
+      "Intentional 2–3px misregistered Cobalt × Coral & Cyan × Pink ink plates",
+      "Halftone dot screen fields, four-corner print crosshairs (⊕), and edition stamps",
+      "Overprinted Bauhaus-Riso geometric emblem with subtle plate drift (prefers-reduced-motion)"
+    ],
+    "featuresZh": [
+      "浅色无涂布米白海报纸 + 深色午夜黑卡纸双语义色彩体系",
+      "钴蓝 × 荧光珊瑚红 / 荧光青 × 霓虹粉 2–3px 刻意错位双色叠印",
+      "网点半调滤网背景、四角套准十字标（⊕）与限量版号印记",
+      "叠印几何包豪斯孔版徽标，内置克制印版微漂移动效（支持减弱动效）"
+    ],
+    "buttons": [
+      {
+        "id": "cloudlink",
+        "label": "⊕ cloudlink.blessc.com",
+        "url": "https://cloudlink.blessc.com"
+      },
+      {
+        "id": "openpet",
+        "label": "⊕ openpet.myfurina.top",
+        "url": "https://openpet.myfurina.top"
+      },
+      {
+        "id": "release",
+        "label": "⊕ CloudLink v0.6.0",
+        "url": "https://github.com/Furina-he/cloudlink/releases/latest"
+      },
+      {
+        "id": "github",
+        "label": "⊕ @Furina-he",
+        "url": "https://github.com/Furina-he?tab=repositories"
+      }
+    ],
+    "cards": [
+      {
+        "id": "cloudlink",
+        "title": "CloudLink",
+        "url": "https://github.com/Furina-he/cloudlink"
+      },
+      {
+        "id": "openpet",
+        "title": "OpenPet",
+        "url": "https://github.com/Furina-he/OpenPet"
+      },
+      {
+        "id": "gitskins",
+        "title": "GitSkins",
+        "url": "https://github.com/Furina-he/gitskins"
+      },
+      {
+        "id": "virtual",
+        "title": "Virtual",
+        "url": "https://github.com/Furina-he/virtual"
+      }
+    ],
+    "sections": [
+      "work",
+      "activity"
+    ],
+    "subLinks": [
+      {
+        "group": "Live works",
+        "items": [
+          {
+            "label": "cloudlink.blessc.com",
+            "url": "https://cloudlink.blessc.com"
+          },
+          {
+            "label": "openpet.myfurina.top",
+            "url": "https://openpet.myfurina.top"
+          },
+          {
+            "label": "gitskins.blessc.com",
+            "url": "https://gitskins.blessc.com"
+          }
+        ]
+      },
+      {
+        "group": "Archive",
+        "items": [
+          {
+            "label": "openpet-market",
+            "url": "https://github.com/Furina-he/openpet-market"
+          },
+          {
+            "label": "carview",
+            "url": "https://github.com/Furina-he/carview"
+          },
+          {
+            "label": "furina_learining",
+            "url": "https://github.com/Furina-he/furina_learining"
+          }
+        ]
+      }
+    ],
+    "svgCount": 22,
+    "prompts": {
+      "full": {
+        "en": "Redesign my GitHub Profile README (`<my-username>/<my-username>`) using the **Risograph Overprint Poster** theme from GitSkins.\n\n### Reference Blueprint\n- Visual spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/SPEC.md\n- Reference SVG generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/generator.py\n\n### Execution Steps\n1. **Auto-detect my GitHub identity**: Use `gh auth status` / `gh api user` (or `git config`) to read my real username, display name, bio, public repositories, stars, languages, releases, and live URLs. Only ask me if no GitHub account is detected locally.\n2. **Curate factual content (never reuse demo entries)**: Pick up to 4 of my flagship repositories (adapt cleanly to 1–3 cards if I have fewer than 4 repos, and omit or adapt website buttons if I have no custom website), verify live URLs return HTTP 200, and compute all 4 print-spec metric columns from my real GitHub profile. Never fabricate metrics.\n3. **Generate the Risograph Overprint SVG suite & customize ink plates**:\n   - Follow `SPEC.md` and rewrite `generator.py` with my real data to output paired Light (uncoated cream stock, Cobalt × Coral) and Dark (midnight cardstock, Fluorescent Cyan × Pink) SVGs into `assets/`: `846x300` Hero poster with four-corner registration crosshairs (`⊕`), halftone dot screen `<pattern>`, `2.5px` misregistered duotone headline, 4-column print-spec rail, and right-side overprinted geometric Bauhaus/Riso emblem (`prefers-reduced-motion` guarded); `height=\"30\"` misregistered stamp link buttons; `846x40` `+ PLATE 01` / `+ PLATE 02` overprint section bands; and `2x2` art-print project cards (`417x196`) with `3px` colored ink shadows, halftone headers, bold `01`–`04` stamps, and ink-density footers.\n   - **Pure Graphic Print Style (No Photo Portrait)**: This theme is pure Risograph poster graphic art by design — do not embed or pixelize a photo portrait. Instead, personalize the right-side overprinted Bauhaus/Riso emblem with my own 2-letter monogram initials, my edition stamp label (e.g., `EDITION 011` or my own edition tag), and optional custom 2-ink plate colors (`Plate A` & `Plate B`) while maintaining `>= 4.5:1` text contrast across Light & Dark modes.\n   - Add `.github/workflows/snake.yml` or GitSkins Zero-503 Live Widgets if appropriate.\n4. **Validate, Verify Zero Demo Leakage & Ship**:\n   - Run strict XML validation on every generated SVG (`xml.etree.ElementTree.fromstring` and `node cli/gitskins.mjs validate ./assets` if available): confirm zero `<script>` tags, zero `on*=` attributes, zero external `<image href=\"http...\">`, zero `@import` web fonts, and `@media (prefers-reduced-motion: reduce)` guarding every `@keyframes`.\n   - **Zero Demo-Data Leakage Check**: Scan all generated `assets/*.svg` and `README.md` to confirm zero leftover template strings (`Furina-he`, `NeverGiveUp`, `cloudlink`, `openpet`, `myfurina`, `blessc.com` — except `gitskins.blessc.com` if I opt into the optional `Styled with GitSkins` footer badge).\n   - Inspect `846px` Light/Dark contrast, alignment, and monospace headroom, wire `<picture>` blocks in `README.md`, and push to `<username>/<username>`.",
+        "zh": "请使用 GitSkins 的 **「孔版错位叠印海报（Risograph Overprint Poster）」** 主题，帮我设计并更新我的 GitHub 个人主页（`<我的用户名>/<我的用户名>` 仓库）。\n\n### 主题参考规范\n- 视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/SPEC.md\n- SVG 参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/generator.py\n\n### 执行要求\n1. **自动识别我的 GitHub 账号**：优先通过本地 `gh auth status` / `gh api user`（或 `git config`）读取我的真实用户名、昵称、简介、公开仓库、Star、主要语言与官网链接；仅当本地无法获取账号时再询问我。\n2. **基于真实项目选材（禁止照搬演示项）**：精选我最具代表性的 4 个项目（不足 4 个按真实数量排版，无个人网站时自动精简或替换为真实仓库/主页按钮），校验官网链接可正常访问，底部 4 栏印刷规格指标严格基于我的真实仓库统计，绝不编造虚假数据。\n3. **生成孔版叠印双主题 SVG 并定制双色印版**：\n   - 参考 `SPEC.md` 并基于我的真实信息改写 `generator.py`，生成完整的 Light（米白海报纸 · 钴蓝 × 荧光珊瑚红）与 Dark（午夜黑卡纸 · 荧光青 × 霓虹粉）SVG：`846×300` 海报主图（含四角套准十字标 `⊕`、网点半调 `<pattern>`、`2.5px` 错位双色叠印大标题、底部 4 栏印刷指标、右侧几何叠印包豪斯孔版徽标及 `prefers-reduced-motion` 动效保护）、`height=\"30\"` 错位双色印章按钮、`846×40` `+ PLATE 01` / `+ PLATE 02` 叠印章节眉条，以及 2×2 孔版画项目卡（`417×196`，含 `3px` 错位色块阴影、网点头条、`01`–`04` 印号与油墨密度底栏）。\n   - **纯图形海报风格（非照片头像）**：本套主题为纯粹的独立孔版海报艺术，无需嵌入或像素化照片头像；请将右侧几何叠印徽标中心定制为我的个人双字母缩写（Monogram）与专属版号印记（Edition Stamp），并可按需定制双色油墨印版配色（Plate A / Plate B），同时保证浅/深色模式下所有文字对比度 `>= 4.5:1`。\n   - 如合适可配套 `.github/workflows/snake.yml` 或 GitSkins 零 503 活挂件。\n4. **严格校验、零演示残留门禁后推送**：\n   - 对全部生成的 SVG 执行严格 XML 校验（`xml.etree.ElementTree.fromstring` 及 `node cli/gitskins.mjs validate`）：确认零 `<script>`、零 `on*=` 事件属性、零外链 `<image href=\"http...\">`、零 `@import` 字体，且所有 `@keyframes` 均包裹 `@media (prefers-reduced-motion: reduce)`。\n   - **零演示数据残留门禁**：交付前全局检查生成的全部 `assets/*.svg` 与 `README.md`，确认绝对不包含任何模板演示残留字符串（`Furina-he`、`NeverGiveUp`、`cloudlink`、`openpet`、`myfurina`、`blessc.com`；仅可选的 `Styled with GitSkins` 尾标允许指向 `gitskins.blessc.com`）。\n   - 检查 `846px` 深浅渲染对比度、留白与等宽字体余量无重叠截断，用 `<picture>` 写入 `README.md` 并推送至我的同名主页仓库。"
+      },
+      "quick": {
+        "en": "Redesign my GitHub Profile README using the GitSkins 'Risograph Overprint Poster' theme. Follow the instructions at https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/PROMPT.md (spec: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/SPEC.md, generator: https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/generator.py). Auto-detect my GitHub username, avatar_url, and real repositories via gh/git config, pixelize my real avatar when the theme includes a portrait slot, ensure zero leftover demo strings, validate strict XML & 846px Light/Dark renders, and push to my profile repo.",
+        "zh": "请使用 GitSkins 的「孔版错位叠印海报」主题改造我的 GitHub 个人主页。请直接读取执行规范 https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/PROMPT.md （视觉规范：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/SPEC.md ，参考生成器：https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/generator.py ）。请自动通过本地 gh / git config 识别我的 GitHub 账号、真实头像（含头像框的主题须下载我的 avatar_url 像素化）与真实公开仓库，确保生成的 SVG 与 README 零模板演示残留，通过严格 XML 与 846px 深浅渲染校验后推送到我的同名主页仓库。"
+      }
+    },
+    "specMarkdown": "# Risograph Overprint Poster — Visual Specification\n\n## Aesthetic Identity\nIndependent Tokyo & London Risograph studio print posters engineered for GitHub's `846px` README canvas — pure graphic print craft with zero photographic portraits:\n- **Light Mode**: Uncoated warm cream stock (`#F8F3E8`) and crisp off-white print surface (`#FDFBF5`) with deep indigo ink (`#17203B`), **Cobalt Blue** Plate A (`#0066CC`), **Fluorescent Coral** Plate B (`#FF4F5E`), emerald spot ink (`#0E9472`), and golden amber (`#F59E0B`).\n- **Dark Mode**: Midnight matte cardstock (`#121318`) and charcoal surface (`#1A1C24`) with warm chalk ink (`#F7F4EC`), **Fluorescent Cyan** Plate A (`#22D3EE`), **Fluorescent Pink** Plate B (`#FF5E7E`), mint spot ink (`#34D399`), and metallic gold (`#F5B700`).\n- **Signature Geometry**:\n  - Intentional `2–3px` misregistered duotone ink overprints across headlines, buttons, plate tags, and card shadows.\n  - Staggered halftone dot screen `<pattern>` fields.\n  - Four-corner vector print registration crosshairs (`⊕`).\n  - Right-side overprinted geometric Bauhaus/Riso emblem with subtle counter-drifting ink plates (`@keyframes` strictly wrapped in `@media (prefers-reduced-motion: reduce)`).\n  - High-contrast print-proof badges and 4-step ink-density calibration bars (`>= 4.5:1` WCAG AA contrast on all legible text).\n\n## Module Dimensions\n- `hero-{light,dark}.svg`: `846×300` — poster sheet with 4 corner registration crosshairs, edition masthead (`EDITION 011 // 2-INK RISO`), `2.5px` misregistered duotone headline, right-hand halftone field + animated overprinted Bauhaus-Riso geometric emblem with custom monogram punch-out, press-proof color swatch bar, and 4-column print-spec metric strip.\n- `btn-*-{light,dark}.svg`: `height=\"30\"` — misregistered duotone offset stamp buttons (solid ink shadow shifted `2.5px` behind a crisp outlined plate with mini registration mark).\n- `sec-*-{light,dark}.svg`: `846×40` — bold 2-ink overprint band with offset plate tag (`+ PLATE 01`, `+ PLATE 02`), misregistered display heading, halftone dot strip, and right-hand knockout registration spec pill.\n- `card-*-{light,dark}.svg`: `417×196` — riso art-print cards (`2×2`, `width=\"49%\"`) with `3.5px` misregistered colored ink shadow layer, halftone header block, bold print number stamp (`01`–`04`), misregistered display title, 2-line description, stack metadata, 4-step ink-density swatch bar, and crisp `OPEN ↗` footer.",
+    "links": {
+      "spec": "https://github.com/Furina-he/gitskins/blob/main/themes/riso-duotone/SPEC.md",
+      "generator": "https://github.com/Furina-he/gitskins/blob/main/themes/riso-duotone/generator.py",
+      "promptRaw": "https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/riso-duotone/PROMPT.md",
+      "folder": "https://github.com/Furina-he/gitskins/tree/main/themes/riso-duotone"
+    }
   }
 ]

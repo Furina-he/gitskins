@@ -20,6 +20,11 @@ GitSkins turns GitHub Profile READMEs and Open-Source Repository READMEs into de
 | `crt-terminal` | Retro CRT Terminal TUI | **Real Pixel Avatar** or Initials Monogram | Scanline overlay, tmux panes, phosphor monospace tables, ANSI color swatches & status bars |
 | `pixel-rpg-hud` | 16-bit Pixel RPG HUD | **Real Pixel Avatar** (`24×24` HUD slot) | Stepped pixel bevel frames, HP/MP/XP stat meters, quest-log cards & `12×12` pixel relics |
 | `seal-ink-scroll` | Seal Ink Monograph | **Personalized Cinnabar Seal Stamp** | Warm Xuan paper & inkstone dark, carved cinnabar red seal stamp, corner fretwork & mountain mist |
+| `synth-hardware` | Tactile Industrial Synth | Pure Hardware Instrument | Brushed aluminum & dark chassis, corner screws, perforated speaker grill, OLED waveform & 4 colored rotary knobs |
+| `pcb-solder-mask` | Solder Mask PCB | Pure PCB Silkscreen (`U1` IC) | Matte white & deep emerald solder mask, ENIG gold vias (`◎`), 45° copper traces & QFP IC package |
+| `transit-boarding` | Transit & Boarding Pass | **Real Pixel Avatar** (`24×24` Passport Box) | Tear-off perforated ticket stub, vector barcode, route header & metro transfer station cards |
+| `classic-desktop-os` | Classic Desktop OS | **Real Pixel Avatar** (`24×24` Window Icon) | 1-bit Bayer dither desktop, System 7 pin-stripe titlebars, close box & mini application windows |
+| `riso-duotone` | Risograph Overprint Poster | Pure 2-Ink Graphic Emblem | Misregistered duotone ink shadows (`+2.5px`), halftone dot screens & corner registration marks (`⊕`) |
 
 Every theme defines 14 semantic tokens (`bg`, `surface`, `patternBg`, `patternFg`, `border`, `borderSoft`, `ink`, `sub`, `muted`, `accent`, `accentFg`, `secondary`, `tertiary`, `highlight`) in `themes/<id>/meta.json`.
 
@@ -29,7 +34,7 @@ Every theme defines 14 semantic tokens (`bg`, `surface`, `patternBg`, `patternFg
 
 1. **Zero Fabricated Facts**: Always inspect local context first (`gh api user`, `git config`, `git remote`, `package.json`, `Cargo.toml`, `pyproject.toml`, directory tree) before rendering metrics, URLs, or project descriptions. Adapt gracefully if the user has fewer than 4 repos or no personal site.
 2. **Zero Demo-Data Leakage**: Reference `generator.py` scripts contain sample author data (`Furina-he`, `NeverGiveUp`, `cloudlink`, `openpet`, `myfurina`, `blessc.com`). Before finishing, ALWAYS scan every generated `assets/*.svg` and `README.md` to confirm **zero leftover demo strings** remain (except `gitskins.blessc.com` if the user opted into the `Styled with GitSkins` footer badge).
-3. **Real Avatar Pixelization (for Portrait Themes)**: For `swiss-bauhaus-pixel`, `pixel-rpg-hud`, and optionally `crt-terminal`, download the user's real GitHub `avatar_url` (`?s=96`) and programmatically downsample + color-quantize it (e.g., via Python `Pillow` or stdlib) into crisp vector `<path shape-rendering="crispEdges">` paths. Never leave the demo portrait matrix or embed an external `<image href="https://...">`.
+3. **Real Avatar Pixelization (for Portrait Themes)**: For `swiss-bauhaus-pixel`, `pixel-rpg-hud`, `transit-boarding`, `classic-desktop-os`, and optionally `crt-terminal`, download the user's real GitHub `avatar_url` (`?s=96`) and programmatically downsample + color-quantize it (e.g., via Python `Pillow` or stdlib) into crisp vector `<path shape-rendering="crispEdges">` paths. Never leave the demo portrait matrix or embed an external `<image href="https://...">`.
 4. **True Light & Dark Parity**: Every SVG asset must be emitted in paired `*-light.svg` and `*-dark.svg` files and wired with GitHub's native `<picture><source media="(prefers-color-scheme: dark)" srcset="..."><img src="..."></picture>`.
 5. **Strict GitHub SVG Safety**:
    - **Zero `<script>` tags** and **zero `on*=` attributes**.
@@ -56,9 +61,9 @@ Every theme defines 14 semantic tokens (`bg`, `surface`, `patternBg`, `patternFg
    - Prompt: `https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/<theme>/PROMPT.md`
    - Generator: `https://raw.githubusercontent.com/Furina-he/gitskins/main/themes/<theme>/generator.py`
 3. **Customize & Run**: Rewrite the profile data, avatar pixel portrait (or personalized seal), and real repositories inside `generator.py`, run it to generate `assets/*-{light,dark}.svg`, and wire `README.md`.
-4. **Optional Zero-503 Live Widgets (`L01`–`L06`)**:
+4. **Optional Zero-503 Live Widgets (`L01`–`L10`)**:
    - Download `https://raw.githubusercontent.com/Furina-he/gitskins/main/live-widgets/generate_live_widgets.py` to `scripts/generate_live_widgets.py` (zero `pip` dependencies).
-   - Add `.github/workflows/gitskins-widgets.yml` (template: `https://raw.githubusercontent.com/Furina-he/gitskins/main/live-widgets/gitskins-widgets.yml`) targeting any of: `github-stats`, `coding-rhythm`, `rss-feed`, `live-weather`, `wakatime-weekly` (uses optional `WAKATIME_API_KEY`), `spotify-recent` (uses optional Spotify refresh token secrets).
+   - Add `.github/workflows/gitskins-widgets.yml` (template: `https://raw.githubusercontent.com/Furina-he/gitskins/main/live-widgets/gitskins-widgets.yml`) targeting any of: `github-stats`, `coding-rhythm`, `rss-feed`, `live-weather`, `wakatime-weekly` (uses optional `WAKATIME_API_KEY`), `spotify-recent` (uses optional Spotify refresh token secrets), `contribution-snake` (4-col `846px` contribution snake via GraphQL — or use `Platane/snk/svg-only@v3` in `.github/workflows/snake.yml` with Light/Dark `color_snake` and `color_dots` synced to the active theme), `contrib-skyline` (3–4 col isometric 3D contribution skyline), `commit-streak` (1–2 col streak flame), and `recent-activity` (2–4 col public events log).
    - Mount `./assets/live-<id>-{light,dark}.svg` via `<picture>` in `README.md`.
 
 ---

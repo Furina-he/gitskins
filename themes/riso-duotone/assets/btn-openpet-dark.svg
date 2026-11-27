@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="178" height="30" viewBox="0 0 178 30" role="img" aria-label="openpet.myfurina.top">
+  <title>openpet.myfurina.top</title>
+  <!-- Misregistered 2.5px ink offset plate -->
+  <rect x="3" y="3" width="174" height="25.5" fill="#FF5E7E" fill-opacity="0.88"/>
+  <!-- Crisp outlined top stamp plate -->
+  <rect x="0.5" y="0.5" width="174" height="25.5" fill="#1A1C24" stroke="#383D4F" stroke-width="1.2"/>
+  <g aria-hidden="true"><circle cx="13.5" cy="13.2" r="3.0" fill="none" stroke="#FF5E7E" stroke-width="1"/><line x1="7.9" y1="13.2" x2="19.1" y2="13.2" stroke="#FF5E7E" stroke-width="1"/><line x1="13.5" y1="7.6" x2="13.5" y2="18.8" stroke="#FF5E7E" stroke-width="1"/><circle cx="13.5" cy="13.2" r="1.1" fill="#FF5E7E"/></g>
+  <text x="25" y="16.8" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.2" font-weight="700" fill="#F7F4EC">openpet.myfurina.top</text>
+</svg>

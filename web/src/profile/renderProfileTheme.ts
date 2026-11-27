@@ -3,7 +3,13 @@ import { renderGitSkinsBadgeSvg } from "../repo/renderRepoSkin";
 import { packBentoRows, renderCompositeBentoRowSvg } from "../widgets/bento";
 import { mergeStickerIntoHeroSvg } from "../widgets/catalog";
 import { renderWidgetSvg } from "../widgets/renderers";
-import { buildLiveWorkflowYaml, isLiveWidgetId } from "../widgets/workflow";
+import {
+  buildLiveWorkflowYaml,
+  buildSnakePlataneMarkdown,
+  buildSnakeWorkflowYaml,
+  isLiveWidgetId,
+  isPlataneSnakeInstance,
+} from "../widgets/workflow";
 import {
   FONT_MONO,
   FONT_SANS,
@@ -17,6 +23,7 @@ import {
   wrapText,
 } from "../widgets/svgPrimitives";
 import type {
+  ContributionSnakeConfig,
   HeroStickerConfig,
   WidgetInstance,
   WidgetPlacement,
@@ -483,6 +490,308 @@ function renderHeroForTheme(
 </svg>`;
   }
 
+  if (theme.id === "synth-hardware") {
+    const w = 846;
+    const h = 300;
+    const safeHandle = escapeXml(fitText(handleUpper, 480, 42, false));
+    const bioLines = wrapText(profile.bio, 480, 12.8, 2, false);
+    const screw = (cx: number, cy: number) =>
+      `<g><circle cx="${cx}" cy="${cy}" r="4.5" fill="${t.patternBg}" stroke="${t.border}" stroke-width="1"/><line x1="${cx - 2.5}" y1="${cy}" x2="${cx + 2.5}" y2="${cy}" stroke="${t.muted}" stroke-width="1"/></g>`;
+    const grillDots: string[] = [];
+    for (let r = 0; r < 6; r++) {
+      for (let c = 0; c < 6; c++) {
+        const dx = c - 2.5;
+        const dy = r - 2.5;
+        if (dx * dx + dy * dy <= 7.8) {
+          grillDots.push(`<circle cx="${626 + c * 9}" cy="${74 + r * 9}" r="2.1" fill="${t.border}" fill-opacity="0.65"/>`);
+        }
+      }
+    }
+    const knobs: [string, string, number, number][] = [
+      ["FREQ", t.accent, 608, 174],
+      ["RESO", t.secondary, 668, 174],
+      ["GATE", t.tertiary, 728, 174],
+      ["TUNE", t.highlight, 788, 174],
+    ];
+    const knobSvg = knobs
+      .map(
+        ([lbl, col, kx, ky], i) => `
+  <circle cx="${kx}" cy="${ky}" r="18" fill="${t.surface}" stroke="${t.border}" stroke-width="1.2"/>
+  <circle cx="${kx}" cy="${ky}" r="13" fill="${col}"/>
+  <line x1="${kx}" y1="${ky}" x2="${kx + (i % 2 === 0 ? 7 : -7)}" y2="${ky - 8}" stroke="${t.accentFg}" stroke-width="2" stroke-linecap="square"/>
+  <text x="${kx}" y="${ky + 31}" text-anchor="middle" font-family='${FONT_MONO}' font-size="8.2" font-weight="700" fill="${t.muted}">${lbl}</text>`
+      )
+      .join("");
+    const stats: [string, string, string][] = [
+      ["CH.01 REPOS", fmtNum(profile.publicRepos), t.accent],
+      ["CH.02 STARS", fmtNum(profile.totalStars), t.secondary],
+      ["CH.03 FOLLOW", fmtNum(profile.followers), t.tertiary],
+      ["CH.04 STACK", profile.topLanguages[0] || "OSS", t.highlight],
+    ];
+    const statRow = stats
+      .map(([lbl, val, col], idx) => {
+        const sx = 24 + idx * 202;
+        return `<rect x="${sx}" y="232" width="190" height="46" rx="2" fill="${t.surface}" stroke="${t.border}" stroke-width="1"/>
+  <circle cx="${sx + 14}" cy="246" r="3.5" fill="${col}"/>
+  <text x="${sx + 24}" y="249.5" font-family='${FONT_MONO}' font-size="8.5" font-weight="700" fill="${t.muted}">${lbl}</text>
+  <text x="${sx + 14}" y="270" font-family='${FONT_MONO}' font-size="15.5" font-weight="800" fill="${t.ink}">${escapeXml(fitText(val, 160, 15.5, true))}</text>`;
+      })
+      .join("");
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(profile.username)} — Tactile Industrial Synth Profile">
+  <title>${escapeXml(profile.username)} — Industrial Synth</title>
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="4" fill="${t.bg}" stroke="${t.border}" stroke-width="1.4"/>
+  <rect x="10" y="10" width="${w - 20}" height="28" fill="${t.patternBg}" stroke="${t.borderSoft}" stroke-width="0.9"/>
+  ${screw(20, 24)}${screw(w - 20, 24)}${screw(20, h - 14)}${screw(w - 20, h - 14)}
+  <circle cx="38" cy="24" r="4" fill="${t.accent}"/>
+  <text x="50" y="28" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.ink}">OP-DEV // FIELD SYNTH · @${escapeXml(fitText(profile.username.toUpperCase(), 150, 10, true))}</text>
+  <text x="${w - 36}" y="28" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${escapeXml(fitText(siteShort, 190, 9.5, true))}</text>
+
+  <text x="26" y="68" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accent}">SYNTH MODULE 07 · ${escapeXml(fitText(profile.location.toUpperCase(), 220, 9.5, true))}</text>
+  <text x="24" y="114" font-family='${FONT_SANS}' font-size="42" font-weight="800" letter-spacing="-0.03em" fill="${t.ink}">${safeHandle}</text>
+  ${bioLines.map((l, i) => `<text x="26" y="${142 + i * 19}" font-family='${FONT_SANS}' font-size="12.8" fill="${t.sub}">${escapeXml(l)}</text>`).join("\n  ")}
+  <rect x="26" y="186" width="510" height="30" rx="2" fill="#101216" stroke="${t.border}" stroke-width="1"/>
+  <circle cx="40" cy="201" r="3.5" fill="${t.accent}"/>
+  <text x="52" y="205" font-family='${FONT_MONO}' font-size="10.5" font-weight="700" fill="#F3F2EE">PATCH: ${escapeXml(fitText(stackLine, 420, 10.5, true))}</text>
+
+  <rect x="572" y="50" width="248" height="166" rx="2" fill="${t.patternBg}" stroke="${t.border}" stroke-width="1"/>
+  <g>${grillDots.join("")}</g>
+  <rect x="692" y="64" width="114" height="66" rx="2" fill="#0B0D11" stroke="${t.border}" stroke-width="1"/>
+  <polyline points="700,104 714,96 728,110 742,84 756,102 770,88 784,106 798,94" fill="none" stroke="${t.accent}" stroke-width="2"/>
+  <text x="700" y="78" font-family='${FONT_MONO}' font-size="8" fill="${t.secondary}">OLED · 128 BPM</text>
+  ${knobSvg}
+  ${statRow}
+</svg>`;
+  }
+
+  if (theme.id === "pcb-solder-mask") {
+    const w = 846;
+    const h = 300;
+    const safeHandle = escapeXml(fitText(handleUpper, 480, 38, true));
+    const bioLines = wrapText(profile.bio, 490, 12.5, 2, false);
+    const via = (cx: number, cy: number) =>
+      `<g><circle cx="${cx}" cy="${cy}" r="5.5" fill="${t.accent}"/><circle cx="${cx}" cy="${cy}" r="2.4" fill="${t.bg}"/></g>`;
+    const pinsH = [0, 1, 2, 3, 4, 5]
+      .map(
+        (i) =>
+          `<rect x="${668 + i * 14}" y="68" width="6" height="12" fill="${t.accent}"/><rect x="${668 + i * 14}" y="172" width="6" height="12" fill="${t.accent}"/>`
+      )
+      .join("");
+    const pinsV = [0, 1, 2, 3, 4, 5]
+      .map(
+        (i) =>
+          `<rect x="646" y="${90 + i * 13}" width="12" height="6" fill="${t.accent}"/><rect x="752" y="${90 + i * 13}" width="12" height="6" fill="${t.accent}"/>`
+      )
+      .join("");
+    const stats: [string, string][] = [
+      ["PIN 01 · REPOS", fmtNum(profile.publicRepos)],
+      ["PIN 02 · STARS", fmtNum(profile.totalStars)],
+      ["PIN 03 · FOLLOW", fmtNum(profile.followers)],
+      ["PIN 04 · CORE", profile.topLanguages[0] || "OSS"],
+    ];
+    const pinRow = stats
+      .map(([k, v], idx) => {
+        const px = 28 + idx * 198;
+        return `<rect x="${px}" y="232" width="184" height="44" fill="${t.surface}" stroke="${t.border}" stroke-width="1"/>
+  <circle cx="${px + 12}" cy="246" r="3" fill="${t.accent}"/>
+  <text x="${px + 22}" y="249" font-family='${FONT_MONO}' font-size="8.4" font-weight="700" fill="${t.muted}">${k}</text>
+  <text x="${px + 12}" y="268" font-family='${FONT_MONO}' font-size="14.5" font-weight="800" fill="${t.ink}">${escapeXml(fitText(v, 156, 14.5, true))}</text>`;
+      })
+      .join("");
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(profile.username)} — Solder Mask PCB Profile">
+  <title>${escapeXml(profile.username)} — Solder Mask PCB</title>
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.border}" stroke-width="1.5"/>
+  <rect x="8.5" y="8.5" width="${w - 17}" height="${h - 17}" fill="none" stroke="${t.borderSoft}" stroke-width="0.9"/>
+  <path d="M 30 46 L 190 46 L 210 66 L 560 66 M 560 124 L 620 124 L 640 104 M 560 162 L 620 162 L 640 142" fill="none" stroke="${t.borderSoft}" stroke-width="1.2"/>
+  ${via(18, 18)}${via(w - 18, 18)}${via(18, h - 18)}${via(w - 18, h - 18)}
+  <text x="34" y="29" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accent}">REV 2.6 // PCB-846 · ENIG GOLD · @${escapeXml(fitText(profile.username.toUpperCase(), 150, 9.5, true))}</text>
+  <text x="${w - 34}" y="29" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${escapeXml(fitText(siteShort, 180, 9.5, true))}</text>
+  <line x1="18" y1="38.5" x2="${w - 18}" y2="38.5" stroke="${t.borderSoft}" stroke-width="0.9"/>
+
+  <text x="28" y="66" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.secondary}">SILKSCREEN // ${escapeXml(fitText(profile.displayName.toUpperCase(), 260, 9.5, true))}</text>
+  <text x="28" y="112" font-family='${FONT_MONO}' font-size="38" font-weight="800" fill="${t.ink}">${safeHandle}</text>
+  ${bioLines.map((l, i) => `<text x="28" y="${140 + i * 19}" font-family='${FONT_SANS}' font-size="12.5" fill="${t.sub}">${escapeXml(l)}</text>`).join("\n  ")}
+  <rect x="28" y="186" width="530" height="28" fill="${t.surface}" stroke="${t.borderSoft}" stroke-width="1"/>
+  <text x="40" y="204" font-family='${FONT_MONO}' font-size="10.2" font-weight="700" fill="${t.ink}">BUS: <tspan fill="${t.accent}">${escapeXml(fitText(stackLine, 450, 10.2, true))}</tspan></text>
+
+  <!-- QFP-24 IC Package -->
+  ${pinsH}${pinsV}
+  <rect x="658" y="80" width="94" height="92" rx="2" fill="${t.surface}" stroke="${t.border}" stroke-width="1.5"/>
+  <circle cx="670" cy="92" r="3" fill="${t.accent}"/>
+  <text x="705" y="118" text-anchor="middle" font-family='${FONT_MONO}' font-size="14" font-weight="800" fill="${t.ink}">U1</text>
+  <text x="705" y="138" text-anchor="middle" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accent}">${escapeXml(fitText(initials, 70, 9.5, true))}-SOC</text>
+  <text x="705" y="156" text-anchor="middle" font-family='${FONT_MONO}' font-size="8" fill="${t.muted}">VCC 3.3V</text>
+  ${pinRow}
+</svg>`;
+  }
+
+  if (theme.id === "transit-boarding") {
+    const w = 846;
+    const h = 300;
+    const safeHandle = escapeXml(fitText(handleUpper, 480, 38, false));
+    const bioLines = wrapText(profile.bio, 530, 12.5, 2, false);
+    const bars = [3, 1, 2, 1, 4, 1, 2, 2, 1, 3, 1, 2, 3, 1, 2, 1, 3, 2, 1, 2];
+    let bx = 634;
+    const barcode = bars
+      .map((bw) => {
+        const rect = `<rect x="${bx}" y="230" width="${bw * 2}" height="38" fill="${t.ink}" shape-rendering="crispEdges"/>`;
+        bx += bw * 2 + 4;
+        return rect;
+      })
+      .join("");
+    const boxes: [string, string][] = [
+      ["GATE / REPOS", fmtNum(profile.publicRepos)],
+      ["MILES / STARS", fmtNum(profile.totalStars)],
+      ["CREW / FOLLOW", fmtNum(profile.followers)],
+      ["CLASS / LANG", profile.topLanguages[0] || "OSS"],
+    ];
+    const boxSvg = boxes
+      .map(([k, v], idx) => {
+        const x = 24 + idx * 142;
+        return `<rect x="${x}" y="218" width="132" height="56" fill="${t.surface}" stroke="${t.borderSoft}" stroke-width="1"/>
+  <text x="${x + 10}" y="236" font-family='${FONT_MONO}' font-size="8.2" font-weight="700" fill="${t.muted}">${k}</text>
+  <text x="${x + 10}" y="261" font-family='${FONT_MONO}' font-size="15" font-weight="800" fill="${idx === 0 ? t.accent : t.ink}">${escapeXml(fitText(v, 110, 15, true))}</text>`;
+      })
+      .join("");
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(profile.username)} — Transit & Boarding Pass Profile">
+  <title>${escapeXml(profile.username)} — Transit &amp; Boarding Pass</title>
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="1" y="1" width="${w - 2}" height="34" fill="${t.accent}"/>
+  <text x="24" y="22.5" font-family='${FONT_MONO}' font-size="11" font-weight="800" letter-spacing="1.2" fill="${t.accentFg}">BOARDING PASS // DEV → OSS EXPRESS</text>
+  <text x="588" y="22.5" text-anchor="end" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.accentFg}">SEAT 09A</text>
+  <text x="${w - 24}" y="22.5" text-anchor="end" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.accentFg}">STUB · @${escapeXml(fitText(profile.username.toUpperCase(), 110, 10, true))}</text>
+
+  <!-- Perforation tear-off stub divider -->
+  <line x1="608" y1="35" x2="608" y2="${h - 1}" stroke="${t.border}" stroke-dasharray="4 4" stroke-width="1.2"/>
+  <circle cx="608" cy="35" r="7" fill="${t.bg}" stroke="${t.border}" stroke-width="1"/>
+  <circle cx="608" cy="${h - 1}" r="7" fill="${t.bg}" stroke="${t.border}" stroke-width="1"/>
+
+  <text x="24" y="64" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.secondary}">PASSENGER · ${escapeXml(fitText(profile.displayName.toUpperCase(), 240, 9.5, true))} · ${escapeXml(fitText(profile.location.toUpperCase(), 160, 9.5, true))}</text>
+  <text x="24" y="110" font-family='${FONT_SANS}' font-size="38" font-weight="800" letter-spacing="-0.02em" fill="${t.ink}">${safeHandle}</text>
+  ${bioLines.map((l, i) => `<text x="24" y="${138 + i * 19}" font-family='${FONT_SANS}' font-size="12.5" fill="${t.sub}">${escapeXml(l)}</text>`).join("\n  ")}
+  <text x="24" y="196" font-family='${FONT_MONO}' font-size="10" fill="${t.muted}">ROUTE: <tspan fill="${t.ink}" font-weight="700">${escapeXml(fitText(stackLine, 460, 10, true))}</tspan></text>
+  ${boxSvg}
+
+  <!-- Right Passport Avatar + Barcode Stub -->
+  <rect x="656" y="54" width="136" height="142" fill="${t.surface}" stroke="${t.border}" stroke-width="1.2"/>
+  ${renderPixelAvatarGroup(profile.pixelAvatar, initials, 670, 64, 108, t)}
+  <text x="724" y="188" text-anchor="middle" font-family='${FONT_MONO}' font-size="8.8" font-weight="700" fill="${t.muted}">PASSPORT · ${escapeXml(fitText(profile.username.toUpperCase(), 90, 8.8, true))}</text>
+  ${barcode}
+  <text x="724" y="282" text-anchor="middle" font-family='${FONT_MONO}' font-size="8.4" fill="${t.muted}">${escapeXml(fitText(siteShort, 190, 8.4, true))}</text>
+</svg>`;
+  }
+
+  if (theme.id === "classic-desktop-os") {
+    const w = 846;
+    const h = 300;
+    const safeHandle = escapeXml(fitText(profile.username, 460, 34, true));
+    const bioLines = wrapText(profile.bio, 490, 12.2, 2, false);
+    const stripes = [38, 41, 44, 47, 50]
+      .map((sy) => `<line x1="46" y1="${sy}" x2="812" y2="${sy}" stroke="${t.borderSoft}" stroke-width="1"/>`)
+      .join("");
+    const stats: [string, string][] = [
+      ["Repos", fmtNum(profile.publicRepos)],
+      ["Stars", fmtNum(profile.totalStars)],
+      ["Followers", fmtNum(profile.followers)],
+      ["Primary", profile.topLanguages[0] || "OSS"],
+    ];
+    const statCells = stats
+      .map(([k, v], idx) => {
+        const sx = 36 + idx * 194;
+        return `<rect x="${sx}" y="224" width="182" height="44" fill="${t.bg}" stroke="${t.border}" stroke-width="1"/>
+  <text x="${sx + 10}" y="240" font-family='${FONT_MONO}' font-size="8.8" fill="${t.muted}">${k}</text>
+  <text x="${sx + 10}" y="259" font-family='${FONT_MONO}' font-size="14" font-weight="800" fill="${idx === 0 ? t.accent : t.ink}">${escapeXml(fitText(v, 156, 14, true))}</text>`;
+      })
+      .join("");
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(profile.username)} — Classic Desktop OS Profile">
+  <title>${escapeXml(profile.username)} — Classic Desktop OS</title>
+  <defs>
+    <pattern id="dith-${uid}" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="${t.patternBg}"/>
+      <rect x="0" y="0" width="2" height="2" fill="${t.patternFg}" fill-opacity="0.45"/>
+      <rect x="2" y="2" width="2" height="2" fill="${t.patternFg}" fill-opacity="0.45"/>
+    </pattern>
+  </defs>
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="url(#dith-${uid})" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="1" y="1" width="${w - 2}" height="22" fill="${t.surface}"/>
+  <line x1="1" y1="23.5" x2="${w - 1}" y2="23.5" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="12" y="7" width="9" height="9" fill="${t.ink}" shape-rendering="crispEdges"/>
+  <text x="30" y="15.5" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.ink}">File   Edit   View   Special</text>
+  <text x="${w - 14}" y="15.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${escapeXml(fitText(siteShort, 180, 9.5, true))}</text>
+
+  <!-- Elevated Classic OS Window -->
+  <rect x="22" y="36" width="806" height="248" fill="${t.border}" fill-opacity="0.24"/>
+  <rect x="18" y="32" width="806" height="248" fill="${t.surface}" stroke="${t.border}" stroke-width="1.4"/>
+  <rect x="19" y="33" width="804" height="24" fill="${t.bg}"/>
+  ${stripes}
+  <rect x="28" y="38" width="13" height="13" fill="${t.surface}" stroke="${t.border}" stroke-width="1"/>
+  <rect x="316" y="35" width="214" height="20" fill="${t.bg}"/>
+  <text x="423" y="49" text-anchor="middle" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.ink}">About This Developer</text>
+  <line x1="18" y1="57.5" x2="824" y2="57.5" stroke="${t.border}" stroke-width="1.2"/>
+
+  <text x="36" y="84" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accent}">SYSTEM 7.6 // ${escapeXml(fitText(profile.displayName, 240, 9.5, true))}</text>
+  <text x="36" y="124" font-family='${FONT_MONO}' font-size="34" font-weight="800" fill="${t.ink}">${safeHandle}</text>
+  ${bioLines.map((l, i) => `<text x="36" y="${152 + i * 19}" font-family='${FONT_SANS}' font-size="12.2" fill="${t.sub}">${escapeXml(l)}</text>`).join("\n  ")}
+  <text x="36" y="204" font-family='${FONT_MONO}' font-size="9.8" fill="${t.muted}">DISK: ${escapeXml(fitText(stackLine, 460, 9.8, true))}</text>
+
+  <!-- Right Framed Pixel Avatar -->
+  <rect x="668" y="72" width="132" height="138" fill="${t.bg}" stroke="${t.border}" stroke-width="1.2"/>
+  ${renderPixelAvatarGroup(profile.pixelAvatar, initials, 680, 82, 108, t)}
+  <text x="734" y="202" text-anchor="middle" font-family='${FONT_MONO}' font-size="8.8" font-weight="700" fill="${t.ink}">@${escapeXml(fitText(profile.username, 100, 8.8, true))}</text>
+  ${statCells}
+</svg>`;
+  }
+
+  if (theme.id === "riso-duotone") {
+    const w = 846;
+    const h = 300;
+    const safeHandle = escapeXml(fitText(handleUpper, 510, 44, false));
+    const bioLines = wrapText(profile.bio, 510, 13, 2, false);
+    const reg = (cx: number, cy: number) =>
+      `<g stroke="${t.secondary}" stroke-width="0.9" fill="none"><circle cx="${cx}" cy="${cy}" r="3.5"/><line x1="${cx - 6}" y1="${cy}" x2="${cx + 6}" y2="${cy}"/><line x1="${cx}" y1="${cy - 6}" x2="${cx}" y2="${cy + 6}"/></g>`;
+    const metrics: [string, string, string][] = [
+      ["PLATE 01 · REPOS", fmtNum(profile.publicRepos), t.accent],
+      ["PLATE 02 · STARS", fmtNum(profile.totalStars), t.secondary],
+      ["PLATE 03 · FOLLOW", fmtNum(profile.followers), t.tertiary],
+      ["PLATE 04 · INK", profile.topLanguages[0] || "OSS", t.highlight],
+    ];
+    const footCols = metrics
+      .map(([k, v, col], idx) => {
+        const mx = 28 + idx * 198;
+        return `<rect x="${mx + 2}" y="234" width="184" height="44" fill="${col}" fill-opacity="0.22"/>
+  <rect x="${mx}" y="232" width="184" height="44" fill="${t.surface}" stroke="${t.border}" stroke-width="1.1"/>
+  <text x="${mx + 12}" y="248" font-family='${FONT_MONO}' font-size="8.2" font-weight="700" fill="${col}">${k}</text>
+  <text x="${mx + 12}" y="268" font-family='${FONT_MONO}' font-size="14.5" font-weight="800" fill="${t.ink}">${escapeXml(fitText(v, 156, 14.5, true))}</text>`;
+      })
+      .join("");
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(profile.username)} — Risograph Overprint Poster Profile">
+  <title>${escapeXml(profile.username)} — Risograph Poster</title>
+  <defs>
+    <pattern id="riso-${uid}" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.05" fill="${t.patternFg}" fill-opacity="${mode === "dark" ? "0.45" : "0.8"}"/>
+    </pattern>
+  </defs>
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.border}" stroke-width="1.3"/>
+  <rect x="572" y="38" width="254" height="178" fill="url(#riso-${uid})"/>
+  ${reg(18, 18)}${reg(w - 18, 18)}${reg(18, h - 18)}${reg(w - 18, h - 18)}
+  <text x="34" y="23" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" letter-spacing="1.1" fill="${t.accent}">EDITION 011 // 2-INK RISOGRAPH OVERPRINT</text>
+  <text x="${w - 34}" y="23" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.secondary}">${escapeXml(fitText(siteShort, 190, 9.5, true))}</text>
+  <line x1="26" y1="34" x2="${w - 26}" y2="34" stroke="${t.border}" stroke-width="1.1"/>
+
+  <text x="28" y="64" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.secondary}">PRINT · ${escapeXml(fitText(profile.displayName.toUpperCase(), 240, 9.5, true))} · ${escapeXml(fitText(profile.location.toUpperCase(), 150, 9.5, true))}</text>
+  <text x="30.5" y="116.5" font-family='${FONT_SANS}' font-size="44" font-weight="800" letter-spacing="-0.03em" fill="${t.secondary}" fill-opacity="0.58">${safeHandle}</text>
+  <text x="28" y="114" font-family='${FONT_SANS}' font-size="44" font-weight="800" letter-spacing="-0.03em" fill="${t.accent}">${safeHandle}</text>
+  ${bioLines.map((l, i) => `<text x="28" y="${146 + i * 20}" font-family='${FONT_SANS}' font-size="13" fill="${t.sub}">${escapeXml(l)}</text>`).join("\n  ")}
+  <text x="28" y="204" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${t.ink}">INK PLATES: <tspan fill="${t.accent}">${escapeXml(fitText(stackLine, 430, 10, true))}</tspan></text>
+
+  <!-- Misregistered Duotone Geometric Emblem -->
+  <circle cx="712" cy="126" r="52" fill="${t.secondary}" fill-opacity="0.62"/>
+  <circle cx="698" cy="118" r="52" fill="${t.accent}" fill-opacity="0.72"/>
+  <rect x="678" y="98" width="44" height="44" fill="none" stroke="${t.ink}" stroke-width="2"/>
+  <text x="700" y="127" text-anchor="middle" font-family='${FONT_MONO}' font-size="18" font-weight="800" fill="${t.accentFg}">${escapeXml(initials)}</text>
+  ${footCols}
+</svg>`;
+  }
+
   // Default: swiss-bauhaus-pixel
   const w = 846;
   const h = 294;
@@ -652,6 +961,60 @@ function renderSectionHeaderSvg(
 </svg>`;
   }
 
+  if (themeId === "synth-hardware") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="3" fill="${t.patternBg}" stroke="${t.border}" stroke-width="1.1"/>
+  <circle cx="16" cy="18" r="4" fill="${t.accent}"/>
+  <circle cx="28" cy="18" r="2.5" fill="${t.secondary}"/>
+  <text x="40" y="22" font-family='${FONT_MONO}' font-size="11" font-weight="800" fill="${t.ink}">PATCH ${escapeXml(code)} // ${safeTitle}</text>
+  <text x="${w - 16}" y="22" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${safeRight}</text>
+</svg>`;
+  }
+
+  if (themeId === "pcb-solder-mask") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.border}" stroke-width="1.2"/>
+  <circle cx="16" cy="18" r="5" fill="${t.accent}"/><circle cx="16" cy="18" r="2" fill="${t.bg}"/>
+  <text x="30" y="22" font-family='${FONT_MONO}' font-size="11" font-weight="800" fill="${t.ink}">BUS ${escapeXml(code)} // ${safeTitle}</text>
+  <text x="${w - 30}" y="22" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.accent}">${safeRight}</text>
+  <circle cx="${w - 16}" cy="18" r="5" fill="${t.accent}"/><circle cx="${w - 16}" cy="18" r="2" fill="${t.bg}"/>
+</svg>`;
+  }
+
+  if (themeId === "transit-boarding") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.surface}" stroke="${t.border}" stroke-width="1.1"/>
+  <rect x="1" y="1" width="66" height="${h - 2}" fill="${t.accent}"/>
+  <text x="34" y="22" text-anchor="middle" font-family='${FONT_MONO}' font-size="10.5" font-weight="800" fill="${t.accentFg}">L${escapeXml(code)}</text>
+  <text x="82" y="22.5" font-family='${FONT_SANS}' font-size="13" font-weight="800" fill="${t.ink}">${safeTitle}</text>
+  <text x="${w - 16}" y="22" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.secondary}">${safeRight}</text>
+</svg>`;
+  }
+
+  if (themeId === "classic-desktop-os") {
+    const stripes = [12, 16, 20, 24]
+      .map((sy) => `<line x1="10" y1="${sy}" x2="${w - 10}" y2="${sy}" stroke="${t.borderSoft}" stroke-width="1"/>`)
+      .join("");
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.border}" stroke-width="1.2"/>
+  ${stripes}
+  <rect x="26" y="7" width="260" height="22" fill="${t.bg}"/>
+  <text x="34" y="22" font-family='${FONT_MONO}' font-size="11.5" font-weight="800" fill="${t.ink}">[${escapeXml(code)}] ${safeTitle}</text>
+  <rect x="${w - 196}" y="7" width="176" height="22" fill="${t.bg}"/>
+  <text x="${w - 28}" y="22" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${safeRight}</text>
+</svg>`;
+  }
+
+  if (themeId === "riso-duotone") {
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
+  <rect x="2" y="2" width="${w - 2}" height="${h - 2}" fill="${t.secondary}" fill-opacity="0.28"/>
+  <rect x="0.5" y="0.5" width="${w - 3}" height="${h - 3}" fill="${t.bg}" stroke="${t.border}" stroke-width="1.2"/>
+  <text x="16" y="22" font-family='${FONT_MONO}' font-size="10.5" font-weight="800" fill="${t.secondary}">+ PLATE ${escapeXml(code)}</text>
+  <text x="118" y="22.5" font-family='${FONT_SANS}' font-size="13.5" font-weight="800" fill="${t.accent}">${safeTitle}</text>
+  <text x="${w - 16}" y="22" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">${safeRight}</text>
+</svg>`;
+  }
+
   // swiss-bauhaus-pixel
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${safeTitle}">
   <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.surface}" stroke="${t.border}" stroke-width="1"/>
@@ -785,6 +1148,100 @@ function renderCardSvg(
 </svg>`;
   }
 
+  if (themeId === "synth-hardware") {
+    const descLines = wrapText(repo.description, 320, 12.2, 2, false);
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(repo.name)}">
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="3" fill="${t.surface}" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="6" y="6" width="${w - 12}" height="26" fill="${t.patternBg}" stroke="${t.borderSoft}" stroke-width="0.8"/>
+  <circle cx="18" cy="19" r="3.5" fill="${plateColor}"/>
+  <text x="29" y="23" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.ink}">MOD-${numStr} · ${escapeXml(repo.language.toUpperCase())}</text>
+  <text x="${w - 16}" y="23" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" fill="${t.muted}">★ ${fmtNum(repo.stars)}</text>
+  <circle cx="${w - 34}" cy="84" r="16" fill="${t.patternBg}" stroke="${t.border}" stroke-width="1.1"/>
+  <circle cx="${w - 34}" cy="84" r="10" fill="${plateColor}"/>
+  <line x1="${w - 34}" y1="84" x2="${w - 29}" y2="78" stroke="${t.accentFg}" stroke-width="1.8"/>
+  <text x="18" y="68" font-family='${FONT_SANS}' font-size="19" font-weight="800" fill="${t.ink}">${escapeXml(fitText(repo.name, 315, 19))}</text>
+  ${descLines.map((line, i) => `<text x="18" y="${96 + i * 20}" font-family='${FONT_SANS}' font-size="12.2" fill="${t.sub}">${escapeXml(line)}</text>`).join("\n  ")}
+  <line x1="16" y1="148" x2="${w - 16}" y2="148" stroke="${t.borderSoft}" stroke-width="0.9"/>
+  <text x="18" y="170" font-family='${FONT_MONO}' font-size="10" fill="${t.muted}">${escapeXml(fitText(specLine, 372, 10, true))}</text>
+</svg>`;
+  }
+
+  if (themeId === "pcb-solder-mask") {
+    const descLines = wrapText(repo.description, 368, 12.2, 2, false);
+    const via = (cx: number, cy: number) =>
+      `<g><circle cx="${cx}" cy="${cy}" r="3.8" fill="${t.accent}"/><circle cx="${cx}" cy="${cy}" r="1.6" fill="${t.bg}"/></g>`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(repo.name)}">
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.border}" stroke-width="1.3"/>
+  <rect x="7" y="7" width="${w - 14}" height="${h - 14}" fill="${t.surface}" stroke="${t.borderSoft}" stroke-width="0.9"/>
+  ${via(14, 14)}${via(w - 14, 14)}${via(14, h - 14)}${via(w - 14, h - 14)}
+  <text x="28" y="25" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${plateColor}">U${idx + 1} · ${escapeXml(repo.language.toUpperCase())}</text>
+  <text x="${w - 28}" y="25" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accent}">★ ${fmtNum(repo.stars)}</text>
+  <line x1="16" y1="34" x2="${w - 16}" y2="34" stroke="${t.borderSoft}" stroke-width="0.8"/>
+  <text x="20" y="68" font-family='${FONT_MONO}' font-size="19" font-weight="800" fill="${t.ink}">${escapeXml(fitText(repo.name, 360, 19, true))}</text>
+  ${descLines.map((line, i) => `<text x="20" y="${96 + i * 20}" font-family='${FONT_SANS}' font-size="12.2" fill="${t.sub}">${escapeXml(line)}</text>`).join("\n  ")}
+  <line x1="18" y1="148" x2="${w - 18}" y2="148" stroke="${t.borderSoft}" stroke-width="0.9"/>
+  <text x="26" y="170" font-family='${FONT_MONO}' font-size="9.8" fill="${t.muted}">TP${idx + 1} // ${escapeXml(fitText(specLine, 336, 9.8, true))}</text>
+</svg>`;
+  }
+
+  if (themeId === "transit-boarding") {
+    const descLines = wrapText(repo.description, 368, 12.2, 2, false);
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(repo.name)}">
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.surface}" stroke="${t.border}" stroke-width="1.1"/>
+  <rect x="1" y="1" width="${w - 2}" height="28" fill="${plateColor}"/>
+  <circle cx="18" cy="15" r="4.5" fill="none" stroke="${t.accentFg}" stroke-width="1.5"/>
+  <text x="30" y="19" font-family='${FONT_MONO}' font-size="9.8" font-weight="800" fill="${t.accentFg}">ST-${numStr} · ${escapeXml(repo.language.toUpperCase())}</text>
+  <text x="${w - 16}" y="19" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accentFg}">★ ${fmtNum(repo.stars)}</text>
+  <line x1="18" y1="44" x2="${w - 18}" y2="44" stroke="${plateColor}" stroke-width="2"/>
+  <circle cx="18" cy="44" r="4" fill="${t.surface}" stroke="${plateColor}" stroke-width="2"/>
+  <circle cx="${Math.round(w / 2)}" cy="44" r="4" fill="${plateColor}"/>
+  <circle cx="${w - 18}" cy="44" r="4" fill="${t.surface}" stroke="${plateColor}" stroke-width="2"/>
+  <text x="18" y="80" font-family='${FONT_SANS}' font-size="19" font-weight="800" fill="${t.ink}">${escapeXml(fitText(repo.name, 368, 19))}</text>
+  ${descLines.map((line, i) => `<text x="18" y="${106 + i * 19}" font-family='${FONT_SANS}' font-size="12.2" fill="${t.sub}">${escapeXml(line)}</text>`).join("\n  ")}
+  <line x1="16" y1="150" x2="${w - 16}" y2="150" stroke="${t.borderSoft}" stroke-dasharray="3 3" stroke-width="1"/>
+  <text x="18" y="172" font-family='${FONT_MONO}' font-size="10" fill="${t.muted}">${escapeXml(fitText(specLine, 376, 10, true))}</text>
+</svg>`;
+  }
+
+  if (themeId === "classic-desktop-os") {
+    const descLines = wrapText(repo.description, 368, 12.2, 2, false);
+    const stripes = [8, 11, 14, 17, 20]
+      .map((sy) => `<line x1="28" y1="${sy}" x2="${w - 14}" y2="${sy}" stroke="${t.borderSoft}" stroke-width="0.9"/>`)
+      .join("");
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(repo.name)}">
+  <rect x="3" y="3" width="${w - 3}" height="${h - 3}" fill="${t.border}" fill-opacity="0.22"/>
+  <rect x="0.5" y="0.5" width="${w - 4}" height="${h - 4}" fill="${t.surface}" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="1" y="1" width="${w - 5}" height="24" fill="${t.bg}"/>
+  ${stripes}
+  <rect x="9" y="7" width="12" height="12" fill="${t.surface}" stroke="${t.border}" stroke-width="1"/>
+  <rect x="130" y="4" width="156" height="18" fill="${t.bg}"/>
+  <text x="208" y="16.5" text-anchor="middle" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.ink}">${escapeXml(fitText(repo.name, 140, 9.5, true))}.app</text>
+  <line x1="0.5" y1="25.5" x2="${w - 3.5}" y2="25.5" stroke="${t.border}" stroke-width="1.1"/>
+  <text x="18" y="64" font-family='${FONT_MONO}' font-size="19" font-weight="800" fill="${t.ink}">${escapeXml(fitText(repo.name, 300, 19, true))}</text>
+  <text x="${w - 18}" y="62" text-anchor="end" font-family='${FONT_MONO}' font-size="10" font-weight="700" fill="${plateColor}">★ ${fmtNum(repo.stars)}</text>
+  ${descLines.map((line, i) => `<text x="18" y="${94 + i * 20}" font-family='${FONT_SANS}' font-size="12.2" fill="${t.sub}">${escapeXml(line)}</text>`).join("\n  ")}
+  <line x1="16" y1="146" x2="${w - 16}" y2="146" stroke="${t.borderSoft}" stroke-width="1"/>
+  <text x="18" y="168" font-family='${FONT_MONO}' font-size="9.8" fill="${t.muted}">${escapeXml(fitText(specLine, 360, 9.8, true))}</text>
+</svg>`;
+  }
+
+  if (themeId === "riso-duotone") {
+    const descLines = wrapText(repo.description, 364, 12.2, 2, false);
+    return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(repo.name)}">
+  <rect x="3.5" y="3.5" width="${w - 4}" height="${h - 4}" fill="${plateColor}" fill-opacity="0.28"/>
+  <rect x="0.5" y="0.5" width="${w - 4}" height="${h - 4}" fill="${t.surface}" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="1" y="1" width="${w - 5}" height="28" fill="${t.patternBg}"/>
+  <line x1="0.5" y1="29.5" x2="${w - 3.5}" y2="29.5" stroke="${t.border}" stroke-width="1"/>
+  <text x="16" y="19" font-family='${FONT_MONO}' font-size="9.8" font-weight="800" fill="${plateColor}">PRINT ${numStr} // ${escapeXml(repo.language.toUpperCase())}</text>
+  <text x="${w - 18}" y="19" text-anchor="end" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.secondary}">★ ${fmtNum(repo.stars)}</text>
+  <text x="19.5" y="67.5" font-family='${FONT_SANS}' font-size="20" font-weight="800" fill="${t.secondary}" fill-opacity="0.45">${escapeXml(fitText(repo.name, 360, 20))}</text>
+  <text x="18" y="66" font-family='${FONT_SANS}' font-size="20" font-weight="800" fill="${t.accent}">${escapeXml(fitText(repo.name, 360, 20))}</text>
+  ${descLines.map((line, i) => `<text x="18" y="${96 + i * 20}" font-family='${FONT_SANS}' font-size="12.2" fill="${t.sub}">${escapeXml(line)}</text>`).join("\n  ")}
+  <line x1="16" y1="146" x2="${w - 18}" y2="146" stroke="${t.borderSoft}" stroke-width="0.9"/>
+  <text x="18" y="168" font-family='${FONT_MONO}' font-size="9.8" fill="${t.muted}">${escapeXml(fitText(specLine, 368, 9.8, true))}</text>
+</svg>`;
+  }
+
   // swiss-bauhaus-pixel
   const descLines = wrapText(repo.description, 378, 12.5, 2, false);
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="${escapeXml(repo.name)}">
@@ -882,8 +1339,9 @@ function buildBentoSlotAssets(params: {
   widgets: WidgetInstance[];
   theme: SkinTheme;
   overrides: ProfileOverrides;
+  profileUsername: string;
 }): { entries: ZipFileEntry[]; markdownLines: string[] } {
-  const { slot, widgets, theme, overrides } = params;
+  const { slot, widgets, theme, overrides, profileUsername } = params;
   if (!widgets.length) return { entries: [], markdownLines: [] };
 
   const rows = packBentoRows(widgets);
@@ -894,10 +1352,16 @@ function buildBentoSlotAssets(params: {
     const rowHasLive = row.items.some((w) => isLiveWidgetId(w.widgetId));
 
     if (rowHasLive) {
-      // Emit individual SVGs so .github/workflows/gitskins-widgets.yml can refresh
-      // assets/live-<widgetId>-{light,dark}.svg in-place without regenerating static composites.
+      // Emit individual SVGs so .github/workflows/gitskins-widgets.yml (or snake.yml) can refresh
+      // each live widget in-place without regenerating static composites.
       const tags: string[] = [];
       row.items.forEach((w, iIdx) => {
+        if (isPlataneSnakeInstance(w)) {
+          const snakeCfg = w.config as ContributionSnakeConfig;
+          const snakeUser = (snakeCfg.username || profileUsername || "Furina-he").replace(/^@+/, "");
+          tags.push(buildSnakePlataneMarkdown(snakeUser));
+          return;
+        }
         const isLive = isLiveWidgetId(w.widgetId);
         const fileBase = isLive
           ? `live-${w.widgetId}`
@@ -1061,24 +1525,33 @@ export function buildProfileZipEntries(params: {
     entries.push({ path: `assets/card-${card.id}-dark.svg`, content: darkSuite.cards[idx].svg });
   });
 
-  const topSlot = buildBentoSlotAssets({ slot: "top", widgets: bySlot.top, theme, overrides });
+  const topSlot = buildBentoSlotAssets({
+    slot: "top",
+    widgets: bySlot.top,
+    theme,
+    overrides,
+    profileUsername: profile.username,
+  });
   const underHeroSlot = buildBentoSlotAssets({
     slot: "under-hero",
     widgets: bySlot["under-hero"],
     theme,
     overrides,
+    profileUsername: profile.username,
   });
   const underCardsSlot = buildBentoSlotAssets({
     slot: "under-cards",
     widgets: bySlot["under-cards"],
     theme,
     overrides,
+    profileUsername: profile.username,
   });
   const bottomSlot = buildBentoSlotAssets({
     slot: "bottom",
     widgets: bySlot.bottom,
     theme,
     overrides,
+    profileUsername: profile.username,
   });
 
   entries.push(
@@ -1102,13 +1575,17 @@ export function buildProfileZipEntries(params: {
     cardRows.push(`<p>\n  ${rowHtml}\n</p>`);
   }
 
-  const liveWidgets = mountedWidgets.filter((w) => isLiveWidgetId(w.widgetId));
-  if (liveWidgets.length > 0) {
+  const nativeLiveWidgets = mountedWidgets.filter(
+    (w) => isLiveWidgetId(w.widgetId) && !isPlataneSnakeInstance(w)
+  );
+  const plataneSnakeInst = mountedWidgets.find((w) => isPlataneSnakeInstance(w)) ?? null;
+
+  if (nativeLiveWidgets.length > 0) {
     entries.push({
       path: ".github/workflows/gitskins-widgets.yml",
       content: buildLiveWorkflowYaml({
         themeId: theme.id,
-        liveWidgets,
+        liveWidgets: nativeLiveWidgets,
         accentOverride: overrides.accentOverride,
         animated: overrides.animated,
       }),
@@ -1119,6 +1596,19 @@ export function buildProfileZipEntries(params: {
         content: liveGeneratorPy,
       });
     }
+  }
+
+  if (plataneSnakeInst) {
+    const sc = plataneSnakeInst.config as ContributionSnakeConfig;
+    entries.push({
+      path: ".github/workflows/snake.yml",
+      content: buildSnakeWorkflowYaml({
+        theme,
+        username: sc.username || profile.username,
+        accentOverride: plataneSnakeInst.accentOverride || overrides.accentOverride,
+        schedule: sc.schedule,
+      }),
+    });
   }
 
   if (overrides.showBadge) {
@@ -1146,9 +1636,14 @@ export function buildProfileZipEntries(params: {
 
   const readmeLines: string[] = [
     `<!-- Generated with GitSkins (https://gitskins.blessc.com) · Theme: ${theme.id} -->`,
-    ...(liveWidgets.length > 0
+    ...(nativeLiveWidgets.length > 0
       ? [
           `<!-- Auto-updating live widgets enabled via .github/workflows/gitskins-widgets.yml -->`,
+        ]
+      : []),
+    ...(plataneSnakeInst
+      ? [
+          `<!-- Theme-synced GitHub contribution snake enabled via .github/workflows/snake.yml -->`,
         ]
       : []),
     "",

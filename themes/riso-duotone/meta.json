@@ -1,0 +1,89 @@
+{
+  "id": "riso-duotone",
+  "order": 11,
+  "name": "Risograph Overprint Poster",
+  "nameZh": "孔版错位叠印海报",
+  "category": "Risograph Art",
+  "categoryZh": "孔版叠印海报",
+  "tagline": "Independent Tokyo/London Risograph studio poster with intentional 2–3px misregistered duotone ink overprints, halftone dot screens, and four-corner registration crosshairs.",
+  "taglineZh": "东京/伦敦独立孔版画工坊海报美学：2–3px 刻意错位双色叠印、网点半调滤网、高对比海报色块与四角套准十字线。",
+  "bestFor": ["Creative Technologists", "Design Engineers", "Indie Makers & Studios"],
+  "bestForZh": ["创意技术人", "设计工程师", "独立开发者 / 工作室"],
+  "author": "Furina-he",
+  "accent": "#0066CC",
+  "palette": {
+    "light": ["#F8F3E8", "#17203B", "#0066CC", "#FF4F5E", "#0E9472", "#F59E0B"],
+    "dark": ["#121318", "#F7F4EC", "#22D3EE", "#FF5E7E", "#34D399", "#F5B700"]
+  },
+  "tokens": {
+    "light": {
+      "bg": "#F8F3E8",
+      "surface": "#FDFBF5",
+      "ink": "#17203B",
+      "sub": "#3E4A6B",
+      "muted": "#6D7896",
+      "border": "#17203B",
+      "borderSoft": "#D7CEBC",
+      "accent": "#0066CC",
+      "accentFg": "#FFFFFF",
+      "secondary": "#FF4F5E",
+      "tertiary": "#0E9472",
+      "highlight": "#F59E0B",
+      "patternBg": "#EFE8D8",
+      "patternFg": "#C9D7EA"
+    },
+    "dark": {
+      "bg": "#121318",
+      "surface": "#1A1C24",
+      "ink": "#F7F4EC",
+      "sub": "#C2C5D3",
+      "muted": "#878CA0",
+      "border": "#383D4F",
+      "borderSoft": "#272B38",
+      "accent": "#22D3EE",
+      "accentFg": "#0F1218",
+      "secondary": "#FF5E7E",
+      "tertiary": "#34D399",
+      "highlight": "#F5B700",
+      "patternBg": "#161822",
+      "patternFg": "#263348"
+    }
+  },
+  "features": [
+    "Uncoated cream poster stock (Light) & midnight cardstock (Dark)",
+    "Intentional 2–3px misregistered Cobalt × Coral & Cyan × Pink ink plates",
+    "Halftone dot screen fields, four-corner print crosshairs (⊕), and edition stamps",
+    "Overprinted Bauhaus-Riso geometric emblem with subtle plate drift (prefers-reduced-motion)"
+  ],
+  "featuresZh": [
+    "浅色无涂布米白海报纸 + 深色午夜黑卡纸双语义色彩体系",
+    "钴蓝 × 荧光珊瑚红 / 荧光青 × 霓虹粉 2–3px 刻意错位双色叠印",
+    "网点半调滤网背景、四角套准十字标（⊕）与限量版号印记",
+    "叠印几何包豪斯孔版徽标，内置克制印版微漂移动效（支持减弱动效）"
+  ],
+  "buttons": [
+    { "id": "cloudlink", "label": "⊕ cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+    { "id": "openpet", "label": "⊕ openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+    { "id": "release", "label": "⊕ CloudLink v0.6.0", "url": "https://github.com/Furina-he/cloudlink/releases/latest" },
+    { "id": "github", "label": "⊕ @Furina-he", "url": "https://github.com/Furina-he?tab=repositories" }
+  ],
+  "cards": [
+    { "id": "cloudlink", "title": "CloudLink", "url": "https://github.com/Furina-he/cloudlink" },
+    { "id": "openpet", "title": "OpenPet", "url": "https://github.com/Furina-he/OpenPet" },
+    { "id": "gitskins", "title": "GitSkins", "url": "https://github.com/Furina-he/gitskins" },
+    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" }
+  ],
+  "sections": ["work", "activity"],
+  "subLinks": [
+    { "group": "Live works", "items": [
+      { "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+      { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+      { "label": "gitskins.blessc.com", "url": "https://gitskins.blessc.com" }
+    ]},
+    { "group": "Archive", "items": [
+      { "label": "openpet-market", "url": "https://github.com/Furina-he/openpet-market" },
+      { "label": "carview", "url": "https://github.com/Furina-he/carview" },
+      { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" }
+    ]}
+  ]
+}

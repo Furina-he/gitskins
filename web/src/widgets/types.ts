@@ -9,12 +9,20 @@ export type WidgetId =
   | "hero-sticker"
   | "pixel-runway"
   | "mini-tile"
+  | "keycap-rig"
+  | "split-flap"
+  | "skill-radar"
+  | "qr-pass"
   | "github-stats"
   | "coding-rhythm"
   | "rss-feed"
   | "live-weather"
   | "wakatime-weekly"
-  | "spotify-recent";
+  | "spotify-recent"
+  | "contribution-snake"
+  | "contrib-skyline"
+  | "commit-streak"
+  | "recent-activity";
 
 /** 4-column 846px Bento grid: 1=204px, 2=418px, 3=632px, 4=846px (10px gaps) */
 export type BentoColSpan = 1 | 2 | 3 | 4;
@@ -147,6 +155,63 @@ export interface SpotifyRecentConfig {
   duration: string;
 }
 
+export type SnakeEngine = "platane-snk" | "gitskins-svg";
+
+export interface ContributionSnakeConfig {
+  username: string;
+  engine: SnakeEngine;
+  speed: RunwaySpeed;
+  schedule: "daily" | "6h";
+}
+
+export interface KeycapRigConfig {
+  title: string;
+  keys: string;
+  accentKeys: string;
+  hardware: string;
+}
+
+export interface SplitFlapConfig {
+  header: string;
+  line1: string;
+  line2: string;
+  code: string;
+}
+
+export interface SkillRadarConfig {
+  title: string;
+  subtitle: string;
+  axes: string; // e.g. "SYS:88, AI:92, UI:84, INFRA:78, OSS:95, HW:72"
+}
+
+export interface QrPassConfig {
+  url: string;
+  title: string;
+  subtitle: string;
+  badge: string;
+}
+
+export interface ContribSkylineConfig {
+  username: string;
+  totalCommits: number;
+  weeks: number;
+  schedule: "daily" | "6h";
+}
+
+export interface CommitStreakConfig {
+  username: string;
+  currentStreak: number;
+  longestStreak: number;
+  totalCommits: number;
+}
+
+export interface RecentActivityConfig {
+  username: string;
+  event1: string;
+  event2: string;
+  event3: string;
+}
+
 export type WidgetConfigMap = {
   "pixel-companion": PixelCompanionConfig;
   "now-playing": NowPlayingConfig;
@@ -156,12 +221,20 @@ export type WidgetConfigMap = {
   "hero-sticker": HeroStickerConfig;
   "pixel-runway": PixelRunwayConfig;
   "mini-tile": MiniTileConfig;
+  "keycap-rig": KeycapRigConfig;
+  "split-flap": SplitFlapConfig;
+  "skill-radar": SkillRadarConfig;
+  "qr-pass": QrPassConfig;
   "github-stats": GitHubStatsConfig;
   "coding-rhythm": CodingRhythmConfig;
   "rss-feed": RssFeedConfig;
   "live-weather": LiveWeatherConfig;
   "wakatime-weekly": WakaTimeWeeklyConfig;
   "spotify-recent": SpotifyRecentConfig;
+  "contribution-snake": ContributionSnakeConfig;
+  "contrib-skyline": ContribSkylineConfig;
+  "commit-streak": CommitStreakConfig;
+  "recent-activity": RecentActivityConfig;
 };
 
 export type AnyWidgetConfig = WidgetConfigMap[WidgetId];

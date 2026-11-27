@@ -8,6 +8,7 @@ Generates Light & Dark theme-matched SVGs for GitHub Actions cron workflows:
   - live-weather    (1/2   cols x 160px) — Open-Meteo real-time pixel weather window
   - wakatime-weekly (2/3/4 cols x 160px) — WakaTime 7-day coding hours + language breakdown
   - spotify-recent  (2/3/4 cols x 160px) — Spotify Now Playing / recently played vinyl deck
+  - contribution-snake (4 cols x 160px) — Theme-matched 53x7 GitHub contribution snake
 
 Zero pip dependencies. Every SVG is strictly XML-validated before write.
 """
@@ -121,6 +122,76 @@ THEME_TOKENS: dict[str, dict[str, dict[str, str]]] = {
             "tertiary": "#C79C6D", "highlight": "#DFB35B", "patternBg": "#221F1B", "patternFg": "#322E28",
         },
     },
+    "synth-hardware": {
+        "light": {
+            "bg": "#EFECE6", "surface": "#FAF8F4", "ink": "#141517", "sub": "#44474D",
+            "muted": "#6E727A", "border": "#1C1E22", "borderSoft": "#CFCBC2",
+            "accent": "#FF5200", "accentFg": "#FFFFFF", "secondary": "#0088CC",
+            "tertiary": "#1E9E63", "highlight": "#D49B00", "patternBg": "#E3DFD6", "patternFg": "#B8B3A8",
+        },
+        "dark": {
+            "bg": "#121316", "surface": "#1A1C21", "ink": "#F3F2EE", "sub": "#B5B8C0",
+            "muted": "#7D818C", "border": "#363A44", "borderSoft": "#252830",
+            "accent": "#FF6B2B", "accentFg": "#121316", "secondary": "#38BDF8",
+            "tertiary": "#34D399", "highlight": "#FACC15", "patternBg": "#0D0E11", "patternFg": "#2A2E38",
+        },
+    },
+    "pcb-solder-mask": {
+        "light": {
+            "bg": "#F5F5F2", "surface": "#FFFFFF", "ink": "#16211B", "sub": "#3D4F45",
+            "muted": "#67786E", "border": "#1C4F38", "borderSoft": "#CBD6CF",
+            "accent": "#B87D14", "accentFg": "#FFFFFF", "secondary": "#1C6B4A",
+            "tertiary": "#0D7D8C", "highlight": "#D49B1A", "patternBg": "#EAECE8", "patternFg": "#C7D4CC",
+        },
+        "dark": {
+            "bg": "#0B1F17", "surface": "#102B20", "ink": "#F2F7F4", "sub": "#B6D4C5",
+            "muted": "#76A38E", "border": "#E5B84B", "borderSoft": "#1E4A38",
+            "accent": "#E5B84B", "accentFg": "#0B1F17", "secondary": "#34D399",
+            "tertiary": "#38BDF8", "highlight": "#F59E0B", "patternBg": "#081711", "patternFg": "#193D2E",
+        },
+    },
+    "transit-boarding": {
+        "light": {
+            "bg": "#FAF6EE", "surface": "#FFFDF9", "ink": "#15171A", "sub": "#444952",
+            "muted": "#727885", "border": "#181B20", "borderSoft": "#D8D0C2",
+            "accent": "#D93829", "accentFg": "#FFFFFF", "secondary": "#1B56B5",
+            "tertiary": "#168052", "highlight": "#C98212", "patternBg": "#EFE9DC", "patternFg": "#D4CCBC",
+        },
+        "dark": {
+            "bg": "#111317", "surface": "#181B21", "ink": "#F4F1EA", "sub": "#B9B5AC",
+            "muted": "#827F78", "border": "#363B46", "borderSoft": "#262A33",
+            "accent": "#F59E0B", "accentFg": "#111317", "secondary": "#60A5FA",
+            "tertiary": "#34D399", "highlight": "#FB7185", "patternBg": "#0D0F13", "patternFg": "#242830",
+        },
+    },
+    "classic-desktop-os": {
+        "light": {
+            "bg": "#E6E5DF", "surface": "#FFFFFF", "ink": "#111111", "sub": "#3B3B3F",
+            "muted": "#6B6B72", "border": "#111111", "borderSoft": "#B8B7B0",
+            "accent": "#2455C8", "accentFg": "#FFFFFF", "secondary": "#C93B2B",
+            "tertiary": "#1E824C", "highlight": "#C98A00", "patternBg": "#DCDAD2", "patternFg": "#9C9A92",
+        },
+        "dark": {
+            "bg": "#17181D", "surface": "#202229", "ink": "#F1F1EE", "sub": "#BCBCC4",
+            "muted": "#868792", "border": "#D8D8D2", "borderSoft": "#383B46",
+            "accent": "#60A5FA", "accentFg": "#111318", "secondary": "#F87171",
+            "tertiary": "#4ADE80", "highlight": "#FACC15", "patternBg": "#121318", "patternFg": "#2D303A",
+        },
+    },
+    "riso-duotone": {
+        "light": {
+            "bg": "#F8F3E8", "surface": "#FDFBF5", "ink": "#17203B", "sub": "#3E4A6B",
+            "muted": "#6D7896", "border": "#17203B", "borderSoft": "#D7CEBC",
+            "accent": "#0066CC", "accentFg": "#FFFFFF", "secondary": "#FF4F5E",
+            "tertiary": "#0E9472", "highlight": "#F59E0B", "patternBg": "#EFE8D8", "patternFg": "#C9D7EA",
+        },
+        "dark": {
+            "bg": "#121318", "surface": "#1A1C24", "ink": "#F7F4EC", "sub": "#C2C5D3",
+            "muted": "#878CA0", "border": "#383D4F", "borderSoft": "#272B38",
+            "accent": "#22D3EE", "accentFg": "#0F1218", "secondary": "#FF5E7E",
+            "tertiary": "#34D399", "highlight": "#F5B700", "patternBg": "#161822", "patternFg": "#263348",
+        },
+    },
 }
 
 
@@ -200,7 +271,7 @@ def chamfer(x: float, y: float, w: float, h: float, cut: float = 5) -> str:
 def head_font(theme_id: str) -> str:
     if theme_id in ("editorial-zine", "seal-ink-scroll"):
         return FONT_SERIF
-    if theme_id in ("crt-terminal", "pixel-rpg-hud"):
+    if theme_id in ("crt-terminal", "pixel-rpg-hud", "pcb-solder-mask", "classic-desktop-os"):
         return FONT_MONO
     return FONT_SANS
 
@@ -302,6 +373,78 @@ def render_theme_frame(
   <text x="{w - 18}" y="25" text-anchor="end" font-family='{FONT_MONO}' font-size="9.2" fill="{t['muted']}">{safe_meta}</text>
   <line x1="16" y1="32.5" x2="{w - 16}" y2="32.5" stroke="{t['borderSoft']}" stroke-width="0.9"/>"""
         return "", chrome, 38, 18
+
+    if theme_id == "synth-hardware":
+        screw = lambda cx, cy: (
+            f'<g><circle cx="{cx}" cy="{cy}" r="3" fill="{t["patternBg"]}" stroke="{t["border"]}" stroke-width="0.8"/>'
+            f'<line x1="{cx - 1.8}" y1="{cy}" x2="{cx + 1.8}" y2="{cy}" stroke="{t["muted"]}" stroke-width="0.7"/></g>'
+        )
+        chrome = f"""
+  <rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" rx="3" fill="{t['bg']}" stroke="{t['border']}" stroke-width="1.2"/>
+  <rect x="5" y="5" width="{w - 10}" height="22" fill="{t['patternBg']}" stroke="{t['borderSoft']}" stroke-width="0.8"/>
+  {screw(12, 16)}{screw(w - 12, 16)}{screw(12, h - 10)}{screw(w - 12, h - 10)}
+  <circle cx="24" cy="16" r="3" fill="{t['accent']}"/>
+  <circle cx="33" cy="16" r="2.2" fill="{t['secondary']}"/>
+  <text x="42" y="19.5" font-family='{FONT_MONO}' font-size="9.2" font-weight="700" letter-spacing="0.6" fill="{t['ink']}">{safe_tag}</text>
+  <text x="{w - 22}" y="19.5" text-anchor="end" font-family='{FONT_MONO}' font-size="9" fill="{t['muted']}">{safe_meta}</text>"""
+        return "", chrome, 34, 18
+
+    if theme_id == "pcb-solder-mask":
+        via = lambda cx, cy: f'<g><circle cx="{cx}" cy="{cy}" r="3.6" fill="{t["accent"]}"/><circle cx="{cx}" cy="{cy}" r="1.5" fill="{t["bg"]}"/></g>'
+        chrome = f"""
+  <rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" fill="{t['bg']}" stroke="{t['border']}" stroke-width="1.3"/>
+  <rect x="6" y="6" width="{w - 12}" height="{h - 12}" fill="none" stroke="{t['borderSoft']}" stroke-width="0.8"/>
+  <path d="M 16 28 L 32 28 L 40 20 L {w - 20} 20" fill="none" stroke="{t['borderSoft']}" stroke-opacity="0.7" stroke-width="0.9"/>
+  {via(12, 12)}{via(w - 12, 12)}{via(12, h - 12)}{via(w - 12, h - 12)}
+  <rect x="24" y="12" width="6" height="6" fill="{t['accent']}" shape-rendering="crispEdges"/>
+  <text x="35" y="18.5" font-family='{FONT_MONO}' font-size="9.2" font-weight="700" fill="{t['ink']}">{safe_tag}</text>
+  <text x="{w - 24}" y="18.5" text-anchor="end" font-family='{FONT_MONO}' font-size="9" fill="{t['accent']}">{safe_meta}</text>
+  <line x1="16" y1="30.5" x2="{w - 16}" y2="30.5" stroke="{t['borderSoft']}" stroke-width="0.9"/>"""
+        return "", chrome, 36, 18
+
+    if theme_id == "transit-boarding":
+        chrome = f"""
+  <rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" fill="{t['bg']}" stroke="{t['border']}" stroke-width="1.1"/>
+  <rect x="1" y="1" width="{w - 2}" height="24" fill="{t['accent']}"/>
+  <circle cx="14" cy="13" r="4" fill="none" stroke="{t['accentFg']}" stroke-width="1.4"/>
+  <text x="25" y="16.5" font-family='{FONT_MONO}' font-size="9.5" font-weight="700" letter-spacing="0.8" fill="{t['accentFg']}">{safe_tag}</text>
+  <text x="{w - 14}" y="16.5" text-anchor="end" font-family='{FONT_MONO}' font-size="9" font-weight="700" fill="{t['accentFg']}" fill-opacity="0.9">{safe_meta}</text>
+  <line x1="14" y1="{h - 10.5}" x2="{w - 14}" y2="{h - 10.5}" stroke="{t['borderSoft']}" stroke-dasharray="3 3" stroke-width="0.9"/>"""
+        return "", chrome, 33, 16
+
+    if theme_id == "classic-desktop-os":
+        stripes = "".join(f'<line x1="26" y1="{sy}" x2="{w - 14}" y2="{sy}" stroke="{t["borderSoft"]}" stroke-width="0.9"/>' for sy in (7, 10, 13, 16, 19))
+        tw = min(160, max(70, round(estimate_px(tag, 9.2, True) + 16)))
+        chrome = f"""
+  <rect x="2.5" y="2.5" width="{w - 3}" height="{h - 3}" fill="{t['border']}" fill-opacity="0.18"/>
+  <rect x="0.5" y="0.5" width="{w - 3}" height="{h - 3}" fill="{t['surface']}" stroke="{t['border']}" stroke-width="1.2"/>
+  <rect x="1" y="1" width="{w - 4}" height="23" fill="{t['bg']}"/>
+  {stripes}
+  <rect x="8" y="6" width="12" height="12" fill="{t['surface']}" stroke="{t['border']}" stroke-width="1"/>
+  <rect x="{round(w / 2 - tw / 2)}" y="4" width="{tw}" height="17" fill="{t['bg']}"/>
+  <text x="{round(w / 2)}" y="15.5" text-anchor="middle" font-family='{FONT_MONO}' font-size="9.2" font-weight="700" fill="{t['ink']}">{safe_tag}</text>
+  <line x1="0.5" y1="24.5" x2="{w - 2.5}" y2="24.5" stroke="{t['border']}" stroke-width="1.1"/>
+  <text x="{w - 14}" y="15.5" text-anchor="end" font-family='{FONT_MONO}' font-size="8.4" fill="{t['muted']}">{esc(fit_text(right_meta, 78, 8.4, True))}</text>"""
+        return "", chrome, 33, 16
+
+    if theme_id == "riso-duotone":
+        defs = f"""
+    <pattern id="riso-{uid}" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="0.85" fill="{t['patternFg']}" fill-opacity="{'0.4' if mode == 'dark' else '0.65'}"/>
+    </pattern>"""
+        reg = lambda cx, cy: (
+            f'<g stroke="{t["secondary"]}" stroke-width="0.8" fill="none"><circle cx="{cx}" cy="{cy}" r="2.6"/>'
+            f'<line x1="{cx - 4.5}" y1="{cy}" x2="{cx + 4.5}" y2="{cy}"/><line x1="{cx}" y1="{cy - 4.5}" x2="{cx}" y2="{cy + 4.5}"/></g>'
+        )
+        chrome = f"""
+  <rect x="2.5" y="2.5" width="{w - 3}" height="{h - 3}" fill="{t['secondary']}" fill-opacity="0.22"/>
+  <rect x="0.5" y="0.5" width="{w - 3}" height="{h - 3}" fill="{t['bg']}" stroke="{t['border']}" stroke-width="1.2"/>
+  <rect x="1" y="1" width="{w - 4}" height="24" fill="url(#riso-{uid})"/>
+  <line x1="0.5" y1="25.5" x2="{w - 2.5}" y2="25.5" stroke="{t['border']}" stroke-width="1"/>
+  {reg(13, 13)}
+  <text x="25" y="16.5" font-family='{FONT_MONO}' font-size="9.5" font-weight="700" fill="{t['accent']}">{safe_tag}</text>
+  <text x="{w - 14}" y="16.5" text-anchor="end" font-family='{FONT_MONO}' font-size="9" fill="{t['secondary']}">{safe_meta}</text>"""
+        return defs, chrome, 34, 16
 
     chrome = f"""
   <rect x="0.5" y="0.5" width="{w - 1}" height="{h - 1}" fill="{t['bg']}" stroke="{t['border']}" stroke-width="1"/>
@@ -957,6 +1100,532 @@ def render_spotify_recent_svg(data: dict, theme_id: str, mode: str, span: int, a
 </svg>"""
 
 
+SNAKE_PALETTES: dict[str, dict[str, tuple[str, list[str]]]] = {
+    "swiss-bauhaus-pixel": {
+        "light": ("#00A3CC", ["#EAE8E1", "#B5E2F2", "#5AC1E4", "#2370E8", "#111214"]),
+        "dark": ("#38BDF8", ["#1B1F29", "#143A54", "#1D5E87", "#38BDF8", "#F5B700"]),
+    },
+    "blueprint-cad": {
+        "light": ("#1D5BB8", ["#E3ECF7", "#B8D3F2", "#6DA6E6", "#1D5BB8", "#0C2340"]),
+        "dark": ("#38BDF8", ["#10294A", "#164070", "#1E63A6", "#38BDF8", "#FBBF24"]),
+    },
+    "editorial-zine": {
+        "light": ("#C93B2B", ["#EAE3D5", "#D4C8B4", "#A49987", "#524D45", "#141311"]),
+        "dark": ("#E45847", ["#221F1B", "#3D372F", "#6F665B", "#B5ABA0", "#F0EBE1"]),
+    },
+    "crt-terminal": {
+        "light": ("#0E7C5B", ["#E4DFD2", "#B4DFD0", "#5BBF9F", "#0E7C5B", "#182026"]),
+        "dark": ("#34D399", ["#141E24", "#103D31", "#146E53", "#34D399", "#A7F3D0"]),
+    },
+    "pixel-rpg-hud": {
+        "light": ("#D97706", ["#E6DFCB", "#C7DEC0", "#6DBE7D", "#15803D", "#D97706"]),
+        "dark": ("#FACC15", ["#1F2640", "#1E4D3C", "#2E8555", "#4ADE80", "#FACC15"]),
+    },
+    "seal-ink-scroll": {
+        "light": ("#C4362C", ["#EAE2D3", "#CFC5B4", "#9E9485", "#575049", "#1C1917"]),
+        "dark": ("#E0564A", ["#23201C", "#3E3932", "#6B6358", "#A89E8E", "#F2ECE1"]),
+    },
+    "synth-hardware": {
+        "light": ("#FF5200", ["#DFDBD2", "#F5C6AE", "#FF9361", "#FF5200", "#141517"]),
+        "dark": ("#FF6B2B", ["#1D1F26", "#4A271A", "#8F3E1D", "#FF6B2B", "#FACC15"]),
+    },
+    "pcb-solder-mask": {
+        "light": ("#B87D14", ["#E3E7E2", "#BFE0CE", "#63B08B", "#1C6B4A", "#B87D14"]),
+        "dark": ("#E5B84B", ["#112B20", "#174A36", "#227554", "#34D399", "#E5B84B"]),
+    },
+    "transit-boarding": {
+        "light": ("#D93829", ["#EAE3D5", "#BDD2EE", "#6899D9", "#1B56B5", "#D93829"]),
+        "dark": ("#F59E0B", ["#1D2028", "#2B3A57", "#3D67A8", "#60A5FA", "#F59E0B"]),
+    },
+    "classic-desktop-os": {
+        "light": ("#2455C8", ["#D8D6CE", "#B8C7E8", "#7496DF", "#2455C8", "#111111"]),
+        "dark": ("#60A5FA", ["#22242C", "#1F375C", "#2E5A9E", "#60A5FA", "#FACC15"]),
+    },
+    "riso-duotone": {
+        "light": ("#FF4F5E", ["#EAE3D3", "#B5D2F2", "#5C9EE6", "#0066CC", "#FF4F5E"]),
+        "dark": ("#FF5E7E", ["#1E212E", "#164457", "#187E9C", "#22D3EE", "#FF5E7E"]),
+    },
+}
+
+
+def mix_hex_color(a: str, b: str, ratio: float) -> str:
+    def _rgb(h: str) -> tuple[int, int, int]:
+        h = h.lstrip("#")
+        return int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+    try:
+        ra, ga, ba = _rgb(a)
+        rb, gb, bb = _rgb(b)
+    except Exception:
+        return b
+    r = max(0, min(255, round(ra + (rb - ra) * ratio)))
+    g = max(0, min(255, round(ga + (gb - ga) * ratio)))
+    bl = max(0, min(255, round(ba + (bb - ba) * ratio)))
+    return f"#{r:02X}{g:02X}{bl:02X}"
+
+
+def resolve_snake_palette(theme_id: str, mode: str, t: dict[str, str], accent: str) -> tuple[str, list[str]]:
+    clean_acc = accent.strip().upper() if accent and re.match(r"^#[0-9a-fA-F]{6}$", accent.strip()) else ""
+    curated = SNAKE_PALETTES.get(theme_id, {}).get(mode)
+    if curated and not clean_acc:
+        return curated
+    snake = clean_acc or t["accent"]
+    empty = curated[1][0] if curated else mix_hex_color(t["surface"], t["borderSoft"], 0.42 if mode == "dark" else 0.38)
+    dots = [
+        empty,
+        mix_hex_color(empty, snake, 0.28),
+        mix_hex_color(empty, snake, 0.56),
+        snake,
+        t["highlight"] if mode == "dark" else t["ink"],
+    ]
+    return snake, dots
+
+
+def demo_contrib_grid(handle: str) -> list[list[int]]:
+    seed = 7
+    for ch in handle:
+        seed = (seed * 31 + ord(ch)) % 97
+    grid: list[list[int]] = []
+    for c in range(53):
+        col: list[int] = []
+        for r in range(7):
+            wave = math.sin((c + seed) * 0.42 + r * 0.85) + math.cos(c * 0.21 - r * 1.15 + seed * 0.3)
+            h = ((c * 37 + r * 91 + seed * 17) ^ (c * 13)) & 31
+            if h < 6:
+                lvl = 0
+            elif wave > 1.05 or h == 30:
+                lvl = 4
+            elif wave > 0.35 or h > 24:
+                lvl = 3
+            elif wave > -0.35:
+                lvl = 2
+            else:
+                lvl = 1
+            col.append(lvl)
+        grid.append(col)
+    return grid
+
+
+def fetch_contribution_snake(username: str, token: str, demo: bool) -> dict:
+    handle = (username or "developer").lstrip("@")
+    if demo or not token:
+        return {"username": handle, "total": 1284, "grid": demo_contrib_grid(handle)}
+    level_map = {
+        "NONE": 0,
+        "FIRST_QUARTILE": 1,
+        "SECOND_QUARTILE": 2,
+        "THIRD_QUARTILE": 3,
+        "FOURTH_QUARTILE": 4,
+    }
+    query = """
+    query($login: String!) {
+      user(login: $login) {
+        contributionsCollection {
+          contributionCalendar {
+            totalContributions
+            weeks {
+              contributionDays {
+                contributionLevel
+              }
+            }
+          }
+        }
+      }
+    }
+    """
+    try:
+        payload = json.dumps({"query": query, "variables": {"login": handle}}).encode("utf-8")
+        req = urllib.request.Request(
+            "https://api.github.com/graphql",
+            data=payload,
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json",
+                "User-Agent": "GitSkins-LiveWidgets/0.7",
+            },
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=14) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+        cal = body["data"]["user"]["contributionsCollection"]["contributionCalendar"]
+        weeks = cal.get("weeks") or []
+        grid: list[list[int]] = []
+        for wk in weeks[-53:]:
+            days = wk.get("contributionDays") or []
+            col = [level_map.get(str(d.get("contributionLevel", "NONE")), 0) for d in days[:7]]
+            while len(col) < 7:
+                col.append(0)
+            grid.append(col)
+        while len(grid) < 53:
+            grid.insert(0, [0] * 7)
+        return {
+            "username": handle,
+            "total": int(cal.get("totalContributions", 0)),
+            "grid": grid[:53],
+        }
+    except Exception as exc:
+        print(f"[warn] contribution-snake fetch failed ({exc}), using fallback", file=sys.stderr)
+        return {"username": handle, "total": 1284, "grid": demo_contrib_grid(handle)}
+
+
+def render_contribution_snake_svg(data: dict, theme_id: str, mode: str, span: int, accent: str, animated: bool) -> str:
+    t = resolve_tokens(theme_id, mode, accent)
+    w = col_span_to_px(4)
+    h = 160
+    uid = f"lsnk-{theme_id}-{mode}"
+    handle = str(data.get("username") or "developer")
+    total = int(data.get("total") or 0)
+    grid = data.get("grid") or demo_contrib_grid(handle)
+    snake_col, dots = resolve_snake_palette(theme_id, mode, t, accent)
+    defs, chrome, top, pad = render_theme_frame(
+        uid, theme_id, mode, t, w, h, "CONTRIBUTION SNAKE", f"@{fit_text(handle, 110, 9.5, True)} · {total:,} COMMITS"
+    )
+
+    cols, rows = 53, 7
+    cell_w, cell_h, gap_x, gap_y = 10, 9, 4, 2
+    step_x, step_y = cell_w + gap_x, cell_h + gap_y
+    grid_w = cols * step_x - gap_x
+    grid_x = round((w - grid_w) / 2) + 8
+    grid_y = top + 4
+
+    eaten_dots = [(14, 1, 6), (34, 1, 17), (36, 3, 33), (16, 3, 43), (22, 5, 61), (42, 5, 71), (26, 6, 87)]
+    eaten_map = {(c, r): idx for idx, (c, r, _p) in enumerate(eaten_dots)}
+
+    cells: list[str] = []
+    for c in range(cols):
+        for r in range(rows):
+            cx = grid_x + c * step_x
+            cy = grid_y + r * step_y
+            lvl = max(0, min(4, int(grid[c][r]))) if c < len(grid) and r < len(grid[c]) else 0
+            eidx = eaten_map.get((c, r))
+            if eidx is not None:
+                lvl = 4
+            fill = dots[lvl]
+            if eidx is not None and animated:
+                cells.append(
+                    f'<rect x="{cx}" y="{cy}" width="{cell_w}" height="{cell_h}" fill="{dots[0]}" shape-rendering="crispEdges"/>'
+                    f'<rect class="eat-{uid}-{eidx}" x="{cx}" y="{cy}" width="{cell_w}" height="{cell_h}" fill="{fill}" shape-rendering="crispEdges"/>'
+                )
+            else:
+                cells.append(
+                    f'<rect x="{cx}" y="{cy}" width="{cell_w}" height="{cell_h}" fill="{fill}" shape-rendering="crispEdges"/>'
+                )
+
+    waypoints = [
+        (0, 2, 1), (24.74, 49, 1), (25.79, 49, 3), (48.42, 6, 3),
+        (49.47, 6, 5), (72.11, 49, 5), (72.63, 49, 6), (97.37, 2, 6), (100, 2, 1),
+    ]
+    dur = 16.0
+    step_dur = dur / 190.0
+    kf_body = " ".join(
+        f"{pct}% {{ transform: translate({grid_x + c * step_x}px, {grid_y + r * step_y}px); }}"
+        for pct, c, r in waypoints
+    )
+    seg_defs = [
+        (10, 9, 0.0, 0.0, 1.0), (10, 9, 0.0, 0.0, 0.94), (9, 8, 0.5, 0.5, 0.86), (9, 8, 0.5, 0.5, 0.78),
+        (8, 7, 1.0, 1.0, 0.68), (8, 7, 1.0, 1.0, 0.58), (7, 6, 1.5, 1.5, 0.46), (6, 5, 2.0, 2.0, 0.34),
+    ]
+    snake_css: list[str] = []
+    snake_nodes: list[str] = []
+    seg_count = len(seg_defs)
+    for i in range(seg_count - 1, -1, -1):
+        sw, sh, ox, oy, op = seg_defs[i]
+        sx = grid_x + (26 - i) * step_x
+        sy = grid_y + 3 * step_y
+        delay = -((seg_count - i) * step_dur)
+        snake_css.append(
+            f".snk-{uid}-{i} {{ transform: translate({sx}px, {sy}px); animation: snk_{uid} {dur:.0f}s linear {delay:.3f}s infinite; }}"
+        )
+        eye = (
+            f'<rect x="6" y="2" width="2" height="2" fill="{t["bg"]}" shape-rendering="crispEdges"/>'
+            f'<rect x="6" y="5" width="2" height="2" fill="{t["bg"]}" shape-rendering="crispEdges"/>'
+            if i == 0
+            else ""
+        )
+        if animated:
+            snake_nodes.append(
+                f'<g class="snk-{uid}-{i}"><rect x="{ox}" y="{oy}" width="{sw}" height="{sh}" fill="{snake_col}" fill-opacity="{op}" shape-rendering="crispEdges"/>{eye}</g>'
+            )
+        else:
+            snake_nodes.append(
+                f'<g transform="translate({sx}, {sy})"><rect x="{ox}" y="{oy}" width="{sw}" height="{sh}" fill="{snake_col}" fill-opacity="{op}" shape-rendering="crispEdges"/>{eye}</g>'
+            )
+
+    eaten_css = " ".join(
+        f"@keyframes eat_{uid}_{idx} {{ 0%, {max(0, p - 1):.1f}% {{ opacity: 1; }} {min(98, p + 1.5):.1f}%, {min(99, p + 14):.1f}% {{ opacity: 0.08; }} 100% {{ opacity: 1; }} }} .eat-{uid}-{idx} {{ animation: eat_{uid}_{idx} {dur:.0f}s linear infinite; }}"
+        for idx, (_c, _r, p) in enumerate(eaten_dots)
+    )
+    style_block = (
+        f"""<style>
+    @keyframes snk_{uid} {{ {kf_body} }}
+    {" ".join(snake_css)}
+    {eaten_css}
+    @media (prefers-reduced-motion: reduce) {{ [class^="snk-{uid}"], [class^="eat-{uid}"] {{ animation: none !important; }} }}
+  </style>"""
+        if animated
+        else ""
+    )
+
+    day_labels = "".join(
+        f'<text x="{grid_x - 8}" y="{grid_y + r * step_y + 7.5}" text-anchor="end" font-family=\'{FONT_MONO}\' font-size="8" fill="{t["muted"]}">{lbl}</text>'
+        for lbl, r in (("MON", 1), ("WED", 3), ("FRI", 5))
+    )
+    leg_y = h - 20
+    leg_x = w - pad - 96
+    leg_dots = "".join(
+        f'<rect x="{leg_x + idx * 12}" y="{leg_y - 8}" width="9" height="8" fill="{col}" shape-rendering="crispEdges"/>'
+        for idx, col in enumerate(dots)
+    )
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="Contribution Snake for @{esc(handle)}">
+  <title>Contribution Snake — @{esc(handle)}</title>{f'<defs>{defs}</defs>' if defs else ''}
+  {style_block}
+  {chrome}
+  {day_labels}
+  <g>{"".join(cells)}</g>
+  {"".join(snake_nodes)}
+  <rect x="{pad}" y="{leg_y - 7}" width="7" height="7" fill="{snake_col}" shape-rendering="crispEdges"/>
+  <text x="{pad + 12}" y="{leg_y}" font-family='{FONT_MONO}' font-size="8.6" font-weight="700" fill="{t['muted']}">GITSKINS GRAPHQL · SNAKE {snake_col} · ZERO-503</text>
+  <text x="{leg_x - 6}" y="{leg_y}" text-anchor="end" font-family='{FONT_MONO}' font-size="8.4" fill="{t['muted']}">LESS</text>
+  {leg_dots}
+  <text x="{leg_x + 62}" y="{leg_y}" font-family='{FONT_MONO}' font-size="8.4" fill="{t['muted']}">MORE</text>
+</svg>"""
+
+
+def render_contrib_skyline_svg(data: dict, theme_id: str, mode: str, span: int, accent: str, animated: bool) -> str:
+    t = resolve_tokens(theme_id, mode, accent)
+    w = col_span_to_px(max(3, min(4, span)))
+    h = 160
+    uid = f"lsky-{theme_id}-{mode}-c{span}"
+    handle = str(data.get("username") or "developer")
+    total = int(data.get("total") or 0)
+    full_grid = data.get("grid") or demo_contrib_grid(handle)
+    weeks = 18 if span >= 4 else 14
+    slice_grid = full_grid[-weeks:]
+    _snake_col, dots = resolve_snake_palette(theme_id, mode, t, accent)
+    defs, chrome, top, pad = render_theme_frame(
+        uid, theme_id, mode, t, w, h, "3D SKYLINE", f"@{fit_text(handle, 100, 9.5, True)} · {total:,} COMMITS"
+    )
+
+    dx = 16.5 if span >= 4 else 13.8
+    dy = 6.4 if span >= 4 else 5.6
+    row_dx = -11.5
+    row_dy = 6.2
+    grid_span_x = (weeks - 1) * dx + 6 * row_dx
+    origin_x = round(w / 2 - grid_span_x / 2) + 8
+    origin_y = top + 34
+
+    polys: list[str] = []
+    for c in range(weeks):
+        for r in range(7):
+            lvl = max(0, min(4, int(slice_grid[c][r]))) if c < len(slice_grid) and r < len(slice_grid[c]) else 0
+            bh = 2 if lvl == 0 else 6 + lvl * 8
+            bx = origin_x + c * dx + r * row_dx
+            by = origin_y + c * dy + r * row_dy
+            hw = dx * 0.44
+            hh = dy * 0.46
+            top_c = dots[lvl]
+            left_c = mix_hex_color(top_c, "#000000", 0.28 if mode == "dark" else 0.20)
+            right_c = mix_hex_color(top_c, "#000000", 0.48 if mode == "dark" else 0.36)
+            ty = by - bh
+            top_pts = f"{bx:.1f},{ty - hh:.1f} {bx + hw:.1f},{ty:.1f} {bx:.1f},{ty + hh:.1f} {bx - hw:.1f},{ty:.1f}"
+            left_pts = f"{bx - hw:.1f},{ty:.1f} {bx:.1f},{ty + hh:.1f} {bx:.1f},{by + hh:.1f} {bx - hw:.1f},{by:.1f}"
+            right_pts = f"{bx:.1f},{ty + hh:.1f} {bx + hw:.1f},{ty:.1f} {bx + hw:.1f},{by:.1f} {bx:.1f},{by + hh:.1f}"
+            polys.append(
+                f'<polygon points="{left_pts}" fill="{left_c}"/><polygon points="{right_pts}" fill="{right_c}"/><polygon points="{top_pts}" fill="{top_c}"/>'
+            )
+
+    foot_y = h - 18
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="3D Contribution Skyline for @{esc(handle)}">
+  <title>3D Contribution Skyline — @{esc(handle)}</title>{f'<defs>{defs}</defs>' if defs else ''}
+  {chrome}
+  <g>{"".join(polys)}</g>
+  <rect x="{pad}" y="{foot_y - 7}" width="6" height="6" fill="{t['accent']}" shape-rendering="crispEdges"/>
+  <text x="{pad + 11}" y="{foot_y}" font-family='{FONT_MONO}' font-size="8.6" font-weight="700" fill="{t['muted']}">ISOMETRIC {weeks}W × 7D · ZERO-503</text>
+  <text x="{w - pad}" y="{foot_y}" text-anchor="end" font-family='{FONT_MONO}' font-size="8.6" fill="{t['muted']}">GITHUB GRAPHQL</text>
+</svg>"""
+
+
+def compute_streak_stats(calendar_data: dict) -> dict:
+    grid = calendar_data.get("grid") or []
+    flat = [lvl for col in grid for lvl in col]
+    if not flat:
+        return {"username": calendar_data.get("username", "developer"), "current": 42, "longest": 96, "total": 1284, "last14": [1] * 14}
+    longest = 0
+    run = 0
+    for v in flat:
+        if v > 0:
+            run += 1
+            longest = max(longest, run)
+        else:
+            run = 0
+    cur = 0
+    idx = len(flat) - 1
+    if idx >= 0 and flat[idx] == 0:
+        idx -= 1
+    while idx >= 0 and flat[idx] > 0:
+        cur += 1
+        idx -= 1
+    last14 = [1 if v > 0 else 0 for v in flat[-14:]]
+    while len(last14) < 14:
+        last14.insert(0, 0)
+    return {
+        "username": calendar_data.get("username", "developer"),
+        "current": cur,
+        "longest": max(longest, cur),
+        "total": int(calendar_data.get("total") or 0),
+        "last14": last14,
+    }
+
+
+def render_commit_streak_svg(data: dict, theme_id: str, mode: str, span: int, accent: str, animated: bool) -> str:
+    t = resolve_tokens(theme_id, mode, accent)
+    w = col_span_to_px(max(1, min(2, span)))
+    h = 160
+    uid = f"lstrk-{theme_id}-{mode}-c{span}"
+    wide = span >= 2
+    handle = str(data.get("username") or "developer")
+    cur = int(data.get("current") or 0)
+    best = int(data.get("longest") or cur)
+    total = int(data.get("total") or cur)
+    last14 = data.get("last14") or [1] * 14
+    defs, chrome, top, pad = render_theme_frame(
+        uid, theme_id, mode, t, w, h, "STREAK", f"@{fit_text(handle, 100, 9, True)}" if wide else "LIVE"
+    )
+    fx = pad + (26 if wide else 18)
+    fy = top + 14
+    flame_svg = (
+        f'<g class="flm-{uid}" transform="translate({fx}, {fy})">'
+        f'<path fill="{t["secondary"]}" shape-rendering="crispEdges" d="M12 0h4v4h-4zM8 4h12v4H8zM4 8h20v12H4zM0 16h28v12H0zM4 28h20v4H4z"/>'
+        f'<path fill="{t["accent"]}" shape-rendering="crispEdges" d="M12 8h4v4h-4zM8 12h12v12H8zM4 20h20v8H4z"/>'
+        f'<path fill="{t["highlight"]}" shape-rendering="crispEdges" d="M12 16h4v12h-4zM8 22h12v6H8z"/>'
+        f"</g>"
+    )
+    bar_y = h - 28
+    bar_inner_w = w - pad * 2
+    seg_gap = 3
+    seg_w = max(4, (bar_inner_w - seg_gap * 13) // 14)
+    day_bars = "".join(
+        f'<rect x="{pad + i * (seg_w + seg_gap)}" y="{bar_y}" width="{seg_w}" height="7" '
+        f'fill="{t["borderSoft"] if not on else (t["accent"] if i >= 11 else (t["secondary"] if i >= 7 else t["tertiary"]))}" shape-rendering="crispEdges"/>'
+        for i, on in enumerate(last14[:14])
+    )
+    if wide:
+        metrics = f"""
+  <text x="{pad + 72}" y="{top + 34}" font-family='{head_font(theme_id)}' font-size="30" font-weight="800" fill="{t['ink']}">{cur}<tspan font-family='{FONT_MONO}' font-size="11" font-weight="700" fill="{t['accent']}"> DAYS</tspan></text>
+  <text x="{pad + 72}" y="{top + 52}" font-family='{FONT_MONO}' font-size="9.5" fill="{t['muted']}">CURRENT STREAK · ACTIVE</text>
+  <line x1="{w - pad - 118}" y1="{top + 8}" x2="{w - pad - 118}" y2="{top + 62}" stroke="{t['borderSoft']}" stroke-width="0.9"/>
+  <text x="{w - pad - 104}" y="{top + 21}" font-family='{FONT_MONO}' font-size="8.5" fill="{t['muted']}">LONGEST</text>
+  <text x="{w - pad - 104}" y="{top + 37}" font-family='{head_font(theme_id)}' font-size="15" font-weight="800" fill="{t['ink']}">{best}d</text>
+  <text x="{w - pad - 104}" y="{top + 52}" font-family='{FONT_MONO}' font-size="8.5" fill="{t['muted']}">YEAR <tspan fill="{t['sub']}" font-weight="700">{total:,}</tspan></text>"""
+    else:
+        metrics = f"""
+  <text x="{pad + 56}" y="{top + 36}" font-family='{head_font(theme_id)}' font-size="28" font-weight="800" fill="{t['ink']}">{cur}<tspan font-family='{FONT_MONO}' font-size="10" fill="{t['accent']}">d</tspan></text>
+  <text x="{pad + 56}" y="{top + 53}" font-family='{FONT_MONO}' font-size="8.8" fill="{t['muted']}">BEST {best}d</text>"""
+
+    style_block = (
+        f"<style>@keyframes flm_{uid} {{ 0%, 100% {{ transform: translate({fx}px, {fy}px) scaleY(1); }} 50% {{ transform: translate({fx}px, {fy - 1}px) scaleY(1.04); }} }} "
+        f".flm-{uid} {{ animation: flm_{uid} 1.9s ease-in-out infinite; }} "
+        f"@media (prefers-reduced-motion: reduce) {{ .flm-{uid} {{ animation: none !important; }} }}</style>"
+        if animated
+        else ""
+    )
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="Commit Streak: {cur} days">
+  <title>Commit Streak — {cur} days</title>{f'<defs>{defs}</defs>' if defs else ''}
+  {style_block}
+  {chrome}
+  {flame_svg}
+  {metrics}
+  <text x="{pad}" y="{bar_y - 5}" font-family='{FONT_MONO}' font-size="8.2" fill="{t['muted']}">LAST 14 DAYS</text>
+  {day_bars}
+</svg>"""
+
+
+def fetch_recent_activity(username: str, token: str, demo: bool) -> dict:
+    handle = (username or "developer").lstrip("@")
+    fallback = {
+        "username": handle,
+        "events": [
+            ("PUSH", f"{handle}/gitskins · feat: high-recognition skins & widgets", "2h"),
+            ("REL", f"{handle}/cloudlink · v0.6.0 switchboard", "1d"),
+            ("PR", f"{handle}/OpenPet · crisp desktop companion", "3d"),
+        ],
+    }
+    if demo or not username:
+        return fallback
+    try:
+        headers = {"Authorization": f"Bearer {token}"} if token else {}
+        raw = http_get_json(f"https://api.github.com/users/{urllib.parse.quote(handle)}/events/public?per_page=20", headers)
+        if not isinstance(raw, list):
+            return fallback
+        now = datetime.now(timezone.utc)
+        events: list[tuple[str, str, str]] = []
+        for ev in raw:
+            if not isinstance(ev, dict):
+                continue
+            etype = str(ev.get("type") or "")
+            repo = str((ev.get("repo") or {}).get("name") or "")
+            payload = ev.get("payload") or {}
+            created = str(ev.get("created_at") or "")
+            age = "now"
+            if created:
+                try:
+                    dt = datetime.fromisoformat(created.replace("Z", "+00:00"))
+                    hrs = max(1, int((now - dt).total_seconds() // 3600))
+                    age = f"{hrs}h" if hrs < 24 else f"{hrs // 24}d"
+                except Exception:
+                    age = "new"
+            if etype == "PushEvent":
+                commits = payload.get("commits") or []
+                msg = str(commits[0].get("message", "push commits")).splitlines()[0] if commits and isinstance(commits[0], dict) else "push updates"
+                events.append(("PUSH", f"{repo} · {msg}", age))
+            elif etype == "ReleaseEvent":
+                tag = str((payload.get("release") or {}).get("tag_name") or "release")
+                events.append(("REL", f"{repo} · published {tag}", age))
+            elif etype == "PullRequestEvent":
+                title = str((payload.get("pull_request") or {}).get("title") or "pull request")
+                events.append(("PR", f"{repo} · {title}", age))
+            elif etype == "WatchEvent":
+                events.append(("STAR", f"starred {repo}", age))
+            if len(events) >= 3:
+                break
+        return {"username": handle, "events": events[:3]} if events else fallback
+    except Exception as exc:
+        print(f"[warn] recent-activity fetch failed ({exc}), using fallback", file=sys.stderr)
+        return fallback
+
+
+def render_recent_activity_svg(data: dict, theme_id: str, mode: str, span: int, accent: str, animated: bool) -> str:
+    t = resolve_tokens(theme_id, mode, accent)
+    w = col_span_to_px(max(2, min(4, span)))
+    h = 160
+    uid = f"lact-{theme_id}-{mode}-c{span}"
+    handle = str(data.get("username") or "developer")
+    defs, chrome, top, pad = render_theme_frame(
+        uid, theme_id, mode, t, w, h, "ACTIVITY LOG", f"@{fit_text(handle, 110, 9.2, True)}"
+    )
+    badge_cols = {"PUSH": t["accent"], "REL": t["highlight"], "PR": t["tertiary"], "STAR": t["secondary"]}
+    msg_max_w = w - pad * 2 - 92
+    rows_svg: list[str] = []
+    for idx, (kind, msg, age) in enumerate((data.get("events") or [])[:3]):
+        y = top + 21 + idx * 33
+        if idx > 0:
+            rows_svg.append(f'  <line x1="{pad}" y1="{y - 18}" x2="{w - pad}" y2="{y - 18}" stroke="{t["borderSoft"]}" stroke-width="0.8"/>')
+        col = badge_cols.get(kind, t["accent"])
+        safe_msg = esc(fit_text(msg, msg_max_w, 11.2, theme_id == "crt-terminal"))
+        ff = FONT_MONO if theme_id == "crt-terminal" else FONT_SANS
+        rows_svg.append(
+            f'  <rect x="{pad}" y="{y - 10}" width="36" height="15" fill="{col}"/>'
+            f'  <text x="{pad + 18}" y="{y + 1}" text-anchor="middle" font-family=\'{FONT_MONO}\' font-size="8.2" font-weight="700" fill="{t["accentFg"]}">{esc(kind[:4])}</text>'
+            f'  <text x="{pad + 45}" y="{y + 1}" font-family=\'{ff}\' font-size="11.5" font-weight="600" fill="{t["ink"]}">{safe_msg}</text>'
+            f'  <text x="{w - pad}" y="{y + 1}" text-anchor="end" font-family=\'{FONT_MONO}\' font-size="9.2" fill="{t["muted"]}">{esc(age)}</text>'
+        )
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-label="Live Activity Log for @{esc(handle)}">
+  <title>Activity Log — @{esc(handle)}</title>{f'<defs>{defs}</defs>' if defs else ''}
+  {chrome}
+{"".join(rows_svg)}
+</svg>"""
+
+
 def parse_widget_specs(raw: str) -> list[tuple[str, int]]:
     defaults = {
         "github-stats": 2,
@@ -965,6 +1634,10 @@ def parse_widget_specs(raw: str) -> list[tuple[str, int]]:
         "live-weather": 1,
         "wakatime-weekly": 2,
         "spotify-recent": 2,
+        "contribution-snake": 4,
+        "contrib-skyline": 4,
+        "commit-streak": 2,
+        "recent-activity": 2,
     }
     out: list[tuple[str, int]] = []
     for part in (raw or "").split(","):
@@ -1015,6 +1688,24 @@ def generate_one(wid: str, span: int, theme_id: str, mode: str, args: argparse.N
                 args.demo,
             )
         return render_spotify_recent_svg(cache["spotify"], theme_id, mode, span, args.accent, animated)
+    if wid == "contribution-snake":
+        if "snake" not in cache:
+            cache["snake"] = fetch_contribution_snake(args.username, token, args.demo)
+        return render_contribution_snake_svg(cache["snake"], theme_id, mode, span, args.accent, animated)
+    if wid == "contrib-skyline":
+        if "snake" not in cache:
+            cache["snake"] = fetch_contribution_snake(args.username, token, args.demo)
+        return render_contrib_skyline_svg(cache["snake"], theme_id, mode, span, args.accent, animated)
+    if wid == "commit-streak":
+        if "snake" not in cache:
+            cache["snake"] = fetch_contribution_snake(args.username, token, args.demo)
+        if "streak" not in cache:
+            cache["streak"] = compute_streak_stats(cache["snake"])
+        return render_commit_streak_svg(cache["streak"], theme_id, mode, span, args.accent, animated)
+    if wid == "recent-activity":
+        if "activity" not in cache:
+            cache["activity"] = fetch_recent_activity(args.username, token, args.demo)
+        return render_recent_activity_svg(cache["activity"], theme_id, mode, span, args.accent, animated)
     raise ValueError(f"Unknown live widget: {wid}")
 
 
@@ -1031,7 +1722,7 @@ def main() -> None:
     parser.add_argument("--static", action="store_true")
     parser.add_argument("--out-dir", default="assets")
     parser.add_argument("--demo", action="store_true", help="Use deterministic demo data (offline).")
-    parser.add_argument("--check-all", action="store_true", help="XML-validate all 4 themes x 4 live widgets in memory.")
+    parser.add_argument("--check-all", action="store_true", help="XML-validate all themes x all live widgets in memory.")
     args = parser.parse_args()
 
     if args.check_all:
@@ -1043,6 +1734,10 @@ def main() -> None:
             ("live-weather", 1),
             ("wakatime-weekly", 2),
             ("spotify-recent", 2),
+            ("contribution-snake", 4),
+            ("contrib-skyline", 4),
+            ("commit-streak", 2),
+            ("recent-activity", 2),
         ]
         count = 0
         for tid in THEME_TOKENS:

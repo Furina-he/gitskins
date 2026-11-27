@@ -20,20 +20,38 @@ import {
   themeHeadingFont,
   wrapText,
 } from "./svgPrimitives";
+import {
+  renderCommitStreak,
+  renderContribSkyline,
+  renderKeycapRig,
+  renderQrPass,
+  renderRecentActivity,
+  renderSkillRadar,
+  renderSplitFlap,
+} from "./renderersExtended";
+import { getSnakePaletteForTheme } from "./workflow";
 import type {
   BentoColSpan,
   CodingRhythmConfig,
+  CommitStreakConfig,
+  ContribSkylineConfig,
+  ContributionSnakeConfig,
   DevBadgeConfig,
   GitHubStatsConfig,
   HeroStickerConfig,
+  KeycapRigConfig,
   LiveWeatherConfig,
   MiniTileConfig,
   NowPlayingConfig,
   PixelCompanionConfig,
   PixelRunwayConfig,
+  QrPassConfig,
   QuoteBannerConfig,
+  RecentActivityConfig,
   RssFeedConfig,
   SkillDockConfig,
+  SkillRadarConfig,
+  SplitFlapConfig,
   SpotifyRecentConfig,
   WakaTimeWeeklyConfig,
   WidgetConfigMap,
@@ -1664,6 +1682,207 @@ function renderSpotifyRecent(cfg: SpotifyRecentConfig, opts: WidgetRenderOptions
 </svg>`;
 }
 
+function deterministicContribLevel(col: number, row: number, seedHash: number): number {
+  const wave =
+    Math.sin((col + seedHash) * 0.42 + row * 0.85) +
+    Math.cos((col * 0.21 - row * 1.15) + seedHash * 0.3);
+  const hash = ((col * 37 + row * 91 + seedHash * 17) ^ (col * 13)) & 31;
+  if (hash < 6) return 0;
+  if (wave > 1.05 || hash === 30) return 4;
+  if (wave > 0.35 || hash > 24) return 3;
+  if (wave > -0.35) return 2;
+  return 1;
+}
+
+function renderContributionSnake(
+  cfg: ContributionSnakeConfig,
+  opts: WidgetRenderOptions
+): string {
+  const t = resolveTokens(opts.tokens, opts.accentOverride);
+  const w = colSpanToPx(opts.colSpan);
+  const h = opts.targetHeight ?? BENTO_ROW_HEIGHT;
+  const uid = makeUid("lsnk", opts);
+  const handle = (cfg.username || "Furina-he").replace(/^@+/, "");
+  const isPlatane = cfg.engine !== "gitskins-svg";
+  const pal = getSnakePaletteForTheme(opts.themeId, opts.mode, t, opts.accentOverride);
+
+  const frame = renderThemeFrame({
+    uid,
+    themeId: opts.themeId,
+    mode: opts.mode,
+    tokens: t,
+    width: w,
+    height: h,
+    tag: "CONTRIBUTION SNAKE",
+    rightMeta: isPlatane
+      ? `@${fitText(handle, 120, 9.5, true)} · PLATANE/SNK`
+      : `@${fitText(handle, 120, 9.5, true)} · LIVE SVG`,
+  });
+
+  const cols = 53;
+  const rows = 7;
+  const cellW = 10;
+  const cellH = 9;
+  const gapX = 4;
+  const gapY = 2;
+  const stepX = cellW + gapX;
+  const stepY = cellH + gapY;
+  const gridW = cols * stepX - gapX; // 738px
+  const gridX = Math.round((w - gridW) / 2) + 8;
+  const gridY = frame.contentTop + 4;
+
+  let seed = 7;
+  for (let i = 0; i < handle.length; i++) {
+    seed = (seed * 31 + handle.charCodeAt(i)) % 97;
+  }
+
+  // Highlighted target dots along the snake's serpentine path that dim when eaten
+  const eatenDots: { col: number; row: number; pct: number }[] = [
+    { col: 14, row: 1, pct: 6 },
+    { col: 34, row: 1, pct: 17 },
+    { col: 36, row: 3, pct: 33 },
+    { col: 16, row: 3, pct: 43 },
+    { col: 22, row: 5, pct: 61 },
+    { col: 42, row: 5, pct: 71 },
+    { col: 26, row: 6, pct: 87 },
+  ];
+  const eatenKey = new Map<string, number>();
+  eatenDots.forEach((d, idx) => eatenKey.set(`${d.col},${d.row}`, idx));
+
+  const cells: string[] = [];
+  for (let c = 0; c < cols; c++) {
+    for (let r = 0; r < rows; r++) {
+      const cx = gridX + c * stepX;
+      const cy = gridY + r * stepY;
+      const eatIdx = eatenKey.get(`${c},${r}`);
+      const lvl = eatIdx !== undefined ? 4 : deterministicContribLevel(c, r, seed);
+      const fill = pal.dots[lvl];
+      if (eatIdx !== undefined && opts.animated) {
+        cells.push(
+          `<rect x="${cx}" y="${cy}" width="${cellW}" height="${cellH}" fill="${pal.dots[0]}" shape-rendering="crispEdges"/>` +
+            `<rect class="eat-${uid}-${eatIdx}" x="${cx}" y="${cy}" width="${cellW}" height="${cellH}" fill="${fill}" shape-rendering="crispEdges"/>`
+        );
+      } else {
+        cells.push(
+          `<rect x="${cx}" y="${cy}" width="${cellW}" height="${cellH}" fill="${fill}" shape-rendering="crispEdges"/>`
+        );
+      }
+    }
+  }
+
+  // Serpentine non-crossing loop across the 53x7 grid (190 cell steps total)
+  const waypoints: [number, number, number][] = [
+    [0, 2, 1],
+    [24.74, 49, 1],
+    [25.79, 49, 3],
+    [48.42, 6, 3],
+    [49.47, 6, 5],
+    [72.11, 49, 5],
+    [72.63, 49, 6],
+    [97.37, 2, 6],
+    [100, 2, 1],
+  ];
+  const dur = cfg.speed === "calm" ? 22 : cfg.speed === "brisk" ? 11 : 16;
+  const stepDur = dur / 190;
+  const segCount = 8;
+
+  const keyframeBody = waypoints
+    .map(
+      ([pct, col, row]) =>
+        `${pct}% { transform: translate(${gridX + col * stepX}px, ${gridY + row * stepY}px); }`
+    )
+    .join(" ");
+
+  const segDefs: { sizeW: number; sizeH: number; ox: number; oy: number; op: number }[] = [
+    { sizeW: 10, sizeH: 9, ox: 0, oy: 0, op: 1 },
+    { sizeW: 10, sizeH: 9, ox: 0, oy: 0, op: 0.94 },
+    { sizeW: 9, sizeH: 8, ox: 0.5, oy: 0.5, op: 0.86 },
+    { sizeW: 9, sizeH: 8, ox: 0.5, oy: 0.5, op: 0.78 },
+    { sizeW: 8, sizeH: 7, ox: 1, oy: 1, op: 0.68 },
+    { sizeW: 8, sizeH: 7, ox: 1, oy: 1, op: 0.58 },
+    { sizeW: 7, sizeH: 6, ox: 1.5, oy: 1.5, op: 0.46 },
+    { sizeW: 6, sizeH: 5, ox: 2, oy: 2, op: 0.34 },
+  ];
+
+  const snakeCssLines: string[] = [];
+  const snakeNodes: string[] = [];
+  for (let i = segCount - 1; i >= 0; i--) {
+    const s = segDefs[i];
+    const staticCol = 26 - i;
+    const staticRow = 3;
+    const sx = gridX + staticCol * stepX;
+    const sy = gridY + staticRow * stepY;
+    const delay = -((segCount - i) * stepDur);
+    snakeCssLines.push(
+      `.snk-${uid}-${i} { transform: translate(${sx}px, ${sy}px); animation: snk_${uid} ${dur}s linear ${delay.toFixed(3)}s infinite; }`
+    );
+    const eye =
+      i === 0
+        ? `<rect x="6" y="2" width="2" height="2" fill="${t.bg}" shape-rendering="crispEdges"/><rect x="6" y="5" width="2" height="2" fill="${t.bg}" shape-rendering="crispEdges"/>`
+        : "";
+    snakeNodes.push(
+      opts.animated
+        ? `<g class="snk-${uid}-${i}"><rect x="${s.ox}" y="${s.oy}" width="${s.sizeW}" height="${s.sizeH}" fill="${pal.snake}" fill-opacity="${s.op}" shape-rendering="crispEdges"/>${eye}</g>`
+        : `<g transform="translate(${sx}, ${sy})"><rect x="${s.ox}" y="${s.oy}" width="${s.sizeW}" height="${s.sizeH}" fill="${pal.snake}" fill-opacity="${s.op}" shape-rendering="crispEdges"/>${eye}</g>`
+    );
+  }
+
+  const eatenCss = eatenDots
+    .map((d, idx) => {
+      const p0 = Math.max(0, d.pct - 1).toFixed(1);
+      const p1 = Math.min(98, d.pct + 1.5).toFixed(1);
+      const p2 = Math.min(99, d.pct + 14).toFixed(1);
+      return `@keyframes eat_${uid}_${idx} { 0%, ${p0}% { opacity: 1; } ${p1}%, ${p2}% { opacity: 0.08; } 100% { opacity: 1; } } .eat-${uid}-${idx} { animation: eat_${uid}_${idx} ${dur}s linear infinite; }`;
+    })
+    .join(" ");
+
+  const styleBlock = opts.animated
+    ? `\n  <style>
+    @keyframes snk_${uid} { ${keyframeBody} }
+    ${snakeCssLines.join("\n    ")}
+    ${eatenCss}
+    @media (prefers-reduced-motion: reduce) { [class^="snk-${uid}"], [class^="eat-${uid}"] { animation: none !important; } }
+  </style>`
+    : "";
+
+  // Subtle day labels on left of 53x7 grid
+  const dayLabels = [
+    ["MON", 1],
+    ["WED", 3],
+    ["FRI", 5],
+  ]
+    .map(
+      ([lbl, r]) =>
+        `<text x="${gridX - 8}" y="${gridY + (r as number) * stepY + 7.5}" text-anchor="end" font-family='${FONT_MONO}' font-size="8" fill="${t.muted}">${lbl}</text>`
+    )
+    .join("\n  ");
+
+  const legY = frame.contentBottom - 4;
+  const legendStart = w - frame.padX - 96;
+  const legendDots = pal.dots
+    .map(
+      (col, idx) =>
+        `<rect x="${legendStart + idx * 12}" y="${legY - 8}" width="9" height="8" fill="${col}" shape-rendering="crispEdges"/>`
+    )
+    .join("");
+  const engineCaption = isPlatane
+    ? `PLATANE/SNK · COLOR_SNAKE ${pal.snake} · ${cfg.schedule === "6h" ? "6H CRON" : "DAILY CRON"}`
+    : `GITSKINS GRAPHQL · SNAKE ${pal.snake} · ZERO-503`;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Contribution Snake for @${escapeXml(handle)}">
+  <title>Contribution Snake — @${escapeXml(handle)}</title>${frame.defs ? `\n  <defs>${frame.defs}\n  </defs>` : ""}${styleBlock}
+  ${frame.chrome}
+  ${dayLabels}
+  <g>${cells.join("")}</g>
+  ${snakeNodes.join("\n  ")}
+  <rect x="${frame.padX}" y="${legY - 7}" width="7" height="7" fill="${pal.snake}" shape-rendering="crispEdges"/>
+  <text x="${frame.padX + 12}" y="${legY}" font-family='${FONT_MONO}' font-size="8.6" font-weight="700" fill="${t.muted}">${escapeXml(engineCaption)}</text>
+  <text x="${legendStart - 6}" y="${legY}" text-anchor="end" font-family='${FONT_MONO}' font-size="8.4" fill="${t.muted}">LESS</text>
+  ${legendDots}
+  <text x="${legendStart + 62}" y="${legY}" font-family='${FONT_MONO}' font-size="8.4" fill="${t.muted}">MORE</text>
+</svg>`;
+}
+
 export function renderWidgetSvg<K extends WidgetId>(
   widgetId: K,
   config: WidgetConfigMap[K],
@@ -1686,6 +1905,14 @@ export function renderWidgetSvg<K extends WidgetId>(
       return renderPixelRunway(config as PixelRunwayConfig, opts);
     case "mini-tile":
       return renderMiniTile(config as MiniTileConfig, opts);
+    case "keycap-rig":
+      return renderKeycapRig(config as KeycapRigConfig, opts);
+    case "split-flap":
+      return renderSplitFlap(config as SplitFlapConfig, opts);
+    case "skill-radar":
+      return renderSkillRadar(config as SkillRadarConfig, opts);
+    case "qr-pass":
+      return renderQrPass(config as QrPassConfig, opts);
     case "github-stats":
       return renderGitHubStats(config as GitHubStatsConfig, opts);
     case "coding-rhythm":
@@ -1698,5 +1925,13 @@ export function renderWidgetSvg<K extends WidgetId>(
       return renderWakaTimeWeekly(config as WakaTimeWeeklyConfig, opts);
     case "spotify-recent":
       return renderSpotifyRecent(config as SpotifyRecentConfig, opts);
+    case "contribution-snake":
+      return renderContributionSnake(config as ContributionSnakeConfig, opts);
+    case "contrib-skyline":
+      return renderContribSkyline(config as ContribSkylineConfig, opts);
+    case "commit-streak":
+      return renderCommitStreak(config as CommitStreakConfig, opts);
+    case "recent-activity":
+      return renderRecentActivity(config as RecentActivityConfig, opts);
   }
 }

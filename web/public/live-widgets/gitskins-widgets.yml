@@ -30,10 +30,13 @@ jobs:
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
           SPOTIFY_REFRESH_TOKEN: ${{ secrets.SPOTIFY_REFRESH_TOKEN }}
         run: |
+          # Supported live widgets (10): github-stats, coding-rhythm, rss-feed,
+          # live-weather, wakatime-weekly, spotify-recent, contribution-snake,
+          # contrib-skyline, commit-streak, recent-activity
           python scripts/generate_live_widgets.py \
             --username "${{ github.repository_owner }}" \
             --theme "swiss-bauhaus-pixel" \
-            --widgets "github-stats:2,coding-rhythm:2,live-weather:1,rss-feed:3" \
+            --widgets "github-stats:2,coding-rhythm:2,contrib-skyline:4,commit-streak:2,recent-activity:2,contribution-snake:4" \
             --city "Shanghai" \
             --unit "C" \
             --tz-offset "8" \

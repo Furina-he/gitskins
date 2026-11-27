@@ -225,6 +225,52 @@ export const COPY: Record<
     fieldSpotifyAlbum: string;
     fieldSpotifyDuration: string;
     fieldSpotifySecretNote: string;
+    // v0.7 Scalable ThemePicker, Compact Widget Catalog & L07 Contribution Snake
+    pickerAllSkins: string;
+    pickerSearchPlaceholder: string;
+    pickerGroupAll: string;
+    pickerGroupGrid: string;
+    pickerGroupTech: string;
+    pickerGroupRetro: string;
+    pickerGroupArt: string;
+    pickerPrev: string;
+    pickerNext: string;
+    pickerShortcutHint: string;
+    pickerNoMatch: string;
+    widgetCatalogExpand: string;
+    widgetCatalogCompact: string;
+    fieldSnakeEngine: string;
+    fieldSnakeEnginePlatane: string;
+    fieldSnakeEngineNative: string;
+    fieldSnakeSpeed: string;
+    fieldSnakeNotePlatane: string;
+    fieldSnakeNoteNative: string;
+    widgetSnakeWorkflowHeading: string;
+    widgetSnakeWorkflowHint: string;
+    snakeStageCta: string;
+    // v0.8 High-Recognition Widgets (W09-W12, L08-L10)
+    fieldKeycapTitle: string;
+    fieldKeycapKeys: string;
+    fieldKeycapAccent: string;
+    fieldKeycapHardware: string;
+    fieldFlapHeader: string;
+    fieldFlapLine1: string;
+    fieldFlapLine2: string;
+    fieldFlapCode: string;
+    fieldRadarTitle: string;
+    fieldRadarSub: string;
+    fieldRadarAxes: string;
+    fieldQrUrl: string;
+    fieldQrTitle: string;
+    fieldQrSub: string;
+    fieldQrBadge: string;
+    fieldSkylineWeeks: string;
+    fieldSkylineCommits: string;
+    fieldStreakCurrent: string;
+    fieldStreakLongest: string;
+    fieldActivityEvent1: string;
+    fieldActivityEvent2: string;
+    fieldActivityEvent3: string;
   }
 > = {
   en: {
@@ -293,7 +339,7 @@ export const COPY: Record<
     widgetsHeroTitleA: "Craft custom widgets.",
     widgetsHeroTitleB: "Place them anywhere on your profile.",
     widgetsHeroLead:
-      "14 skin-adaptive widgets: 8 Static DIY blocks (Hero stickers, patrol runways, mini tiles, cards) + 6 Zero-503 GitHub Actions Live Widgets (Stats, Rhythm, RSS, Weather, WakaTime, Spotify).",
+      "22 skin-adaptive widgets: 12 Static DIY blocks (keycaps, split-flap, radar, scannable QR, pets, tiles) + 10 Zero-503 GitHub Actions Live Widgets (Stats, Rhythm, RSS, Weather, WakaTime, Spotify, Snake, 3D Skyline, Streak, Activity).",
     widgetMountedBadge: "MOUNTED",
     widgetMountBtn: "Mount to Profile Loadout",
     widgetMountedBtn: "Mounted in Loadout (Remove)",
@@ -463,6 +509,53 @@ export const COPY: Record<
     fieldSpotifyAlbum: "Album / Playlist",
     fieldSpotifyDuration: "Duration",
     fieldSpotifySecretNote: "Add SPOTIFY_CLIENT_ID / SECRET / REFRESH_TOKEN secrets in Actions to sync your real Spotify playback.",
+    pickerAllSkins: "All Skins",
+    pickerSearchPlaceholder: "Filter by name, style, or keyword...",
+    pickerGroupAll: "All",
+    pickerGroupGrid: "Editorial & Grid",
+    pickerGroupTech: "Hardware & Eng",
+    pickerGroupRetro: "Retro & Pixel",
+    pickerGroupArt: "Print & Ink",
+    pickerPrev: "Previous skin",
+    pickerNext: "Next skin",
+    pickerShortcutHint: "Use ← / → to switch · K to toggle gallery · Esc to close",
+    pickerNoMatch: "No matching skin found for this filter.",
+    widgetCatalogExpand: "Expand details",
+    widgetCatalogCompact: "Compact rail",
+    fieldSnakeEngine: "Snake Actions Engine",
+    fieldSnakeEnginePlatane: "Platane/snk (Themed)",
+    fieldSnakeEngineNative: "GitSkins Framed SVG",
+    fieldSnakeSpeed: "Animation Pace",
+    fieldSnakeNotePlatane:
+      "Exports .github/workflows/snake.yml using Platane/snk/svg-only@v3 with your active skin's exact Light & Dark color_snake and 5-level color_dots palette.",
+    fieldSnakeNoteNative:
+      "Generates assets/live-contribution-snake-{light,dark}.svg directly inside scripts/generate_live_widgets.py with theme frame & real GitHub GraphQL contributions (no extra output branch).",
+    widgetSnakeWorkflowHeading: "Contribution Snake Workflow (.github/workflows/snake.yml)",
+    widgetSnakeWorkflowHint:
+      "Runs Platane/snk/svg-only@v3 daily with Light & Dark color_snake and color_dots matched to your active GitSkins theme, pushing to the output branch.",
+    snakeStageCta: "Click to customize L07 Contribution Snake (Platane/snk themed palette or framed SVG)",
+    fieldKeycapTitle: "Deck Label",
+    fieldKeycapKeys: "Keycaps (comma separated)",
+    fieldKeycapAccent: "Accent Modifier Keys",
+    fieldKeycapHardware: "Hardware Spec Footer",
+    fieldFlapHeader: "Board Header",
+    fieldFlapLine1: "Top Flap Row (A–Z / 0–9)",
+    fieldFlapLine2: "Bottom Flap Row",
+    fieldFlapCode: "Gate / Status Tag",
+    fieldRadarTitle: "Radar Header",
+    fieldRadarSub: "Right Badge",
+    fieldRadarAxes: "6 Axes (Label:Score, ...)",
+    fieldQrUrl: "Target URL (Scannable QR)",
+    fieldQrTitle: "Card Title",
+    fieldQrSub: "Display Domain / Handle",
+    fieldQrBadge: "Top-Right Stamp",
+    fieldSkylineWeeks: "Rendered Weeks (12–22)",
+    fieldSkylineCommits: "Preview Total Commits",
+    fieldStreakCurrent: "Preview Current Streak (days)",
+    fieldStreakLongest: "Preview Longest Streak (days)",
+    fieldActivityEvent1: "Preview Event #1 (TYPE | Text | Age)",
+    fieldActivityEvent2: "Preview Event #2 (TYPE | Text | Age)",
+    fieldActivityEvent3: "Preview Event #3 (TYPE | Text | Age)",
   },
   zh: {
     subtitle: "面向 AI 编程 Agent 的 GitHub 主页主题与挂件工坊",
@@ -493,7 +586,7 @@ export const COPY: Record<
     openGen: "生成脚本",
     openRepo: "源码目录",
     contactHeading: "全主题同框对比",
-    contactSub: "同一位开发者的真实仓库在 6 套完全不同美学体系下的效果对比，点击任意海报立即切换预览与复制提示词。",
+    contactSub: "同一位开发者的真实仓库在 11 套完全不同美学体系下的效果对比，点击任意海报立即切换预览与复制提示词。",
     selectedBadge: "当前预览",
     previewSkin: "查看这套皮肤",
     howHeading: "为什么复制提示词后，Agent 能一次稳定出好图？",
@@ -506,7 +599,7 @@ export const COPY: Record<
       {
         num: "02",
         title: "多形态主题联动挂件",
-        body: "不止底栏卡片：支持直接合进 Hero 角落的动态贴纸、846×48 像素巡逻跑道、204² 迷你动态小方砖，自动继承 4 套皮肤语义令牌。",
+        body: "不止底栏卡片：支持直接合进 Hero 角落的动态贴纸、846×48 像素巡逻跑道、204² 迷你动态小方砖与 10 款 Actions 活挂件，自动继承全部 11 套皮肤语义令牌。",
       },
       {
         num: "03",
@@ -530,7 +623,7 @@ export const COPY: Record<
     widgetsHeroTitleA: "自由 DIY 小挂件，",
     widgetsHeroTitleB: "任意位置、多种形态自动换肤。",
     widgetsHeroLead:
-      "14 款主题联动挂件：8 款纯前端 DIY 积木 + 6 款零 503 GitHub Actions 定时活挂件（GitHub 统计、编码作息、RSS 博客、实时天气窗、WakaTime 时长雷达、Spotify 循环黑胶）。",
+      "22 款主题联动挂件：12 款纯前端 DIY 积木（机械键帽、翻页屏、六维雷达、可扫二维码、桌宠、方砖）+ 10 款零 503 GitHub Actions 活挂件（统计、作息、RSS、天气、WakaTime、Spotify、贡献图贪吃蛇、3D 天际线、连胜火炬、动态日志）。",
     widgetMountedBadge: "已挂载",
     widgetMountBtn: "挂载到主页套装",
     widgetMountedBtn: "已挂载到套装（点击移出）",
@@ -668,7 +761,7 @@ export const COPY: Record<
     repoHeroTitleA: "同款高辨识度美学，",
     repoHeroTitleB: "现在延伸到你的开源仓库 README。",
     repoHeroLead:
-      "一键将 4 大视觉体系套用到项目仓库：846px 项目海报 Banner、快速安装命令条、特性卡片矩阵、架构流程图与可选 Styled with GitSkins 尾标，支持真仓库拉取、CLI 脚手架与 ZIP 打包。",
+      "一键将 11 大视觉体系套用到项目仓库：846px 项目海报 Banner、快速安装命令条、特性卡片矩阵、架构流程图与可选 Styled with GitSkins 尾标，支持真仓库拉取、CLI 脚手架与 ZIP 打包。",
     repoTryPlaceholder: "输入公开仓库 owner/repo（如 Furina-he/gitskins、vitejs/vite）...",
     repoTryBtn: "拉取仓库",
     repoLivePrefix: "实时仓库",
@@ -700,5 +793,52 @@ export const COPY: Record<
     fieldSpotifyAlbum: "所属专辑 / 歌单",
     fieldSpotifyDuration: "歌曲时长",
     fieldSpotifySecretNote: "在仓库 Secrets 配置 SPOTIFY_CLIENT_ID / SECRET / REFRESH_TOKEN 即可定时同步真实正在播放或最近曲目。",
+    pickerAllSkins: "全部皮肤",
+    pickerSearchPlaceholder: "按名称、风格或关键词筛选皮肤...",
+    pickerGroupAll: "全部",
+    pickerGroupGrid: "几何/排版",
+    pickerGroupTech: "硬件/工程",
+    pickerGroupRetro: "复古/像素",
+    pickerGroupArt: "东方/艺术",
+    pickerPrev: "上一套皮肤",
+    pickerNext: "下一套皮肤",
+    pickerShortcutHint: "键盘 ← / → 秒切皮肤 · K 键开关图鉴 · Esc 关闭",
+    pickerNoMatch: "没有匹配当前筛选条件的皮肤。",
+    widgetCatalogExpand: "展开详情卡片",
+    widgetCatalogCompact: "收起紧凑条",
+    fieldSnakeEngine: "贪吃蛇生成引擎",
+    fieldSnakeEnginePlatane: "Platane/snk 同款",
+    fieldSnakeEngineNative: "原生皮肤框版",
+    fieldSnakeSpeed: "贪吃蛇速度",
+    fieldSnakeNotePlatane:
+      "自动导出 .github/workflows/snake.yml，基于 GitHub 经典 Platane/snk/svg-only@v3 并按当前皮肤自动注入深/浅色 color_snake 与 5 级 color_dots 色板。",
+    fieldSnakeNoteNative:
+      "直接由 scripts/generate_live_widgets.py 调用 GITHUB_TOKEN GraphQL 生成带当前皮肤边框的 assets/live-contribution-snake-{light,dark}.svg，无需新建 output 分支。",
+    widgetSnakeWorkflowHeading: "贡献图贪吃蛇工作流（.github/workflows/snake.yml）",
+    widgetSnakeWorkflowHint:
+      "每天定时运行 Platane/snk/svg-only@v3 并注入当前皮肤的深浅色板，输出到 output 分支，完美替代默认绿/紫配色。",
+    snakeStageCta: "点击前往挂件工坊定制 L07 贡献图贪吃蛇（支持 Platane/snk 自动配色或皮肤框版）",
+    fieldKeycapTitle: "键盘标题",
+    fieldKeycapKeys: "键帽列表（逗号分隔）",
+    fieldKeycapAccent: "高亮功能键（逗号分隔）",
+    fieldKeycapHardware: "底部硬件配置条",
+    fieldFlapHeader: "翻页屏顶标",
+    fieldFlapLine1: "上排翻页文案（字母/数字）",
+    fieldFlapLine2: "下排翻页文案",
+    fieldFlapCode: "登机口 / 状态角标",
+    fieldRadarTitle: "雷达标题",
+    fieldRadarSub: "右上角标",
+    fieldRadarAxes: "六维指标（名称:分值，逗号分隔）",
+    fieldQrUrl: "扫码目标网址（真可扫码）",
+    fieldQrTitle: "名片标题",
+    fieldQrSub: "展示域名 / 账号",
+    fieldQrBadge: "右上认证章",
+    fieldSkylineWeeks: "展示周数（12–22 周）",
+    fieldSkylineCommits: "预览年度总提交数",
+    fieldStreakCurrent: "预览当前连胜天数",
+    fieldStreakLongest: "预览历史最长连胜",
+    fieldActivityEvent1: "预览动态 #1（类型 | 内容 | 时间）",
+    fieldActivityEvent2: "预览动态 #2（类型 | 内容 | 时间）",
+    fieldActivityEvent3: "预览动态 #3（类型 | 内容 | 时间）",
   },
 };

@@ -1,0 +1,89 @@
+{
+  "id": "synth-hardware",
+  "order": 7,
+  "name": "Tactile Industrial Synth",
+  "nameZh": "工业合成器面板",
+  "category": "Hardware Synth",
+  "categoryZh": "工业合成器",
+  "tagline": "Teenage Engineering OP-1 and Dieter Rams inspired anodized chassis with perforated speaker grills, four color-coded rotary encoders, OLED waveforms, and modular Eurorack cards.",
+  "taglineZh": "致敬 Teenage Engineering OP-1 与博朗工业设计的阳极氧化机身，集成穿孔扬声器点阵、四色旋钮编码器、OLED 示波屏与模块化 Eurorack 项目面板。",
+  "bestFor": ["Systems & Audio Engineers", "Industrial Design Lovers", "Hardware & Creative Coders"],
+  "bestForZh": ["系统 / 音频工程师", "工业设计美学控", "硬核极客与创意编程者"],
+  "author": "Furina-he",
+  "accent": "#FF5200",
+  "palette": {
+    "light": ["#EFECE6", "#141517", "#FF5200", "#0088CC", "#1E9E63", "#D49B00"],
+    "dark": ["#121316", "#F3F2EE", "#FF6B2B", "#38BDF8", "#34D399", "#FACC15"]
+  },
+  "tokens": {
+    "light": {
+      "bg": "#EFECE6",
+      "surface": "#FAF8F4",
+      "ink": "#141517",
+      "sub": "#44474D",
+      "muted": "#6E727A",
+      "border": "#1C1E22",
+      "borderSoft": "#CFCBC2",
+      "accent": "#FF5200",
+      "accentFg": "#FFFFFF",
+      "secondary": "#0088CC",
+      "tertiary": "#1E9E63",
+      "highlight": "#D49B00",
+      "patternBg": "#E3DFD6",
+      "patternFg": "#B8B3A8"
+    },
+    "dark": {
+      "bg": "#121316",
+      "surface": "#1A1C21",
+      "ink": "#F3F2EE",
+      "sub": "#B5B8C0",
+      "muted": "#7D818C",
+      "border": "#363A44",
+      "borderSoft": "#252830",
+      "accent": "#FF6B2B",
+      "accentFg": "#121316",
+      "secondary": "#38BDF8",
+      "tertiary": "#34D399",
+      "highlight": "#FACC15",
+      "patternBg": "#0D0E11",
+      "patternFg": "#2A2E38"
+    }
+  },
+  "features": [
+    "Anodized Aluminum (Light) & Matte Elektron Chassis (Dark) with corner hex screws",
+    "Perforated Braun/OP-1 circular speaker grill & 4 color-coded rotary encoder knobs",
+    "Recessed AMOLED oscilloscope waveform & patchbay KPI dial meters",
+    "Modular Eurorack project panels with 3.5mm IN/OUT patch jacks & LED keycaps"
+  ],
+  "featuresZh": [
+    "浅色阳极氧化铝机身 + 深色 Elektron 哑光黑机箱与四角内六角螺丝",
+    "博朗 / OP-1 穿孔圆形扬声器点阵与四色功能旋钮编码器",
+    "内嵌式 AMOLED 示波波形屏与 4 路旋钮指示仪表区",
+    "带 3.5mm IN/OUT 跳线孔的 Eurorack 项目面板与发光 LED 机械键帽"
+  ],
+  "buttons": [
+    { "id": "cloudlink", "label": "[CH.1] cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+    { "id": "openpet", "label": "[CH.2] openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+    { "id": "release", "label": "[CH.3] CloudLink v0.6.0", "url": "https://github.com/Furina-he/cloudlink/releases/latest" },
+    { "id": "github", "label": "[CH.4] @Furina-he", "url": "https://github.com/Furina-he?tab=repositories" }
+  ],
+  "cards": [
+    { "id": "cloudlink", "title": "CloudLink", "url": "https://github.com/Furina-he/cloudlink" },
+    { "id": "openpet", "title": "OpenPet", "url": "https://github.com/Furina-he/OpenPet" },
+    { "id": "gitskins", "title": "GitSkins", "url": "https://github.com/Furina-he/gitskins" },
+    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" }
+  ],
+  "sections": ["work", "activity"],
+  "subLinks": [
+    { "group": "Live works", "items": [
+      { "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+      { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+      { "label": "gitskins.blessc.com", "url": "https://gitskins.blessc.com" }
+    ]},
+    { "group": "Archive", "items": [
+      { "label": "openpet-market", "url": "https://github.com/Furina-he/openpet-market" },
+      { "label": "carview", "url": "https://github.com/Furina-he/carview" },
+      { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" }
+    ]}
+  ]
+}

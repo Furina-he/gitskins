@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="238" height="30" viewBox="0 0 238 30" role="img" aria-label="Open cloudlink.blessc.com">
+  <title>Open cloudlink.blessc.com</title>
+  <!-- Classic Double-Border Default-Action Button Ring -->
+  <rect x="1" y="1" width="236" height="28" rx="5" ry="5" fill="#E6E5DF" stroke="#111111" stroke-width="2"/>
+  <rect x="4.5" y="4.5" width="229" height="21" rx="3" ry="3" fill="#2455C8" stroke="#111111" stroke-width="1"/>
+  <g shape-rendering="crispEdges"><path fill="#FFFFFF" d="M16 8h10v2h-10zM20 10h6v2h-6zM18 12h8v2h-8zM16 14h4v2h-4zM22 14h4v2h-4zM14 16h4v2h-4zM24 16h2v2h-2zM12 18h4v2h-4z"/></g>
+  <text x="30" y="19" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.5" font-weight="700" fill="#FFFFFF">Open cloudlink.blessc.com</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="238" height="30" viewBox="0 0 238 30" role="img" aria-label="Open openpet.myfurina.top">
+  <title>Open openpet.myfurina.top</title>
+  <!-- Hard Stepped Bevel Classic Push Button -->
+  <rect x="3" y="3" width="234" height="26" rx="3" ry="3" fill="#111111"/>
+  <rect x="1" y="1" width="234" height="26" rx="3" ry="3" fill="#FFFFFF" stroke="#111111" stroke-width="1.2"/>
+  <line x1="4" y1="3.5" x2="231" y2="3.5" stroke="#B8B7B0" stroke-width="1"/>
+  <g shape-rendering="crispEdges"><path fill="#111111" d="M10 8h14v2h-14zM10 10h2v2h-2zM22 10h2v2h-2zM10 12h14v2h-14zM10 14h2v2h-2zM22 14h2v2h-2zM10 16h2v2h-2zM22 16h2v2h-2zM10 18h2v2h-2zM22 18h2v2h-2zM10 20h14v2h-14z"/><path fill="#2455C8" d="M12 10h10v2h-10zM14 16h6v2h-6z"/></g>
+  <text x="29" y="18.5" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.5" font-weight="700" fill="#111111">Open openpet.myfurina.top</text>
+  <text x="227" y="18.5" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.5" font-weight="700" fill="#2455C8">&#8599;</text>
+</svg>

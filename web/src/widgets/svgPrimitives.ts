@@ -224,7 +224,14 @@ export function chamferPolygon(x: number, y: number, w: number, h: number, cut =
 
 export function themeHeadingFont(themeId: string): string {
   if (themeId === "editorial-zine" || themeId === "seal-ink-scroll") return FONT_SERIF;
-  if (themeId === "crt-terminal" || themeId === "pixel-rpg-hud") return FONT_MONO;
+  if (
+    themeId === "crt-terminal" ||
+    themeId === "pixel-rpg-hud" ||
+    themeId === "pcb-solder-mask" ||
+    themeId === "classic-desktop-os"
+  ) {
+    return FONT_MONO;
+  }
   return FONT_SANS;
 }
 
@@ -342,6 +349,89 @@ export function renderThemeFrame(opts: {
   <text x="${w - 18}" y="25" text-anchor="end" font-family='${FONT_MONO}' font-size="9.2" fill="${t.muted}">${safeMeta}</text>
   <line x1="16" y1="32.5" x2="${w - 16}" y2="32.5" stroke="${t.borderSoft}" stroke-width="0.9"/>`;
     return { defs: "", chrome, contentTop: 38, contentBottom: h - 14, padX: 18 };
+  }
+
+  if (themeId === "synth-hardware") {
+    const screw = (cx: number, cy: number) =>
+      `<g><circle cx="${cx}" cy="${cy}" r="3" fill="${t.patternBg}" stroke="${t.border}" stroke-width="0.8"/><line x1="${cx - 1.8}" y1="${cy}" x2="${cx + 1.8}" y2="${cy}" stroke="${t.muted}" stroke-width="0.7"/></g>`;
+    const chrome = `
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" rx="3" fill="${t.bg}" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="5" y="5" width="${w - 10}" height="22" fill="${t.patternBg}" stroke="${t.borderSoft}" stroke-width="0.8"/>
+  ${screw(12, 16)}
+  ${screw(w - 12, 16)}
+  ${screw(12, h - 10)}
+  ${screw(w - 12, h - 10)}
+  <circle cx="24" cy="16" r="3" fill="${t.accent}"/>
+  <circle cx="33" cy="16" r="2.2" fill="${t.secondary}"/>
+  <text x="42" y="19.5" font-family='${FONT_MONO}' font-size="9.2" font-weight="700" letter-spacing="0.6" fill="${t.ink}">${safeTag}</text>
+  <text x="${w - 22}" y="19.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9" fill="${t.muted}">${safeMeta}</text>`;
+    return { defs: "", chrome, contentTop: 34, contentBottom: h - 14, padX: 18 };
+  }
+
+  if (themeId === "pcb-solder-mask") {
+    const via = (cx: number, cy: number) =>
+      `<g><circle cx="${cx}" cy="${cy}" r="3.6" fill="${t.accent}"/><circle cx="${cx}" cy="${cy}" r="1.5" fill="${t.bg}"/></g>`;
+    const chrome = `
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.border}" stroke-width="1.3"/>
+  <rect x="6" y="6" width="${w - 12}" height="${h - 12}" fill="none" stroke="${t.borderSoft}" stroke-width="0.8"/>
+  <path d="M 16 28 L 32 28 L 40 20 L ${w - 20} 20" fill="none" stroke="${t.borderSoft}" stroke-opacity="0.7" stroke-width="0.9"/>
+  ${via(12, 12)}
+  ${via(w - 12, 12)}
+  ${via(12, h - 12)}
+  ${via(w - 12, h - 12)}
+  <rect x="24" y="12" width="6" height="6" fill="${t.accent}" shape-rendering="crispEdges"/>
+  <text x="35" y="18.5" font-family='${FONT_MONO}' font-size="9.2" font-weight="700" fill="${t.ink}">${safeTag}</text>
+  <text x="${w - 24}" y="18.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9" fill="${t.accent}">${safeMeta}</text>
+  <line x1="16" y1="30.5" x2="${w - 16}" y2="30.5" stroke="${t.borderSoft}" stroke-width="0.9"/>`;
+    return { defs: "", chrome, contentTop: 36, contentBottom: h - 14, padX: 18 };
+  }
+
+  if (themeId === "transit-boarding") {
+    const chrome = `
+  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="${t.bg}" stroke="${t.border}" stroke-width="1.1"/>
+  <rect x="1" y="1" width="${w - 2}" height="24" fill="${t.accent}"/>
+  <circle cx="14" cy="13" r="4" fill="none" stroke="${t.accentFg}" stroke-width="1.4"/>
+  <text x="25" y="16.5" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" letter-spacing="0.8" fill="${t.accentFg}">${safeTag}</text>
+  <text x="${w - 14}" y="16.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9" font-weight="700" fill="${t.accentFg}" fill-opacity="0.9">${safeMeta}</text>
+  <line x1="14" y1="${h - 10.5}" x2="${w - 14}" y2="${h - 10.5}" stroke="${t.borderSoft}" stroke-dasharray="3 3" stroke-width="0.9"/>`;
+    return { defs: "", chrome, contentTop: 33, contentBottom: h - 14, padX: 16 };
+  }
+
+  if (themeId === "classic-desktop-os") {
+    const stripeLines = [7, 10, 13, 16, 19]
+      .map((sy) => `<line x1="26" y1="${sy}" x2="${w - 14}" y2="${sy}" stroke="${t.borderSoft}" stroke-width="0.9"/>`)
+      .join("");
+    const tagW = Math.min(160, Math.max(70, Math.round(estimateTextPx(tag, 9.2, true) + 16)));
+    const chrome = `
+  <rect x="2.5" y="2.5" width="${w - 3}" height="${h - 3}" fill="${t.border}" fill-opacity="0.18"/>
+  <rect x="0.5" y="0.5" width="${w - 3}" height="${h - 3}" fill="${t.surface}" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="1" y="1" width="${w - 4}" height="23" fill="${t.bg}"/>
+  ${stripeLines}
+  <rect x="8" y="6" width="12" height="12" fill="${t.surface}" stroke="${t.border}" stroke-width="1"/>
+  <rect x="${Math.round(w / 2 - tagW / 2)}" y="4" width="${tagW}" height="17" fill="${t.bg}"/>
+  <text x="${Math.round(w / 2)}" y="15.5" text-anchor="middle" font-family='${FONT_MONO}' font-size="9.2" font-weight="700" fill="${t.ink}">${safeTag}</text>
+  <line x1="0.5" y1="24.5" x2="${w - 2.5}" y2="24.5" stroke="${t.border}" stroke-width="1.1"/>
+  <text x="${w - 14}" y="15.5" text-anchor="end" font-family='${FONT_MONO}' font-size="8.4" fill="${t.muted}">${fitText(rightMeta, 78, 8.4, true)}</text>`;
+    return { defs: "", chrome, contentTop: 33, contentBottom: h - 13, padX: 16 };
+  }
+
+  if (themeId === "riso-duotone") {
+    const dotPat = `riso-${uid}`;
+    const defs = `
+    <pattern id="${dotPat}" width="6" height="6" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="0.85" fill="${t.patternFg}" fill-opacity="${mode === "dark" ? "0.4" : "0.65"}"/>
+    </pattern>`;
+    const reg = (cx: number, cy: number) =>
+      `<g stroke="${t.secondary}" stroke-width="0.8" fill="none"><circle cx="${cx}" cy="${cy}" r="2.6"/><line x1="${cx - 4.5}" y1="${cy}" x2="${cx + 4.5}" y2="${cy}"/><line x1="${cx}" y1="${cy - 4.5}" x2="${cx}" y2="${cy + 4.5}"/></g>`;
+    const chrome = `
+  <rect x="2.5" y="2.5" width="${w - 3}" height="${h - 3}" fill="${t.secondary}" fill-opacity="0.22"/>
+  <rect x="0.5" y="0.5" width="${w - 3}" height="${h - 3}" fill="${t.bg}" stroke="${t.border}" stroke-width="1.2"/>
+  <rect x="1" y="1" width="${w - 4}" height="24" fill="url(#${dotPat})"/>
+  <line x1="0.5" y1="25.5" x2="${w - 2.5}" y2="25.5" stroke="${t.border}" stroke-width="1"/>
+  ${reg(13, 13)}
+  <text x="25" y="16.5" font-family='${FONT_MONO}' font-size="9.5" font-weight="700" fill="${t.accent}">${safeTag}</text>
+  <text x="${w - 14}" y="16.5" text-anchor="end" font-family='${FONT_MONO}' font-size="9" fill="${t.secondary}">${safeMeta}</text>`;
+    return { defs, chrome, contentTop: 34, contentBottom: h - 13, padX: 16 };
   }
 
   // Default: swiss-bauhaus-pixel

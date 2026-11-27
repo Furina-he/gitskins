@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="846" height="300" viewBox="0 0 846 300" role="img" aria-label="Furina-he — Transit &amp; Boarding Pass GitHub Profile">
+  <title>Furina-he — Transit &amp; Boarding Pass</title>
+  <defs>
+    <clipPath id="clip-tb-light">
+      <path d="M 9 1 H 597 A 11 11 0 0 0 619 1 H 837 A 8 8 0 0 1 845 9 V 291 A 8 8 0 0 1 837 299 H 619 A 11 11 0 0 0 597 299 H 9 A 8 8 0 0 1 1 291 V 9 A 8 8 0 0 1 9 1 Z"/>
+    </clipPath>
+    <pattern id="dots-tb-light" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.7" fill="#D4CCBC" fill-opacity="0.55"/>
+    </pattern>
+  </defs>
+  <style>
+    @keyframes led_tb-light { 0%, 100% { opacity: 1; } 50% { opacity: 0.22; } }
+    .led-tb-light { animation: led_tb-light 1.8s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .led-tb-light { animation: none !important; } }
+  </style>
+
+  <!-- Clipped Ticket Stock Interior -->
+  <g clip-path="url(#clip-tb-light)">
+    <rect x="0" y="0" width="608" height="300" fill="#FAF6EE"/>
+    <rect x="0" y="44" width="608" height="256" fill="url(#dots-tb-light)"/>
+    <rect x="608" y="0" width="238" height="300" fill="#EFE9DC"/>
+
+    <!-- Top Boarding Pass Header Band -->
+    <rect x="0" y="0" width="608" height="44" fill="#D93829"/>
+    <rect x="608" y="0" width="238" height="44" fill="#1B56B5"/>
+    
+    
+
+    <!-- Left Airline / Rail Emblem & Masthead -->
+    <g transform="translate(22, 14)" fill="#FFFFFF" aria-hidden="true">
+      <polygon points="0,8 14,2 10,8 14,14"/>
+      <rect x="16" y="6.5" width="7" height="3" rx="1"/>
+    </g>
+    <text x="52" y="27" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="11" font-weight="800" letter-spacing="1.1" fill="#FFFFFF">GITSKINS EXPRESS · BOARDING PASS</text>
+    <text x="586" y="27" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10" font-weight="700" letter-spacing="0.8" fill="#FFE4E0">FLIGHT GS-09 · INTL</text>
+
+    <!-- Right Detachable Stub Header -->
+    <text x="626" y="27" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.2" font-weight="800" letter-spacing="1" fill="#FFFFFF">PASSENGER STUB</text>
+    <text x="826" y="27" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.2" font-weight="800" fill="#FFFFFF">09</text>
+
+    <!-- Main Left Route Header: DEV -> OSS -->
+    <text x="26" y="64" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="1" fill="#727885">ORIGIN // LOCAL</text>
+    <text x="24" y="100" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="800" letter-spacing="-0.5" fill="#15171A">DEV</text>
+
+    <!-- Crisp Vector Flight Path & Airplane Icon -->
+    <circle cx="114" cy="86" r="3.5" fill="none" stroke="#D93829" stroke-width="1.8"/>
+    <line x1="121" y1="86" x2="152" y2="86" stroke="#D8D0C2" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <path d="M 157 86 L 169 86 L 164 78 L 167 78 L 175 86 L 182 86 C 184 86 184 88 182 88 L 175 88 L 167 96 L 164 96 L 169 88 L 157 88 L 154 91 L 152 91 L 154 87 L 152 83 L 154 83 Z" fill="#D93829"/>
+    <line x1="188" y1="86" x2="219" y2="86" stroke="#D8D0C2" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <circle cx="226" cy="86" r="3.5" fill="#D93829"/>
+    <text x="170" y="106" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.2" font-weight="700" letter-spacing="0.8" fill="#727885">NON-STOP · 2026</text>
+
+    <text x="242" y="64" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="1" fill="#727885">DEST // OPEN SOURCE</text>
+    <text x="240" y="100" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="800" letter-spacing="-0.5" fill="#15171A">OSS</text>
+
+    <!-- Boarding LED Status Pill & Domain -->
+    <rect x="466" y="56" width="120" height="22" rx="11" fill="#168052" stroke="#168052" stroke-width="1.1"/>
+    <circle class="led-tb-light" cx="481" cy="67" r="3.5" fill="#FFFFFF"/>
+    <text x="492" y="70.5" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="800" letter-spacing="0.8" fill="#FFFFFF">BOARDING</text>
+    <text x="586" y="99" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.8" font-weight="700" fill="#444952">cloudlink.blessc.com</text>
+
+    <line x1="24" y1="116.5" x2="586" y2="116.5" stroke="#D8D0C2" stroke-width="1"/>
+
+    <!-- Passenger Name & Bio -->
+    <text x="26" y="134" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="1" fill="#727885">PASSENGER / GITHUB HANDLE</text>
+    <text x="586" y="134" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="0.8" fill="#727885">PNR · NEVERGIVEUP</text>
+    <text x="25" y="169" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="31" font-weight="800" letter-spacing="1.2" fill="#15171A">FURINA-HE</text>
+    <rect x="478" y="148" width="108" height="20" rx="3" fill="#EFE9DC" stroke="#D8D0C2" stroke-width="1"/>
+    <text x="532" y="161.5" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.2" font-weight="700" fill="#444952">RUST · TS · PY</text>
+    <text x="26" y="193" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12.5" font-weight="600" fill="#444952">AI Agent Guardrails · Desktop Companions · Interactive Systems</text>
+
+    <!-- 4 Boarding Stat Boxes -->
+    <rect x="24" y="210" width="133" height="72" rx="4" fill="#FFFDF9" stroke="#D8D0C2" stroke-width="1.1"/><rect x="25" y="211" width="131" height="3" rx="1" fill="#D93829"/><text x="34" y="228" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="0.9" fill="#727885">GATE</text><text x="34" y="254" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="20" font-weight="800" fill="#15171A">04</text><text x="34" y="272" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.8" fill="#444952">Flagship Systems</text><rect x="167" y="210" width="133" height="72" rx="4" fill="#FFFDF9" stroke="#D8D0C2" stroke-width="1.1"/><rect x="168" y="211" width="131" height="3" rx="1" fill="#1B56B5"/><text x="177" y="228" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="0.9" fill="#727885">SEAT</text><text x="177" y="254" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="20" font-weight="800" fill="#15171A">13A</text><text x="177" y="272" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.8" fill="#444952">13 Public Repos</text><rect x="310" y="210" width="133" height="72" rx="4" fill="#FFFDF9" stroke="#D8D0C2" stroke-width="1.1"/><rect x="311" y="211" width="131" height="3" rx="1" fill="#168052"/><text x="320" y="228" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="0.9" fill="#727885">CLASS</text><text x="320" y="254" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="20" font-weight="800" fill="#15171A">OSS</text><text x="320" y="272" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.8" fill="#444952">Local-First MCP</text><rect x="453" y="210" width="133" height="72" rx="4" fill="#FFFDF9" stroke="#D8D0C2" stroke-width="1.1"/><rect x="454" y="211" width="131" height="3" rx="1" fill="#C98212"/><text x="463" y="228" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="0.9" fill="#727885">MILES</text><text x="463" y="254" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="20" font-weight="800" fill="#15171A">20+</text><text x="463" y="272" font-family="'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="9.8" fill="#444952">Synced Agents</text>
+
+    <!-- Right Detachable Tear-Off Stub Content (x=608..845) -->
+    <text x="726" y="63" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="1" fill="#727885">PASSPORT ID · 24×24</text>
+
+    <!-- Framed Passport Pixel Portrait Box -->
+    <rect x="668" y="71" width="116" height="116" rx="4" fill="#FFFDF9" stroke="#181B20" stroke-width="1.4"/>
+    <rect x="674" y="77" width="104" height="104" fill="#FAF6EE" stroke="#D8D0C2" stroke-width="0.9"/>
+    <!-- Passport Photo Corner Mount Ticks -->
+    <path d="M 671 82 V 74 H 679" fill="none" stroke="#D93829" stroke-width="1.8"/>
+    <path d="M 773 74 H 781 V 82" fill="none" stroke="#D93829" stroke-width="1.8"/>
+    <path d="M 671 176 V 184 H 679" fill="none" stroke="#D93829" stroke-width="1.8"/>
+    <path d="M 773 184 H 781 V 176" fill="none" stroke="#D93829" stroke-width="1.8"/>
+    <g shape-rendering="crispEdges"><path fill="#1D2238" d="M710 81h8v4h-8zM734 81h8v4h-8zM698 85h12v4h-12zM718 85h4v4h-4zM730 85h4v4h-4zM742 85h12v4h-12zM694 89h4v4h-4zM718 89h16v4h-16zM754 89h4v4h-4zM690 93h4v4h-4zM702 93h48v4h-48zM758 93h4v4h-4zM686 97h4v4h-4zM698 97h4v4h-4zM750 97h4v4h-4zM762 97h4v4h-4zM686 101h4v4h-4zM694 101h4v4h-4zM754 101h4v4h-4zM762 101h4v4h-4zM686 105h4v4h-4zM694 105h4v4h-4zM754 105h4v4h-4zM762 105h4v4h-4zM686 109h8v4h-8zM718 109h4v4h-4zM730 109h4v4h-4zM754 109h4v4h-4zM762 109h4v4h-4zM682 113h4v4h-4zM718 113h4v4h-4zM730 113h4v4h-4zM754 113h4v4h-4zM766 113h4v4h-4zM682 117h4v4h-4zM718 117h4v4h-4zM730 117h4v4h-4zM750 117h8v4h-8zM762 117h4v4h-4zM682 121h4v4h-4zM694 121h8v4h-8zM750 121h8v4h-8zM766 121h4v4h-4zM682 125h4v4h-4zM694 125h4v4h-4zM706 125h12v4h-12zM734 125h12v4h-12zM754 125h4v4h-4zM766 125h4v4h-4zM682 129h4v4h-4zM694 129h4v4h-4zM702 129h4v4h-4zM718 129h4v4h-4zM730 129h4v4h-4zM746 129h4v4h-4zM754 129h4v4h-4zM766 129h4v4h-4zM682 133h4v4h-4zM694 133h4v4h-4zM702 133h4v4h-4zM718 133h4v4h-4zM730 133h4v4h-4zM746 133h4v4h-4zM754 133h4v4h-4zM766 133h4v4h-4zM682 137h4v4h-4zM694 137h4v4h-4zM702 137h4v4h-4zM718 137h4v4h-4zM730 137h4v4h-4zM746 137h4v4h-4zM754 137h4v4h-4zM766 137h4v4h-4zM686 141h4v4h-4zM694 141h4v4h-4zM706 141h12v4h-12zM734 141h12v4h-12zM754 141h4v4h-4zM762 141h4v4h-4zM686 145h8v4h-8zM758 145h8v4h-8zM686 149h4v4h-4zM702 149h4v4h-4zM746 149h4v4h-4zM762 149h4v4h-4zM686 153h4v4h-4zM706 153h8v4h-8zM738 153h8v4h-8zM762 153h4v4h-4zM686 157h4v4h-4zM710 157h32v4h-32zM762 157h4v4h-4zM682 161h4v4h-4zM706 161h4v4h-4zM718 161h4v4h-4zM730 161h4v4h-4zM742 161h4v4h-4zM766 161h4v4h-4zM682 165h4v4h-4zM702 165h8v4h-8zM718 165h4v4h-4zM730 165h4v4h-4zM742 165h8v4h-8zM766 165h4v4h-4zM682 169h4v4h-4zM698 169h4v4h-4zM710 169h4v4h-4zM738 169h4v4h-4zM750 169h4v4h-4zM766 169h4v4h-4zM686 173h16v4h-16zM706 173h40v4h-40zM750 173h16v4h-16z"/><path fill="#FFFFFF" d="M710 85h8v4h-8zM734 85h8v4h-8zM698 89h20v4h-20zM734 89h20v4h-20zM694 93h4v4h-4zM754 93h4v4h-4zM690 97h8v4h-8zM754 97h8v4h-8zM690 101h4v4h-4zM758 101h4v4h-4zM690 105h4v4h-4zM758 105h4v4h-4zM706 129h4v4h-4zM734 129h4v4h-4zM702 153h4v4h-4zM746 153h4v4h-4zM698 157h4v4h-4zM750 157h4v4h-4zM698 161h8v4h-8zM746 161h8v4h-8zM698 165h4v4h-4zM750 165h4v4h-4zM702 169h8v4h-8zM742 169h8v4h-8z"/><path fill="#D6E1F2" d="M698 93h4v4h-4zM750 93h4v4h-4zM702 157h8v4h-8zM742 157h8v4h-8z"/><path fill="#546BC2" d="M702 97h48v4h-48zM698 101h8v4h-8zM714 101h24v4h-24zM746 101h8v4h-8zM698 105h56v4h-56zM694 109h24v4h-24zM722 109h8v4h-8zM734 109h20v4h-20zM686 113h32v4h-32zM722 113h8v4h-8zM734 113h20v4h-20zM686 117h8v4h-8zM698 117h20v4h-20zM722 117h8v4h-8zM734 117h16v4h-16zM686 121h8v4h-8zM702 121h48v4h-48zM758 121h8v4h-8zM686 125h8v4h-8zM758 125h8v4h-8zM686 129h8v4h-8zM758 129h8v4h-8zM686 133h8v4h-8zM758 133h8v4h-8zM690 137h4v4h-4zM758 137h4v4h-4zM690 141h4v4h-4zM694 149h8v4h-8zM750 149h8v4h-8zM694 153h8v4h-8zM750 153h8v4h-8zM694 157h4v4h-4zM754 157h4v4h-4zM690 161h8v4h-8zM754 161h8v4h-8zM690 165h8v4h-8zM754 165h8v4h-8zM690 169h8v4h-8zM754 169h8v4h-8z"/><path fill="#85A1EC" d="M706 101h8v4h-8zM738 101h8v4h-8zM694 117h4v4h-4z"/><path fill="#58BCEE" d="M758 109h4v4h-4zM758 113h8v4h-8zM758 117h4v4h-4zM722 161h8v4h-8zM722 165h8v4h-8z"/><path fill="#FFF3EB" d="M698 125h8v4h-8zM718 125h16v4h-16zM746 125h8v4h-8zM698 129h4v4h-4zM722 129h8v4h-8zM750 129h4v4h-4zM698 133h4v4h-4zM722 133h8v4h-8zM750 133h4v4h-4zM698 137h4v4h-4zM722 137h8v4h-8zM750 137h4v4h-4zM718 141h16v4h-16zM694 145h8v4h-8zM710 145h32v4h-32zM750 145h8v4h-8zM706 149h40v4h-40zM714 153h24v4h-24z"/><path fill="#2B3C7A" d="M710 129h8v4h-8zM738 129h8v4h-8zM706 133h4v4h-4zM734 133h4v4h-4z"/><path fill="#7C9BE8" d="M710 133h8v4h-8zM738 133h8v4h-8zM706 137h12v4h-12zM734 137h12v4h-12z"/><path fill="#384B96" d="M686 137h4v4h-4zM762 137h4v4h-4zM758 141h4v4h-4zM690 149h4v4h-4zM758 149h4v4h-4zM690 153h4v4h-4zM758 153h4v4h-4zM690 157h4v4h-4zM758 157h4v4h-4zM686 161h4v4h-4zM762 161h4v4h-4zM686 165h4v4h-4zM762 165h4v4h-4zM686 169h4v4h-4zM762 169h4v4h-4z"/><path fill="#F5B0B8" d="M698 141h8v4h-8zM746 141h8v4h-8zM702 145h8v4h-8zM742 145h8v4h-8z"/><path fill="#273154" d="M710 161h8v4h-8zM734 161h8v4h-8zM710 165h8v4h-8zM734 165h8v4h-8zM714 169h24v4h-24z"/></g>
+    <!-- Calm Boarding Status LED on Passport Badge -->
+    <circle class="led-tb-light" cx="772" cy="83" r="3" fill="#168052"/>
+
+    <!-- Stub Mini Route & Sequence -->
+    <text x="628" y="206" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="10.2" font-weight="800" fill="#15171A">DEV → OSS</text>
+    <text x="824" y="206" text-anchor="end" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="9.5" font-weight="700" fill="#D93829">SEQ 009</text>
+    <line x1="628" y1="214.5" x2="824" y2="214.5" stroke="#D8D0C2" stroke-width="1" stroke-dasharray="3 2"/>
+
+    <!-- Sharp Vector Barcode Strip -->
+    <rect x="624" y="220" width="204" height="46" rx="3" fill="#FFFDF9" stroke="#D8D0C2" stroke-width="0.9"/>
+    <path fill="#15171A" shape-rendering="crispEdges" d="M629 224h3v38h-3zM634 224h1v38h-1zM637 224h2v38h-2zM642 224h1v38h-1zM644 224h3v38h-3zM649 224h2v38h-2zM652 224h1v38h-1zM656 224h2v38h-2zM660 224h3v38h-3zM664 224h1v38h-1zM667 224h2v38h-2zM670 224h3v38h-3zM675 224h1v38h-1zM678 224h3v38h-3zM682 224h2v38h-2zM686 224h1v38h-1zM690 224h1v38h-1zM692 224h2v38h-2zM697 224h2v38h-2zM700 224h3v38h-3zM705 224h1v38h-1zM708 224h1v38h-1zM712 224h2v38h-2zM715 224h2v38h-2zM719 224h3v38h-3zM723 224h2v38h-2zM726 224h1v38h-1zM730 224h2v38h-2zM734 224h1v38h-1zM738 224h2v38h-2zM741 224h2v38h-2zM745 224h3v38h-3zM749 224h1v38h-1zM752 224h3v38h-3zM757 224h1v38h-1zM760 224h2v38h-2zM763 224h3v38h-3zM767 224h2v38h-2zM771 224h1v38h-1zM775 224h1v38h-1zM778 224h2v38h-2zM783 224h1v38h-1zM785 224h2v38h-2zM789 224h3v38h-3zM794 224h1v38h-1zM797 224h3v38h-3zM801 224h1v38h-1zM804 224h3v38h-3zM808 224h2v38h-2zM811 224h3v38h-3zM816 224h1v38h-1zM819 224h2v38h-2z"/>
+    <text x="726" y="281" text-anchor="middle" font-family="'JetBrains Mono','SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace" font-size="8.5" font-weight="700" letter-spacing="1.2" fill="#727885">GS09 · 2026 · FURINA-HE</text>
+
+    <!-- Vertical Dashed Perforation Line -->
+    <line x1="608" y1="15" x2="608" y2="285" stroke="#D8D0C2" stroke-width="1.6" stroke-dasharray="4 4"/>
+  </g>
+
+  <!-- Crisp Outer Notched Ticket Border -->
+  <path d="M 9 1 H 597 A 11 11 0 0 0 619 1 H 837 A 8 8 0 0 1 845 9 V 291 A 8 8 0 0 1 837 299 H 619 A 11 11 0 0 0 597 299 H 9 A 8 8 0 0 1 1 291 V 9 A 8 8 0 0 1 9 1 Z" fill="none" stroke="#181B20" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,95 @@
+{
+  "id": "transit-boarding",
+  "order": 9,
+  "name": "Transit & Boarding Pass",
+  "nameZh": "航空登机牌 / 电车票",
+  "category": "Transit Ticket",
+  "categoryZh": "登机牌 / 电车票",
+  "tagline": "Shinkansen thermal boarding passes with semicircular tear-off notches, 24×24 passport pixel portraits, vector barcodes, and metro-line transfer cards.",
+  "taglineZh": "新干线热敏登机牌撕裂虚线与半圆检票缺口、24×24 护照像素肖像、矢量条形码、地铁换乘线路项目卡与夜间机场翻牌屏深色主题。",
+  "bestFor": ["Full-Stack & Systems Devs", "Indie Makers", "Transit & Signage Lovers"],
+  "bestForZh": ["全栈 / 系统开发者", "独立开发者", "轨道交通与导视美学爱好者"],
+  "author": "Furina-he",
+  "accent": "#D93829",
+  "palette": {
+    "light": ["#FAF6EE", "#15171A", "#D93829", "#1B56B5", "#168052", "#C98212"],
+    "dark": ["#111317", "#F4F1EA", "#F59E0B", "#60A5FA", "#34D399", "#FB7185"]
+  },
+  "tokens": {
+    "light": {
+      "bg": "#FAF6EE",
+      "surface": "#FFFDF9",
+      "ink": "#15171A",
+      "sub": "#444952",
+      "muted": "#727885",
+      "border": "#181B20",
+      "borderSoft": "#D8D0C2",
+      "accent": "#D93829",
+      "accentFg": "#FFFFFF",
+      "secondary": "#1B56B5",
+      "tertiary": "#168052",
+      "highlight": "#C98212",
+      "patternBg": "#EFE9DC",
+      "patternFg": "#D4CCBC"
+    },
+    "dark": {
+      "bg": "#111317",
+      "surface": "#181B21",
+      "ink": "#F4F1EA",
+      "sub": "#B9B5AC",
+      "muted": "#827F78",
+      "border": "#363B46",
+      "borderSoft": "#262A33",
+      "accent": "#F59E0B",
+      "accentFg": "#111317",
+      "secondary": "#60A5FA",
+      "tertiary": "#34D399",
+      "highlight": "#FB7185",
+      "patternBg": "#0D0F13",
+      "patternFg": "#242830"
+    }
+  },
+  "features": [
+    "Shinkansen Thermal Ticket (Light) & Nocturnal Split-Flap Departure Board (Dark)",
+    "Detachable boarding-pass stub with semicircular punch notches & dashed perforation",
+    "Framed 24x24 pixel passport portrait slot, calm boarding-LED blink & vector barcode",
+    "Metro-line station transfer cards with interchange nodes (○—●—○) & validation stubs"
+  ],
+  "featuresZh": [
+    "浅色日式新干线热敏车票纸感 + 深色夜间机场翻牌航班显示屏双主题",
+    "真实半圆检票缺口与虚线撕裂线分隔主登机牌与右侧副联存根",
+    "右侧护照证件框内置 24×24 像素肖像槽、登机指示灯微闪烁与锐利矢量条形码",
+    "地铁线路换乘风格项目卡，内置换乘节点（○—●—○）、车站编号与底部票价规格栏"
+  ],
+  "buttons": [
+    { "id": "cloudlink", "label": "[L1] cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+    { "id": "openpet", "label": "[L2] openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+    { "id": "release", "label": "[L3] CloudLink v0.6.0", "url": "https://github.com/Furina-he/cloudlink/releases/latest" },
+    { "id": "github", "label": "[L4] @Furina-he", "url": "https://github.com/Furina-he?tab=repositories" }
+  ],
+  "cards": [
+    { "id": "cloudlink", "title": "CloudLink", "url": "https://github.com/Furina-he/cloudlink" },
+    { "id": "openpet", "title": "OpenPet", "url": "https://github.com/Furina-he/OpenPet" },
+    { "id": "gitskins", "title": "GitSkins", "url": "https://github.com/Furina-he/gitskins" },
+    { "id": "virtual", "title": "Virtual", "url": "https://github.com/Furina-he/virtual" }
+  ],
+  "sections": ["work", "activity"],
+  "subLinks": [
+    {
+      "group": "Live terminals",
+      "items": [
+        { "label": "cloudlink.blessc.com", "url": "https://cloudlink.blessc.com" },
+        { "label": "openpet.myfurina.top", "url": "https://openpet.myfurina.top" },
+        { "label": "gitskins.blessc.com", "url": "https://gitskins.blessc.com" }
+      ]
+    },
+    {
+      "group": "Branch lines",
+      "items": [
+        { "label": "openpet-market", "url": "https://github.com/Furina-he/openpet-market" },
+        { "label": "carview", "url": "https://github.com/Furina-he/carview" },
+        { "label": "furina_learining", "url": "https://github.com/Furina-he/furina_learining" }
+      ]
+    }
+  ]
+}

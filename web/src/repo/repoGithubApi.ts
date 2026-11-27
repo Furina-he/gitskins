@@ -38,9 +38,9 @@ export function createDefaultRepoData(): RepoSkinData {
   return {
     owner: "Furina-he",
     name: "gitskins",
-    version: "v0.6.0",
+    version: "v0.8.0",
     tagline:
-      "6 Light & Dark SVG theme systems, 14 Bento & Zero-503 live widgets, Repo Skins, Agent SKILL.md, and zero-dep CLI.",
+      "11 Light & Dark SVG theme systems, 22 Bento & Zero-503 live widgets, Repo Skins, Agent SKILL.md, and zero-dep CLI.",
     language: "TypeScript",
     license: "MIT",
     stars: 148,
@@ -54,8 +54,8 @@ export function createDefaultRepoData(): RepoSkinData {
     features: [
       {
         tag: "TOKENS",
-        title: "6 Curated Aesthetic Systems",
-        desc: "Swiss-Bauhaus, Blueprint CAD, Broadsheet Zine, CRT Terminal, 16-bit RPG HUD & Seal Ink Scroll.",
+        title: "11 Curated Aesthetic Systems",
+        desc: "Swiss-Bauhaus, Blueprint, Zine, CRT, RPG, Seal Ink, Synth, PCB, Boarding Pass, Classic OS & Risograph.",
       },
       {
         tag: "XML-SAFE",
