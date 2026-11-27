@@ -271,6 +271,8 @@ export const COPY: Record<
     fieldActivityEvent1: string;
     fieldActivityEvent2: string;
     fieldActivityEvent3: string;
+    sharePreviewBtn: string;
+    sharePreviewCopied: string;
   }
 > = {
   en: {
@@ -556,6 +558,8 @@ export const COPY: Record<
     fieldActivityEvent1: "Preview Event #1 (TYPE | Text | Age)",
     fieldActivityEvent2: "Preview Event #2 (TYPE | Text | Age)",
     fieldActivityEvent3: "Preview Event #3 (TYPE | Text | Age)",
+    sharePreviewBtn: "↗ Share Link",
+    sharePreviewCopied: "✓ Link Copied",
   },
   zh: {
     subtitle: "面向 AI 编程 Agent 的 GitHub 主页主题与挂件工坊",
@@ -840,5 +844,7 @@ export const COPY: Record<
     fieldActivityEvent1: "预览动态 #1（类型 | 内容 | 时间）",
     fieldActivityEvent2: "预览动态 #2（类型 | 内容 | 时间）",
     fieldActivityEvent3: "预览动态 #3（类型 | 内容 | 时间）",
+    sharePreviewBtn: "↗ 分享直链",
+    sharePreviewCopied: "✓ 已复制直链",
   },
 };

@@ -1,0 +1,30 @@
+name: Bug Report
+description: Report an SVG rendering issue, overlap, XML error, Live Widget workflow failure, or Web Studio bug
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected Area
+      options:
+        - Web Studio (gitskins.blessc.com)
+        - Profile Theme SVG / Contrast / Overlap
+        - Repo Skins SVG
+        - Zero-503 Live Widgets (GitHub Actions / Python)
+        - CLI (cli/gitskins.mjs)
+        - Agent SKILL.md / PROMPT.md
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Include theme ID, Light/Dark mode, browser/OS, or error output from `node cli/gitskins.mjs validate`.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to Reproduce / Screenshot
+      description: Share a preview link (e.g. `https://gitskins.blessc.com/?user=...&theme=...`) or screenshot if applicable.

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Live Studio (30s Preview & ZIP Export)
+    url: https://gitskins.blessc.com
+    about: Try all 11 Light & Dark skins and 22 widgets with your real GitHub username or repo.
+  - name: Show & Tell — Share Your Skinned Profile or Repo
+    url: https://github.com/Furina-he/gitskins/discussions
+    about: Post your redesigned GitHub profile or open-source README to be featured in the community showcase.

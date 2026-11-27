@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { COPY } from "../i18n";
 import { downloadZipArchive } from "../profile/zipExport";
 import {
@@ -27,6 +27,9 @@ interface RepoSkinsStudioProps {
   previewMode: PreviewMode;
   onChangePreviewMode: (mode: PreviewMode) => void;
   lang: Lang;
+  initialRepoSlug?: string;
+  initialAccent?: string;
+  onActiveRepoChange?: (slug: string | null) => void;
 }
 
 async function copyText(text: string): Promise<void> {
@@ -49,16 +52,46 @@ export default function RepoSkinsStudio({
   previewMode,
   onChangePreviewMode,
   lang,
+  initialRepoSlug,
+  initialAccent,
+  onActiveRepoChange,
 }: RepoSkinsStudioProps) {
   const t = COPY[lang];
   const [repo, setRepo] = useState<RepoSkinData>(() => createDefaultRepoData());
-  const [options, setOptions] = useState<RepoSkinOptions>(DEFAULT_REPO_OPTIONS);
-  const [slugInput, setSlugInput] = useState("");
+  const [options, setOptions] = useState<RepoSkinOptions>(() =>
+    initialAccent ? { ...DEFAULT_REPO_OPTIONS, accentOverride: initialAccent } : DEFAULT_REPO_OPTIONS
+  );
+  const [slugInput, setSlugInput] = useState(initialRepoSlug ?? "");
   const [loading, setLoading] = useState(false);
   const [errCode, setErrCode] = useState<FetchRepoErrorCode | null>(null);
   const [copiedPrompt, setCopiedPrompt] = useState(false);
   const [copiedCli, setCopiedCli] = useState(false);
+  const [copiedShare, setCopiedShare] = useState(false);
   const [exportedCount, setExportedCount] = useState<number | null>(null);
+  const didAutoFetchRef = useRef(false);
+
+  useEffect(() => {
+    if (!initialRepoSlug || didAutoFetchRef.current) return;
+    didAutoFetchRef.current = true;
+    setLoading(true);
+    setErrCode(null);
+    fetchGitHubRepo(initialRepoSlug)
+      .then((next) => {
+        setRepo(next);
+        setCopiedPrompt(false);
+        onActiveRepoChange?.(`${next.owner}/${next.name}`);
+      })
+      .catch((err) => {
+        if (err instanceof GitHubRepoError) {
+          setErrCode(err.code);
+        } else {
+          setErrCode("network");
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [initialRepoSlug]);
 
   const effectiveRepo = useMemo(() => {
     if (!repo.isDemo) return repo;
@@ -107,6 +140,7 @@ export default function RepoSkinsStudio({
     if (!slugInput.trim()) {
       setRepo(createDefaultRepoData());
       setErrCode(null);
+      onActiveRepoChange?.(null);
       return;
     }
     setLoading(true);
@@ -115,6 +149,7 @@ export default function RepoSkinsStudio({
       const next = await fetchGitHubRepo(slugInput);
       setRepo(next);
       setCopiedPrompt(false);
+      onActiveRepoChange?.(`${next.owner}/${next.name}`);
     } catch (err) {
       if (err instanceof GitHubRepoError) {
         setErrCode(err.code);
@@ -132,6 +167,27 @@ export default function RepoSkinsStudio({
     setOptions(DEFAULT_REPO_OPTIONS);
     setErrCode(null);
     setCopiedPrompt(false);
+    onActiveRepoChange?.(null);
+  }
+
+  async function handleCopyShareLink() {
+    const url = new URL(window.location.href);
+    url.hash = "";
+    url.search = "";
+    url.searchParams.set("tab", "repo");
+    url.searchParams.set("theme", activeTheme.id);
+    if (!repo.isDemo) {
+      url.searchParams.set("repo", `${repo.owner}/${repo.name}`);
+    }
+    if (previewMode === "dark") {
+      url.searchParams.set("mode", "dark");
+    }
+    if (options.accentOverride) {
+      url.searchParams.set("accent", options.accentOverride.replace(/^#/, ""));
+    }
+    await copyText(url.toString());
+    setCopiedShare(true);
+    window.setTimeout(() => setCopiedShare(false), 2200);
   }
 
   function handleExportZip() {
@@ -218,6 +274,14 @@ export default function RepoSkinsStudio({
             </div>
 
             <div className="stage-controls">
+              <button
+                type="button"
+                className={`zip-toolbar-btn ${copiedShare ? "done" : ""}`}
+                onClick={handleCopyShareLink}
+              >
+                {copiedShare ? t.sharePreviewCopied : t.sharePreviewBtn}
+              </button>
+
               <button
                 type="button"
                 className={`zip-toolbar-btn ${exportedCount ? "done" : ""}`}

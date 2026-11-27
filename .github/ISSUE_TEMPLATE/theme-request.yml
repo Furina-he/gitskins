@@ -1,0 +1,28 @@
+name: Theme or Widget Request
+description: Propose a new Light & Dark aesthetic skin or theme-adaptive Bento/Live widget
+title: "[Idea] "
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Category
+      options:
+        - New Profile & Repo Theme
+        - New Static DIY Widget (Wxx)
+        - New Zero-503 Actions Live Widget (Lxx)
+        - Web Studio / CLI / Agent Skill Improvement
+    validations:
+      required: true
+  - type: textarea
+    id: concept
+    attributes:
+      label: Visual Concept / Data Source
+      description: Describe the aesthetic inspiration (both Light & Dark palette ideas) or the live data source (ideally free/zero-key or GITHUB_TOKEN).
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Visual References (Optional)
+      description: Links, screenshots, or design references.

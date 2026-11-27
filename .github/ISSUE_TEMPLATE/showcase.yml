@@ -1,0 +1,36 @@
+name: Showcase My Profile or Repo
+description: Share your GitHub Profile or Repository styled with GitSkins to join the community showcase
+title: "[Showcase] "
+labels: ["showcase"]
+body:
+  - type: input
+    id: link
+    attributes:
+      label: GitHub Profile or Repository URL
+      placeholder: https://github.com/your-username
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme Used
+      options:
+        - 01 Swiss-Bauhaus Pixel Poster (swiss-bauhaus-pixel)
+        - 02 Architectural Blueprint CAD (blueprint-cad)
+        - 03 Editorial Broadsheet Zine (editorial-zine)
+        - 04 Retro CRT Terminal TUI (crt-terminal)
+        - 05 16-bit Pixel RPG HUD (pixel-rpg-hud)
+        - 06 Seal Ink Monograph (seal-ink-scroll)
+        - 07 Tactile Industrial Synth (synth-hardware)
+        - 08 Solder Mask PCB (pcb-solder-mask)
+        - 09 Transit & Boarding Pass (transit-boarding)
+        - 10 Classic Desktop OS (classic-desktop-os)
+        - 11 Risograph Overprint Poster (riso-duotone)
+        - Custom / Remixed
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Widgets, Customizations & Screenshots
+      description: Paste a Light/Dark screenshot or tell us which DIY / Zero-503 Live widgets you mounted!

@@ -64,7 +64,44 @@ interface GhostFillTarget {
 const STORAGE_KEY_V2 = "gitskins:bento-v2";
 const STORAGE_KEY_V1 = "gitskins:diy-widgets-v1";
 
+function normalizeHexParam(raw: string | null): string {
+  if (!raw) return "";
+  const cleaned = raw.trim().replace(/^#/, "");
+  return /^[0-9a-fA-F]{6}$/.test(cleaned) ? `#${cleaned.toUpperCase()}` : "";
+}
+
+function parseInitialQuery(): {
+  tab: ActiveTab | null;
+  theme: string | null;
+  user: string | null;
+  repo: string | null;
+  mode: PreviewMode | null;
+  lang: Lang | null;
+  accent: string;
+} {
+  if (typeof window === "undefined") {
+    return { tab: null, theme: null, user: null, repo: null, mode: null, lang: null, accent: "" };
+  }
+  const params = new URLSearchParams(window.location.search);
+  const rawTab = params.get("tab")?.trim().toLowerCase();
+  const user = params.get("user")?.trim().replace(/^@+/, "") || null;
+  const repo = params.get("repo")?.trim() || null;
+  const theme = params.get("theme")?.trim() || null;
+  const rawMode = params.get("mode")?.trim().toLowerCase();
+  const rawLang = params.get("lang")?.trim().toLowerCase();
+  const accent = normalizeHexParam(params.get("accent"));
+  let tab: ActiveTab | null =
+    rawTab === "skins" || rawTab === "repo" || rawTab === "widgets" ? rawTab : null;
+  if (!tab && repo) tab = "repo";
+  else if (!tab && user) tab = "skins";
+  const mode: PreviewMode | null = rawMode === "dark" || rawMode === "light" ? rawMode : null;
+  const lang: Lang | null = rawLang === "zh" || rawLang === "en" ? rawLang : null;
+  return { tab, theme, user, repo, mode, lang, accent };
+}
+
 function detectInitialLang(): Lang {
+  const qLang = parseInitialQuery().lang;
+  if (qLang) return qLang;
   if (typeof navigator !== "undefined" && navigator.language.toLowerCase().startsWith("zh")) {
     return "zh";
   }
@@ -184,30 +221,39 @@ function BrandMark() {
 }
 
 export default function App() {
+  const initialQuery = useMemo(() => parseInitialQuery(), []);
   const [themes, setThemes] = useState<SkinTheme[]>([]);
-  const [activeId, setActiveId] = useState<string>("swiss-bauhaus-pixel");
+  const [activeId, setActiveId] = useState<string>(initialQuery.theme || "swiss-bauhaus-pixel");
   const [activeTab, setActiveTab] = useState<ActiveTab>(() => {
+    if (initialQuery.tab) return initialQuery.tab;
     if (typeof window === "undefined") return "skins";
     if (window.location.hash === "#widgets") return "widgets";
     if (window.location.hash === "#repo") return "repo";
     return "skins";
   });
-  const [previewMode, setPreviewMode] = useState<PreviewMode>("light");
+  const [previewMode, setPreviewMode] = useState<PreviewMode>(initialQuery.mode ?? "light");
   const [lang, setLang] = useState<Lang>(detectInitialLang);
   const [promptKind, setPromptKind] = useState<PromptKind>("quick");
   const [copiedPrompt, setCopiedPrompt] = useState(false);
+  const [copiedShareLink, setCopiedShareLink] = useState(false);
   const [copiedHex, setCopiedHex] = useState<string | null>(null);
   const [exportedZipCount, setExportedZipCount] = useState<number | null>(null);
+  const [activeRepoSlug, setActiveRepoSlug] = useState<string | null>(initialQuery.repo);
   const stageRef = useRef<HTMLDivElement | null>(null);
   const quickFillRef = useRef<HTMLDivElement | null>(null);
   const livePyRef = useRef<string | null>(null);
+  const didAutoFetchUserRef = useRef(false);
 
   // Live GitHub Preview & Parametric Overrides
-  const [ghInput, setGhInput] = useState("");
+  const [ghInput, setGhInput] = useState(initialQuery.user ?? "");
   const [liveProfile, setLiveProfile] = useState<LiveProfileData | null>(null);
   const [ghLoading, setGhLoading] = useState(false);
   const [ghError, setGhError] = useState<FetchProfileErrorCode | null>(null);
-  const [overrides, setOverrides] = useState<ProfileOverrides>(DEFAULT_OVERRIDES);
+  const [overrides, setOverrides] = useState<ProfileOverrides>(() =>
+    initialQuery.accent
+      ? { ...DEFAULT_OVERRIDES, accentOverride: initialQuery.accent }
+      : DEFAULT_OVERRIDES
+  );
 
   // Multi-Instance 4-Column Bento Widget State
   const initialBento = useMemo(() => loadSavedBentoState(), []);
@@ -237,7 +283,17 @@ export default function App() {
       .then((data: SkinTheme[]) => {
         setThemes(data);
         const hash = window.location.hash.replace("#", "").trim();
-        if (hash === "widgets") {
+        if (initialQuery.theme && data.some((t) => t.id === initialQuery.theme)) {
+          setActiveId(initialQuery.theme);
+          if (initialQuery.tab) {
+            setActiveTab(initialQuery.tab);
+          } else if (hash === "widgets" || hash === "repo") {
+            setActiveTab(hash);
+          }
+        } else if (initialQuery.tab) {
+          setActiveTab(initialQuery.tab);
+          if (data.length > 0) setActiveId(data[0].id);
+        } else if (hash === "widgets") {
           setActiveTab("widgets");
           if (data.length > 0) setActiveId(data[0].id);
         } else if (hash === "repo") {
@@ -250,7 +306,30 @@ export default function App() {
         }
       })
       .catch((err) => console.error("Failed to load theme manifest:", err));
-  }, []);
+  }, [initialQuery]);
+
+  useEffect(() => {
+    if (!initialQuery.user || didAutoFetchUserRef.current) return;
+    didAutoFetchUserRef.current = true;
+    const username = initialQuery.user;
+    setGhLoading(true);
+    setGhError(null);
+    fetchGitHubProfile(username)
+      .then((data) => {
+        setLiveProfile(data);
+        setCopiedPrompt(false);
+      })
+      .catch((err) => {
+        if (err instanceof GitHubProfileError) {
+          setGhError(err.code);
+        } else {
+          setGhError("network");
+        }
+      })
+      .finally(() => {
+        setGhLoading(false);
+      });
+  }, [initialQuery.user]);
 
   useEffect(() => {
     const onHashChange = () => {
@@ -322,11 +401,59 @@ export default function App() {
 
   const t = COPY[lang];
 
+  function buildCurrentShareUrl(themeId: string): string {
+    const url = new URL(window.location.href);
+    url.hash = "";
+    url.search = "";
+    url.searchParams.set("theme", themeId);
+    if (liveProfile) {
+      url.searchParams.set("user", liveProfile.username);
+    }
+    if (previewMode === "dark") {
+      url.searchParams.set("mode", "dark");
+    }
+    if (overrides.accentOverride) {
+      url.searchParams.set("accent", overrides.accentOverride.replace(/^#/, ""));
+    }
+    return url.toString();
+  }
+
+  async function handleCopyShareLink() {
+    if (!activeTheme) return;
+    const shareUrl = buildCurrentShareUrl(activeTheme.id);
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = shareUrl;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+    }
+    setCopiedShareLink(true);
+    window.setTimeout(() => setCopiedShareLink(false), 2200);
+  }
+
   function selectTheme(id: string, scrollToStage: boolean) {
     setActiveId(id);
     setCopiedPrompt(false);
     if (activeTab === "skins") {
-      window.history.replaceState(null, "", `#${id}`);
+      if (liveProfile) {
+        const params = new URLSearchParams();
+        params.set("user", liveProfile.username);
+        params.set("theme", id);
+        if (previewMode === "dark") params.set("mode", "dark");
+        window.history.replaceState(null, "", `?${params.toString()}`);
+      } else {
+        window.history.replaceState(null, "", `${window.location.pathname}#${id}`);
+      }
+    } else if (activeTab === "repo" && activeRepoSlug) {
+      const params = new URLSearchParams();
+      params.set("repo", activeRepoSlug);
+      params.set("theme", id);
+      if (previewMode === "dark") params.set("mode", "dark");
+      window.history.replaceState(null, "", `?${params.toString()}`);
     }
     if (scrollToStage && stageRef.current) {
       stageRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -337,15 +464,28 @@ export default function App() {
     setActiveTab(next);
     setCopiedPrompt(false);
     setGhostFillTarget(null);
-    window.history.replaceState(
-      null,
-      "",
-      next === "widgets"
-        ? "#widgets"
-        : next === "repo"
-          ? "#repo"
-          : `#${activeTheme?.id ?? "swiss-bauhaus-pixel"}`
-    );
+    const tid = activeTheme?.id ?? "swiss-bauhaus-pixel";
+    if (next === "skins" && liveProfile) {
+      const params = new URLSearchParams();
+      params.set("user", liveProfile.username);
+      params.set("theme", tid);
+      if (previewMode === "dark") params.set("mode", "dark");
+      window.history.replaceState(null, "", `?${params.toString()}`);
+    } else if (next === "repo" && activeRepoSlug) {
+      const params = new URLSearchParams();
+      params.set("repo", activeRepoSlug);
+      params.set("theme", tid);
+      if (previewMode === "dark") params.set("mode", "dark");
+      window.history.replaceState(null, "", `?${params.toString()}`);
+    } else {
+      window.history.replaceState(
+        null,
+        "",
+        `${window.location.pathname}${
+          next === "widgets" ? "#widgets" : next === "repo" ? "#repo" : `#${tid}`
+        }`
+      );
+    }
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -355,6 +495,7 @@ export default function App() {
     if (!cleaned) {
       setLiveProfile(null);
       setGhError(null);
+      window.history.replaceState(null, "", `${window.location.pathname}#${activeId}`);
       return;
     }
     setGhLoading(true);
@@ -363,6 +504,11 @@ export default function App() {
       const data = await fetchGitHubProfile(cleaned);
       setLiveProfile(data);
       setCopiedPrompt(false);
+      const params = new URLSearchParams();
+      params.set("user", data.username);
+      params.set("theme", activeId);
+      if (previewMode === "dark") params.set("mode", "dark");
+      window.history.replaceState(null, "", `?${params.toString()}`);
     } catch (err) {
       if (err instanceof GitHubProfileError) {
         setGhError(err.code);
@@ -379,6 +525,7 @@ export default function App() {
     setLiveProfile(null);
     setGhError(null);
     setCopiedPrompt(false);
+    window.history.replaceState(null, "", `${window.location.pathname}#${activeId}`);
   }
 
   async function handleExportZip() {
@@ -849,6 +996,20 @@ export default function App() {
             previewMode={previewMode}
             onChangePreviewMode={setPreviewMode}
             lang={lang}
+            initialRepoSlug={initialQuery.repo ?? undefined}
+            initialAccent={initialQuery.accent || undefined}
+            onActiveRepoChange={(slug) => {
+              setActiveRepoSlug(slug);
+              if (slug) {
+                const params = new URLSearchParams();
+                params.set("repo", slug);
+                params.set("theme", activeTheme.id);
+                if (previewMode === "dark") params.set("mode", "dark");
+                window.history.replaceState(null, "", `?${params.toString()}`);
+              } else {
+                window.history.replaceState(null, "", `${window.location.pathname}#repo`);
+              }
+            }}
           />
         ) : activeTab === "widgets" && activeTheme ? (
           <WidgetsStudio
@@ -929,6 +1090,14 @@ export default function App() {
                     </div>
 
                     <div className="stage-controls">
+                      <button
+                        type="button"
+                        className={`zip-toolbar-btn ${copiedShareLink ? "done" : ""}`}
+                        onClick={handleCopyShareLink}
+                      >
+                        {copiedShareLink ? t.sharePreviewCopied : t.sharePreviewBtn}
+                      </button>
+
                       <button
                         type="button"
                         className={`zip-toolbar-btn ${exportedZipCount ? "done" : ""}`}
