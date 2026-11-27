@@ -341,7 +341,7 @@ export const COPY: Record<
     widgetsHeroTitleA: "Craft custom widgets.",
     widgetsHeroTitleB: "Place them anywhere on your profile.",
     widgetsHeroLead:
-      "22 skin-adaptive widgets: 12 Static DIY blocks (keycaps, split-flap, radar, scannable QR, pets, tiles) + 10 Zero-503 GitHub Actions Live Widgets (Stats, Rhythm, RSS, Weather, WakaTime, Spotify, Snake, 3D Skyline, Streak, Activity).",
+      "Skin-adaptive Bento widgets: Static DIY blocks (keycaps, split-flap, radar, scannable QR, pets, tiles) + Zero-503 GitHub Actions Live Widgets (Stats, Rhythm, RSS, Weather, WakaTime, Spotify, Snake, 3D Skyline, Streak, Activity).",
     widgetMountedBadge: "MOUNTED",
     widgetMountBtn: "Mount to Profile Loadout",
     widgetMountedBtn: "Mounted in Loadout (Remove)",
@@ -590,7 +590,7 @@ export const COPY: Record<
     openGen: "生成脚本",
     openRepo: "源码目录",
     contactHeading: "全主题同框对比",
-    contactSub: "同一位开发者的真实仓库在 11 套完全不同美学体系下的效果对比，点击任意海报立即切换预览与复制提示词。",
+    contactSub: "同一位开发者的真实仓库在不同美学体系下的效果对比，点击任意海报立即切换预览与复制提示词。",
     selectedBadge: "当前预览",
     previewSkin: "查看这套皮肤",
     howHeading: "为什么复制提示词后，Agent 能一次稳定出好图？",
@@ -603,7 +603,7 @@ export const COPY: Record<
       {
         num: "02",
         title: "多形态主题联动挂件",
-        body: "不止底栏卡片：支持直接合进 Hero 角落的动态贴纸、846×48 像素巡逻跑道、204² 迷你动态小方砖与 10 款 Actions 活挂件，自动继承全部 11 套皮肤语义令牌。",
+        body: "不止底栏卡片：支持直接合进 Hero 角落的动态贴纸、846×48 像素巡逻跑道、204² 迷你动态小方砖与 Actions 活挂件，自动继承全部皮肤语义令牌。",
       },
       {
         num: "03",
@@ -627,7 +627,7 @@ export const COPY: Record<
     widgetsHeroTitleA: "自由 DIY 小挂件，",
     widgetsHeroTitleB: "任意位置、多种形态自动换肤。",
     widgetsHeroLead:
-      "22 款主题联动挂件：12 款纯前端 DIY 积木（机械键帽、翻页屏、六维雷达、可扫二维码、桌宠、方砖）+ 10 款零 503 GitHub Actions 活挂件（统计、作息、RSS、天气、WakaTime、Spotify、贡献图贪吃蛇、3D 天际线、连胜火炬、动态日志）。",
+      "主题联动 4 列 Bento 挂件：纯前端 DIY 积木（机械键帽、翻页屏、六维雷达、可扫二维码、桌宠、方砖）+ 零 503 GitHub Actions 活挂件（统计、作息、RSS、天气、WakaTime、Spotify、贡献图贪吃蛇、3D 天际线、连胜火炬、动态日志）。",
     widgetMountedBadge: "已挂载",
     widgetMountBtn: "挂载到主页套装",
     widgetMountedBtn: "已挂载到套装（点击移出）",
@@ -765,7 +765,7 @@ export const COPY: Record<
     repoHeroTitleA: "同款高辨识度美学，",
     repoHeroTitleB: "现在延伸到你的开源仓库 README。",
     repoHeroLead:
-      "一键将 11 大视觉体系套用到项目仓库：846px 项目海报 Banner、快速安装命令条、特性卡片矩阵、架构流程图与可选 Styled with GitSkins 尾标，支持真仓库拉取、CLI 脚手架与 ZIP 打包。",
+      "一键将同款双主题视觉体系套用到项目仓库：846px 项目海报 Banner、快速安装命令条、特性卡片矩阵、架构流程图与可选 Styled with GitSkins 尾标，支持真仓库拉取、CLI 脚手架与 ZIP 打包。",
     repoTryPlaceholder: "输入公开仓库 owner/repo（如 Furina-he/gitskins、vitejs/vite）...",
     repoTryBtn: "拉取仓库",
     repoLivePrefix: "实时仓库",

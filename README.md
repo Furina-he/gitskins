@@ -77,7 +77,7 @@ Most GitHub Profiles and Repo READMEs rely on brittle third-party stat servers t
 </p>
 
 <p>
-  <picture><source media="(prefers-color-scheme: dark)" srcset="./assets/repo-feat-01-dark.svg"><img src="./assets/repo-feat-01-light.svg" alt="11 Curated Aesthetic Systems" width="49%"></picture>&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/repo-feat-02-dark.svg"><img src="./assets/repo-feat-02-light.svg" alt="4-Col Bento & Zero-503 Live Widgets" width="49%"></picture>
+  <picture><source media="(prefers-color-scheme: dark)" srcset="./assets/repo-feat-01-dark.svg"><img src="./assets/repo-feat-01-light.svg" alt="Curated Aesthetic Systems" width="49%"></picture>&nbsp;<picture><source media="(prefers-color-scheme: dark)" srcset="./assets/repo-feat-02-dark.svg"><img src="./assets/repo-feat-02-light.svg" alt="4-Col Bento & Zero-503 Live Widgets" width="49%"></picture>
 </p>
 
 <p>

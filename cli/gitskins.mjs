@@ -857,7 +857,8 @@ Options for init:
 }
 
 function runList(themes) {
-  console.log("GitSkins Themes (11 Light & Dark Systems):");
+  const themeCount = Object.keys(themes).length;
+  console.log(`GitSkins Themes (${themeCount} Light & Dark Systems):`);
   for (const [id, info] of Object.entries(themes)) {
     console.log(`  - ${id.padEnd(22)} ${info.name} (${info.category})`);
   }
